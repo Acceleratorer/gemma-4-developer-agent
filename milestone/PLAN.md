@@ -31,6 +31,7 @@ Reach rank 1 on the final Kaggle private leaderboard. Current evidence is only a
 - [ ] Tune prompt flow and call/time budget first; keep model and sampling fixed.
 - [x] Re-run the fixed smoke set with the `write_file` argument reminder and captured verifier diagnostics; the v5 results are recorded in `/log/experiment-log.csv`.
 - [x] Separate candidate failures from baseline verifier issues on Requests and HTTPX: a no-patch evaluation reproduced both failures.
+- [ ] Pin new Kaggle evaluation kernels to the competition-compatible Python 3.12 image; the first reference-kernel attempt failed under Python 3.13, and a pinned retry is running.
 - [ ] Ablate code-graph tools and a read-only analyzer separately.
 - [ ] Try LoRA only after the no-adapter prompt baseline is repeatable and scorer compatibility is verified.
 - [ ] Run a full Kaggle public submission only after fixed-set evaluation improves.

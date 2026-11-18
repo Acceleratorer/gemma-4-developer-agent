@@ -10,6 +10,10 @@ ROOT = Path(__file__).resolve().parents[1]
 AGENTS_DIR = ROOT / "module" / "agents"
 KERNEL_ID = "accelra/getting-started-gemma-4-developer-agent"
 KERNEL_TITLE = "Getting Started - Gemma 4 Developer Agent"
+# Match the evaluation wheelhouse's CPython 3.12 ABI instead of Kaggle's latest default image.
+KAGGLE_DOCKER_IMAGE = (
+    "gcr.io/kaggle-private-byod/python@sha256:37c64f7dd9c54116ecd1bcc88817c5469b88387388fade02bfa8bf3fc647d461"
+)
 MODEL_SOURCES = {
     "gemma-4-31b-it-qat-w4a16-ct": "google/gemma-4/Other/gemma-4-31b-it-qat-w4a16-ct/2",
     "gemma-4-12b-it-qat-w4a16-ct": "google/gemma-4/Other/gemma-4-12b-it-qat-w4a16-ct/2",
@@ -97,6 +101,7 @@ def build_notebook(agent: str, model: str, task_set: str, output_dir: Path) -> t
         "kernel_sources": [],
         "competition_sources": ["gemma-4-developer-agent"],
         "model_sources": [MODEL_SOURCES[model]],
+        "docker_image": KAGGLE_DOCKER_IMAGE,
         "machine_shape": "NvidiaL4",
     }
 
