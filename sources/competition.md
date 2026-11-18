@@ -1,12 +1,14 @@
 # Competition facts and sources
 
-Checked on 2026-11-18 using the official Kaggle pages and Kaggle CLI.
+Competition pages checked on 2026-11-19; leaderboard refreshed on 2026-11-19 with the official Kaggle CLI.
 
 ## Official references
 
 - [Competition overview](https://www.kaggle.com/competitions/gemma-4-developer-agent/overview): build an autonomous Gemma 4 coding agent that navigates repositories and drafts fixes for real software issues.
 - [Competition data](https://www.kaggle.com/competitions/gemma-4-developer-agent/data): 129 public training tasks, snapshots, graph/node embeddings, wheels, sample submission, and `HARNESS_README.md`.
 - [Models tab](https://www.kaggle.com/competitions/gemma-4-developer-agent/models): competition-associated Gemma model variants.
+- [Official small-model prize and eligibility](https://www.kaggle.com/competitions/gemma-4-developer-agent/overview/prizes): E2B/E4B bonus prize and cross-track eligibility.
+- [Organizer announcement](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/748287): support for 12B, E4B, and E2B variants.
 - [Discussion](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion): organizer updates and participant findings.
 - [Rules and timeline](https://www.kaggle.com/competitions/gemma-4-developer-agent/rules): entry, daily submission, final-selection, team, and license rules.
 - [Official harness guide](https://www.kaggle.com/competitions/gemma-4-developer-agent/data?select=HARNESS_README.md): local evaluation, agent schema, sandbox, tools, budgets, and scorer behavior.
@@ -17,11 +19,13 @@ Checked on 2026-11-18 using the official Kaggle pages and Kaggle CLI.
 
 The scorer applies each generated patch to a repository snapshot and runs the task's validation tests. The score is the fraction of tasks resolved. The submission is a ZIP containing declarative agent configuration, with exactly one root `agent.yaml` and optional prompts, subagents, skills, and LoRA adapters.
 
-The competition overview currently says the scored submissions support only `gemma-4-31b-it-qat-w4a16-ct`. The data and models pages expose smaller Gemma 4 variants and an official small-model leaderboard notebook, but treat those as a separate track unless the current rules confirm they are eligible for the main leaderboard. Every agent in one submission must use the same base model. The 3 GiB unpacked archive limit and sandbox restrictions apply.
+The competition supports `gemma-4-31b-it-qat-w4a16-ct`, `gemma-4-12b-it-qat-w4a16-ct`, `gemma-4-e4b-it-qat-w4a16-ct`, and `gemma-4-e2b-it-qat-w4a16-ct`. All agents in a submission must use the same base model. E2B and E4B submissions remain eligible for the general leaderboard and can also qualify for the $10,000 small-model bonus if selected as one of the team's two final submissions; an official notebook publishes filtered daily standings. The submission is a ZIP with a root `agent.yaml`; the 3 GiB unpacked archive limit and sandbox restrictions apply.
+
+The official overview lists $65,000 for the main competition, $35,000 for the optional paper track, and a $10,000 small-model bonus. The final submission deadline is 2026-12-02 23:59 UTC; the entry/team-merge deadline is 2026-11-25 23:59 UTC.
 
 ## Dated leaderboard snapshot
 
-- Main public leaderboard: top score **0.29** on 2026-11-18, retrieved with `kaggle competitions leaderboard --show`.
+- Main public leaderboard: top score **0.24**, tied by 14 teams in the snapshot timestamped 2026-11-18 17:23 UTC; downloaded on 2026-11-19 with `kaggle competitions leaderboard --download`.
 - Small-model public leaderboard: top score **0.12** in the official tracker output from its 2026-11-17 run.
 - These are public-split snapshots, not final standings. The final placement is based on the private leaderboard.
 
