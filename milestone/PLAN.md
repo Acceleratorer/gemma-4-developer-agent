@@ -21,9 +21,9 @@ Reach rank 1 on the final Kaggle private leaderboard. Current evidence is only a
 
 ### M1 — Comparable development evaluation
 
-- [ ] Define and freeze a stratified task-ID set across FastAPI, Rich, Requests, and HTTPX.
+- [x] Define and freeze a four-task smoke set with one task each from FastAPI, Rich, Requests, and HTTPX; retain the 14-task development set for broader checks.
 - [ ] Run the reference 40-call configuration and the current candidate on the same tasks/model.
-- [ ] Record per-task patch, pass/fail, time, tool calls, and config hash.
+- [x] Record both current-candidate smoke runs, including per-task outcomes, patches, and config hashes. The second run exposed context overflow at 16,384 output tokens; the next iteration restores 8,192 and applies a fixed early-edit budget.
 - [ ] Reject prompt changes that improve one or two tasks while reducing aggregate pass rate.
 
 ### M2 — Improve general leaderboard candidate

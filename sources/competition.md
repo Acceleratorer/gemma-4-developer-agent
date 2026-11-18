@@ -17,7 +17,7 @@ Checked on 2026-11-18 using the official Kaggle pages and Kaggle CLI.
 
 The scorer applies each generated patch to a repository snapshot and runs the task's validation tests. The score is the fraction of tasks resolved. The submission is a ZIP containing declarative agent configuration, with exactly one root `agent.yaml` and optional prompts, subagents, skills, and LoRA adapters.
 
-The current documented model set is `gemma-4-31b-it-qat-w4a16-ct`, `gemma-4-12b-it-qat-w4a16-ct`, `gemma-4-e4b-it-qat-w4a16-ct`, and `gemma-4-e2b-it-qat-w4a16-ct`. Every agent in one submission must use the same base model. The 3 GiB unpacked archive limit and sandbox restrictions apply.
+The competition overview currently says the scored submissions support only `gemma-4-31b-it-qat-w4a16-ct`. The data and models pages expose smaller Gemma 4 variants and an official small-model leaderboard notebook, but treat those as a separate track unless the current rules confirm they are eligible for the main leaderboard. Every agent in one submission must use the same base model. The 3 GiB unpacked archive limit and sandbox restrictions apply.
 
 ## Dated leaderboard snapshot
 

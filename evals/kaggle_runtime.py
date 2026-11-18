@@ -202,8 +202,12 @@ def run_dev_eval(
         if missing:
             raise ValueError(f"Unknown task IDs: {missing}")
 
+        agent_hash = hashlib.sha256(
+            json.dumps(agent_files, sort_keys=True, separators=(",", ":")).encode("utf-8")
+        ).hexdigest()
         run_id = hashlib.sha256(
-            (model_name + "\n" + "\n".join(task_ids) + "\n" + str(max_tool_calls) + "\n" + str(max_time_minutes)).encode()
+            (agent_hash + "\n" + model_name + "\n" + "\n".join(task_ids) + "\n"
+             + str(max_tool_calls) + "\n" + str(max_time_minutes)).encode()
         ).hexdigest()[:12]
         results_dir = working_dir / "dev_results" / run_id
         results_dir.mkdir(parents=True, exist_ok=True)
@@ -252,6 +256,7 @@ def run_dev_eval(
                 "resolved": bool(result.resolved),
                 "test_exit_code": result.test_exit_code,
                 "patch_chars": len(patch),
+                "patch": patch,
                 "tool_calls": result.tool_calls,
                 "duration_seconds": result.duration_seconds,
                 "error": getattr(result, "error", None),
@@ -263,7 +268,10 @@ def run_dev_eval(
         summary = {
             "run_id": run_id,
             "model": model_name,
+            "agent_sha256": agent_hash,
             "task_ids": task_ids,
+            "max_tool_calls": max_tool_calls,
+            "max_time_minutes": max_time_minutes,
             "resolved": resolved,
             "total": len(rows),
             "score": resolved / len(rows) if rows else 0.0,

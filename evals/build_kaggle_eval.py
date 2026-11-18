@@ -8,6 +8,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 AGENTS_DIR = ROOT / "module" / "agents"
+KERNEL_ID = "accelra/getting-started-gemma-4-developer-agent"
+KERNEL_TITLE = "Getting Started - Gemma 4 Developer Agent"
 MODEL_SOURCES = {
     "gemma-4-31b-it-qat-w4a16-ct": "google/gemma-4/Other/gemma-4-31b-it-qat-w4a16-ct/2",
     "gemma-4-12b-it-qat-w4a16-ct": "google/gemma-4/Other/gemma-4-12b-it-qat-w4a16-ct/2",
@@ -55,6 +57,7 @@ def build_notebook(agent: str, model: str, task_set: str, output_dir: Path) -> t
         "cells": [
             {
                 "cell_type": "markdown",
+                "id": "private-dev-eval-intro",
                 "metadata": {},
                 "source": [
                     "# Private Gemma 4 fixed-set evaluation\n",
@@ -65,12 +68,14 @@ def build_notebook(agent: str, model: str, task_set: str, output_dir: Path) -> t
             {
                 "cell_type": "code",
                 "execution_count": None,
+                "id": "private-dev-eval-run",
                 "metadata": {},
                 "outputs": [],
                 "source": code.splitlines(keepends=True),
             },
         ],
         "metadata": {
+            "kaggle": {"accelerator": "nvidiaL4", "isGpuEnabled": True, "isInternetEnabled": False},
             "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
             "language_info": {"name": "python", "version": "3.12.13"},
         },
@@ -78,8 +83,8 @@ def build_notebook(agent: str, model: str, task_set: str, output_dir: Path) -> t
         "nbformat_minor": 5,
     }
     metadata = {
-        "id": "accelra/gemma-4-dev-eval",
-        "title": "Gemma 4 Dev Eval",
+        "id": KERNEL_ID,
+        "title": KERNEL_TITLE,
         "code_file": "dev_eval.ipynb",
         "language": "python",
         "kernel_type": "notebook",
