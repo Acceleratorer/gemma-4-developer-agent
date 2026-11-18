@@ -48,8 +48,8 @@ The 2026-11-18 public snapshot has a top score of 0.24 shared by 14 teams. Since
 
 - E2B and E4B submissions are also eligible for the general leaderboard; an E2B/E4B final selection can compete for both the general ranking and the small-model bonus.
 - [x] Compare E4B with the v9 prompt on the same `dev-valid-9` set: it scored 0/9 versus 31B's 2/9, despite much shorter per-task runtimes.
-- [ ] Compare E2B with the same prompt and fixed task set.
-- [ ] Keep the better small-model variant as a separate eligible submission.
+- [x] Compare E2B with the same prompt and fixed task set: 0/9, matching E4B; summed task runtime was 15.7 minutes versus 10.2 minutes for E4B.
+- [x] Defer separate E2B/E4B submissions because neither small model resolved a task in the local fixed set.
 - [ ] Use the two final-selection slots for the strongest distinct candidates.
 
 ### M4 — Final selection and audit
