@@ -38,13 +38,15 @@ A fresh Kaggle CLI read on 2026-11-19 still showed 14 teams at 0.24. Historical 
 
 - [ ] Tune prompt flow and call/time budget first; keep model and sampling fixed.
 - [x] Evaluate the imported `reference-budget-v2` prompt on 31B with the same `dev-valid-9` set and its 28-call budget; it scored 3/9, passing FastAPI tasks `15589` and `14492` plus Rich task `3278`, versus v9 at 2/9.
-- [ ] After the graph ablation, compare task-statement pinning and the 40-call policy from the public 0.22 notebook in separate runs; its score is unverified locally.
+- [ ] After submission `58527796` completes, run the prepared Hanh v6 prompt-only candidate (`evals/results/dev-valid-honghanhhh-v6-31b/`, hash `a602f8c0…`) against the fixed `dev-valid-9` baseline; only the prompt changes.
+- [ ] Then run the prepared graph-enabled reference-budget-v2 candidate as a separate ablation, keeping model, sampling, budget, and tasks fixed.
+- [ ] If those paired local runs improve the candidate, test task-statement pinning and the 40-call policy from the public 0.22 notebook in separate runs; its score is unverified locally.
 - [ ] Check the 8-minute per-task cap against the competition-wide 12-hour runtime using public submission `58527796` before changing the budget.
 - [x] Re-run the fixed smoke set with the `write_file` argument reminder and captured verifier diagnostics; the v5 results are recorded in `/log/experiment-log.csv`.
 - [x] Separate candidate failures from baseline verifier issues on Requests and HTTPX: a no-patch evaluation reproduced both failures.
 - [x] Record the 14-task no-patch baseline (0/14) and freeze a nine-task `dev-valid` set that excludes the five known verifier environment failures.
 - [x] Pin new Kaggle evaluation kernels to the competition-compatible Python 3.12 image; the unpinned reference attempt failed under Python 3.13, and the pinned reference comparison completed at 0/4.
-- [ ] Compare the graph-enabled reference-budget-v2 prompt against its graph ban on the current wheelhouse; then test a read-only analyzer separately.
+- [ ] Test a read-only analyzer only if the graph-enabled run beats the current candidate.
 - [ ] Try LoRA only after the no-adapter prompt baseline is repeatable and scorer compatibility is verified.
 - [x] Run the first full Kaggle public submission after the fixed-set score improved to 3/9: ref `58527796`, status pending.
 

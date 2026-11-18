@@ -38,6 +38,8 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 
 - The [Public Config Draws dataset](https://www.kaggle.com/datasets/dariushafshar/gemma-4-agent-public-config-draws) is a historical, selected sample read on 2026-10-22. It records eight scored runs of one identical, hash-matched bundle ranging from 7/58 to 13/58 resolved tasks. Treat one Kaggle score as a noisy draw, not a stable estimate. The downloaded files are ignored under `data/local/research/public-config-draws/`.
 - The [40-call, no-training notebook](https://www.kaggle.com/code/bliverrigpdoge/lb-0-22-3-tweaks-40-tool-calls-no-training) uses a 40-call/eight-minute budget, appends the task statement and hints to the system prompt, and submits promptly near budget exhaustion. Its title reports 0.22, but this candidate has not been reproduced locally.
+- The community analysis [What Took LB 0.12 → 0.24](https://www.kaggle.com/code/hitarthjain0/gemma-4-agent-what-took-lb-0-12-0-24) attributes stronger public bundles to a single-agent, early-edit, contract-first workflow and summarizes local budget/agent ablations. It says its public-bundle scores were not independently reproduced; treat the reported recipe as a hypothesis.
+- The public [Hanh Tran v6 baseline](https://www.kaggle.com/code/honghanhhh/gemma-4-baseline) keeps the 31B model, sampling, 28-call/eight-minute budget, and changes prompt safeguards around scratch/config files, parallel implementations, and untracked-file review. A prompt-only fixed-set candidate is prepared under `evals/results/dev-valid-honghanhhh-v6-31b/`; it has not been run.
 
 ## Harness findings that affect experiments
 
