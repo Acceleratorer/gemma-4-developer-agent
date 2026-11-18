@@ -2,9 +2,9 @@
 
 ## Goal
 
-Reach rank 1 on the final Kaggle private leaderboard. Current evidence is only a public-leaderboard snapshot; no project submission has a verified score yet. Continue optimizing until the final deadline and claim success only after the private leaderboard confirms it.
+Reach rank 1 on the final Kaggle private leaderboard. Local fixed-set results are available, and public submission ref `58527796` is pending; no public score is verified yet. Continue optimizing until the final deadline and claim success only after the private leaderboard confirms it.
 
-The 2026-11-18 public snapshot has a top score of 0.24 shared by 14 teams. Since Kaggle breaks score ties by earliest submission, target above 0.24 on the public split while treating the private leaderboard as the final result.
+The 2026-11-18 public snapshot has a top score of 0.24 shared by 14 teams. Kaggle submission ref `58527796` for the 31B reference-budget-v2 candidate is pending; it has no verified score yet. Since Kaggle breaks score ties by earliest submission, target above 0.24 on the public split while treating the private leaderboard as the final result.
 
 ## Deadlines
 
@@ -42,7 +42,7 @@ The 2026-11-18 public snapshot has a top score of 0.24 shared by 14 teams. Since
 - [x] Pin new Kaggle evaluation kernels to the competition-compatible Python 3.12 image; the unpinned reference attempt failed under Python 3.13, and the pinned reference comparison completed at 0/4.
 - [ ] Ablate code-graph tools and a read-only analyzer separately.
 - [ ] Try LoRA only after the no-adapter prompt baseline is repeatable and scorer compatibility is verified.
-- [ ] Run a full Kaggle public submission only after fixed-set evaluation improves.
+- [x] Run the first full Kaggle public submission after the fixed-set score improved to 3/9: ref `58527796`, status pending.
 
 ### M3 — Compete for the small-model prize
 
