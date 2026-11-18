@@ -36,6 +36,7 @@ The 2026-11-18 public snapshot has a top score of 0.24 shared by 14 teams. Kaggl
 
 - [ ] Tune prompt flow and call/time budget first; keep model and sampling fixed.
 - [x] Evaluate the imported `reference-budget-v2` prompt on 31B with the same `dev-valid-9` set and its 28-call budget; it scored 3/9, passing FastAPI tasks `15589` and `14492` plus Rich task `3278`, versus v9 at 2/9.
+- [ ] Check the 8-minute per-task cap against the competition-wide 12-hour runtime using public submission `58527796` before changing the budget.
 - [x] Re-run the fixed smoke set with the `write_file` argument reminder and captured verifier diagnostics; the v5 results are recorded in `/log/experiment-log.csv`.
 - [x] Separate candidate failures from baseline verifier issues on Requests and HTTPX: a no-patch evaluation reproduced both failures.
 - [x] Record the 14-task no-patch baseline (0/14) and freeze a nine-task `dev-valid` set that excludes the five known verifier environment failures.
