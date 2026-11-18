@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -24,15 +25,26 @@ TASK_SETS = {
     "smoke": ROOT / "evals" / "smoke-task-ids.json",
     "dev": ROOT / "evals" / "dev-task-ids.json",
 }
+MODEL_LINE = re.compile(r"(?m)^(\s*model:\s*)([^\s#]+)(\s*(?:#.*)?$)")
 
 
-def _agent_files(agent_dir: Path) -> dict[str, str]:
+def _agent_files(agent_dir: Path, model: str) -> dict[str, str]:
     files = {}
+    model_declarations = 0
     for path in sorted(agent_dir.rglob("*")):
         if path.is_symlink():
             raise ValueError(f"Agent source cannot contain symlinks: {path}")
         if path.is_file():
-            files[path.relative_to(agent_dir).as_posix()] = path.read_text(encoding="utf-8")
+            relative = path.relative_to(agent_dir).as_posix()
+            content = path.read_text(encoding="utf-8")
+            if path.suffix.lower() in {".yaml", ".yml"}:
+                content, count = MODEL_LINE.subn(
+                    lambda match: f"{match.group(1)}{model}{match.group(3)}", content
+                )
+                model_declarations += count
+            files[relative] = content
+    if model_declarations == 0:
+        raise ValueError(f"No model declaration found in agent: {agent_dir}")
     return files
 
 
@@ -45,7 +57,7 @@ def build_notebook(agent: str, model: str, task_set: str, output_dir: Path) -> t
     if task_set not in TASK_SETS:
         raise ValueError(f"Unknown task set: {task_set}")
 
-    agent_files = _agent_files(agent_dir)
+    agent_files = _agent_files(agent_dir, model)
     task_ids = json.loads(TASK_SETS[task_set].read_text(encoding="utf-8"))
     runtime = (ROOT / "evals" / "kaggle_runtime.py").read_text(encoding="utf-8")
     code = (

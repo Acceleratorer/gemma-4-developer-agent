@@ -10,15 +10,15 @@ Treat concrete behavior and supplied hints as the acceptance criteria. Make the 
 
 1. Extract each requested behavior into a short checklist.
 2. Treat pull request titles, templates, AI disclosures, and checklists as metadata unless they state a code behavior.
-3. If the issue gives only a generic title or incomplete description, inspect the repository and tests for a directly supported intended change. Do not invent a feature or release workflow. If no behavior can be grounded in repository evidence, leave the source unchanged and explain that the task is underspecified.
+3. If the issue gives only a generic title or incomplete description, use existing tests, imports, and project conventions to find the intended behavior before editing. Do not invent a feature or release workflow. If no behavior can be grounded in repository evidence, leave the source unchanged and explain that the task is underspecified.
 4. If a named symbol is absent, search once for a likely equivalent operation. Use that equivalent only when the repository confirms it implements the requested behavior.
 
 ## Work loop
 
-1. Run one focused, batched search for the symbols and behaviors in the checklist. Search all references when a method or API is renamed.
-2. Read the implementation and one nearby caller or existing test for each relevant path. Use code-graph tools only when they add useful caller/callee context.
-3. Implement every checklist item in product source, preserving local conventions. Tests and harness configuration are read-only because the verifier restores protected files.
-4. Run one targeted existing test when it fits the remaining budget. Review `git diff` and remove any scratch files created under `/workspace` before submitting.
+1. Run one focused, batched search across product code and tests for the requested behavior, test imports, and expected file paths. Search all references when a method or API is renamed.
+2. Before editing, read the relevant implementation and the closest existing test that states the expected behavior. Treat test imports and assertions as the contract for new paths and edge cases. Use code-graph tools only when they add useful caller/callee context.
+3. Implement every checklist item in product source, preserving local conventions. Tests and harness configuration are read-only: never create, edit, or delete test files, even temporarily.
+4. Run one targeted existing test when it fits the remaining budget. If it exposes a wrong path, missing import, or failed assertion in the changed behavior, fix the source before submitting. Do not explain away a relevant failure or spend calls repairing unrelated test infrastructure. Review `git diff` before submitting.
 5. Call `submit_patch()` exactly once after the change is ready. After it returns, make one text-only final response and do not call any more tools.
 
 ## Tool-call reliability

@@ -31,13 +31,14 @@ Reach rank 1 on the final Kaggle private leaderboard. Current evidence is only a
 - [ ] Tune prompt flow and call/time budget first; keep model and sampling fixed.
 - [x] Re-run the fixed smoke set with the `write_file` argument reminder and captured verifier diagnostics; the v5 results are recorded in `/log/experiment-log.csv`.
 - [x] Separate candidate failures from baseline verifier issues on Requests and HTTPX: a no-patch evaluation reproduced both failures.
-- [ ] Pin new Kaggle evaluation kernels to the competition-compatible Python 3.12 image; the first reference-kernel attempt failed under Python 3.13, and a pinned retry is running.
+- [x] Pin new Kaggle evaluation kernels to the competition-compatible Python 3.12 image; the unpinned reference attempt failed under Python 3.13, and the pinned reference comparison is running.
 - [ ] Ablate code-graph tools and a read-only analyzer separately.
 - [ ] Try LoRA only after the no-adapter prompt baseline is repeatable and scorer compatibility is verified.
 - [ ] Run a full Kaggle public submission only after fixed-set evaluation improves.
 
 ### M3 — Compete for the small-model prize
 
+- E2B and E4B submissions are also eligible for the general leaderboard; an E2B/E4B final selection can compete for both the general ranking and the small-model bonus.
 - [ ] Compare E4B and E2B with the same prompt and fixed task set.
 - [ ] Keep the better small-model variant as a separate eligible submission.
 - [ ] Use the two final-selection slots for the strongest distinct candidates.
