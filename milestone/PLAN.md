@@ -24,15 +24,19 @@ The 2026-11-18 public snapshot has a top score of 0.24 shared by 14 teams. Since
 ### M1 — Comparable development evaluation
 
 - [x] Define and freeze a four-task smoke set with one task each from FastAPI, Rich, Requests, and HTTPX; retain the 14-task development set for broader checks.
-- [x] Run the reference 40-call configuration and current v5 on the same tasks/model; both scored 0/4. FastAPI still lacked the tested module path and Rich failed the tab-span assertions. Requests and HTTPX reproduced the no-patch verifier failures.
+- [x] Run the reference 40-call configuration and current v5 on the same tasks/model; both scored 0/4. FastAPI still lacked the tested module path and Rich failed the tab-span assertions. Requests and HTTPX reproduced the no-patch verifier failures. The v6 smoke also scored 0/4: FastAPI again used the wrong module path, Rich failed 12 tests and added an unnecessary repro file, and the Requests/HTTPX verifier errors persisted; HTTPX also reached its time limit.
 - [x] Record current-candidate smoke runs, including per-task outcomes, patches, and config hashes. V2 exposed context overflow at 16,384 output tokens; V4 restored 8,192 but scored 0/4. V5 still scored 0/4 but corrected the malformed `write_file` loop and captured verifier output: FastAPI imported the wrong new module path, Rich had 12 failures, Requests had 185 recursive `httpbin` fixture errors, and HTTPX failed collection because `httpx.Stream` was missing. A no-patch baseline run reproduced the Requests and HTTPX verifier failures, so those scores do not measure the agent patch.
 - [ ] Reject prompt changes that improve one or two tasks while reducing aggregate pass rate.
 
 ### M2 — Improve general leaderboard candidate
 
+- [x] Run v7 with the same 31B model, smoke tasks, and 40-call/eight-minute budget. It scored 0/4; the prompt constraints did not prevent FastAPI's wrong file path or Rich's failing source change. Use a hard call-budget ablation next.
+- [ ] Evaluate v8 with the v7 prompt and a 28-call cap on the same smoke set; the Kaggle kernel is running.
+
 - [ ] Tune prompt flow and call/time budget first; keep model and sampling fixed.
 - [x] Re-run the fixed smoke set with the `write_file` argument reminder and captured verifier diagnostics; the v5 results are recorded in `/log/experiment-log.csv`.
 - [x] Separate candidate failures from baseline verifier issues on Requests and HTTPX: a no-patch evaluation reproduced both failures.
+- [x] Record the 14-task no-patch baseline (0/14) and freeze a nine-task `dev-valid` set that excludes the five known verifier environment failures.
 - [x] Pin new Kaggle evaluation kernels to the competition-compatible Python 3.12 image; the unpinned reference attempt failed under Python 3.13, and the pinned reference comparison is running.
 - [ ] Ablate code-graph tools and a read-only analyzer separately.
 - [ ] Try LoRA only after the no-adapter prompt baseline is repeatable and scorer compatibility is verified.

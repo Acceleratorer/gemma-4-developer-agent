@@ -37,6 +37,8 @@ Use the same task IDs for each comparison. `task_results.jsonl`, `summary.json`,
 
 The checked-in getting-started notebook's saved smoke run used Gemma 4 12B, the sample agent, a one-minute/10-call budget, and the first two FastAPI tasks. Both ended without a patch. Treat that as evidence that the sample budget/prompt can stall, not as a baseline for the 31B candidate.
 
+The 14-task `dev` set has a no-patch verifier baseline of 0/14. Five tasks have known environment failures and should be excluded when comparing candidate patch quality: `fastapi_14455` lacks `inline_snapshot`, `requests_7505` and `requests_6592` have a recursive `httpbin` fixture, `httpx_3672` cannot collect because `httpx.Stream` is missing, and `rich_4070` cannot open `/dev/tty`. The fixed `dev-valid` set contains the other nine tasks. It is a cleaner local comparison set, not a leaderboard estimate.
+
 ## Current comparisons
 
 - `module/agents/reference-budget-v2/`: notebook says its upstream configuration scored 0.18; the notebook's modified candidate is explicitly unscored.

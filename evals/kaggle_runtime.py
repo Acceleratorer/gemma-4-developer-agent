@@ -108,7 +108,7 @@ def run_dev_eval(
     agent_files: dict[str, str],
     task_ids: list[str],
     model_name: str,
-    max_tool_calls: int = 40,
+    max_tool_calls: int = 28,
     max_time_minutes: float = 8.0,
 ) -> dict:
     _configure_environment()

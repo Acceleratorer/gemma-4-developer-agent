@@ -24,6 +24,7 @@ MODEL_SOURCES = {
 TASK_SETS = {
     "smoke": ROOT / "evals" / "smoke-task-ids.json",
     "dev": ROOT / "evals" / "dev-task-ids.json",
+    "dev-valid": ROOT / "evals" / "dev-valid-task-ids.json",
 }
 MODEL_LINE = re.compile(r"(?m)^(\s*model:\s*)([^\s#]+)(\s*(?:#.*)?$)")
 
