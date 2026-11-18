@@ -4,6 +4,8 @@
 
 Reach rank 1 on the final Kaggle private leaderboard. Current evidence is only a public-leaderboard snapshot; no project submission has a verified score yet. Continue optimizing until the final deadline and claim success only after the private leaderboard confirms it.
 
+The 2026-11-18 public snapshot has a top score of 0.24 shared by 14 teams. Since Kaggle breaks score ties by earliest submission, target above 0.24 on the public split while treating the private leaderboard as the final result.
+
 ## Deadlines
 
 - Entry and team-merge deadline: 2026-11-25 23:59 UTC (2026-11-26 06:59 Vietnam time).

@@ -17,7 +17,7 @@ Competition pages checked on 2026-11-19; leaderboard refreshed on 2026-11-19 wit
 
 ## Scoring and submission
 
-The scorer applies each generated patch to a repository snapshot and runs the task's validation tests. The score is the fraction of tasks resolved. The submission is a ZIP containing declarative agent configuration, with exactly one root `agent.yaml` and optional prompts, subagents, skills, and LoRA adapters.
+The scorer applies each generated patch to a repository snapshot and runs the task's validation tests. The score is the fraction of tasks resolved. The submission is a ZIP containing declarative agent configuration, with exactly one root `agent.yaml` and optional prompts, subagents, skills, and LoRA adapters. The private leaderboard determines final placement; exact-score ties go to the submission entered first.
 
 The competition supports `gemma-4-31b-it-qat-w4a16-ct`, `gemma-4-12b-it-qat-w4a16-ct`, `gemma-4-e4b-it-qat-w4a16-ct`, and `gemma-4-e2b-it-qat-w4a16-ct`. All agents in a submission must use the same base model. E2B and E4B submissions remain eligible for the general leaderboard and can also qualify for the $10,000 small-model bonus if selected as one of the team's two final submissions; an official notebook publishes filtered daily standings. The submission is a ZIP with a root `agent.yaml`; the 3 GiB unpacked archive limit and sandbox restrictions apply.
 
