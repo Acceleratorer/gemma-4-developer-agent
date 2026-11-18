@@ -31,7 +31,8 @@ The 2026-11-18 public snapshot has a top score of 0.24 shared by 14 teams. Since
 ### M2 — Improve general leaderboard candidate
 
 - [x] Run v7 with the same 31B model, smoke tasks, and 40-call/eight-minute budget. It scored 0/4; the prompt constraints did not prevent FastAPI's wrong file path or Rich's failing source change. Use a hard call-budget ablation next.
-- [ ] Evaluate v8 with the v7 prompt and a 28-call cap on the same smoke set; the Kaggle kernel is running.
+- [x] Evaluate v8 with the v7 prompt and a 28-call cap on the same smoke set. It scored 0/4; Rich exhausted the cap without a patch and FastAPI retained the wrong path. Revert the cap and widen to `dev-valid` for the next 31B run.
+- [ ] Evaluate v9 with the v7 prompt, 40 calls, and the fixed nine-task `dev-valid` set.
 
 - [ ] Tune prompt flow and call/time budget first; keep model and sampling fixed.
 - [x] Re-run the fixed smoke set with the `write_file` argument reminder and captured verifier diagnostics; the v5 results are recorded in `/log/experiment-log.csv`.
