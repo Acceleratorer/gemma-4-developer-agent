@@ -38,6 +38,8 @@ A fresh Kaggle CLI read on 2026-11-19 still showed 14 teams at 0.24. Historical 
 
 - [ ] Tune prompt flow and call/time budget first; keep model and sampling fixed.
 - [x] Evaluate the imported `reference-budget-v2` prompt on 31B with the same `dev-valid-9` set and its 28-call budget; it scored 3/9, passing FastAPI tasks `15589` and `14492` plus Rich task `3278`, versus v9 at 2/9.
+- [x] Review the saved `reference-budget-v2` traces before the next ablation. FastAPI `11194` left only `reproduce_bug.py` and failed two file/form-order checks; its trace shows time spent on a reproduction script without a source patch. FastAPI `15588` had six remaining failures across CR and CRLF values for SSE `event`/`id`. Rich `3472` changed only the `Column` docstring and still failed `test_dataclass_no_attribute`. FastAPI `15661` and Rich `3935` ended without a patch under the existing budget; Rich `3061` patched `rich/text.py` but failed tab-span and Unicode cases. Treat these as failure-mode evidence, not proof that a prompt change will fix them.
+- [x] Validate the prepared Hanh v6 and graph-enabled notebooks: both embed the same nine task IDs, 31B model, 28-call/eight-minute limits, and identical non-prompt files; only `prompts/system.md` differs. The Hanh source prompt matches its embedded notebook payload, and the wheelhouse dataset slug is `metric/gemma-4-developer-agent-wheelhouse`.
 - [ ] After submission `58527796` completes, run the prepared Hanh v6 prompt-only candidate (`evals/results/dev-valid-honghanhhh-v6-31b/`, hash `a602f8c0…`) against the fixed `dev-valid-9` baseline; only the prompt changes.
 - [ ] Then run the prepared graph-enabled reference-budget-v2 candidate (`evals/results/dev-valid-graph-v2-31b/`, hash `c8cc24b7…`) as a separate ablation, keeping model, sampling, budget, and tasks fixed.
 - [ ] After both fixed-set ablations, test task-statement pinning and the 40-call policy from the public 0.22 notebook in separate runs; its score is unverified locally.
@@ -48,7 +50,7 @@ A fresh Kaggle CLI read on 2026-11-19 still showed 14 teams at 0.24. Historical 
 - [x] Pin new Kaggle evaluation kernels to the competition-compatible Python 3.12 image; the unpinned reference attempt failed under Python 3.13, and the pinned reference comparison completed at 0/4.
 - [ ] Test a read-only analyzer only if the graph-enabled run beats the current candidate.
 - [ ] Try LoRA only after the no-adapter prompt baseline is repeatable and scorer compatibility is verified.
-- [x] Run the first full Kaggle public submission after the fixed-set score improved to 3/9: ref `58527796`, status pending.
+- [x] Run the first full Kaggle public submission after the fixed-set score improved to 3/9: ref `58527796`; Kaggle CLI recheck at 2026-11-18 23:46 UTC still showed `PENDING` with no score.
 
 ### M3 — Compete for the small-model prize
 
