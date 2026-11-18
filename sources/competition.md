@@ -30,8 +30,14 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 ## Dated leaderboard snapshot
 
 - Main public leaderboard: top score **0.24**, tied by 14 teams in the snapshot timestamped 2026-11-18 18:04 UTC; downloaded on 2026-11-19 with `kaggle competitions leaderboard --download`.
+- A fresh read-only Kaggle CLI query on 2026-11-19 still showed 14 entries tied at **0.24**.
 - Small-model public leaderboard: top score **0.12** in the official tracker output, last updated 2026-11-16 23:55 UTC; refreshed from the Kaggle notebook on 2026-11-18.
 - These are public-split snapshots, not final standings. The final placement is based on the private leaderboard.
+
+## Community experiment evidence checked 2026-11-19
+
+- The [Public Config Draws dataset](https://www.kaggle.com/datasets/dariushafshar/gemma-4-agent-public-config-draws) is a historical, selected sample read on 2026-10-22. It records eight scored runs of one identical, hash-matched bundle ranging from 7/58 to 13/58 resolved tasks. Treat one Kaggle score as a noisy draw, not a stable estimate. The downloaded files are ignored under `data/local/research/public-config-draws/`.
+- The [40-call, no-training notebook](https://www.kaggle.com/code/bliverrigpdoge/lb-0-22-3-tweaks-40-tool-calls-no-training) uses a 40-call/eight-minute budget, appends the task statement and hints to the system prompt, and submits promptly near budget exhaustion. Its title reports 0.22, but this candidate has not been reproduced locally.
 
 ## Harness findings that affect experiments
 

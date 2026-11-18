@@ -6,6 +6,8 @@ Reach rank 1 on the final Kaggle private leaderboard. Local fixed-set results ar
 
 The 2026-11-18 public snapshot has a top score of 0.24 shared by 14 teams. Kaggle submission ref `58527796` for the 31B reference-budget-v2 candidate is pending; it has no verified score yet. Since Kaggle breaks score ties by earliest submission, target above 0.24 on the public split while treating the private leaderboard as the final result.
 
+A fresh Kaggle CLI read on 2026-11-19 still showed 14 teams at 0.24. Historical public config draws show that eight runs of one identical bundle scored between 7/58 and 13/58, so a single public score is noisy; use paired local comparisons before spending another daily submission.
+
 ## Deadlines
 
 - Entry and team-merge deadline: 2026-11-25 23:59 UTC (2026-11-26 06:59 Vietnam time).
@@ -36,6 +38,7 @@ The 2026-11-18 public snapshot has a top score of 0.24 shared by 14 teams. Kaggl
 
 - [ ] Tune prompt flow and call/time budget first; keep model and sampling fixed.
 - [x] Evaluate the imported `reference-budget-v2` prompt on 31B with the same `dev-valid-9` set and its 28-call budget; it scored 3/9, passing FastAPI tasks `15589` and `14492` plus Rich task `3278`, versus v9 at 2/9.
+- [ ] After the graph ablation, compare task-statement pinning and the 40-call policy from the public 0.22 notebook in separate runs; its score is unverified locally.
 - [ ] Check the 8-minute per-task cap against the competition-wide 12-hour runtime using public submission `58527796` before changing the budget.
 - [x] Re-run the fixed smoke set with the `write_file` argument reminder and captured verifier diagnostics; the v5 results are recorded in `/log/experiment-log.csv`.
 - [x] Separate candidate failures from baseline verifier issues on Requests and HTTPX: a no-patch evaluation reproduced both failures.
