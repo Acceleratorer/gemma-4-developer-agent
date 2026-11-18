@@ -49,6 +49,12 @@ def _agent_files(agent_dir: Path, model: str) -> dict[str, str]:
     return files
 
 
+def _eval_config_value(agent_files: dict[str, str], name: str, default: int | float) -> str:
+    config = agent_files.get("eval_config.yaml", "")
+    match = re.search(rf"(?m)^\s*{re.escape(name)}:\s*(\d+(?:\.\d+)?)\s*$", config)
+    return match.group(1) if match else str(default)
+
+
 def build_notebook(agent: str, model: str, task_set: str, output_dir: Path) -> tuple[Path, Path]:
     agent_dir = AGENTS_DIR / agent
     if not agent_dir.is_dir() or agent.startswith("reference-"):
@@ -59,16 +65,20 @@ def build_notebook(agent: str, model: str, task_set: str, output_dir: Path) -> t
         raise ValueError(f"Unknown task set: {task_set}")
 
     agent_files = _agent_files(agent_dir, model)
+    max_tool_calls = _eval_config_value(agent_files, "max_tool_calls", 40)
+    max_time_minutes = _eval_config_value(agent_files, "max_time_minutes", 8.0)
     task_ids = json.loads(TASK_SETS[task_set].read_text(encoding="utf-8"))
     runtime = (ROOT / "evals" / "kaggle_runtime.py").read_text(encoding="utf-8")
     code = (
         "AGENT_FILES = " + json.dumps(agent_files, ensure_ascii=False) + "\n"
         + "TASK_IDS = " + json.dumps(task_ids) + "\n"
         + f"MODEL_NAME = {model!r}\n"
+        + f"MAX_TOOL_CALLS = {max_tool_calls}\n"
+        + f"MAX_TIME_MINUTES = {max_time_minutes}\n"
         + "\n"
         + "RUNTIME_SOURCE = " + repr(runtime) + "\n"
         + "exec(compile(RUNTIME_SOURCE, 'kaggle_runtime.py', 'exec'))\n"
-        + "run_dev_eval(AGENT_FILES, TASK_IDS, MODEL_NAME)\n"
+        + "run_dev_eval(AGENT_FILES, TASK_IDS, MODEL_NAME, max_tool_calls=MAX_TOOL_CALLS, max_time_minutes=MAX_TIME_MINUTES)\n"
     )
     notebook = {
         "cells": [
