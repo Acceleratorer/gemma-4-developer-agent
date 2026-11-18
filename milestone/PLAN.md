@@ -35,7 +35,7 @@ The 2026-11-18 public snapshot has a top score of 0.24 shared by 14 teams. Since
 - [x] Evaluate v9 with the v7 prompt, 40 calls, and the fixed nine-task `dev-valid` set. It scored 2/9 locally, passing FastAPI's license identifier docs example and File/Form body-order regression.
 
 - [ ] Tune prompt flow and call/time budget first; keep model and sampling fixed.
-- [ ] Evaluate the imported `reference-budget-v2` prompt on 31B with the same `dev-valid-9` set and its 28-call budget; the comparison notebook is prepared locally.
+- [x] Evaluate the imported `reference-budget-v2` prompt on 31B with the same `dev-valid-9` set and its 28-call budget; it scored 3/9, passing FastAPI tasks `15589` and `14492` plus Rich task `3278`, versus v9 at 2/9.
 - [x] Re-run the fixed smoke set with the `write_file` argument reminder and captured verifier diagnostics; the v5 results are recorded in `/log/experiment-log.csv`.
 - [x] Separate candidate failures from baseline verifier issues on Requests and HTTPX: a no-patch evaluation reproduced both failures.
 - [x] Record the 14-task no-patch baseline (0/14) and freeze a nine-task `dev-valid` set that excludes the five known verifier environment failures.
