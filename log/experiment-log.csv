@@ -1,0 +1,4 @@
+run_id,date,variant,model,task_set,tool_calls,time_minutes,training,score,score_split,evidence,config_sha256,notes
+reference-budget-v2,2026-11-18,reference-budget-v2,gemma-4-31b-it-qat-w4a16-ct,unknown,28,8,no,0.18,public,notebook self-report; no submission id,,Source notebook also says its modified v2 candidate is unscored
+reference-40-calls,2026-11-18,reference-40-calls,gemma-4-31b-it-qat-w4a16-ct,unknown,40,8,no,,unknown,score unverified; 0.22 appears in notebook title,,No score output or submission id in local notebook
+official-starter-smoke,2026-11-18,official-sample,gemma-4-12b-it-qat-w4a16-ct,first-2-training-tasks,10,1,no,0/2,local-training,saved output in official starter notebook,,Both tasks ended without a patch; not comparable to current 31B budget
