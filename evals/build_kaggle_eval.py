@@ -9,8 +9,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 AGENTS_DIR = ROOT / "module" / "agents"
-KERNEL_ID = "accelra/getting-started-gemma-4-developer-agent"
-KERNEL_TITLE = "Getting Started - Gemma 4 Developer Agent"
+KERNEL_ID = "accelra/gemma-4-developer-agent-evaluation"
+KERNEL_TITLE = "Gemma 4 Developer Agent Evaluation"
 # Match the evaluation wheelhouse's CPython 3.12 ABI instead of Kaggle's latest default image.
 KAGGLE_DOCKER_IMAGE = (
     "gcr.io/kaggle-private-byod/python@sha256:37c64f7dd9c54116ecd1bcc88817c5469b88387388fade02bfa8bf3fc647d461"

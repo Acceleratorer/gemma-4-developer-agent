@@ -24,7 +24,7 @@ The 2026-11-18 public snapshot has a top score of 0.24 shared by 14 teams. Since
 ### M1 — Comparable development evaluation
 
 - [x] Define and freeze a four-task smoke set with one task each from FastAPI, Rich, Requests, and HTTPX; retain the 14-task development set for broader checks.
-- [ ] Run the reference 40-call configuration and the current candidate on the same tasks/model.
+- [x] Run the reference 40-call configuration and current v5 on the same tasks/model; both scored 0/4. FastAPI still lacked the tested module path and Rich failed the tab-span assertions. Requests and HTTPX reproduced the no-patch verifier failures.
 - [x] Record current-candidate smoke runs, including per-task outcomes, patches, and config hashes. V2 exposed context overflow at 16,384 output tokens; V4 restored 8,192 but scored 0/4. V5 still scored 0/4 but corrected the malformed `write_file` loop and captured verifier output: FastAPI imported the wrong new module path, Rich had 12 failures, Requests had 185 recursive `httpbin` fixture errors, and HTTPX failed collection because `httpx.Stream` was missing. A no-patch baseline run reproduced the Requests and HTTPX verifier failures, so those scores do not measure the agent patch.
 - [ ] Reject prompt changes that improve one or two tasks while reducing aggregate pass rate.
 
