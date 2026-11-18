@@ -35,10 +35,11 @@ The 2026-11-18 public snapshot has a top score of 0.24 shared by 14 teams. Since
 - [x] Evaluate v9 with the v7 prompt, 40 calls, and the fixed nine-task `dev-valid` set. It scored 2/9 locally, passing FastAPI's license identifier docs example and File/Form body-order regression.
 
 - [ ] Tune prompt flow and call/time budget first; keep model and sampling fixed.
+- [ ] Evaluate the imported `reference-budget-v2` prompt on 31B with the same `dev-valid-9` set and its 28-call budget; the comparison notebook is prepared locally.
 - [x] Re-run the fixed smoke set with the `write_file` argument reminder and captured verifier diagnostics; the v5 results are recorded in `/log/experiment-log.csv`.
 - [x] Separate candidate failures from baseline verifier issues on Requests and HTTPX: a no-patch evaluation reproduced both failures.
 - [x] Record the 14-task no-patch baseline (0/14) and freeze a nine-task `dev-valid` set that excludes the five known verifier environment failures.
-- [x] Pin new Kaggle evaluation kernels to the competition-compatible Python 3.12 image; the unpinned reference attempt failed under Python 3.13, and the pinned reference comparison is running.
+- [x] Pin new Kaggle evaluation kernels to the competition-compatible Python 3.12 image; the unpinned reference attempt failed under Python 3.13, and the pinned reference comparison completed at 0/4.
 - [ ] Ablate code-graph tools and a read-only analyzer separately.
 - [ ] Try LoRA only after the no-adapter prompt baseline is repeatable and scorer compatibility is verified.
 - [ ] Run a full Kaggle public submission only after fixed-set evaluation improves.
@@ -46,8 +47,8 @@ The 2026-11-18 public snapshot has a top score of 0.24 shared by 14 teams. Since
 ### M3 — Compete for the small-model prize
 
 - E2B and E4B submissions are also eligible for the general leaderboard; an E2B/E4B final selection can compete for both the general ranking and the small-model bonus.
-- [ ] Compare E4B and E2B with the same prompt and fixed task set.
-- [ ] E4B dev-valid-9 comparison is running with the v9 prompt and 40-call/eight-minute budget.
+- [x] Compare E4B with the v9 prompt on the same `dev-valid-9` set: it scored 0/9 versus 31B's 2/9, despite much shorter per-task runtimes.
+- [ ] Compare E2B with the same prompt and fixed task set.
 - [ ] Keep the better small-model variant as a separate eligible submission.
 - [ ] Use the two final-selection slots for the strongest distinct candidates.
 
