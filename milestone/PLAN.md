@@ -41,7 +41,7 @@ The 2026-11-18 public snapshot has a top score of 0.24 shared by 14 teams. Kaggl
 - [x] Separate candidate failures from baseline verifier issues on Requests and HTTPX: a no-patch evaluation reproduced both failures.
 - [x] Record the 14-task no-patch baseline (0/14) and freeze a nine-task `dev-valid` set that excludes the five known verifier environment failures.
 - [x] Pin new Kaggle evaluation kernels to the competition-compatible Python 3.12 image; the unpinned reference attempt failed under Python 3.13, and the pinned reference comparison completed at 0/4.
-- [ ] Ablate code-graph tools and a read-only analyzer separately.
+- [ ] Compare the graph-enabled reference-budget-v2 prompt against its graph ban on the current wheelhouse; then test a read-only analyzer separately.
 - [ ] Try LoRA only after the no-adapter prompt baseline is repeatable and scorer compatibility is verified.
 - [x] Run the first full Kaggle public submission after the fixed-set score improved to 3/9: ref `58527796`, status pending.
 

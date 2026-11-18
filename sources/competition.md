@@ -35,7 +35,7 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 
 ## Harness findings that affect experiments
 
-- The graph tools are registered and conditionally advertised when the task's graph and embedding assets are present. The local guide documents `get_code_neighbors`, `search_similar_code`, and `get_code_subgraph`.
+- The graph tools are registered and conditionally advertised when the task's graph and embedding assets are present. The local guide documents `get_code_neighbors`, `search_similar_code`, and `get_code_subgraph`. A Kaggle participant replay found that graph-query yield changed across wheelhouse builds: 11/314 calls on one intermediate build versus 270/314 on each of v0.2.10 and v0.2.11. The wheelhouse dataset metadata currently reports an update on 2026-10-12, so the reference prompt's blanket ban on graph tools should be treated as unverified ([discussion](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/748323)).
 - `submit_patch()` ends the agent loop. If the agent does not call it, the harness can capture a fallback diff; still call it last after the change is ready.
 - Test and runner-config edits are removed before verification, so use tests as read-only requirements and patch product source.
 - The local harness supports `max_tool_calls`, `max_time_minutes`, `max_turns`, and command timeout settings under `eval_config.yaml`.
