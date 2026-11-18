@@ -261,6 +261,22 @@ def run_dev_eval(
                 "duration_seconds": result.duration_seconds,
                 "error": getattr(result, "error", None),
             }
+            if not row["resolved"]:
+                diagnostics = {}
+                test_output = results_dir / "test_outputs" / f"{task.instance_id}.log"
+                if test_output.is_file():
+                    diagnostics["test_output"] = test_output.read_text(
+                        encoding="utf-8", errors="replace"
+                    )[-12000:]
+                for name, value in getattr(result, "__dict__", {}).items():
+                    diagnostic_terms = ("test", "verif", "fail", "stdout", "stderr", "output")
+                    if any(term in name.lower() for term in diagnostic_terms):
+                        diagnostics[name] = (
+                            value
+                            if isinstance(value, (str, int, float, bool)) or value is None
+                            else repr(value)[:12000]
+                        )
+                row["diagnostics"] = diagnostics
             rows.append(row)
             print(json.dumps(row, ensure_ascii=False))
 

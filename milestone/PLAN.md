@@ -23,12 +23,14 @@ Reach rank 1 on the final Kaggle private leaderboard. Current evidence is only a
 
 - [x] Define and freeze a four-task smoke set with one task each from FastAPI, Rich, Requests, and HTTPX; retain the 14-task development set for broader checks.
 - [ ] Run the reference 40-call configuration and the current candidate on the same tasks/model.
-- [x] Record both current-candidate smoke runs, including per-task outcomes, patches, and config hashes. The second run exposed context overflow at 16,384 output tokens; the next iteration restores 8,192 and applies a fixed early-edit budget.
+- [x] Record current-candidate smoke runs, including per-task outcomes, patches, and config hashes. V2 exposed context overflow at 16,384 output tokens; V4 restored 8,192 but scored 0/4. V5 still scored 0/4 but corrected the malformed `write_file` loop and captured verifier output: FastAPI imported the wrong new module path, Rich had 12 failures, Requests had 185 recursive `httpbin` fixture errors, and HTTPX failed collection because `httpx.Stream` was missing.
 - [ ] Reject prompt changes that improve one or two tasks while reducing aggregate pass rate.
 
 ### M2 — Improve general leaderboard candidate
 
 - [ ] Tune prompt flow and call/time budget first; keep model and sampling fixed.
+- [x] Re-run the fixed smoke set with the `write_file` argument reminder and captured verifier diagnostics; the v5 results are recorded in `/log/experiment-log.csv`.
+- [ ] Separate candidate failures from baseline verifier issues on Requests and HTTPX before using the four-task smoke score to select prompts.
 - [ ] Ablate code-graph tools and a read-only analyzer separately.
 - [ ] Try LoRA only after the no-adapter prompt baseline is repeatable and scorer compatibility is verified.
 - [ ] Run a full Kaggle public submission only after fixed-set evaluation improves.
