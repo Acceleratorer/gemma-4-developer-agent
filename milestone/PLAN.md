@@ -39,8 +39,8 @@ A fresh Kaggle CLI read on 2026-11-19 still showed 14 teams at 0.24. Historical 
 - [ ] Tune prompt flow and call/time budget first; keep model and sampling fixed.
 - [x] Evaluate the imported `reference-budget-v2` prompt on 31B with the same `dev-valid-9` set and its 28-call budget; it scored 3/9, passing FastAPI tasks `15589` and `14492` plus Rich task `3278`, versus v9 at 2/9.
 - [ ] After submission `58527796` completes, run the prepared Hanh v6 prompt-only candidate (`evals/results/dev-valid-honghanhhh-v6-31b/`, hash `a602f8c0…`) against the fixed `dev-valid-9` baseline; only the prompt changes.
-- [ ] Then run the prepared graph-enabled reference-budget-v2 candidate as a separate ablation, keeping model, sampling, budget, and tasks fixed.
-- [ ] If those paired local runs improve the candidate, test task-statement pinning and the 40-call policy from the public 0.22 notebook in separate runs; its score is unverified locally.
+- [ ] Then run the prepared graph-enabled reference-budget-v2 candidate (`evals/results/dev-valid-graph-v2-31b/`, hash `c8cc24b7…`) as a separate ablation, keeping model, sampling, budget, and tasks fixed.
+- [ ] After both fixed-set ablations, test task-statement pinning and the 40-call policy from the public 0.22 notebook in separate runs; its score is unverified locally.
 - [ ] Check the 8-minute per-task cap against the competition-wide 12-hour runtime using public submission `58527796` before changing the budget.
 - [x] Re-run the fixed smoke set with the `write_file` argument reminder and captured verifier diagnostics; the v5 results are recorded in `/log/experiment-log.csv`.
 - [x] Separate candidate failures from baseline verifier issues on Requests and HTTPX: a no-patch evaluation reproduced both failures.
