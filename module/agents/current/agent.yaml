@@ -1,4 +1,4 @@
-name: gemma4_coding_agent
+name: swe_agent
 model: gemma-4-31b-it-qat-w4a16-ct
 instruction: !include prompts/system.md
 tools:

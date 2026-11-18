@@ -19,7 +19,7 @@ The 2026-11-18 public snapshot has a top score of 0.24 shared by 14 teams. Since
 - [x] Preserve the imported notebooks under `notebooks/source/` and record their source links.
 - [x] Extract reference submission configs into separate local-only folders.
 - [x] Add a deterministic ZIP builder and focused tests.
-- [ ] Run the package tests and build the 31B and E4B archives.
+- [x] Run all five package tests and build the exact 31B archive for the tested 3/9 candidate; defer the E4B archive because its fixed-set score was 0/9.
 
 ### M1 — Comparable development evaluation
 
