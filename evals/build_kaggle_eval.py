@@ -56,7 +56,14 @@ def _eval_config_value(agent_files: dict[str, str], name: str, default: int | fl
     return match.group(1) if match else str(default)
 
 
-def build_notebook(agent: str, model: str, task_set: str, output_dir: Path) -> tuple[Path, Path]:
+def build_notebook(
+    agent: str,
+    model: str,
+    task_set: str,
+    output_dir: Path,
+    kernel_id: str = KERNEL_ID,
+    kernel_title: str = KERNEL_TITLE,
+) -> tuple[Path, Path]:
     agent_dir = AGENTS_DIR / agent
     if not agent_dir.is_dir() or agent.startswith("reference-"):
         raise ValueError(f"Unknown tracked agent: {agent}")
@@ -111,8 +118,8 @@ def build_notebook(agent: str, model: str, task_set: str, output_dir: Path) -> t
         "nbformat_minor": 5,
     }
     metadata = {
-        "id": KERNEL_ID,
-        "title": KERNEL_TITLE,
+        "id": kernel_id,
+        "title": kernel_title,
         "code_file": "dev_eval.ipynb",
         "language": "python",
         "kernel_type": "notebook",
@@ -144,8 +151,17 @@ def main() -> None:
     parser.add_argument("--model", choices=sorted(MODEL_SOURCES), default="gemma-4-31b-it-qat-w4a16-ct")
     parser.add_argument("--task-set", choices=sorted(TASK_SETS), default="smoke")
     parser.add_argument("--output-dir", type=Path, default=ROOT / "evals" / "kaggle-dev-eval")
+    parser.add_argument("--kernel-id", default=KERNEL_ID)
+    parser.add_argument("--kernel-title", default=KERNEL_TITLE)
     args = parser.parse_args()
-    notebook, metadata = build_notebook(args.agent, args.model, args.task_set, args.output_dir)
+    notebook, metadata = build_notebook(
+        args.agent,
+        args.model,
+        args.task_set,
+        args.output_dir,
+        args.kernel_id,
+        args.kernel_title,
+    )
     print(f"Generated private Kaggle kernel: {notebook}")
     print(f"Metadata: {metadata}")
     print(f"Tasks: {args.task_set}")
