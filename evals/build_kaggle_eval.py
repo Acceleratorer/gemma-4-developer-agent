@@ -27,7 +27,9 @@ TASK_SETS = {
     "dev-valid": ROOT / "evals" / "dev-valid-task-ids.json",
     "dev-valid-crossrepo": ROOT / "evals" / "dev-valid-crossrepo-task-ids.json",
     "dev-valid-expanded": ROOT / "evals" / "dev-valid-expanded-task-ids.json",
+    "dev-valid-expanded-gold-verified": ROOT / "evals" / "dev-valid-expanded-gold-verified-task-ids.json",
     "dev-valid-unseen": ROOT / "evals" / "dev-valid-unseen-task-ids.json",
+    "dev-valid-unseen-gold-verified": ROOT / "evals" / "dev-valid-unseen-gold-verified-task-ids.json",
 }
 MODEL_LINE = re.compile(r"(?m)^(\s*model:\s*)([^\s#]+)(\s*(?:#.*)?$)")
 
