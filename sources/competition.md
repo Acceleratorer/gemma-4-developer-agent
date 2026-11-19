@@ -19,7 +19,7 @@ Competition pages checked on 2026-11-19; leaderboard refreshed on 2026-11-19 wit
 
 The scorer applies each generated patch to a repository snapshot and runs the task's validation tests. The score is the fraction of tasks resolved. The submission is a ZIP containing declarative agent configuration, with exactly one root `agent.yaml` and optional prompts, subagents, skills, and LoRA adapters. The private leaderboard determines final placement; exact-score ties go to the submission entered first.
 
-The official overview gives the agent 12 hours to submit patches across the test set, including sandbox setup but excluding patch validation. Kaggle staff estimate validation can add about two hours when every task has a patch; a no-patch run takes about ten minutes. A per-task time cap must fit inside that global limit, so extrapolate local task runtimes cautiously ([official overview](https://www.kaggle.com/competitions/gemma-4-developer-agent/overview), [staff clarification](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/743663)).
+The official overview gives the agent 12 hours to submit patches across the test set, including sandbox setup but excluding patch validation. Kaggle staff estimate validation can add about two hours when every task has a patch; a no-patch run takes about ten minutes. Participants later reported scoring taking several hours, around 12 hours in one case, and timing out after 14 hours in another; treat those as anecdotes, not an SLA ([official overview](https://www.kaggle.com/competitions/gemma-4-developer-agent/overview), [staff clarification](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/743663), [rerunning failed submissions thread](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/743683)). A per-task time cap must fit inside that global limit, so extrapolate local task runtimes cautiously.
 
 Kaggle staff confirmed the thinking-token loss between tool calls was a harness incompatibility and said the fix should be in the current wheelhouse. Since candidates enable thoughts, record the wheelhouse/runtime version for future comparisons ([discussion](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/744354)).
 
@@ -30,7 +30,7 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 ## Dated leaderboard snapshot
 
 - Main public leaderboard: top score **0.24**, tied by 14 teams in the snapshot timestamped 2026-11-18 18:04 UTC; downloaded on 2026-11-19 with `kaggle competitions leaderboard --download`.
-- A fresh read-only Kaggle CLI query on 2026-11-19 00:46 UTC still showed 14 entries tied at **0.24**.
+- A fresh read-only Kaggle CLI query on 2026-11-19 01:05 UTC still showed 14 entries tied at **0.24**.
 - Small-model public leaderboard: top score **0.12** in the official tracker output, last updated 2026-11-16 23:55 UTC; refreshed from the Kaggle notebook on 2026-11-18.
 - These are public-split snapshots, not final standings. The final placement is based on the private leaderboard.
 

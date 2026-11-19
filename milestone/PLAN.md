@@ -6,7 +6,7 @@ Reach rank 1 on the final Kaggle private leaderboard. Local fixed-set results ar
 
 The 2026-11-18 public snapshot has a top score of 0.24 shared by 14 teams. Kaggle submission ref `58527796` for the 31B reference-budget-v2 candidate is pending; it has no verified score yet. Since Kaggle breaks score ties by earliest submission, target above 0.24 on the public split while treating the private leaderboard as the final result.
 
-A fresh Kaggle CLI read on 2026-11-19 00:46 UTC still showed 14 teams at 0.24. Historical public config draws show that eight runs of one identical bundle scored between 7/58 and 13/58, so a single public score is noisy; use paired local comparisons before spending another daily submission.
+A fresh Kaggle CLI read on 2026-11-19 01:05 UTC still showed 14 teams at 0.24. Historical public config draws show that eight runs of one identical bundle scored between 7/58 and 13/58, so a single public score is noisy; use paired local comparisons before spending another daily submission.
 
 ## Deadlines
 
@@ -57,7 +57,7 @@ A fresh Kaggle CLI read on 2026-11-19 00:46 UTC still showed 14 teams at 0.24. H
 - [x] Pin new Kaggle evaluation kernels to the competition-compatible Python 3.12 image; the unpinned reference attempt failed under Python 3.13, and the pinned reference comparison completed at 0/4.
 - [ ] Test a read-only analyzer only if the graph-enabled run beats the current candidate.
 - [ ] Try LoRA only after the no-adapter prompt baseline is repeatable and scorer compatibility is verified.
-- [x] Run the first full Kaggle public submission after the fixed-set score improved to 3/9: ref `58527796`; Kaggle CLI recheck at 2026-11-19 00:46 UTC still showed `PENDING` with no score.
+- [x] Run the first full Kaggle public submission after the fixed-set score improved to 3/9: ref `58527796`; Kaggle CLI recheck at 2026-11-19 01:05 UTC still showed `PENDING` with no score. This 2h24m wait is within participant-reported scoring durations; it is not evidence of a failed run.
 
 ### M3 — Compete for the small-model prize
 
