@@ -4,7 +4,7 @@
 
 Reach rank 1 on the final Kaggle private leaderboard. Local fixed-set results are available, and public submission ref `58527796` is pending; no public score is verified yet. Continue optimizing until the final deadline and claim success only after the private leaderboard confirms it.
 
-The latest public leaderboard check on 2026-11-19 02:09 UTC still has 14 teams tied at 0.24. Kaggle submission ref `58527796` for the 31B reference-budget-v2 candidate is pending; it has no verified score yet. Since Kaggle breaks score ties by earliest submission, target above 0.24 on the public split while treating the private leaderboard as the final result.
+The latest public leaderboard check on 2026-11-19 02:20 UTC still has 14 teams tied at 0.24. Kaggle submission ref `58527796` for the 31B reference-budget-v2 candidate is pending; it has no verified score yet. Since Kaggle breaks score ties by earliest submission, target above 0.24 on the public split while treating the private leaderboard as the final result.
 
 Historical public config draws show that eight runs of one identical bundle scored between 7/58 and 13/58, so a single public score is noisy; use paired local comparisons before spending another daily submission.
 
@@ -49,10 +49,11 @@ Historical public config draws show that eight runs of one identical bundle scor
 - [x] Retrieve and classify the completed 104-task screen: 55 tasks fail only on issue tests, nine also fail unrelated tests, 35 fail collection, three time out, and two pass without a patch. Store per-task evidence under `evals/results/fastapi-rich-verifier-screen-v1/output/fastapi-rich-verifier-baseline/task-classification.json`.
 - [x] Freeze and register `dev-valid-expanded` (20 tasks): preserve the 14-task cross-repository set and add six issue-only FastAPI/Rich tasks; keep the original sets unchanged.
 - [x] Generate private, offline Python 3.12 notebooks for the 20-task reference-budget-v2 baseline and short-contract prompt; static audit confirms identical tasks, model, budgets, tools, and runtime files, with only `prompts/system.md` changed. Both remain unrun.
+- [x] Generate private, offline Python 3.12 notebooks for the 20-task Hanh v6 and graph-enabled prompt ablations. Static audit confirms each matches the baseline in task IDs, model, budgets, tools, and runtime, changing only `prompts/system.md`; neither has been uploaded or run. The graph prompt also avoids bracket-containing values in `get_code_subgraph` arrays to reduce the reported vLLM 0.19.1 parser-hang risk on `fastapi_14616`.
 - [ ] After submission `58527796` completes, establish the reference-budget-v2 baseline on `dev-valid-expanded` (20 tasks); the 3/9 nine-task result and future 14-task results remain separate historical comparisons.
 - [ ] Run the short-contract prompt candidate on the same 20 tasks next; keep model, sampling, registered tools, and budgets fixed against the reference baseline.
 - [ ] Run the Hanh v6 prompt-only candidate on the same 20-task set, keeping model, sampling, tool budget, and time budget fixed.
-- [ ] Then run the graph-enabled reference-budget-v2 candidate on the same 20 tasks as a separate prompt ablation.
+- [ ] Then run the graph-enabled reference-budget-v2 candidate on the same 20 tasks as a separate prompt ablation; inspect array-valued `get_code_subgraph` calls and confirm the run does not stall after `fastapi_14616`.
 - [ ] After Hanh v6 and graph results, run the prepared task-pinning and 40-call candidates separately; the public 0.22 notebook's score remains unverified locally.
 - [ ] Check the 8-minute per-task cap against the competition-wide 12-hour runtime using public submission `58527796` before changing the budget.
 - [x] Re-run the fixed smoke set with the `write_file` argument reminder and captured verifier diagnostics; the v5 results are recorded in `/log/experiment-log.csv`.
@@ -61,7 +62,7 @@ Historical public config draws show that eight runs of one identical bundle scor
 - [x] Pin new Kaggle evaluation kernels to the competition-compatible Python 3.12 image; the unpinned reference attempt failed under Python 3.13, and the pinned reference comparison completed at 0/4.
 - [ ] Test a read-only analyzer only if the graph-enabled run beats the current candidate.
 - [ ] Try LoRA only after the no-adapter prompt baseline is repeatable and scorer compatibility is verified.
-- [x] Run the first full Kaggle public submission after the fixed-set score improved to 3/9: ref `58527796`; CLI rechecks at 01:05, 01:34, 02:06, and 02:09 UTC still showed `PENDING` with no score. The 3h28m wait is within participant-reported scoring durations; it is not evidence of a failed run.
+- [x] Run the first full Kaggle public submission after the fixed-set score improved to 3/9: ref `58527796`; CLI rechecks at 01:05, 01:34, 02:06, 02:09, and 02:20 UTC still showed `PENDING` with no score. At the latest check it had been pending about 3h39m, within participant-reported scoring durations; this is not evidence of a failed run.
 
 ### M3 — Compete for the small-model prize
 
