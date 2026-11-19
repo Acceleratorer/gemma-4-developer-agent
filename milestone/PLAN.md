@@ -50,10 +50,12 @@ Historical public config draws show that eight runs of one identical bundle scor
 - [x] Freeze and register `dev-valid-expanded` (20 tasks): preserve the 14-task cross-repository set and add six issue-only FastAPI/Rich tasks; keep the original sets unchanged.
 - [x] Generate private, offline Python 3.12 notebooks for the 20-task reference-budget-v2 baseline and short-contract prompt; static audit confirms identical tasks, model, budgets, tools, and runtime files, with only `prompts/system.md` changed. Both remain unrun.
 - [x] Generate private, offline Python 3.12 notebooks for the 20-task Hanh v6 and graph-enabled prompt ablations. Static audit confirms each matches the baseline in task IDs, model, budgets, tools, and runtime, changing only `prompts/system.md`; neither has been uploaded or run. The graph prompt also avoids bracket-containing values in `get_code_subgraph` arrays to reduce the reported vLLM 0.19.1 parser-hang risk on `fastapi_14616`.
+- [x] Retrieve the Repair Lab's exact exp021 `score_022_submission.zip` via Kaggle CLI and prepare a 20-task source-bundle comparison. The local notebook keeps model, sampling, task set, call and time budgets fixed, and normalizes only `timeout_seconds` from 60 to 240; it retains Patchsmith's no-graph tool set and is not a prompt-only ablation. The archived source's reported 0.22 does not apply to this normalized, unrun candidate.
 - [ ] After submission `58527796` completes, establish the reference-budget-v2 baseline on `dev-valid-expanded` (20 tasks); the 3/9 nine-task result and future 14-task results remain separate historical comparisons.
 - [ ] Run the short-contract prompt candidate on the same 20 tasks next; keep model, sampling, registered tools, and budgets fixed against the reference baseline.
 - [ ] Run the Hanh v6 prompt-only candidate on the same 20-task set, keeping model, sampling, tool budget, and time budget fixed.
 - [ ] Then run the graph-enabled reference-budget-v2 candidate on the same 20 tasks as a separate prompt ablation; inspect array-valued `get_code_subgraph` calls and confirm the run does not stall after `fastapi_14616`.
+- [ ] Run the normalized Patchsmith exp021 bundle on the same 20 tasks as a package-level comparison; record its different tool set and do not attribute the source archive's 0.22 public score to this local run.
 - [ ] After Hanh v6 and graph results, run the prepared task-pinning and 40-call candidates separately; the public 0.22 notebook's score remains unverified locally.
 - [ ] Check the 8-minute per-task cap against the competition-wide 12-hour runtime using public submission `58527796` before changing the budget.
 - [x] Re-run the fixed smoke set with the `write_file` argument reminder and captured verifier diagnostics; the v5 results are recorded in `/log/experiment-log.csv`.
@@ -62,7 +64,7 @@ Historical public config draws show that eight runs of one identical bundle scor
 - [x] Pin new Kaggle evaluation kernels to the competition-compatible Python 3.12 image; the unpinned reference attempt failed under Python 3.13, and the pinned reference comparison completed at 0/4.
 - [ ] Test a read-only analyzer only if the graph-enabled run beats the current candidate.
 - [ ] Try LoRA only after the no-adapter prompt baseline is repeatable and scorer compatibility is verified.
-- [x] Run the first full Kaggle public submission after the fixed-set score improved to 3/9: ref `58527796`; CLI rechecks at 01:05, 01:34, 02:06, 02:09, and 02:20 UTC still showed `PENDING` with no score. At the latest check it had been pending about 3h39m, within participant-reported scoring durations; this is not evidence of a failed run.
+- [x] Run the first full Kaggle public submission after the fixed-set score improved to 3/9: ref `58527796`; CLI rechecks through 02:47 UTC still show `PENDING` with no score. At the latest check it had been pending about 4h06m; participant reports include multi-hour scoring, so this is not evidence of a failed run.
 
 ### M3 — Compete for the small-model prize
 
