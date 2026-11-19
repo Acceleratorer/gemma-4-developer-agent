@@ -1,6 +1,6 @@
 # Competition facts and sources
 
-Competition pages checked on 2026-11-19; leaderboard, submission status, and accelerator quota refreshed on 2026-11-19 18:05 UTC with the official Kaggle CLI.
+Competition pages checked on 2026-11-19; leaderboard, submission status, and accelerator quota refreshed on 2026-11-19 18:36 UTC with the official Kaggle CLI.
 
 ## Official references
 
@@ -55,6 +55,7 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 - A fresh Kaggle CLI query on 2026-11-19 16:42 UTC still showed 14 entries tied at **0.24** and the next score at 0.22. Submission `58527796` remained `PENDING` about 18h01m after entry; GPU quota was 0.00h, TPU quota was 19.98h, and both quotas refresh at 2026-11-21 00:00 UTC.
 - A fresh Kaggle CLI query on 2026-11-19 17:15 UTC still showed 14 entries tied at **0.24** and the next score at 0.22. Submission `58527796` remained `PENDING` about 18h34m after entry; GPU quota was 0.00h, TPU quota was 19.98h, and both quotas refresh at 2026-11-21 00:00 UTC.
 - A fresh Kaggle CLI query on 2026-11-19 18:05 UTC still showed 14 entries tied at **0.24** and the next score at 0.22. Submission `58527796` remained `PENDING` about 19h24m after entry; GPU quota was 0.00h, TPU quota was 19.98h, and both quotas refresh at 2026-11-21 00:00 UTC. The full leaderboard snapshot downloaded at 18:06 UTC contains 6,162 rows and is archived under ignored `data/local/leaderboard-2026-11-19-1806utc/`.
+- A fresh Kaggle CLI query on 2026-11-19 18:36 UTC still showed 14 entries tied at **0.24** and the next score at 0.22. Submission `58527796` remained `PENDING` about 19h55m after entry; GPU quota was 0.00h, TPU quota was 19.98h, and both quotas refresh at 2026-11-21 00:00 UTC.
 - Small-model public leaderboard: top score **0.12** in the official tracker output, last updated 2026-11-16 23:55 UTC; refreshed from the Kaggle notebook on 2026-11-18.
 - These are public-split snapshots, not final standings. The final placement is based on the private leaderboard.
 
