@@ -1,6 +1,6 @@
 # Competition facts and sources
 
-Competition pages checked on 2026-11-19; leaderboard and submission status refreshed on 2026-11-19 18:51 UTC with the official Kaggle CLI. Accelerator quota was last refreshed at 18:36 UTC.
+Competition pages and Kaggle state checked on 2026-11-19 with the official Kaggle CLI; the latest leaderboard, submission, and quota checks were made around 19:25 UTC.
 
 ## Official references
 
@@ -29,39 +29,14 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 
 ## Dated leaderboard snapshot
 
-- Main public leaderboard: top score **0.24**, tied by 14 teams in the snapshot timestamped 2026-11-18 18:04 UTC; downloaded on 2026-11-19 with `kaggle competitions leaderboard --download`.
-- A fresh read-only Kaggle CLI query on 2026-11-19 01:05 UTC still showed 14 entries tied at **0.24**.
-- A fresh read-only Kaggle CLI query on 2026-11-19 02:20 UTC still showed 14 entries tied at **0.24**.
-- A fresh read-only Kaggle CLI query on 2026-11-19 02:58 UTC still showed 14 entries tied at **0.24**.
-- A fresh read-only Kaggle CLI query on 2026-11-19 03:22 UTC still showed 14 entries tied at **0.24**.
-- A fresh read-only Kaggle CLI query on 2026-11-19 03:36 UTC still showed 14 entries tied at **0.24**; the next score shown was 0.22.
-- A fresh read-only Kaggle CLI query on 2026-11-19 04:00 UTC still showed 14 entries tied at **0.24**; the next score shown was 0.22.
-- A fresh read-only Kaggle CLI query on 2026-11-19 04:22 UTC still showed 14 entries tied at **0.24**; the next score shown was 0.22.
-- A fresh read-only Kaggle CLI query on 2026-11-19 05:45 UTC still showed 14 entries tied at **0.24**; the next score shown was 0.22.
-- A fresh read-only Kaggle CLI query on 2026-11-19 06:53 UTC still showed 14 entries tied at **0.24**; the next score shown was 0.22.
-- A fresh read-only Kaggle CLI query on 2026-11-19 07:24 UTC still showed 14 entries tied at **0.24**; the next score shown was 0.22.
-- A fresh read-only Kaggle CLI query on 2026-11-19 09:23 UTC still showed 14 entries tied at **0.24**; the next score shown was 0.22.
-- A fresh read-only Kaggle CLI query on 2026-11-19 10:26 UTC still showed 14 entries tied at **0.24**; the next score shown was 0.22.
-- A fresh read-only Kaggle CLI query on 2026-11-19 11:39 UTC still showed 14 entries tied at **0.24**; the next score shown was 0.22.
-- A fresh read-only Kaggle CLI query on 2026-11-19 12:59 UTC still showed 14 entries tied at **0.24**; the next score shown was 0.22.
-- A fresh read-only Kaggle CLI query on 2026-11-19 13:05 UTC still showed 14 entries tied at **0.24**; the next score shown was 0.22.
-- A fresh read-only Kaggle CLI query on 2026-11-19 13:28 UTC still showed 14 entries tied at **0.24**; the next score shown was 0.22.
-- A fresh read-only Kaggle CLI query on 2026-11-19 13:52 UTC still showed 14 entries tied at **0.24**; the next score shown was 0.22.
-- A fresh read-only Kaggle CLI query on 2026-11-19 14:15 UTC still showed 14 entries tied at **0.24**; the next score shown was 0.22.
-- A fresh read-only Kaggle CLI query on 2026-11-19 14:31 UTC still showed 14 entries tied at **0.24**; the next score shown was 0.22.
-- A fresh read-only Kaggle CLI query on 2026-11-19 15:00 UTC still showed 14 entries tied at **0.24**; the next score shown was 0.22.
-- A fresh read-only Kaggle CLI query on 2026-11-19 15:25 UTC still showed 14 entries tied at **0.24**; the next score shown was 0.22.
-- A fresh read-only Kaggle CLI query on 2026-11-19 16:06 UTC still showed 14 entries tied at **0.24**; the next score shown was 0.22. Submission `58527796` remained `PENDING` about 17h25m after entry; GPU quota was 0.00h and refresh was scheduled for 2026-11-21 00:00 UTC.
-- A fresh Kaggle CLI query on 2026-11-19 16:42 UTC still showed 14 entries tied at **0.24** and the next score at 0.22. Submission `58527796` remained `PENDING` about 18h01m after entry; GPU quota was 0.00h, TPU quota was 19.98h, and both quotas refresh at 2026-11-21 00:00 UTC.
-- A fresh Kaggle CLI query on 2026-11-19 17:15 UTC still showed 14 entries tied at **0.24** and the next score at 0.22. Submission `58527796` remained `PENDING` about 18h34m after entry; GPU quota was 0.00h, TPU quota was 19.98h, and both quotas refresh at 2026-11-21 00:00 UTC.
-- A fresh Kaggle CLI query on 2026-11-19 18:05 UTC still showed 14 entries tied at **0.24** and the next score at 0.22. Submission `58527796` remained `PENDING` about 19h24m after entry; GPU quota was 0.00h, TPU quota was 19.98h, and both quotas refresh at 2026-11-21 00:00 UTC. The full leaderboard snapshot downloaded at 18:06 UTC contains 6,162 rows and is archived under ignored `data/local/leaderboard-2026-11-19-1806utc/`.
-- A fresh Kaggle CLI query on 2026-11-19 18:36 UTC still showed 14 entries tied at **0.24** and the next score at 0.22. Submission `58527796` remained `PENDING` about 19h55m after entry; GPU quota was 0.00h, TPU quota was 19.98h, and both quotas refresh at 2026-11-21 00:00 UTC.
-- A fresh Kaggle CLI query on 2026-11-19 18:51 UTC still showed 14 entries tied at **0.24** and the next score at 0.22. Submission `58527796` remained `PENDING` about 20h10m after entry; this query did not refresh accelerator quota.
+- The full public leaderboard snapshot downloaded at 2026-11-19 18:06 UTC contains 6,162 rows; its top score was **0.24**, tied by 14 teams, with the next score at 0.22. The snapshot is archived under ignored `data/local/leaderboard-2026-11-19-1806utc/`.
+- Repeated CLI checks from 01:05 through about 19:25 UTC on 2026-11-19 showed the same 14-way tie at **0.24**. At the latest check, submission `58527796` was still `PENDING` about 20h44m after entry, with no public or private score. GPU quota was 0.00h and TPU quota 19.98h; both refresh at 2026-11-21 00:00 UTC.
 - Small-model public leaderboard: top score **0.12** in the official tracker output, last updated 2026-11-16 23:55 UTC; refreshed from the Kaggle notebook on 2026-11-18.
 - These are public-split snapshots, not final standings. The final placement is based on the private leaderboard.
 
 ## Community experiment evidence checked 2026-11-19
 
+- The recent [TFD-Agent discussion](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/745748) proposes a pre-patch reproducer and test-feedback loop, which overlaps the prepared V5 test-aware prompt. Its claims are not decision-grade: the linked [dataset](https://www.kaggle.com/datasets/rajrajak99/gemma-4-tfd-agentic-trajectories) has 50 CSV rows but only 10 underlying issue descriptions repeated five times, and its [demo code](https://github.com/rajrajak99/gemma4-tfd-agent/blob/main/tfd_agent_demo.py) hardcodes the search, failure, patch, and pass output. The local copies are ignored under `data/local/research/gemma4-tfd/`; do not treat the reported percentages as independent SWE-bench evidence.
 - The [Public Config Draws dataset](https://www.kaggle.com/datasets/dariushafshar/gemma-4-agent-public-config-draws) is a historical, selected sample read on 2026-10-22. It records eight scored runs of one identical, hash-matched bundle ranging from 7/58 to 13/58 resolved tasks. Treat one Kaggle score as a noisy draw, not a stable estimate. The downloaded files are ignored under `data/local/research/public-config-draws/`.
 - The [40-call, no-training notebook](https://www.kaggle.com/code/bliverrigpdoge/lb-0-22-3-tweaks-40-tool-calls-no-training) combines a 40-call/eight-minute budget, task-statement pinning, and fast exit; its title reports 0.22, so it does not isolate any one change. The [Repair Lab exp025 notebook](https://www.kaggle.com/code/denpugovkin/gemma-4-repair-lab-compare-before-you-submit) identifies its 0.22 incumbent as a 28-call release and its 28-to-40-call candidate as unscored. [Patchsmith V11](https://www.kaggle.com/code/hanifnoerrofiq/patchsmith-gemma-4-developer-agent) likewise records its 28-to-40-call change with `agent_evaluation: NOT_RUN` and no leaderboard score. Treat the call-cap increase as an unverified hypothesis; the local 14-task 40-call ablation is prepared but unrun.
 - The public [72-task edit-by-15 notebook](https://www.kaggle.com/code/purnimapathak15/agent-31b-edit-by-15-vs-n-72tasks-pinned-env) isolates a single prompt line requiring a source edit by call 15 against a no-deadline arm at the same 31B/28-call/eight-minute budget. Its saved run log enters CPU self-test mode and exits before agent evaluation (`SELFTEST PASS (CPU)`); it provides no comparative score, so treat edit-by-15 as an untested hypothesis.

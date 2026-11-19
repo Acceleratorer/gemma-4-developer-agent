@@ -4,7 +4,7 @@
 
 Reach rank 1 on the final Kaggle private leaderboard. Local fixed-set results are available, and public submission ref `58527796` is pending; no public score is verified yet. Continue optimizing until the final deadline and claim success only after the private leaderboard confirms it.
 
-The latest public leaderboard check on 2026-11-19 18:51 UTC still has 14 teams tied at 0.24, with the next score at 0.22. Kaggle submission ref `58527796` for the 31B reference-budget-v2 candidate remained pending at 18:51 UTC, about 20h10m after submission. Since Kaggle breaks score ties by earliest submission, target above 0.24 on the public split while treating the private leaderboard as the final result.
+The latest public leaderboard check on 2026-11-19 about 19:25 UTC still has 14 teams tied at 0.24, with the next score at 0.22. Kaggle submission ref `58527796` for the 31B reference-budget-v2 candidate remained pending with no score, about 20h44m after submission. GPU quota is 0.00h; TPU quota is 19.98h, but the prepared evaluator uses NvidiaL4 and the TPU smoke never loaded Gemma 4. Both quotas refresh at 2026-11-21 00:00 UTC. Since Kaggle breaks score ties by earliest submission, target above 0.24 on the public split while treating the private leaderboard as the final result.
 
 Historical public config draws show that eight runs of one identical bundle scored between 7/58 and 13/58, so a single public score is noisy; use paired local comparisons before spending another daily submission.
 
