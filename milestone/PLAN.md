@@ -4,7 +4,7 @@
 
 Reach rank 1 on the final Kaggle private leaderboard. Local fixed-set results are available, and public submission ref `58527796` is pending; no public score is verified yet. Continue optimizing until the final deadline and claim success only after the private leaderboard confirms it.
 
-The latest public leaderboard check on 2026-11-19 13:52 UTC still has 14 teams tied at 0.24, with the next score at 0.22. Kaggle submission ref `58527796` for the 31B reference-budget-v2 candidate is pending; a 13:52 UTC CLI poll still showed no score, about 15h11m after submission. Since Kaggle breaks score ties by earliest submission, target above 0.24 on the public split while treating the private leaderboard as the final result.
+The latest public leaderboard check on 2026-11-19 14:31 UTC still has 14 teams tied at 0.24, with the next score at 0.22. Kaggle submission ref `58527796` for the 31B reference-budget-v2 candidate is pending; a 14:31 UTC CLI poll still showed no score, about 15h50m after submission. Since Kaggle breaks score ties by earliest submission, target above 0.24 on the public split while treating the private leaderboard as the final result.
 
 Historical public config draws show that eight runs of one identical bundle scored between 7/58 and 13/58, so a single public score is noisy; use paired local comparisons before spending another daily submission.
 
@@ -69,13 +69,13 @@ Historical public config draws show that eight runs of one identical bundle scor
 - [ ] Run `budget-fit-v5-no-graph-v1` on `dev-valid-expanded` against V5 after the prompt comparisons; measure whether dropping unused graph tool schemas improves the 5/20 repeat without changing the system prompt.
 - [x] Freeze `dev-valid-unseen` as a disjoint 20-task generalization set from the CPU no-patch screen: 10 FastAPI and 10 Rich tasks, each with one issue-only failing assertion. All IDs are outside `dev-valid-expanded` and contain no collection, fixture, or timeout errors.
 - [x] Prepare paired private kernels `accelra/dev-valid-unseen-reference-budget-v2-31b` and `accelra/dev-valid-unseen-budget-fit-v5-31b`. Static audit confirms identical tasks, 31B model, tools, sampling, 28-call/eight-minute limits, Python 3.12, and NvidiaL4. Both v1 notebooks were saved without execution because GPU quota is exhausted.
-- [x] Run private TPU runtime smoke `accelra/gemma-4-tpu-runtime-smoke-v1`. Kaggle completed in about one minute; Python 3.12, Torch XLA 2.8.0, eight TPU devices, and a tensor sum all worked. This validates TPU allocation only: it did not load Gemma 4 or run the competition evaluator. The competition wheelhouse provides vLLM 0.19.1 for the x86_64 GPU stack, so do not treat the TPU smoke as a comparable model evaluation.
+- [x] Run private TPU runtime smoke `accelra/gemma-4-tpu-runtime-smoke-v1`. Kaggle completed in about one minute; Python 3.12, Torch XLA 2.8.0, eight TPU devices, and a tensor sum all worked. Its output is under `evals/results/tpu-runtime-smoke-completed-v1/`; it did not load Gemma 4 or run the competition evaluator. A near-duplicate kernel, `accelra/gemma4-tpu-runtime-smoke-v1`, was still `QUEUED` at 14:31 UTC; its notebook and metadata are isolated under `evals/results/tpu-runtime-smoke-queued-v1/`. The competition wheelhouse provides vLLM 0.19.1 for the x86_64 GPU stack, so neither TPU smoke is a comparable model evaluation.
 - [ ] Run the reference-budget-v2 and Budget-Fit V5 pair on `dev-valid-unseen` after the fixed-set prompt comparisons to test whether V5 generalizes beyond the selected 20 tasks.
 - [ ] Run the Hanh v6 prompt-only candidate on the same 20-task set, keeping model, sampling, tool budget, and time budget fixed.
 - [ ] Then run the graph-enabled reference-budget-v2 candidate on the same 20 tasks as a separate prompt ablation; inspect array-valued `get_code_subgraph` calls and confirm the run does not stall after `fastapi_14616`.
 - [ ] Run the normalized Patchsmith exp021 bundle on the same 20 tasks as a package-level comparison; record its different tool set and do not attribute the source archive's 0.22 public score to this local run.
 - [ ] After Hanh v6 and graph results, run the prepared task-pinning and 40-call candidates separately; the public 0.22 notebook's score remains unverified locally.
-- [ ] Check the 8-minute per-task cap against the competition-wide 12-hour runtime using public submission `58527796` before changing the budget; the submission remained `PENDING` at 13:52 UTC, about 15h11m after submission.
+- [ ] Check the 8-minute per-task cap against the competition-wide 12-hour runtime using public submission `58527796` before changing the budget; the submission remained `PENDING` at 14:31 UTC, about 15h50m after submission.
 - Preliminary local timing only: the nine-task reference run took 47.51 minutes total (mean 5.28, median 5.01, p90 7.53, max 8.12 minutes); three tasks took at least seven minutes. Linear scaling to 129 tasks would be 11.35 hours before setup, but the hidden task count and runtime distribution are unknown and this nine-task sample is not representative evidence. Keep the cap unchanged until submission `58527796` completes and its actual runtime is available.
 - [x] Re-run the fixed smoke set with the `write_file` argument reminder and captured verifier diagnostics; the v5 results are recorded in `/log/experiment-log.csv`.
 - [x] Separate candidate failures from baseline verifier issues on Requests and HTTPX: a no-patch evaluation reproduced both failures.
@@ -83,7 +83,7 @@ Historical public config draws show that eight runs of one identical bundle scor
 - [x] Pin new Kaggle evaluation kernels to the competition-compatible Python 3.12 image; the unpinned reference attempt failed under Python 3.13, and the pinned reference comparison completed at 0/4.
 - [ ] Test a read-only analyzer only if the graph-enabled run beats the current candidate.
 - [ ] Try LoRA only after the no-adapter prompt baseline is repeatable and scorer compatibility is verified.
-- [x] Run the first full Kaggle public submission after the fixed-set score improved to 3/9: ref `58527796`; CLI rechecks through 13:52 UTC still show `PENDING` with no score. At the latest check it had been pending about 15h11m; although a participant reported one run timing out at 14 hours, this submission is still pending rather than failed.
+- [x] Run the first full Kaggle public submission after the fixed-set score improved to 3/9: ref `58527796`; CLI rechecks through 14:31 UTC still show `PENDING` with no score. At the latest check it had been pending about 15h50m; although a participant reported one run timing out at 14 hours, this submission is still pending rather than failed.
 
 ### M3 — Compete for the small-model prize
 

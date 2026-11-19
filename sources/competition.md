@@ -47,6 +47,8 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 - A fresh read-only Kaggle CLI query on 2026-11-19 13:05 UTC still showed 14 entries tied at **0.24**; the next score shown was 0.22.
 - A fresh read-only Kaggle CLI query on 2026-11-19 13:28 UTC still showed 14 entries tied at **0.24**; the next score shown was 0.22.
 - A fresh read-only Kaggle CLI query on 2026-11-19 13:52 UTC still showed 14 entries tied at **0.24**; the next score shown was 0.22.
+- A fresh read-only Kaggle CLI query on 2026-11-19 14:15 UTC still showed 14 entries tied at **0.24**; the next score shown was 0.22.
+- A fresh read-only Kaggle CLI query on 2026-11-19 14:31 UTC still showed 14 entries tied at **0.24**; the next score shown was 0.22.
 - Small-model public leaderboard: top score **0.12** in the official tracker output, last updated 2026-11-16 23:55 UTC; refreshed from the Kaggle notebook on 2026-11-18.
 - These are public-split snapshots, not final standings. The final placement is based on the private leaderboard.
 
