@@ -1,6 +1,6 @@
 # Competition facts and sources
 
-Competition pages checked on 2026-11-19; leaderboard and submission status refreshed on 2026-11-19 15:25 UTC with the official Kaggle CLI.
+Competition pages checked on 2026-11-19; leaderboard and submission status refreshed on 2026-11-19 16:06 UTC with the official Kaggle CLI.
 
 ## Official references
 
@@ -51,6 +51,7 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 - A fresh read-only Kaggle CLI query on 2026-11-19 14:31 UTC still showed 14 entries tied at **0.24**; the next score shown was 0.22.
 - A fresh read-only Kaggle CLI query on 2026-11-19 15:00 UTC still showed 14 entries tied at **0.24**; the next score shown was 0.22.
 - A fresh read-only Kaggle CLI query on 2026-11-19 15:25 UTC still showed 14 entries tied at **0.24**; the next score shown was 0.22.
+- A fresh read-only Kaggle CLI query on 2026-11-19 16:06 UTC still showed 14 entries tied at **0.24**; the next score shown was 0.22. Submission `58527796` remained `PENDING` about 17h25m after entry; GPU quota was 0.00h and refresh was scheduled for 2026-11-21 00:00 UTC.
 - Small-model public leaderboard: top score **0.12** in the official tracker output, last updated 2026-11-16 23:55 UTC; refreshed from the Kaggle notebook on 2026-11-18.
 - These are public-split snapshots, not final standings. The final placement is based on the private leaderboard.
 
@@ -67,6 +68,8 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 - The Hitarth notebook reports single-run 129-task ablations on faster hardware: reference temperature 0.2 / thinking 4096 scored 48/129, thinking 2048 scored 50/129, thinking 6144 scored 48/129, summaries disabled scored 35/129, and thinking disabled scored 23/129. The summaries-disabled row used a temperature-1.0 base (51/129), so it does not isolate summaries. Treat the two-task 2048 difference as noise and leave sampling unchanged until local comparisons.
 - The public [Hanh Tran v6 baseline](https://www.kaggle.com/code/honghanhhh/gemma-4-baseline) keeps the 31B model, sampling, 28-call/eight-minute budget, and changes prompt safeguards around scratch/config files, parallel implementations, and untracked-file review. Parsing the archived notebook's embedded `FILES` confirms its `agent.yaml`, sampling, budget, and prompt exactly match the local Hanh v6 source; its agent does register the graph tools. This conflicts with the Hitarth notebook's description of Hanh's bundle as having graph tools unregistered, so use the archived bundle config as the source of truth. Nine-task and 14-task prompt-only candidates are prepared under `evals/results/`; neither has been run.
 - The [LB 0.22 | 4 config files, no training](https://www.kaggle.com/code/ccuuuuy/lb-0-22-4-config-files-no-training) notebook embeds the 31B Budget-Fit V5 four-file bundle (digest prefix `c9829b6ac709`). The historical public-config-draws dataset contains ten runs of that same file hash scoring 8–11/58 (0.13–0.18), so the notebook title's 0.22 is one noisy report, not a stable estimate. A local prompt-only comparison against `reference-budget-v2` scored 6/20 on `dev-valid-expanded`; this is not a leaderboard score and remains subject to fixed-set run variance.
+- The independent [Contain, Conform, Compare paper](https://arxiv.org/abs/2611.16485) reports no detected pairwise difference among six 31B configurations on 70 development tasks, no confirmed gains from three prompt changes on held-out tasks, and a 1.17-point baseline shift across repeat runs on 128 tasks. These are the authors' results, not our runs; they reinforce paired, repeated and unseen-set comparisons rather than selecting a prompt from one small score.
+- Our two Budget-Fit V5 runs show concrete 28-call cap exhaustion: 4/20 tasks in the first run and 6/20 in the repeat, with eight distinct task IDs affected. A V5-only 40-call candidate is prepared for the same 20-task set, retaining the eight-minute cap; the increased call limit is still untested and must be assessed against total submission runtime.
 
 ## Harness findings that affect experiments
 
