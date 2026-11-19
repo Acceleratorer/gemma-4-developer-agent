@@ -1,6 +1,6 @@
 # Competition facts and sources
 
-Competition pages checked on 2026-11-19; leaderboard refreshed on 2026-11-19 01:34 UTC with the official Kaggle CLI.
+Competition pages checked on 2026-11-19; leaderboard refreshed on 2026-11-19 02:09 UTC with the official Kaggle CLI.
 
 ## Official references
 
