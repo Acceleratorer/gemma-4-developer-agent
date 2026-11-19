@@ -6,7 +6,7 @@ Reach rank 1 on the final Kaggle private leaderboard. Local fixed-set results ar
 
 The 2026-11-18 public snapshot has a top score of 0.24 shared by 14 teams. Kaggle submission ref `58527796` for the 31B reference-budget-v2 candidate is pending; it has no verified score yet. Since Kaggle breaks score ties by earliest submission, target above 0.24 on the public split while treating the private leaderboard as the final result.
 
-A fresh Kaggle CLI read on 2026-11-19 still showed 14 teams at 0.24. Historical public config draws show that eight runs of one identical bundle scored between 7/58 and 13/58, so a single public score is noisy; use paired local comparisons before spending another daily submission.
+A fresh Kaggle CLI read on 2026-11-19 00:46 UTC still showed 14 teams at 0.24. Historical public config draws show that eight runs of one identical bundle scored between 7/58 and 13/58, so a single public score is noisy; use paired local comparisons before spending another daily submission.
 
 ## Deadlines
 
@@ -39,11 +39,11 @@ A fresh Kaggle CLI read on 2026-11-19 still showed 14 teams at 0.24. Historical 
 - [ ] Tune prompt flow and call/time budget first; keep model and sampling fixed.
 - [x] Evaluate the imported `reference-budget-v2` prompt on 31B with the same `dev-valid-9` set and its 28-call budget; it scored 3/9, passing FastAPI tasks `15589` and `14492` plus Rich task `3278`, versus v9 at 2/9.
 - [x] Review the saved `reference-budget-v2` traces before the next ablation. FastAPI `11194` left only `reproduce_bug.py` and failed two file/form-order checks; its trace shows time spent on a reproduction script without a source patch. FastAPI `15588` had six remaining failures across CR and CRLF values for SSE `event`/`id`. Rich `3472` changed only the `Column` docstring and still failed `test_dataclass_no_attribute`. FastAPI `15661` and Rich `3935` ended without a patch under the existing budget; Rich `3061` patched `rich/text.py` but failed tab-span and Unicode cases. Treat these as failure-mode evidence, not proof that a prompt change will fix them.
-- [x] Validate the original nine-task Hanh v6 and graph-enabled artifacts: both use the same task IDs, 31B model, 28-call/eight-minute limits, and identical non-prompt files; only `prompts/system.md` differs. The Hanh source prompt matches its embedded notebook payload, and the wheelhouse dataset slug is `metric/gemma-4-developer-agent-wheelhouse`.
+- [x] Validate the original nine-task Hanh v6 and graph-enabled artifacts: both use the same task IDs, 31B model, 28-call/eight-minute limits, and identical non-prompt files; only `prompts/system.md` differs. The archived Hanh notebook's four embedded agent files exactly match `evals/results/dev-valid-honghanhhh-v6-31b/source/honghanhhh-v6`, including registered graph tools, despite a conflicting secondary description. The wheelhouse dataset slug is `metric/gemma-4-developer-agent-wheelhouse`.
 - [x] Run a CPU-only no-patch verifier screen on the 11 Requests tasks outside `dev`. Five tasks had issue-level test failures without fixture or collection errors (`requests_6757`, `requests_7205`, `requests_7309`, `requests_7315`, `requests_7427`); five hit recursive `httpbin` fixture errors; `requests_6644` passed without a patch. The diagnostic scored 1/11, which is not an agent score.
 - [x] Add `evals/dev-valid-crossrepo-task-ids.json` and register `dev-valid-crossrepo` in the notebook builder. It preserves the fixed nine tasks and adds the five Requests tasks that fail on the expected issue assertions.
 - [x] Prepare unique, unrun 14-task notebook artifacts for the reference-budget-v2 baseline, Hanh v6, and graph-enabled prompt. A static audit confirms the same task IDs, model, budgets, and runtime files; the two ablations differ from the baseline only in `prompts/system.md`.
-- [x] Prepare two more 14-task single-factor notebooks: task-statement pinning appends `{problem_description}` and optional `{hints?}` to the system prompt while keeping 28 calls; the 40-call ablation changes only `max_tool_calls` from 28 to 40. Both keep the model, sampling, task set, and eight-minute cap fixed.
+- [x] Prepare two more 14-task single-factor notebooks: task-statement pinning appends `{problem_description}` and optional `{hints?}` to the system prompt while keeping 28 calls; none of the 14 tasks has hints, so this isolates the duplicated issue statement. The 40-call ablation changes only `max_tool_calls` from 28 to 40. Both keep the model, sampling, task set, and eight-minute cap fixed.
 - [ ] After submission `58527796` completes, establish a comparable reference-budget-v2 baseline on `dev-valid-crossrepo` (14 tasks); the earlier 3/9 score remains historical and is not directly comparable.
 - [ ] Run the Hanh v6 prompt-only candidate on the same `dev-valid-crossrepo` set, keeping model, sampling, tool budget, and time budget fixed.
 - [ ] Then run the graph-enabled reference-budget-v2 candidate on the same 14 tasks as a separate prompt ablation.
@@ -55,7 +55,7 @@ A fresh Kaggle CLI read on 2026-11-19 still showed 14 teams at 0.24. Historical 
 - [x] Pin new Kaggle evaluation kernels to the competition-compatible Python 3.12 image; the unpinned reference attempt failed under Python 3.13, and the pinned reference comparison completed at 0/4.
 - [ ] Test a read-only analyzer only if the graph-enabled run beats the current candidate.
 - [ ] Try LoRA only after the no-adapter prompt baseline is repeatable and scorer compatibility is verified.
-- [x] Run the first full Kaggle public submission after the fixed-set score improved to 3/9: ref `58527796`; Kaggle CLI recheck at 2026-11-19 00:29 UTC still showed `PENDING` with no score.
+- [x] Run the first full Kaggle public submission after the fixed-set score improved to 3/9: ref `58527796`; Kaggle CLI recheck at 2026-11-19 00:46 UTC still showed `PENDING` with no score.
 
 ### M3 — Compete for the small-model prize
 

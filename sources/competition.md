@@ -30,7 +30,7 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 ## Dated leaderboard snapshot
 
 - Main public leaderboard: top score **0.24**, tied by 14 teams in the snapshot timestamped 2026-11-18 18:04 UTC; downloaded on 2026-11-19 with `kaggle competitions leaderboard --download`.
-- A fresh read-only Kaggle CLI query on 2026-11-19 still showed 14 entries tied at **0.24**.
+- A fresh read-only Kaggle CLI query on 2026-11-19 00:46 UTC still showed 14 entries tied at **0.24**.
 - Small-model public leaderboard: top score **0.12** in the official tracker output, last updated 2026-11-16 23:55 UTC; refreshed from the Kaggle notebook on 2026-11-18.
 - These are public-split snapshots, not final standings. The final placement is based on the private leaderboard.
 
@@ -39,7 +39,8 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 - The [Public Config Draws dataset](https://www.kaggle.com/datasets/dariushafshar/gemma-4-agent-public-config-draws) is a historical, selected sample read on 2026-10-22. It records eight scored runs of one identical, hash-matched bundle ranging from 7/58 to 13/58 resolved tasks. Treat one Kaggle score as a noisy draw, not a stable estimate. The downloaded files are ignored under `data/local/research/public-config-draws/`.
 - The [40-call, no-training notebook](https://www.kaggle.com/code/bliverrigpdoge/lb-0-22-3-tweaks-40-tool-calls-no-training) uses a 40-call/eight-minute budget, appends the task statement and hints to the system prompt, and submits promptly near budget exhaustion. Its title reports 0.22, but this candidate has not been reproduced locally.
 - The community analysis [What Took LB 0.12 → 0.24](https://www.kaggle.com/code/hitarthjain0/gemma-4-agent-what-took-lb-0-12-0-24) attributes stronger public bundles to a single-agent, early-edit, contract-first workflow and summarizes local budget/agent ablations. It says its public-bundle scores were not independently reproduced; treat the reported recipe as a hypothesis.
-- The public [Hanh Tran v6 baseline](https://www.kaggle.com/code/honghanhhh/gemma-4-baseline) keeps the 31B model, sampling, 28-call/eight-minute budget, and changes prompt safeguards around scratch/config files, parallel implementations, and untracked-file review. A prompt-only fixed-set candidate is prepared under `evals/results/dev-valid-honghanhhh-v6-31b/`; it has not been run.
+- The Hitarth notebook reports single-run 129-task ablations on faster hardware: reference temperature 0.2 / thinking 4096 scored 48/129, thinking 2048 scored 50/129, thinking 6144 scored 48/129, summaries disabled scored 35/129, and thinking disabled scored 23/129. The summaries-disabled row used a temperature-1.0 base (51/129), so it does not isolate summaries. Treat the two-task 2048 difference as noise and leave sampling unchanged until local comparisons.
+- The public [Hanh Tran v6 baseline](https://www.kaggle.com/code/honghanhhh/gemma-4-baseline) keeps the 31B model, sampling, 28-call/eight-minute budget, and changes prompt safeguards around scratch/config files, parallel implementations, and untracked-file review. Parsing the archived notebook's embedded `FILES` confirms its `agent.yaml`, sampling, budget, and prompt exactly match the local Hanh v6 source; its agent does register the graph tools. This conflicts with the Hitarth notebook's description of Hanh's bundle as having graph tools unregistered, so use the archived bundle config as the source of truth. Nine-task and 14-task prompt-only candidates are prepared under `evals/results/`; neither has been run.
 
 ## Harness findings that affect experiments
 
