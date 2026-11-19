@@ -4,9 +4,9 @@
 
 Reach rank 1 on the final Kaggle private leaderboard. Local fixed-set results are available, and public submission ref `58527796` is pending; no public score is verified yet. Continue optimizing until the final deadline and claim success only after the private leaderboard confirms it.
 
-The 2026-11-18 public snapshot has a top score of 0.24 shared by 14 teams. Kaggle submission ref `58527796` for the 31B reference-budget-v2 candidate is pending; it has no verified score yet. Since Kaggle breaks score ties by earliest submission, target above 0.24 on the public split while treating the private leaderboard as the final result.
+The latest public leaderboard check on 2026-11-19 01:34 UTC still has 14 teams tied at 0.24. Kaggle submission ref `58527796` for the 31B reference-budget-v2 candidate is pending; it has no verified score yet. Since Kaggle breaks score ties by earliest submission, target above 0.24 on the public split while treating the private leaderboard as the final result.
 
-A fresh Kaggle CLI read on 2026-11-19 01:05 UTC still showed 14 teams at 0.24. Historical public config draws show that eight runs of one identical bundle scored between 7/58 and 13/58, so a single public score is noisy; use paired local comparisons before spending another daily submission.
+Historical public config draws show that eight runs of one identical bundle scored between 7/58 and 13/58, so a single public score is noisy; use paired local comparisons before spending another daily submission.
 
 ## Deadlines
 
@@ -46,6 +46,7 @@ A fresh Kaggle CLI read on 2026-11-19 01:05 UTC still showed 14 teams at 0.24. H
 - [x] Prepare two more 14-task single-factor notebooks: task-statement pinning appends `{problem_description}` and optional `{hints?}` to the system prompt while keeping 28 calls; none of the 14 tasks has hints, so this isolates the duplicated issue statement. The 40-call ablation changes only `max_tool_calls` from 28 to 40. Both keep the model, sampling, task set, and eight-minute cap fixed.
 - [x] Prepare a 14-task short-contract prompt candidate from Hitarth's public ablation notebook. The source calls its prompt an unscored starting point; local traces show repeated exploration and late or absent edits, making its concise contract-first procedure worth testing. The candidate preserves the reference prompt's graph-tool prohibition, and static audit confirms only `prompts/system.md` differs from the baseline.
 - [x] Pin 104 previously unseen FastAPI/Rich task IDs (61 FastAPI, 43 Rich) and launch CPU-only no-patch kernel `accelra/gemma-4-fastapi-and-rich-verifier-screen-v1` while submission `58527796` is pending. This adds broader development-set evidence without opening another GPU kernel.
+- [x] Recheck that exact CPU kernel handle at 2026-11-19 01:34 UTC; Kaggle still reports `RUNNING`, so keep polling it and do not restart it.
 - [ ] Retrieve and classify the 104-task screen; create a new expanded comparison set only from tasks whose no-patch verifier reaches issue assertions.
 - [ ] After submission `58527796` completes, establish a comparable reference-budget-v2 baseline on `dev-valid-crossrepo` (14 tasks); the earlier 3/9 score remains historical and is not directly comparable.
 - [ ] Run the short-contract prompt candidate on the same 14 tasks next; keep model, sampling, registered tools, and budgets fixed against the reference baseline.
@@ -59,7 +60,7 @@ A fresh Kaggle CLI read on 2026-11-19 01:05 UTC still showed 14 teams at 0.24. H
 - [x] Pin new Kaggle evaluation kernels to the competition-compatible Python 3.12 image; the unpinned reference attempt failed under Python 3.13, and the pinned reference comparison completed at 0/4.
 - [ ] Test a read-only analyzer only if the graph-enabled run beats the current candidate.
 - [ ] Try LoRA only after the no-adapter prompt baseline is repeatable and scorer compatibility is verified.
-- [x] Run the first full Kaggle public submission after the fixed-set score improved to 3/9: ref `58527796`; Kaggle CLI recheck at 2026-11-19 01:05 UTC still showed `PENDING` with no score. This 2h24m wait is within participant-reported scoring durations; it is not evidence of a failed run.
+- [x] Run the first full Kaggle public submission after the fixed-set score improved to 3/9: ref `58527796`; CLI rechecks at 01:05 and 01:34 UTC still showed `PENDING` with no score. The 2h53m wait is within participant-reported scoring durations; it is not evidence of a failed run.
 
 ### M3 — Compete for the small-model prize
 
