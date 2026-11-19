@@ -4,7 +4,7 @@
 
 Reach rank 1 on the final Kaggle private leaderboard. Local fixed-set results are available, and public submission ref `58527796` is pending; no public score is verified yet. Continue optimizing until the final deadline and claim success only after the private leaderboard confirms it.
 
-The latest public leaderboard check on 2026-11-19 03:22 UTC still has 14 teams tied at 0.24. Kaggle submission ref `58527796` for the 31B reference-budget-v2 candidate is pending; a 03:22 UTC CLI poll still showed no score. Since Kaggle breaks score ties by earliest submission, target above 0.24 on the public split while treating the private leaderboard as the final result.
+The latest public leaderboard check on 2026-11-19 04:22 UTC still has 14 teams tied at 0.24, with the next score at 0.22. Kaggle submission ref `58527796` for the 31B reference-budget-v2 candidate is pending; a 04:22 UTC CLI poll still showed no score, about 5h40m after submission. Since Kaggle breaks score ties by earliest submission, target above 0.24 on the public split while treating the private leaderboard as the final result.
 
 Historical public config draws show that eight runs of one identical bundle scored between 7/58 and 13/58, so a single public score is noisy; use paired local comparisons before spending another daily submission.
 
@@ -54,8 +54,11 @@ Historical public config draws show that eight runs of one identical bundle scor
 - [x] Retrieve the Repair Lab's exact exp021 `score_022_submission.zip` via Kaggle CLI and prepare a 20-task source-bundle comparison. The local notebook keeps model, sampling, task set, call and time budgets fixed, and normalizes only `timeout_seconds` from 60 to 240; it retains Patchsmith's no-graph tool set and is not a prompt-only ablation. The archived source's reported 0.22 does not apply to this normalized, unrun candidate.
 - [x] Inspect the `fastapi_11194` baseline trace: the agent applied a plausible source fix, then spent calls creating and running a scratch repro, reverted the source to check the no-patch case, and exhausted its call budget before restoring the fix. Prepare a prompt-only patch-preservation candidate that forbids no-patch controls/reverts and keeps checks in the task Python environment; its 20-task notebook matches the baseline in task IDs, model, tools, sampling, and budgets, with only `prompts/system.md` changed.
 - [x] Pull the public icfoer notebook source and prepare its 3,728-character phase-based system prompt as `phase-budget-v1`, with no adapter. The author's 8/11 no-adapter result is from a different 11-task local held-out set, not a Kaggle score; the 20-task local notebook matches the baseline outside `prompts/system.md`.
-- [ ] After submission `58527796` completes, establish the reference-budget-v2 baseline on `dev-valid-expanded` (20 tasks); the 3/9 nine-task result and future 14-task results remain separate historical comparisons.
-- [ ] Run `phase-budget-v1` on the same 20 tasks after the reference baseline; keep model, sampling, registered tools, and budgets fixed.
+- [x] Pull the public [Budget-Fit V5 four-config notebook](https://www.kaggle.com/code/ccuuuuy/lb-0-22-4-config-files-no-training), extract its exact system prompt, and prepare `budget-fit-v5-prompt`. The source bundle's other files match `reference-budget-v2`; the generated 20-task notebook's static audit confirms it changes only `prompts/system.md`. Its title reports 0.22, while ten historical draws of the same file hash scored 8–11/58; treat the title as a noisy result.
+- [x] Start the reference-budget-v2 baseline on `dev-valid-expanded` (20 tasks) as private Kaggle kernel `accelra/gemma-4-expanded-reference-baseline-v1`. It keeps the submitted model and budgets unchanged and does not alter the public submission; Kaggle status was `RUNNING` at 04:22 UTC while `58527796` remained pending.
+- [ ] Retrieve the baseline kernel output, record the per-task results and runtime in `/log/experiment-log.csv`, and inspect any graph/parser or timeout failures before starting the next GPU evaluation.
+- [ ] Run `budget-fit-v5-prompt` on the same 20 tasks immediately after the baseline; keep model, sampling, registered tools, and budgets fixed.
+- [ ] Then run `phase-budget-v1` on the same 20 tasks after the baseline and Budget-Fit V5 prompt; keep model, sampling, registered tools, and budgets fixed.
 - [ ] Then run `patch-preserve-v1` on the same 20 tasks; keep model, sampling, registered tools, and budgets fixed.
 - [ ] Then run the short-contract prompt candidate on the same 20 tasks; keep model, sampling, registered tools, and budgets fixed against the reference baseline.
 - [ ] Run the Hanh v6 prompt-only candidate on the same 20-task set, keeping model, sampling, tool budget, and time budget fixed.
@@ -70,7 +73,7 @@ Historical public config draws show that eight runs of one identical bundle scor
 - [x] Pin new Kaggle evaluation kernels to the competition-compatible Python 3.12 image; the unpinned reference attempt failed under Python 3.13, and the pinned reference comparison completed at 0/4.
 - [ ] Test a read-only analyzer only if the graph-enabled run beats the current candidate.
 - [ ] Try LoRA only after the no-adapter prompt baseline is repeatable and scorer compatibility is verified.
-- [x] Run the first full Kaggle public submission after the fixed-set score improved to 3/9: ref `58527796`; CLI rechecks through 03:22 UTC still show `PENDING` with no score. At the latest check it had been pending about 4h42m; participant reports include multi-hour scoring, so this is not evidence of a failed run.
+- [x] Run the first full Kaggle public submission after the fixed-set score improved to 3/9: ref `58527796`; CLI rechecks through 04:22 UTC still show `PENDING` with no score. At the latest check it had been pending about 5h40m; participant reports include multi-hour scoring, so this is not evidence of a failed run.
 
 ### M3 — Compete for the small-model prize
 

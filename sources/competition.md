@@ -1,6 +1,6 @@
 # Competition facts and sources
 
-Competition pages checked on 2026-11-19; leaderboard refreshed on 2026-11-19 03:22 UTC with the official Kaggle CLI.
+Competition pages checked on 2026-11-19; leaderboard refreshed on 2026-11-19 04:22 UTC with the official Kaggle CLI.
 
 ## Official references
 
@@ -34,6 +34,9 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 - A fresh read-only Kaggle CLI query on 2026-11-19 02:20 UTC still showed 14 entries tied at **0.24**.
 - A fresh read-only Kaggle CLI query on 2026-11-19 02:58 UTC still showed 14 entries tied at **0.24**.
 - A fresh read-only Kaggle CLI query on 2026-11-19 03:22 UTC still showed 14 entries tied at **0.24**.
+- A fresh read-only Kaggle CLI query on 2026-11-19 03:36 UTC still showed 14 entries tied at **0.24**; the next score shown was 0.22.
+- A fresh read-only Kaggle CLI query on 2026-11-19 04:00 UTC still showed 14 entries tied at **0.24**; the next score shown was 0.22.
+- A fresh read-only Kaggle CLI query on 2026-11-19 04:22 UTC still showed 14 entries tied at **0.24**; the next score shown was 0.22.
 - Small-model public leaderboard: top score **0.12** in the official tracker output, last updated 2026-11-16 23:55 UTC; refreshed from the Kaggle notebook on 2026-11-18.
 - These are public-split snapshots, not final standings. The final placement is based on the private leaderboard.
 
@@ -46,6 +49,7 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 - The participant post [Fine-tuning Gemma 4 31B on 1,500 agent trajectories](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/750713) reports 8/11 for a no-adapter base agent on its held-out local task set, 7/11 for one alpha-16 LoRA run, and a zero public score for an alpha-32 adapter that repeated commands. The no-adapter figure is local evidence, not a leaderboard score. Its 3,728-character phase-based prompt is prepared as a no-adapter, prompt-only 20-task candidate under `module/agents/phase-budget-v1/`.
 - The Hitarth notebook reports single-run 129-task ablations on faster hardware: reference temperature 0.2 / thinking 4096 scored 48/129, thinking 2048 scored 50/129, thinking 6144 scored 48/129, summaries disabled scored 35/129, and thinking disabled scored 23/129. The summaries-disabled row used a temperature-1.0 base (51/129), so it does not isolate summaries. Treat the two-task 2048 difference as noise and leave sampling unchanged until local comparisons.
 - The public [Hanh Tran v6 baseline](https://www.kaggle.com/code/honghanhhh/gemma-4-baseline) keeps the 31B model, sampling, 28-call/eight-minute budget, and changes prompt safeguards around scratch/config files, parallel implementations, and untracked-file review. Parsing the archived notebook's embedded `FILES` confirms its `agent.yaml`, sampling, budget, and prompt exactly match the local Hanh v6 source; its agent does register the graph tools. This conflicts with the Hitarth notebook's description of Hanh's bundle as having graph tools unregistered, so use the archived bundle config as the source of truth. Nine-task and 14-task prompt-only candidates are prepared under `evals/results/`; neither has been run.
+- The [LB 0.22 | 4 config files, no training](https://www.kaggle.com/code/ccuuuuy/lb-0-22-4-config-files-no-training) notebook embeds the 31B Budget-Fit V5 four-file bundle (digest prefix `c9829b6ac709`). The historical public-config-draws dataset contains ten runs of that same file hash scoring 8–11/58 (0.13–0.18), so the notebook title's 0.22 is one noisy report, not a stable estimate. A prompt-only comparison has been prepared against `reference-budget-v2` on `dev-valid-expanded`.
 
 ## Harness findings that affect experiments
 
