@@ -39,8 +39,11 @@ The checked-in getting-started notebook's saved smoke run used Gemma 4 12B, the 
 
 The 14-task `dev` set has a no-patch verifier baseline of 0/14. Five tasks have known environment failures and should be excluded when comparing candidate patch quality: `fastapi_14455` lacks `inline_snapshot`, `requests_7505` and `requests_6592` have a recursive `httpbin` fixture, `httpx_3672` cannot collect because `httpx.Stream` is missing, and `rich_4070` cannot open `/dev/tty`. The fixed `dev-valid` set contains the other nine tasks. It is a cleaner local comparison set, not a leaderboard estimate.
 
+A CPU-only `--skip-agent-patch` screen of the 11 other Requests tasks found five more candidates whose verifier reached the issue assertions: `requests_6757`, `requests_7205`, `requests_7309`, `requests_7315`, and `requests_7427`. Five others (`requests_6589`, `requests_6629`, `requests_7328`, `requests_7433`, and `requests_7502`) hit the recursive `httpbin` fixture errors; `requests_6644` passed without a patch and is not discriminative. `dev-valid-crossrepo` adds the five assertion-failing Requests tasks to the existing nine-task set. It covers FastAPI, Rich, and Requests; the only HTTPX training task remains excluded because its verifier cannot collect. Keep `dev-valid` unchanged for historical comparisons.
+
 ## Current comparisons
 
 - `module/agents/reference-budget-v2/`: notebook says its upstream configuration scored 0.18; the notebook's modified candidate is explicitly unscored.
 - `module/agents/reference-40-calls/`: notebook title says 0.22, but the checked-in notebook has no score output or submission ID. Keep that score unverified until Kaggle history confirms it.
 - `module/agents/current/`: clean, no-LoRA candidate. Compare it against these references on a fixed task set before allocating a public submission.
+- `dev-valid-crossrepo` is the expanded 14-task training set for upcoming prompt and budget comparisons. The `dev-valid-9` results remain historical and are not directly comparable to scores from this set.
