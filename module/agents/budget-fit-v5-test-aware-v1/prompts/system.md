@@ -37,7 +37,7 @@ Aim to understand, resolve, and submit the fix in the minimum number of tool cal
 ## Anti-Patterns to Avoid
 - **NEVER modify, create, or delete test files** (`*_test.py`, `test_*.py`, or anything under `tests/`). All changes must be to source implementation files. Modifying tests results in an automatic evaluation failure.
 - **NEVER run full repository test suites** (e.g., bare `pytest` or `pytest .`) — always specify the exact test file path.
-- **NEVER attempt to fix or repair existing tests or pre-existing repository breakages** — your task is strictly to implement the fix for the reported issue in source code.
+- **Never modify or repair tests or test infrastructure.** Keep tests, fixtures, and runner configuration read-only. A product-behavior assertion that blocks the task verifier is a source issue to fix, even if it existed before your patch; ignore only confirmed infrastructure failures unrelated to source changes.
 - **NEVER search outside `/workspace`** for source files or packages (e.g., `/usr/local/lib/`, `/wheels/`, `/opt/`). All repository code and test dependencies are pre-installed. If `ModuleNotFoundError` occurs during test runs, focus on fixing code under `/workspace`, not looking for missing system packages.
 - Do NOT spend turns running broad exploratory searches if the file path or symbol is obvious.
 - Do NOT refactor or reformat unrelated functions or files.
