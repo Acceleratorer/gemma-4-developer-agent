@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 TASK_SETS = {
     "dev-valid-expanded": ROOT / "evals" / "dev-valid-expanded-task-ids.json",
     "dev-valid-unseen": ROOT / "evals" / "dev-valid-unseen-task-ids.json",
+    "httpx-verifier-candidate": ROOT / "evals" / "httpx-verifier-candidate-task-ids.json",
     "fastapi-rich-issue-only-candidates": ROOT / "evals" / "fastapi-rich-issue-only-candidate-task-ids.json",
 }
 DOCKER_IMAGE = (

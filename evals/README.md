@@ -50,6 +50,8 @@ The gold-patch positive control on `dev-valid-expanded` passed 15/20; all eight 
 
 The 104-task FastAPI/Rich no-patch screen found 55 issue-only failures (24 FastAPI, 31 Rich). A CPU-only official-verifier gold-patch control passed 53/55: all 24 FastAPI tasks and 29/31 Rich tasks. `rich_3486` missed its required test node, and `rich_3782` failed two unrelated IPython-vs-Python lexer assertions. The full result is under `evals/results/gold-patch-fastapi-rich-issue-only-v1/output/`; this is verifier evidence, not an agent score.
 
+The sole HTTPX task in the original development set, `httpx_3672`, also failed its gold-patch control (0/1): collection stops because the verifier's imported `httpx` module has no `Stream` attribute, matching the no-patch failure. Together with the Requests gold-control failures, this leaves no reliable local agent-comparison tasks for those repositories.
+
 `evals/dev-valid-training-gold-verified-task-ids.json` combines the 15 verified FastAPI/Rich tasks from `dev-valid-expanded` with 29 additional verified candidates, excluding the disjoint 18-task unseen set. It contains 44 tasks (19 FastAPI, 25 Rich) for prompt and budget tuning. `dev-valid-unseen-gold-verified` remains the 18-task holdout for generalization checks. Neither set has a local agent score yet. `evals/build_kaggle_eval.py` registers both sets. Six private offline 44-task kernels are saved with `--no-run`: `accelra/train-gold-44-reference-v2-31b`, `accelra/train-gold-44-v5-31b`, `accelra/train-gold-44-v5-40-calls-31b`, `accelra/train-gold-44-v5-test-aware-31b`, `accelra/train-gold-44-v5-12b`, and `accelra/train-gold-44-short-contract-31b`.
 
 
