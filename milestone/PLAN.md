@@ -4,7 +4,7 @@
 
 Reach rank 1 on the final Kaggle private leaderboard. Local fixed-set results are available, and public submission ref `58527796` is pending; no public score is verified yet. Continue optimizing until the final deadline and claim success only after the private leaderboard confirms it.
 
-The latest public leaderboard check on 2026-11-19 18:36 UTC still has 14 teams tied at 0.24, with the next score at 0.22. Kaggle submission ref `58527796` for the 31B reference-budget-v2 candidate remained pending at 18:36 UTC, about 19h55m after submission. Since Kaggle breaks score ties by earliest submission, target above 0.24 on the public split while treating the private leaderboard as the final result.
+The latest public leaderboard check on 2026-11-19 18:51 UTC still has 14 teams tied at 0.24, with the next score at 0.22. Kaggle submission ref `58527796` for the 31B reference-budget-v2 candidate remained pending at 18:51 UTC, about 20h10m after submission. Since Kaggle breaks score ties by earliest submission, target above 0.24 on the public split while treating the private leaderboard as the final result.
 
 Historical public config draws show that eight runs of one identical bundle scored between 7/58 and 13/58, so a single public score is noisy; use paired local comparisons before spending another daily submission.
 
@@ -87,7 +87,7 @@ Historical public config draws show that eight runs of one identical bundle scor
 - [x] Audit the saved graph-v2 source against `reference-budget-v2`: the raw hashes differ because the baseline uses LF and the copy uses CRLF; after newline normalization, `agent.yaml`, `configs/sampling.yaml`, and `eval_config.yaml` match, with `prompts/system.md` as the only content change.
 - [ ] Then run the graph-enabled reference-budget-v2 candidate on `dev-valid-training-gold-verified` as a separate prompt ablation; inspect array-valued `get_code_subgraph` calls and confirm the run does not stall.
 - [ ] After Hanh v6 and graph results, run the prepared task-pinning and 40-call candidates separately; the public 0.22 notebook's score remains unverified locally.
-- [ ] Check the 8-minute per-task cap against the competition-wide 12-hour runtime using public submission `58527796` before changing the budget; the submission remained `PENDING` at 18:36 UTC, about 19h55m after submission.
+- [ ] Check the 8-minute per-task cap against the competition-wide 12-hour runtime using public submission `58527796` before changing the budget; the submission remained `PENDING` at 18:51 UTC, about 20h10m after submission.
 - Preliminary local timing only: the nine-task reference run took 47.51 minutes total (mean 5.28, median 5.01, p90 7.53, max 8.12 minutes); three tasks took at least seven minutes. Linear scaling to 129 tasks would be 11.35 hours before setup, but the hidden task count and runtime distribution are unknown and this nine-task sample is not representative evidence. Keep the cap unchanged until submission `58527796` completes and its actual runtime is available.
 - [x] Re-run the fixed smoke set with the `write_file` argument reminder and captured verifier diagnostics; the v5 results are recorded in `/log/experiment-log.csv`.
 - [x] Separate candidate failures from baseline verifier issues on Requests and HTTPX: a no-patch evaluation reproduced both failures.
@@ -95,7 +95,7 @@ Historical public config draws show that eight runs of one identical bundle scor
 - [x] Pin new Kaggle evaluation kernels to the competition-compatible Python 3.12 image; the unpinned reference attempt failed under Python 3.13, and the pinned reference comparison completed at 0/4.
 - [ ] Test a read-only analyzer only if the graph-enabled run beats the current candidate.
 - [ ] Try LoRA only after the no-adapter prompt baseline is repeatable and scorer compatibility is verified.
-- [x] Run the first full Kaggle public submission after the fixed-set score improved to 3/9: ref `58527796`; CLI rechecks through 18:36 UTC still show `PENDING` with no score. At the latest check it had been pending about 19h55m; although a participant reported one run timing out at 14 hours, this submission is still pending rather than failed.
+- [x] Run the first full Kaggle public submission after the fixed-set score improved to 3/9: ref `58527796`; CLI rechecks through 18:51 UTC still show `PENDING` with no score. At the latest check it had been pending about 20h10m; although a participant reported one run timing out at 14 hours, this submission is still pending rather than failed.
 
 ### M3 — Compete for the small-model prize
 
