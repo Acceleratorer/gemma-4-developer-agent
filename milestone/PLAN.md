@@ -43,18 +43,19 @@ A fresh Kaggle CLI read on 2026-11-19 still showed 14 teams at 0.24. Historical 
 - [x] Run a CPU-only no-patch verifier screen on the 11 Requests tasks outside `dev`. Five tasks had issue-level test failures without fixture or collection errors (`requests_6757`, `requests_7205`, `requests_7309`, `requests_7315`, `requests_7427`); five hit recursive `httpbin` fixture errors; `requests_6644` passed without a patch. The diagnostic scored 1/11, which is not an agent score.
 - [x] Add `evals/dev-valid-crossrepo-task-ids.json` and register `dev-valid-crossrepo` in the notebook builder. It preserves the fixed nine tasks and adds the five Requests tasks that fail on the expected issue assertions.
 - [x] Prepare unique, unrun 14-task notebook artifacts for the reference-budget-v2 baseline, Hanh v6, and graph-enabled prompt. A static audit confirms the same task IDs, model, budgets, and runtime files; the two ablations differ from the baseline only in `prompts/system.md`.
+- [x] Prepare two more 14-task single-factor notebooks: task-statement pinning appends `{problem_description}` and optional `{hints?}` to the system prompt while keeping 28 calls; the 40-call ablation changes only `max_tool_calls` from 28 to 40. Both keep the model, sampling, task set, and eight-minute cap fixed.
 - [ ] After submission `58527796` completes, establish a comparable reference-budget-v2 baseline on `dev-valid-crossrepo` (14 tasks); the earlier 3/9 score remains historical and is not directly comparable.
 - [ ] Run the Hanh v6 prompt-only candidate on the same `dev-valid-crossrepo` set, keeping model, sampling, tool budget, and time budget fixed.
 - [ ] Then run the graph-enabled reference-budget-v2 candidate on the same 14 tasks as a separate prompt ablation.
-- [ ] After both 14-task prompt ablations, test task-statement pinning and the 40-call policy from the public 0.22 notebook in separate runs; its score is unverified locally.
+- [ ] After Hanh v6 and graph results, run the prepared task-pinning and 40-call candidates separately; the public 0.22 notebook's score remains unverified locally.
 - [ ] Check the 8-minute per-task cap against the competition-wide 12-hour runtime using public submission `58527796` before changing the budget.
 - [x] Re-run the fixed smoke set with the `write_file` argument reminder and captured verifier diagnostics; the v5 results are recorded in `/log/experiment-log.csv`.
 - [x] Separate candidate failures from baseline verifier issues on Requests and HTTPX: a no-patch evaluation reproduced both failures.
-- [x] Record the 14-task no-patch baseline (0/14) and freeze a nine-task `dev-valid` set that excludes the five known verifier environment failures.
+- [x] Record the 14-task no-patch baseline (0/14) and freeze a nine-task `dev-valid` set that excludes five verifier failures: missing `inline_snapshot`, recursive Requests `httpbin` fixtures, the Rich `/dev/tty` error, and the HTTPX no-patch import mismatch. The HTTPX snapshot exports `Stream` from `src/httpx/__init__.py` even though the verifier's imported `httpx` module lacks it.
 - [x] Pin new Kaggle evaluation kernels to the competition-compatible Python 3.12 image; the unpinned reference attempt failed under Python 3.13, and the pinned reference comparison completed at 0/4.
 - [ ] Test a read-only analyzer only if the graph-enabled run beats the current candidate.
 - [ ] Try LoRA only after the no-adapter prompt baseline is repeatable and scorer compatibility is verified.
-- [x] Run the first full Kaggle public submission after the fixed-set score improved to 3/9: ref `58527796`; Kaggle CLI recheck at 2026-11-19 00:20 UTC still showed `PENDING` with no score.
+- [x] Run the first full Kaggle public submission after the fixed-set score improved to 3/9: ref `58527796`; Kaggle CLI recheck at 2026-11-19 00:29 UTC still showed `PENDING` with no score.
 
 ### M3 — Compete for the small-model prize
 
