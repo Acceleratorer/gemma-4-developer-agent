@@ -1,6 +1,6 @@
 # Competition facts and sources
 
-Competition pages and Kaggle state checked on 2026-11-20 with the official Kaggle CLI; the latest submission, quota, and top-only leaderboard checks were made at 17:01 UTC. The most recent full snapshot was generated at 14:09 UTC.
+Competition pages and Kaggle state checked on 2026-11-20 with the official Kaggle CLI; the latest submission and quota checks were made at 17:25 UTC, the latest successful top-only leaderboard check was at 17:01 UTC, and the most recent full snapshot was generated at 14:09 UTC.
 
 ## Official references
 
@@ -39,6 +39,7 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 - A top-only Kaggle CLI check at 2026-11-20 15:30 UTC still showed **16 teams** tied at 0.24, with the next score at 0.22. Submission `58527796` remains complete at public score **0.15**, with no private score shown. GPU quota was 0.00h and TPU quota was 19.97h; both refresh at 2026-11-21 00:00 UTC. The prepared 31B comparisons require NvidiaL4, so the remaining TPU quota does not enable those runs.
 - At 16:23 UTC, `kaggle competitions submissions` still showed `58527796` complete at public score **0.15**, with no private score; `kaggle quota` showed GPU 0.00h and TPU 19.97h, refreshing at 2026-11-21 00:00 UTC. A top-only leaderboard request around 16:16 UTC returned HTTP 403, so 15:30 UTC remains the latest successful leaderboard check.
 - A fresh CLI check at 17:01 UTC showed **16 teams** tied at **0.24**, with the next score at 0.22; the leaderboard includes Muhammed Idris Bin Yacoob at 0.24. Submission `58527796` remained `COMPLETE` at public score **0.15**, with no private score. GPU quota was 0.00h and TPU quota 19.97h, both refreshing at 2026-11-21 00:00 UTC.
+- Submission `58624160` for the Idris v24 31B source replay was accepted at 17:22:55 UTC and remained `PENDING` at 17:25 UTC; public and private scores were not yet available. The exact six-file archive SHA-256 is `4fc42cd4cf56b6c601292e1f70424b36ba9d6457af76e1dc003affa9084e3c18`. `submission-limits` showed one submission used today and zero remaining. GPU quota remained 0.00h and TPU quota 19.97h, refreshing at 2026-11-21 00:00 UTC.
 - Small-model public leaderboard: top score **0.12** in the official tracker output, last updated 2026-11-16 23:55 UTC; refreshed from the Kaggle notebook on 2026-11-18.
 - These are public-split snapshots, not final standings. The final placement is based on the private leaderboard.
 
