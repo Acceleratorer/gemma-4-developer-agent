@@ -1,6 +1,6 @@
 # Competition facts and sources
 
-Competition pages and Kaggle state checked on 2026-11-20 with the official Kaggle CLI; the latest leaderboard, submission, and quota checks were made at 12:04 UTC.
+Competition pages and Kaggle state checked on 2026-11-20 with the official Kaggle CLI; the latest leaderboard, submission, and quota checks were made at 12:24 UTC.
 
 ## Official references
 
@@ -32,6 +32,7 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 - The full public leaderboard snapshot downloaded at 2026-11-19 18:06 UTC contains 6,162 rows; its top score was **0.24**, tied by 14 teams, with the next score at 0.22. The snapshot is archived under ignored `data/local/leaderboard-2026-11-19-1806utc/`.
 - Repeated CLI checks from 01:05 through about 19:25 UTC on 2026-11-19 showed the same 14-way tie at **0.24**. At the latest check, submission `58527796` was still `PENDING` about 20h44m after entry, with no public or private score. GPU quota was 0.00h and TPU quota 19.98h; both refresh at 2026-11-21 00:00 UTC.
 - A fresh CLI check at 2026-11-20 12:04 UTC showed 15 teams tied at **0.24**, with the next score at 0.22. Submission `58527796` completed with public score **0.15**; no private score was shown. Its status was still `PENDING` at 2026-11-19 19:45 UTC and `COMPLETE` by this check, about 37h23m after submission. That elapsed time includes queueing and is not the evaluator runtime; Kaggle did not expose the exact completion time. GPU quota was 0.00h and TPU quota 19.97h, refreshing at 2026-11-21 00:00 UTC.
+- A CLI snapshot at 2026-11-20 12:24 UTC showed **16 teams** tied at 0.24, with the next score at 0.22. Submission `58527796` remained complete at public score **0.15**; no private score was shown. GPU quota was 0.00h and TPU quota 19.97h, both refreshing at 2026-11-21 00:00 UTC. The 6,243-row public leaderboard archive is under ignored `data/local/leaderboard-2026-11-20-1224utc/`.
 - Small-model public leaderboard: top score **0.12** in the official tracker output, last updated 2026-11-16 23:55 UTC; refreshed from the Kaggle notebook on 2026-11-18.
 - These are public-split snapshots, not final standings. The final placement is based on the private leaderboard.
 
