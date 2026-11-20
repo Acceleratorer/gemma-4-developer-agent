@@ -19,7 +19,7 @@ kaggle competitions download gemma-4-developer-agent --file HARNESS_README.md --
 
 Download only the snapshots, graphs, embeddings, and wheels needed for the chosen task IDs. Kaggle's L4x4 scoring environment mounts these inputs automatically; local Windows CPU/GPU results are not a substitute for that runtime.
 
-The completed TPU allocation smoke used `accelra/gemma-4-tpu-runtime-smoke-v1`; its output is under `evals/results/tpu-runtime-smoke-completed-v1/`. It confirmed Python 3.12, Torch XLA 2.8.0, eight TPU devices, and a successful tensor operation, but did not load the competition's W4A16 Gemma 4 model or run the evaluator. A separate near-duplicate kernel, `accelra/gemma4-tpu-runtime-smoke-v1`, was still `QUEUED` at 2026-11-19 15:25 UTC; its notebook and metadata are under `evals/results/tpu-runtime-smoke-queued-v1/` and contain no result. Keep both outside GPU model comparisons.
+The completed TPU allocation smoke used `accelra/gemma-4-tpu-runtime-smoke-v1`; its output is under `evals/results/tpu-runtime-smoke-completed-v1/`. It confirmed Python 3.12, Torch XLA 2.8.0, eight TPU devices, and a successful tensor operation, but did not load the competition's W4A16 Gemma 4 model or run the evaluator. The near-duplicate `accelra/gemma4-tpu-runtime-smoke-v1` later completed too; its logs checked at 2026-11-20 14:03 UTC show the same eight devices and `smoke_sum: 5`, without loading Gemma or running the evaluator. Its source notebook is under `evals/results/tpu-runtime-smoke-queued-v1/`. Keep both outside GPU model comparisons.
 
 ## Local harness
 
