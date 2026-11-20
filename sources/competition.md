@@ -1,6 +1,6 @@
 # Competition facts and sources
 
-Competition pages and Kaggle state checked on 2026-11-20 with the official Kaggle CLI; the latest submission and quota checks were made at 15:30 UTC, and the most recent full leaderboard snapshot was generated at 14:09 UTC.
+Competition pages and Kaggle state checked on 2026-11-20 with the official Kaggle CLI; the latest submission and quota checks were made at 16:23 UTC. The latest successful top-only leaderboard check is 15:30 UTC, and the most recent full snapshot was generated at 14:09 UTC.
 
 ## Official references
 
@@ -37,6 +37,7 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 - Kaggle CLI quota check at 12:57 UTC showed GPU 0.00h remaining (30.24h used) and TPU 19.97h remaining (0.03h used); both refresh at 2026-11-21 00:00 UTC. The planned 31B GPU comparisons cannot run before that refresh; the TPU smoke test is not a comparable model evaluation.
 - A fresh Kaggle CLI download at 2026-11-20 14:09 UTC contains 6,251 public leaderboard rows: **16 teams** tied at 0.24, with the next score at 0.22. Submission `58527796` remains complete at public score **0.15**, with no private score shown. The archive is under ignored `data/local/leaderboard-2026-11-20-1409utc/`. A quota check at 14:03 UTC still showed GPU 0.00h and TPU 19.97h remaining; both refresh at 2026-11-21 00:00 UTC.
 - A top-only Kaggle CLI check at 2026-11-20 15:30 UTC still showed **16 teams** tied at 0.24, with the next score at 0.22. Submission `58527796` remains complete at public score **0.15**, with no private score shown. GPU quota was 0.00h and TPU quota was 19.97h; both refresh at 2026-11-21 00:00 UTC. The prepared 31B comparisons require NvidiaL4, so the remaining TPU quota does not enable those runs.
+- At 16:23 UTC, `kaggle competitions submissions` still showed `58527796` complete at public score **0.15**, with no private score; `kaggle quota` showed GPU 0.00h and TPU 19.97h, refreshing at 2026-11-21 00:00 UTC. A top-only leaderboard request around 16:16 UTC returned HTTP 403, so 15:30 UTC remains the latest successful leaderboard check.
 - Small-model public leaderboard: top score **0.12** in the official tracker output, last updated 2026-11-16 23:55 UTC; refreshed from the Kaggle notebook on 2026-11-18.
 - These are public-split snapshots, not final standings. The final placement is based on the private leaderboard.
 
