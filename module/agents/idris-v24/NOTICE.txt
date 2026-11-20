@@ -1,0 +1,8 @@
+Attribution: Muhammed Idris Bin Yacoob, `agents/v24/` from the Gemma 4 agent runs dataset.
+Source: https://www.kaggle.com/datasets/muhammedidris28/gemma4-agent-runs
+License: Apache License 2.0; see LICENSE.txt.
+
+The four runtime configuration files are preserved byte-for-byte from the public
+v24 bundle. This repository's evaluation notebook and analysis are independent
+work. The reported 0.24 public score is the author's result and has not yet been
+reproduced here.
