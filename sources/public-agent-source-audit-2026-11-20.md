@@ -2,7 +2,7 @@
 
 ## Result
 
-The [current leaderboard](https://www.kaggle.com/competitions/gemma-4-developer-agent/leaderboard) still has 16 teams tied at **0.24**. A new public source, Idris v24, now has a source-linked author report of 0.24 and is tied to an official leaderboard row for the same author name. This is one public draw, not an independently reproduced result; the exact leaderboard row does not expose a submission ID or archive hash. Preserve it as a high-priority candidate and compare it on the frozen local task set before selecting a public submission.
+At a fresh Kaggle CLI check at 2026-11-20 17:01 UTC, the [public leaderboard](https://www.kaggle.com/competitions/gemma-4-developer-agent/leaderboard) had 16 teams tied at **0.24**, with the next score at 0.22. It includes Muhammed Idris Bin Yacoob at 0.24, matching the source dataset's v24 report. This is one public draw, not an independently reproduced result; the leaderboard row exposes no submission ID or archive hash. Keep v24 as a high-priority candidate and compare it on the frozen local task set before selecting a public submission.
 
 ## Candidate checks
 
