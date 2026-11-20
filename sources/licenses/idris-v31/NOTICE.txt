@@ -1,0 +1,9 @@
+Attribution: Muhammed Idris Bin Yacoob, `agents/v31/` from the Gemma 4 agent runs dataset.
+Source: https://www.kaggle.com/datasets/muhammedidris28/gemma4-agent-runs
+License: Apache License 2.0; see LICENSE.txt.
+
+The four runtime configuration files are preserved byte-for-byte from the public
+v31 bundle. This repository's evaluation notebook and analysis are independent
+work. The author's 33/66 result is from a separate Jinja/Typer practice set; v31
+has no public Kaggle score in the released leaderboard data and has not yet been
+evaluated here.
