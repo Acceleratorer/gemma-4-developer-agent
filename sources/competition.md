@@ -1,6 +1,6 @@
 # Competition facts and sources
 
-Competition pages and Kaggle state checked on 2026-11-20 with the official Kaggle CLI; the latest leaderboard, submission, and quota checks were made at 12:24 UTC.
+Competition pages and Kaggle state checked on 2026-11-20 with the official Kaggle CLI; the latest submission and quota checks were made at 12:57 UTC, and the full leaderboard snapshot was generated at 13:01:58 UTC.
 
 ## Official references
 
@@ -33,6 +33,8 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 - Repeated CLI checks from 01:05 through about 19:25 UTC on 2026-11-19 showed the same 14-way tie at **0.24**. At the latest check, submission `58527796` was still `PENDING` about 20h44m after entry, with no public or private score. GPU quota was 0.00h and TPU quota 19.98h; both refresh at 2026-11-21 00:00 UTC.
 - A fresh CLI check at 2026-11-20 12:04 UTC showed 15 teams tied at **0.24**, with the next score at 0.22. Submission `58527796` completed with public score **0.15**; no private score was shown. Its status was still `PENDING` at 2026-11-19 19:45 UTC and `COMPLETE` by this check, about 37h23m after submission. That elapsed time includes queueing and is not the evaluator runtime; Kaggle did not expose the exact completion time. GPU quota was 0.00h and TPU quota 19.97h, refreshing at 2026-11-21 00:00 UTC.
 - A CLI snapshot at 2026-11-20 12:24 UTC showed **16 teams** tied at 0.24, with the next score at 0.22. Submission `58527796` remained complete at public score **0.15**; no private score was shown. GPU quota was 0.00h and TPU quota 19.97h, both refreshing at 2026-11-21 00:00 UTC. The 6,243-row public leaderboard archive is under ignored `data/local/leaderboard-2026-11-20-1224utc/`.
+- A fresh Kaggle CLI download generated at 2026-11-20 13:01:58 UTC contains 6,245 public leaderboard rows: **16 teams** tied at 0.24, with the next score at 0.22. Submission `58527796` is still complete at public score **0.15**, with no private score shown. The archive is under ignored `data/local/leaderboard-2026-11-20-1301utc/`.
+- Kaggle CLI quota check at 12:57 UTC showed GPU 0.00h remaining (30.24h used) and TPU 19.97h remaining (0.03h used); both refresh at 2026-11-21 00:00 UTC. The planned 31B GPU comparisons cannot run before that refresh; the TPU smoke test is not a comparable model evaluation.
 - Small-model public leaderboard: top score **0.12** in the official tracker output, last updated 2026-11-16 23:55 UTC; refreshed from the Kaggle notebook on 2026-11-18.
 - These are public-split snapshots, not final standings. The final placement is based on the private leaderboard.
 
