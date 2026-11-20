@@ -57,9 +57,9 @@ The sole HTTPX task in the original development set, `httpx_3672`, also failed i
 
 ## Current comparisons
 
-- `module/agents/reference-budget-v2/`: notebook says its upstream configuration scored 0.18; the notebook's modified candidate is explicitly unscored.
+- `module/agents/reference-budget-v2/`: the source notebook's 0.18 figure is an external self-report without a submission ID; it is not our score. Our exact four-file bundle was submitted as Kaggle ref `58527796` and scored 0.15 publicly. Kaggle's downloaded archive hash was verified, and all four files byte-match this folder.
 - `module/agents/reference-40-calls/`: notebook title says 0.22, but the checked-in notebook has no score output or submission ID. Keep that score unverified until Kaggle history confirms it.
-- `module/agents/current/`: clean, no-LoRA candidate. Compare it against these references on a fixed task set before allocating a public submission.
+- `module/agents/current/`: clean, no-LoRA candidate. The first public result is 0.15 for the byte-matched `reference-budget-v2` bundle; finish fixed-set comparisons before the next public submission.
 - `module/agents/hanh-v6/`: public Hanh v6 prompt bundle. After newline normalization, it matches `current` in the other three files and changes only `prompts/system.md`. Private 44-task kernel `accelra/train-gold-44-hanh-v6-31b` is saved with `--no-run`; it has no local agent score yet.
 - `module/agents/graph-v2/`: graph-enabled reference prompt ablation. After newline normalization, it matches `current` in the other three files and changes only `prompts/system.md`; the prompt tells the agent to avoid `]` in `get_code_subgraph` string arguments. Private 44-task kernel `accelra/train-gold-44-reference-graph-v2-31b` is saved with `--no-run`; its only logs are notebook-to-HTML conversion, and it has no local agent score.
 - `dev-valid-crossrepo` is the expanded 14-task training set for upcoming prompt and budget comparisons. The `dev-valid-9` results remain historical and are not directly comparable to scores from this set.
