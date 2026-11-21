@@ -13,7 +13,9 @@ TASK_SETS = {
     "dev-valid-unseen": ROOT / "evals" / "dev-valid-unseen-task-ids.json",
     "httpx-verifier-candidate": ROOT / "evals" / "httpx-verifier-candidate-task-ids.json",
     "fastapi-rich-issue-only-candidates": ROOT / "evals" / "fastapi-rich-issue-only-candidate-task-ids.json",
+    "dev-valid-crossrepo-src-layout": ROOT / "evals" / "dev-valid-crossrepo-src-layout-task-ids.json",
 }
+SRC_LAYOUT_TASK_SETS = {"dev-valid-crossrepo-src-layout"}
 DOCKER_IMAGE = (
     "gcr.io/kaggle-private-byod/python@sha256:"
     "37c64f7dd9c54116ecd1bcc88817c5469b88387388fade02bfa8bf3fc647d461"
@@ -38,6 +40,23 @@ def build_notebook(task_set: str, output_dir: Path, kernel_id: str, kernel_title
 
     task_ids = _task_ids(task_set)
     runtime_source = (ROOT / "evals" / "kaggle_runtime.py").read_text(encoding="utf-8")
+    src_layout_setup = """
+# CPU verifier control only: make src-layout snapshot packages import from the workspace.
+import os
+import swegemma.sandbox.subprocess as subprocess_sandbox
+_original_build_sanitized_env = subprocess_sandbox.build_sanitized_env
+def _build_env_with_src_path(*args, **kwargs):
+    extra_env = dict(kwargs.get("extra_env") or {})
+    workspace = kwargs.get("work_dir")
+    if workspace and (Path(workspace) / "src").is_dir():
+        src_path = str(Path(workspace) / "src")
+        extra_env["PYTHONPATH"] = os.pathsep.join(
+            filter(None, [extra_env.get("PYTHONPATH"), src_path])
+        )
+    kwargs["extra_env"] = extra_env
+    return _original_build_sanitized_env(*args, **kwargs)
+subprocess_sandbox.build_sanitized_env = _build_env_with_src_path
+""" if task_set in SRC_LAYOUT_TASK_SETS else ""
     code = f'''RUNTIME_SOURCE = {runtime_source!r}
 exec(compile(RUNTIME_SOURCE, "kaggle_runtime.py", "exec"))
 
@@ -74,6 +93,7 @@ eval_config = EvalConfig(
     verbose=False,
 )
 evaluator = Evaluator(eval_config)
+{src_layout_setup}
 tasks = {{task.instance_id: task for task in load_tasks(task_path)}}
 rows = []
 for index, task_id in enumerate(TASK_IDS, 1):
