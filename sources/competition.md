@@ -1,6 +1,6 @@
 # Competition facts and sources
 
-Competition pages and Kaggle state checked on 2026-11-21 with the official Kaggle CLI; the latest submission check was at 15:15 UTC, the quota and V5 kernel checks at 15:14 UTC, and the top-only leaderboard check at 14:25 UTC. The most recent full leaderboard snapshot was generated at 2026-11-20 14:09 UTC.
+Competition pages and Kaggle state checked on 2026-11-21 with the official Kaggle CLI; the latest submission, quota, kernel, and leaderboard checks were at 16:15 UTC. The most recent full leaderboard snapshot was generated at 2026-11-20 14:09 UTC.
 
 ## Official references
 
@@ -49,6 +49,8 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 - At 2026-11-21 14:03 UTC, the public leaderboard still showed a top score of **0.24**; submission `58624160` remained `PENDING`; GPU quota was 10.30h used and 19.70h remaining, TPU quota was 20.00h; and `accelra/train-gold-44-v5-31b` remained `RUNNING`.
 - At 2026-11-21 14:25 UTC, a top-only leaderboard check showed 16 teams tied at **0.24**, with the next score at **0.22**. Submission `58624160` remained `PENDING`; `58527796` remained `COMPLETE` at public score **0.15**. The V5 44-task kernel remained `RUNNING`. GPU quota was 11.04h used and 18.96h remaining; TPU quota was 20.00h remaining. Both quotas refresh at 2026-11-28 00:00 UTC.
 - At 2026-11-21 15:14 UTC, `accelra/train-gold-44-v5-31b` remained `RUNNING`; GPU quota was 12.66h used and 17.34h remaining, with TPU quota at 20.00h. The 15:15 UTC submission check still showed `58624160` as `PENDING` and `58527796` complete at public score **0.15**. The leaderboard was not rechecked during this observation.
+- The V5 44-task kernel `accelra/train-gold-44-v5-31b` version 2 completed at 16:10 UTC on 2026-11-21. It resolved 20/44 (0.455) against reference-v2's 19/44 (0.432) on the same local training tasks, with three paired gains and two losses; evaluator task time was 184.94 minutes and 13 tasks used all 28 calls. This is not a Kaggle leaderboard score.
+- A fresh CLI check at 16:15 UTC showed 16 public teams tied at **0.24**, with the next score at **0.22**. Submission `58624160` remained `PENDING` without a score; `58527796` remained `COMPLETE` at **0.15**. GPU quota was 14.48h used / 15.52h remaining and TPU quota was 20.00h; both refresh at 2026-11-28 00:00 UTC. `accelra/train-gold-44-idris-v24-31b` was saved as an unrun private notebook and statically audited for the same 44 task IDs, 31B model, 28-call/eight-minute budget, and NvidiaL4 runtime.
 - Small-model public leaderboard: top score **0.12** in the official tracker output, last updated 2026-11-16 23:55 UTC; refreshed from the Kaggle notebook on 2026-11-18.
 - These are public-split snapshots, not final standings. The final placement is based on the private leaderboard.
 
