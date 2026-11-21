@@ -1,6 +1,6 @@
 # Competition facts and sources
 
-Competition pages and Kaggle state checked on 2026-11-21 with the official Kaggle CLI; latest submission, quota, V5 kernel, and top-only leaderboard checks were at 14:25 UTC. The most recent full leaderboard snapshot was generated at 2026-11-20 14:09 UTC.
+Competition pages and Kaggle state checked on 2026-11-21 with the official Kaggle CLI; the latest submission check was at 15:15 UTC, the quota and V5 kernel checks at 15:14 UTC, and the top-only leaderboard check at 14:25 UTC. The most recent full leaderboard snapshot was generated at 2026-11-20 14:09 UTC.
 
 ## Official references
 
@@ -48,6 +48,7 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 - At 2026-11-21 13:42 UTC, the public leaderboard still showed a top score of **0.24**; submission `58624160` remained `PENDING`; GPU quota was 9.59h used and 20.41h remaining, TPU quota was 20.00h; and `accelra/train-gold-44-v5-31b` remained `RUNNING`.
 - At 2026-11-21 14:03 UTC, the public leaderboard still showed a top score of **0.24**; submission `58624160` remained `PENDING`; GPU quota was 10.30h used and 19.70h remaining, TPU quota was 20.00h; and `accelra/train-gold-44-v5-31b` remained `RUNNING`.
 - At 2026-11-21 14:25 UTC, a top-only leaderboard check showed 16 teams tied at **0.24**, with the next score at **0.22**. Submission `58624160` remained `PENDING`; `58527796` remained `COMPLETE` at public score **0.15**. The V5 44-task kernel remained `RUNNING`. GPU quota was 11.04h used and 18.96h remaining; TPU quota was 20.00h remaining. Both quotas refresh at 2026-11-28 00:00 UTC.
+- At 2026-11-21 15:14 UTC, `accelra/train-gold-44-v5-31b` remained `RUNNING`; GPU quota was 12.66h used and 17.34h remaining, with TPU quota at 20.00h. The 15:15 UTC submission check still showed `58624160` as `PENDING` and `58527796` complete at public score **0.15**. The leaderboard was not rechecked during this observation.
 - Small-model public leaderboard: top score **0.12** in the official tracker output, last updated 2026-11-16 23:55 UTC; refreshed from the Kaggle notebook on 2026-11-18.
 - These are public-split snapshots, not final standings. The final placement is based on the private leaderboard.
 
