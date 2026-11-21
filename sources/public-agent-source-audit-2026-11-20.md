@@ -2,7 +2,7 @@
 
 ## Result
 
-At a fresh Kaggle CLI check at 2026-11-20 17:01 UTC, the [public leaderboard](https://www.kaggle.com/competitions/gemma-4-developer-agent/leaderboard) had 16 teams tied at **0.24**, with the next score at 0.22. It includes Muhammed Idris Bin Yacoob at 0.24, matching the source dataset's v24 report. This is one public draw, not an independently reproduced result; the leaderboard row exposes no submission ID or archive hash. Kaggle accepted our exact-source v24 replay as submission `58624160` at 17:22:55 UTC; it remains pending. Compare the replay and source candidate on the frozen local task set before selecting v24 for a final submission.
+At a fresh Kaggle CLI check at 2026-11-21 12:41 UTC, the [public leaderboard](https://www.kaggle.com/competitions/gemma-4-developer-agent/leaderboard) still had 16 teams tied at **0.24**, with the next score at 0.22. It includes Muhammed Idris Bin Yacoob at 0.24, matching the source dataset's v24 report. This is one public draw, not an independently reproduced result; the leaderboard row exposes no submission ID or archive hash. Kaggle accepted our exact-source v24 replay as submission `58624160` at 17:22:55 UTC on 2026-11-20; it remained pending with no score at 12:50 UTC on 2026-11-21. Compare the replay and source candidate on the frozen local task set before selecting v24 for a final submission.
 
 ## Candidate checks
 
