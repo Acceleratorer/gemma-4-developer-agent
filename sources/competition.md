@@ -1,6 +1,6 @@
 # Competition facts and sources
 
-Competition pages and Kaggle state checked on 2026-11-21 with the official Kaggle CLI; the latest submission, quota, and top-only leaderboard checks were made at 12:50 UTC. The most recent full snapshot was generated at 2026-11-20 14:09 UTC.
+Competition pages and Kaggle state checked on 2026-11-21 with the official Kaggle CLI; latest submission and quota checks were made at 12:50 UTC, and the V5 kernel status at 12:54 UTC. The most recent full leaderboard snapshot was generated at 2026-11-20 14:09 UTC; the latest top-only check was at 12:41 UTC.
 
 ## Official references
 
@@ -42,6 +42,7 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 - Submission `58624160` for the Idris v24 31B source replay was accepted at 17:22:55 UTC and remained `PENDING` at 17:25 UTC; public and private scores were not yet available. The exact six-file archive SHA-256 is `4fc42cd4cf56b6c601292e1f70424b36ba9d6457af76e1dc003affa9084e3c18`. `submission-limits` showed one submission used today and zero remaining. GPU quota remained 0.00h and TPU quota 19.97h, refreshing at 2026-11-21 00:00 UTC.
 - At 2026-11-21 12:41 UTC, submission `58624160` was still `PENDING` with no public or private score; `58527796` remained `COMPLETE` at public score **0.15**. The public leaderboard still had 16 teams tied at **0.24**, with the next score at 0.22. The Kaggle GPU quota showed 8.02h used and 21.98h remaining from a 30h weekly allowance, refreshing at 2026-11-28 00:00 UTC; TPU had 20h remaining.
 - At 2026-11-21 12:50 UTC, submission `58624160` remained `PENDING` with no score, V5 44-task kernel `accelra/train-gold-44-v5-31b` remained `QUEUED`, and quota was unchanged at 21.98 GPU hours and 20.00 TPU hours remaining.
+- At 2026-11-21 12:54 UTC, `accelra/train-gold-44-v5-31b` changed to `RUNNING`; it has no result output yet.
 - Small-model public leaderboard: top score **0.12** in the official tracker output, last updated 2026-11-16 23:55 UTC; refreshed from the Kaggle notebook on 2026-11-18.
 - These are public-split snapshots, not final standings. The final placement is based on the private leaderboard.
 
