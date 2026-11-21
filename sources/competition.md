@@ -1,6 +1,6 @@
 # Competition facts and sources
 
-Competition pages and Kaggle state checked on 2026-11-21 with the official Kaggle CLI; latest submission check was at 12:50 UTC, quota and V5 kernel status at 13:04 UTC. The most recent full leaderboard snapshot was generated at 2026-11-20 14:09 UTC; the latest top-only check was at 12:41 UTC.
+Competition pages and Kaggle state checked on 2026-11-21 with the official Kaggle CLI; latest submission, quota, V5 kernel, and top-only leaderboard checks were at 13:42 UTC. The most recent full leaderboard snapshot was generated at 2026-11-20 14:09 UTC.
 
 ## Official references
 
@@ -45,6 +45,7 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 - At 2026-11-21 12:54 UTC, `accelra/train-gold-44-v5-31b` changed to `RUNNING`; it has no result output yet.
 - At 2026-11-21 13:01 UTC, the V5 44-task kernel remained `RUNNING`; GPU quota was 8.24h used and 21.76h remaining, while TPU quota was 20.00h remaining.
 - At 2026-11-21 13:04 UTC, the V5 44-task kernel remained `RUNNING`; GPU quota was 8.34h used and 21.66h remaining, while TPU quota was 20.00h remaining.
+- At 2026-11-21 13:42 UTC, the public leaderboard still showed a top score of **0.24**; submission `58624160` remained `PENDING`; GPU quota was 9.59h used and 20.41h remaining, TPU quota was 20.00h; and `accelra/train-gold-44-v5-31b` remained `RUNNING`.
 - Small-model public leaderboard: top score **0.12** in the official tracker output, last updated 2026-11-16 23:55 UTC; refreshed from the Kaggle notebook on 2026-11-18.
 - These are public-split snapshots, not final standings. The final placement is based on the private leaderboard.
 
