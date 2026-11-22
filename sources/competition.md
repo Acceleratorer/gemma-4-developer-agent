@@ -1,6 +1,6 @@
 # Competition facts and sources
 
-Competition pages and Kaggle state checked on 2026-11-22 with the official Kaggle CLI; the latest top-leaderboard, submission, quota, and TPU smoke checks were at 18:16 UTC. The latest submission was accepted at 16:04:51 UTC. The most recent full leaderboard snapshot was generated at 2026-11-20 14:09 UTC.
+Competition pages and Kaggle state checked on 2026-11-22 with the official Kaggle CLI; the latest top-leaderboard, submission, quota, and TPU smoke checks were at 18:43 UTC. The latest submission was accepted at 16:04:51 UTC. The most recent full leaderboard snapshot was generated at 2026-11-20 14:09 UTC.
 
 ## Official references
 
@@ -12,6 +12,8 @@ Competition pages and Kaggle state checked on 2026-11-22 with the official Kaggl
 - [Discussion](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion): organizer updates and participant findings.
 - [Rules and timeline](https://www.kaggle.com/competitions/gemma-4-developer-agent/rules): entry, daily submission, final-selection, team, and license rules.
 - [Official harness guide](https://www.kaggle.com/competitions/gemma-4-developer-agent/data?select=HARNESS_README.md): local evaluation, agent schema, sandbox, tools, budgets, and scorer behavior.
+- [vLLM JAX TPU release notes](https://github.com/vllm-project/tpu-inference/releases): versioned Gemma 4 and TPU backend support changes.
+- [vLLM TorchTPU supported models and features](https://docs.vllm.ai/projects/vllm-torchtpu/en/latest/user_guide/supported_models/): validated TPU checkpoints and quantization formats.
 - [Official small-model leaderboard notebook](https://www.kaggle.com/code/ryanholbrook/gemma-4-developer-agent-small-model-leaderboard): daily filtered standings for E2B/E4B submissions.
 - [Official getting-started notebook](https://www.kaggle.com/code/ryanholbrook/getting-started-gemma-4-developer-agent): environment setup and sample evaluation flow.
 
@@ -59,7 +61,7 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 - At 15:02 UTC, GPU quota was 29.02h used / 0.98h remaining and TPU quota was 20.00h; both refresh at 2026-11-28 00:00 UTC.
 - Seed-42 V5 28/40-call private kernels were saved as version 1 with --no-run: [28-call](https://www.kaggle.com/code/accelra/v5-28-call-seed-42-gold-44-comparison) and [40-call](https://www.kaggle.com/code/accelra/v5-40-call-seed-42-gold-44-comparison). Kaggle status by canonical URL is COMPLETE, which means notebook conversion only; no evaluation tasks ran.
 - At 2026-11-22 16:04:51 UTC, Kaggle accepted Budget-Fit V5 28-call archive `dist/current-v5-31b.zip` as submission `58729936`. Its exact archive SHA-256 is `f6e835e40ec30fd2a7c4956feedc2c50f4134df8f861eefb8d6659ff4035146d`; status was `PENDING` at 16:05 UTC with no public or private score. Submission limits then showed 0 remaining today. The latest top-only leaderboard check at 16:06 UTC still showed 16 teams at 0.24 and the next score at 0.22.
-- At 2026-11-22 18:16 UTC, the top-only public leaderboard still showed 16 teams tied at **0.24**, with the next score at **0.22**. Submission `58729936` remained `PENDING` with no public or private score. Quota was 0.98 GPU hours and 20.00 TPU hours, refreshing at 2026-11-28 00:00 UTC. TPU model-load/tool-call smoke `accelra/gemma-4-qat-on-kaggle-tpu-v5e-8-smoke-v1` version 1 was `QUEUED`; no output was available and no TPU quota had been used, so this is not model-support or agent-evaluation evidence.
+- At 2026-11-22 18:43 UTC, the top-only public leaderboard still showed 16 teams tied at **0.24**, with the next score at **0.22**. Submission `58729936` remained `PENDING` with no public or private score. Quota was 0.98 GPU hours and 20.00 TPU hours, refreshing at 2026-11-28 00:00 UTC. TPU model-load/tool-call smoke `accelra/gemma-4-qat-on-kaggle-tpu-v5e-8-smoke-v1` version 1 was `QUEUED`; logs were empty and no TPU quota had been used. Upstream vLLM JAX v0.33.0 release notes mention Gemma 4 FP8-Dynamic checkpoint loading. The current vLLM TorchTPU support matrix validates Gemma 4 FP8-Dynamic checkpoints and lists W4A16 for Kimi-K2.6, not Gemma 4. The smoke uses the JAX backend with the competition's W4A16 QAT checkpoint, so treat that exact backend/checkpoint combination as unverified; this is an inference from adjacent support matrices, not a failed run. TPU v5e is marked experimental.
 - Small-model public leaderboard: top score **0.12** in the official tracker output, last updated 2026-11-16 23:55 UTC; refreshed from the Kaggle notebook on 2026-11-18.
 - These are public-split snapshots, not final standings. The final placement is based on the private leaderboard.
 
