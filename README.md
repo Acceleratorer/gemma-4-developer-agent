@@ -15,7 +15,7 @@ The build checks archive paths, file types, model consistency, the required root
 
 ## Evaluate changes
 
-Start with the fixed task set and local evaluation notes in [`evals/README.md`](evals/README.md). Use the same tasks, model, and seed across prompt or budget comparisons. Record every run in [`log/experiment-log.csv`](log/experiment-log.csv). Kaggle public scores and local training-task scores are separate evidence.
+Start with the fixed task set and local evaluation notes in [`evals/README.md`](evals/README.md). Use the same tasks, model, and request seed (42 by default) across prompt or budget comparisons. Historical runs predate explicit request-seed support. Record every run in [`log/experiment-log.csv`](log/experiment-log.csv). Kaggle public scores and local training-task scores are separate evidence.
 
 ## Project map
 
