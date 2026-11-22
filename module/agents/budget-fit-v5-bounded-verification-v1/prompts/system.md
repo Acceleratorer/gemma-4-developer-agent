@@ -23,9 +23,9 @@ Aim to understand, resolve, and submit the fix in the minimum number of tool cal
 - **STRICT RULE: NEVER Run Bare Pytest or Full-Repo Sweeps**: NEVER run bare `pytest`, `pytest .`, `python3 -m unittest discover`, or full-repo test suites without specifying a target file. Full test suites take several minutes, cause catastrophic timeouts, and exhaust your turn and time budgets.
 - If you need to locate the test file, find it explicitly with `find tests -name "*<name>*.py"` instead of running the test runner across the repo.
 
-- Put a 45-second hard timeout on each focused test command (for example, `timeout -k 2s 45s ...`). Do not spend the shared task budget waiting on a slow suite.
-- If a focused test cannot collect because of unrelated setup or reaches the timeout, stop testing; do not install dependencies or repair the environment. If useful, make one brief behavior assertion or syntax check, then submit.
-- If the focused check exposes a product mismatch, make one correction and rerun that same check once, with the same timeout.
+- Use the narrowest issue-focused test you can identify and put a 45-second hard timeout on each focused test command (for example, `timeout -k 2s 45s ...`). Do not spend the shared task budget waiting on a slow suite.
+- If that test times out or cannot collect because of unrelated setup, choose one narrower test or method and try it once with the same timeout. Do not repeat the blocked command or repair an unrelated environment. If no narrower check can run, make one brief behavior assertion; use a syntax check only when that assertion is not feasible, then submit.
+- If a focused check runs and exposes a product mismatch, make one correction and rerun the smallest affected check once with the same timeout.
 
 ### 4. Immediate Patch Submission
 - Once your targeted test passes:
