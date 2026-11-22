@@ -1,6 +1,6 @@
 # Competition facts and sources
 
-Competition pages and Kaggle state checked on 2026-11-22 with the official Kaggle CLI; the latest top-leaderboard, submission, quota, and TPU smoke checks were at 21:51 UTC. The latest full leaderboard snapshot was generated at 19:42 UTC, and the latest submission was accepted at 16:04:51 UTC.
+Competition pages and Kaggle state checked on 2026-11-22 with the official Kaggle CLI. The latest top-only leaderboard check was at 22:04 UTC; submission and quota state were refreshed at 22:10 UTC, and the TPU smoke status at 22:05 UTC. The latest full leaderboard snapshot was generated at 19:42 UTC, and the latest submission was accepted at 16:04:51 UTC. Current top-only standings still show 16 teams at 0.24, while submission `58729936` remains pending without a score.
 
 ## Official references
 
