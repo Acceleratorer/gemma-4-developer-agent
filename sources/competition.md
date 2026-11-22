@@ -1,6 +1,6 @@
 # Competition facts and sources
 
-Competition pages and Kaggle state checked on 2026-11-21 with the official Kaggle CLI; the latest submission, quota, and leaderboard checks were at 16:15 UTC, with Idris v24 kernel status checked at 16:18 UTC. The most recent full leaderboard snapshot was generated at 2026-11-20 14:09 UTC.
+Competition pages and Kaggle state checked on 2026-11-22 with the official Kaggle CLI; the latest submission and top-leaderboard checks were at 09:22 UTC, and quota was checked at 09:26 UTC. The most recent full leaderboard snapshot was generated at 2026-11-20 14:09 UTC.
 
 ## Official references
 
@@ -52,6 +52,9 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 - The V5 44-task kernel `accelra/train-gold-44-v5-31b` version 2 completed at 16:10 UTC on 2026-11-21. It resolved 20/44 (0.455) against reference-v2's 19/44 (0.432) on the same local training tasks, with three paired gains and two losses; evaluator task time was 184.94 minutes and 13 tasks used all 28 calls. This is not a Kaggle leaderboard score.
 - A fresh CLI check at 16:15 UTC showed 16 public teams tied at **0.24**, with the next score at **0.22**. Submission `58624160` remained `PENDING` without a score; `58527796` remained `COMPLETE` at **0.15**. GPU quota was 14.48h used / 15.52h remaining and TPU quota was 20.00h; both refresh at 2026-11-28 00:00 UTC. `accelra/train-gold-44-idris-v24-31b` was saved as an unrun private notebook and statically audited for the same 44 task IDs, 31B model, 28-call/eight-minute budget, and NvidiaL4 runtime.
 - Idris v24 kernel `accelra/train-gold-44-idris-v24-31b` version 2 was pushed at 16:17 UTC on 2026-11-21; the 16:18 UTC CLI status was `QUEUED`. Its notebook is the same statically audited 44-task, 31B, 28-call/eight-minute NvidiaL4 comparison described above. No evaluation result is available yet.
+- At 2026-11-22 09:22 UTC, Kaggle showed submission `58624160` `COMPLETE` at public score **0.10** and `58527796` `COMPLETE` at **0.15**; neither has a displayed private score. The top-only public leaderboard showed 16 teams tied at **0.24**, with the next score at **0.22**.
+- The Idris v24 44-task kernel `accelra/train-gold-44-idris-v24-31b` version 2 is complete. Downloaded run `ee248eea647c` resolved 19/44 (0.432), tied with reference-v2 and one pass below V5. Against V5 it gained `rich_3506` and lost `fastapi_9753` and `rich_3278`; against reference-v2 it had three paired gains and three losses. Evaluator task time was 208.45 minutes, and 11/44 tasks used all 28 calls. This is a local training-task result, not a leaderboard score.
+- At 09:26 UTC, GPU quota was 21.69h used / 8.31h remaining and TPU quota was 20.00h; both refresh at 2026-11-28 00:00 UTC. V5 40-call kernel `accelra/train-gold-44-v5-40-calls-31b` version 3 had been pushed and was `QUEUED`; earlier `COMPLETE` status referred to notebook conversion, with no evaluation summary or task output.
 - Small-model public leaderboard: top score **0.12** in the official tracker output, last updated 2026-11-16 23:55 UTC; refreshed from the Kaggle notebook on 2026-11-18.
 - These are public-split snapshots, not final standings. The final placement is based on the private leaderboard.
 
