@@ -29,6 +29,7 @@ TASK_SETS = {
     "dev-valid-expanded": ROOT / "evals" / "dev-valid-expanded-task-ids.json",
     "dev-valid-expanded-gold-verified": ROOT / "evals" / "dev-valid-expanded-gold-verified-task-ids.json",
     "dev-valid-training-gold-verified": ROOT / "evals" / "dev-valid-training-gold-verified-task-ids.json",
+    "v5-test-aware-fastapi-probe": ROOT / "evals" / "v5-test-aware-fastapi-probe-task-ids.json",
     "v5-test-aware-pilot": ROOT / "evals" / "v5-test-aware-pilot-task-ids.json",
     "dev-valid-unseen": ROOT / "evals" / "dev-valid-unseen-task-ids.json",
     "dev-valid-unseen-gold-verified": ROOT / "evals" / "dev-valid-unseen-gold-verified-task-ids.json",

@@ -19,6 +19,10 @@ The repeatable task set is `v5-test-aware-pilot` in `evals/build_kaggle_eval.py`
 
 The V2 prompt SHA-256 embedded in that notebook is `94d53c0ebd18d073f754d6fb5c180aac281c8a8706d8d257eca23c93ba4b2ce4`.
 
-## Next decision
+## Single-task V2 probe
 
-After the 2026-11-28 quota refresh, run the V2 pilot against these same two tasks and seed. If it resolves at least one task, promote V2 to the 44-task training comparison after the seed-42 V5 28-call control. If it remains 0/2, skip the full V2 run and prioritize the disjoint 18-task holdout. Keep the seed-42 40-call kernel lower priority because the prior unseeded run tied V5 28-call at 20/44 while taking 26.43 more evaluator task-minutes.
+To use the remaining GPU quota for a high-signal screen, a separate one-task kernel ran `fastapi_15588` with the same model, seed, call limit, and task cap. Its repeatable task set is `v5-test-aware-fastapi-probe` in `evals/build_kaggle_eval.py`, backed by `evals/v5-test-aware-fastapi-probe-task-ids.json`. Private kernel [`accelra/v5-test-aware-v2-fastapi-seed-42-probe`](https://www.kaggle.com/code/accelra/v5-test-aware-v2-fastapi-seed-42-probe) version 2 completed at 0/1 (run `5b53002055fe`; 214.38 evaluator seconds; 16 tool calls; about 0.40 GPU hours). The task also failed in V1's same-seed pilot.
+
+The V2 trace confirms that the prompt contained the new test instructions, but the agent read `tests/test_sse.py`, decided it lacked newline-validation coverage, used temporary reproduction scripts, and submitted without running the repository tests. The evaluator again reported six message mismatches: it expected `SSE '<field>' must be a single line`, while the patch said `must not contain newlines`. The V2 instruction did not change the task result or workflow on this case.
+
+Do not promote V2 to a full 44-task comparison based on this evidence. Preserve its two-task notebook as an unrun artifact and prioritize the seed-42 V5 28-call control and disjoint 18-task holdout after the 2026-11-28 quota refresh. Keep the 40-call comparison lower priority because its earlier unseeded run tied V5 28-call at 20/44 while taking 26.43 more evaluator task-minutes.
