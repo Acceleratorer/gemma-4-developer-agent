@@ -1,6 +1,6 @@
 # Competition facts and sources
 
-Competition pages and Kaggle state checked on 2026-11-22 with the official Kaggle CLI; the latest top-leaderboard check was at 16:06 UTC, the latest submission was accepted at 16:04 UTC and checked at 16:05 UTC, and quota was checked at 15:02 UTC. The most recent full leaderboard snapshot was generated at 2026-11-20 14:09 UTC.
+Competition pages and Kaggle state checked on 2026-11-22 with the official Kaggle CLI; the latest top-leaderboard, submission, quota, and TPU smoke checks were at 18:16 UTC. The latest submission was accepted at 16:04:51 UTC. The most recent full leaderboard snapshot was generated at 2026-11-20 14:09 UTC.
 
 ## Official references
 
