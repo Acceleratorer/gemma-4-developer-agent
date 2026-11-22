@@ -2,7 +2,7 @@
 
 Build and compare Gemma 4 coding-agent submissions for Kaggle's Google - The Gemma 4 Developer Agent competition.
 
-The current public leaderboard leader is **0.29** as checked on 2026-11-18. This workspace has no verified submission score yet. The target is to improve measured pass rate and select the strongest final 31B and small-model submissions before the competition closes.
+The target is rank 1 on the final private leaderboard. Current Kaggle scores, pending submissions, and the next experiment are tracked in [`milestone/PLAN.md`](milestone/PLAN.md) and [`log/experiment-log.csv`](log/experiment-log.csv); local training-task scores are not leaderboard scores.
 
 ## Build a submission
 
