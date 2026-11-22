@@ -1,6 +1,6 @@
 # Competition facts and sources
 
-Competition pages and Kaggle state checked on 2026-11-22 with the official Kaggle CLI; the latest top-leaderboard, submission, and TPU smoke checks were at 19:56 UTC, the latest quota check was at 19:42 UTC, and the latest full leaderboard snapshot was generated at 19:42 UTC. The latest submission was accepted at 16:04:51 UTC.
+Competition pages and Kaggle state checked on 2026-11-22 with the official Kaggle CLI; the latest top-leaderboard, submission, quota, and TPU smoke checks were at 21:12 UTC. The latest full leaderboard snapshot was generated at 19:42 UTC, and the latest submission was accepted at 16:04:51 UTC.
 
 ## Official references
 
@@ -71,6 +71,7 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 - At 2026-11-22 19:42 UTC, a full public leaderboard snapshot downloaded to ignored `data/local/leaderboard-2026-11-22-1942utc/` contains 6,463 rows. The top-only check still shows 16 teams at **0.24**, with the next score at **0.22**. Submission `58729936` remained `PENDING` without public or private scores at 19:40 UTC; quota remained 0.98 GPU hours and 20.00 TPU hours, refreshing at 2026-11-28 00:00 UTC. The TPU QAT smoke remained `QUEUED` with no TPU quota use.
 - At 2026-11-22 19:47 UTC, the top-only leaderboard still showed 16 teams at **0.24**, with the next score at **0.22**. Submission `58729936` remained `PENDING` without public or private scores, and TPU QAT smoke remained `QUEUED`. The full snapshot and quota were not refreshed in this check.
 - At 2026-11-22 19:56 UTC, the top-only leaderboard was unchanged at 16 teams tied at **0.24**, with the next score at **0.22**. Submission `58729936` remained `PENDING` without public or private scores, and TPU QAT smoke remained `QUEUED`. The full snapshot and quota were not refreshed in this check.
+- At 2026-11-22 21:12 UTC, the official CLI still showed 16 public teams tied at **0.24**, with the next score at **0.22**. Submission `58729936` remained `PENDING` without public or private scores; submissions `58527796` and `58624160` remained `COMPLETE` at 0.15 and 0.10. GPU quota was 0.98h and TPU quota 20.00h, refreshing at 2026-11-28 00:00 UTC. The TPU QAT smoke `accelra/gemma-4-qat-on-kaggle-tpu-v5e-8-smoke-v1` remained `QUEUED`; logs and downloadable output were empty, and TPU usage remained 0.00h.
 - Small-model public leaderboard: top score **0.12** in the official tracker output, last updated 2026-11-16 23:55 UTC; refreshed from the Kaggle notebook on 2026-11-18.
 - These are public-split snapshots, not final standings. The final placement is based on the private leaderboard.
 

@@ -2,9 +2,17 @@
 
 ## Goal
 
-Reach rank 1 on the final Kaggle private leaderboard. The completed public submissions are ref `58527796` at 0.15 and ref `58624160` at 0.10; V5 ref `58729936` is `PENDING` with no score as of 2026-11-22 19:56 UTC. None has a displayed private score. Continue optimizing until the final deadline and claim success only after the private leaderboard confirms it.
+Reach rank 1 on the final Kaggle private leaderboard. Continue optimizing until the final deadline and claim success only after the private leaderboard confirms it.
 
-The latest full public leaderboard snapshot at 2026-11-22 19:42 UTC contains 6,463 rows; the 19:56 UTC CLI check still showed 16 teams tied at 0.24, with the next score at 0.22. Submissions `58527796` and `58624160` are `COMPLETE` at 0.15 and 0.10; V5 ref `58729936` remains `PENDING` with no score. None has a displayed private score. On the paired 44-task training set, V5 scored 20/44 and Idris v24 scored 19/44, matching reference-v2. V5 40-call kernel version 3 completed 20/44 on 2026-11-22, matching V5 28-call total but swapping three passes in each direction; it predates request-seed support, so this is not evidence that 40 calls is better. At 19:40 UTC, 0.98 GPU hours and 20.00 TPU hours remained; quota refreshes 2026-11-28 00:00 UTC. TPU QAT smoke remained queued at 19:56 with no output; no new TPU run was started. Kaggle's 2026-11-19 update estimated 20–24 hours end-to-end (about 8–9 hours queued, 9–10 hours running, and 2–2.5 hours scoring). Later participant reports separately included a 26-hour completion and waits beyond 24 hours; reserve more than a day for a final submission. The private leaderboard determines final placement; ties go to the earlier submission.
+## Current state — 2026-11-22 21:12 UTC
+
+- **Public leaderboard:** 16 teams tied at 0.24; the next score is 0.22. The latest full snapshot, generated at 19:42 UTC, contains 6,463 rows.
+- **Our submissions:** `58527796` is `COMPLETE` at 0.15; `58624160` is `COMPLETE` at 0.10; V5 `58729936` remains `PENDING` without a public or private score. No private score is displayed for any submission.
+- **Quota:** 0.98 GPU hours and 20.00 TPU hours remain; both refresh at 2026-11-28 00:00 UTC.
+- **TPU smoke:** `accelra/gemma-4-qat-on-kaggle-tpu-v5e-8-smoke-v1` remains `QUEUED`; logs and output are empty, and it has used no TPU quota. The evaluator adapter stays gated on a successful model-load and tool-call smoke.
+- **Comparable local evidence:** On the same 44 training tasks, V5 scored 20/44 versus 19/44 for reference-v2 and Idris v24. The unseeded V5 40-call run also scored 20/44 but traded three passes each way, so it does not show a gain over 28 calls.
+
+Kaggle's 2026-11-19 update estimated 20–24 hours end-to-end (about 8–9 hours queued, 9–10 hours running, and 2–2.5 hours scoring). Later participant reports separately included a 26-hour completion and waits beyond 24 hours; reserve more than a day for a final submission. The private leaderboard determines final placement; ties go to the earlier submission.
 
 The tracked submission source `module/agents/current/` now mirrors the measured 28-call Budget-Fit V5 candidate. Its paired 44-task result leads the reference by one task, so the seed-matched 28/40-call comparison and unseen holdout remain required before final selection.
 
