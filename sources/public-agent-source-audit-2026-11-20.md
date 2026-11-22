@@ -1,5 +1,9 @@
 # Public agent source audit — 2026-11-20
 
+## Competition-code license clarification — 2026-11-22
+
+The Budget-Fit source is the public [competition notebook](https://www.kaggle.com/code/verracodeguacas/gemma-4-agent-budget-fit-single-agent), and the exact four-file bundle is independently traced in the public-config-draws dataset and V5 source audit below. Section 6(b) of the [competition rules](https://www.kaggle.com/competitions/gemma-4-developer-agent/rules) says competition code shared in an associated public notebook is deemed licensed under an OSI-approved license that does not limit commercial use. This is a rules-based license basis for competition evaluation and reuse. The Kaggle notebook metadata and public-config-draws dataset do not identify V5's specific OSI license; that dataset's CC BY 4.0 license covers only its compilation, hashes, and derived columns. Keep author attribution, do not label V5 Apache-2.0, and verify compatibility with the competition's Apache-2.0 winner-license obligation before claiming that the complete submission can be relicensed under Apache-2.0.
+
 ## Result
 
 At a fresh Kaggle CLI check at 2026-11-21 12:41 UTC, the [public leaderboard](https://www.kaggle.com/competitions/gemma-4-developer-agent/leaderboard) still had 16 teams tied at **0.24**, with the next score at 0.22. It includes Muhammed Idris Bin Yacoob at 0.24, matching the source dataset's v24 report. This is one public draw, not an independently reproduced result; the leaderboard row exposes no submission ID or archive hash. Kaggle accepted our exact-source v24 replay as submission `58624160` at 17:22:55 UTC on 2026-11-20; it remained pending with no score at 12:50 UTC on 2026-11-21. Compare the replay and source candidate on the frozen local task set before selecting v24 for a final submission.
