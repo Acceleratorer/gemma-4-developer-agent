@@ -110,6 +110,7 @@ def run_dev_eval(
     model_name: str,
     max_tool_calls: int = 40,
     max_time_minutes: float = 8.0,
+    seed: int = 42,
 ) -> dict:
     _configure_environment()
     data_dir = Path("/kaggle/input/competitions/gemma-4-developer-agent")
@@ -184,9 +185,12 @@ def run_dev_eval(
             tensor_parallel_size=4,
             startup_timeout=1200,
             extra_args=(
-                ("--hf-overrides", '{"architectures": ["Gemma4ForCausalLM"], "model_type": "gemma4"}')
-                if model_name == "gemma-4-12b-it-qat-w4a16-ct"
-                else ()
+                ("--seed", str(seed))
+                + (
+                    ("--hf-overrides", '{"architectures": ["Gemma4ForCausalLM"], "model_type": "gemma4"}')
+                    if model_name == "gemma-4-12b-it-qat-w4a16-ct"
+                    else ()
+                )
             ),
         ),
         adapter_manifest=adapters,
@@ -207,7 +211,7 @@ def run_dev_eval(
         ).hexdigest()
         run_id = hashlib.sha256(
             (agent_hash + "\n" + model_name + "\n" + "\n".join(task_ids) + "\n"
-             + str(max_tool_calls) + "\n" + str(max_time_minutes)).encode()
+             + str(max_tool_calls) + "\n" + str(max_time_minutes) + "\n" + str(seed)).encode()
         ).hexdigest()[:12]
         results_dir = working_dir / "dev_results" / run_id
         results_dir.mkdir(parents=True, exist_ok=True)
@@ -288,6 +292,7 @@ def run_dev_eval(
             "task_ids": task_ids,
             "max_tool_calls": max_tool_calls,
             "max_time_minutes": max_time_minutes,
+            "request_seed": seed,
             "resolved": resolved,
             "total": len(rows),
             "score": resolved / len(rows) if rows else 0.0,
