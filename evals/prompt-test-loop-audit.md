@@ -26,3 +26,9 @@ To use the remaining GPU quota for a high-signal screen, a separate one-task ker
 The V2 trace confirms that the prompt contained the new test instructions, but the agent read `tests/test_sse.py`, decided it lacked newline-validation coverage, used temporary reproduction scripts, and submitted without running the repository tests. The evaluator again reported six message mismatches: it expected `SSE '<field>' must be a single line`, while the patch said `must not contain newlines`. The V2 instruction did not change the task result or workflow on this case.
 
 Do not promote V2 to a full 44-task comparison based on this evidence. Preserve its two-task notebook as an unrun artifact and prioritize the seed-42 V5 28-call control and disjoint 18-task holdout after the 2026-11-28 quota refresh. Keep the 40-call comparison lower priority because its earlier unseeded run tied V5 28-call at 20/44 while taking 26.43 more evaluator task-minutes.
+
+## Next prompt-only check: validation wording
+
+The V2 run shows the model chose `must not contain newlines` even though the evaluator expected the invariant wording `must be a single line`. `module/agents/budget-fit-v5-validation-contract-v1/` tests one narrow generalization of that failure: validation messages should state the required invariant in positive terms, and exact wording is part of API behavior. It is otherwise byte-identical to `module/agents/current/`.
+
+Private kernel [`accelra/v5-validation-contract-fastapi-seed-42-probe`](https://www.kaggle.com/code/accelra/v5-validation-contract-fastapi-seed-42-probe) version 1 was saved with `--no-run` for `fastapi_15588`, seed 42, 28 calls, and an eight-minute cap. The prompt SHA-256 is `e06a2e62eba99c0a5984e8887a3f171ec9480ca48f0e9e4bfc72062e12d6bd4a`. It has no model result yet. After quota refresh, run this one-task screen; only promote it to the 44-task comparison if it resolves the task.
