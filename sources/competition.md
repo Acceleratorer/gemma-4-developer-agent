@@ -1,6 +1,6 @@
 # Competition facts and sources
 
-Competition pages and Kaggle state checked on 2026-11-22 with the official Kaggle CLI; the latest submission and top-leaderboard checks were at 15:01 UTC, and quota was checked at 15:02 UTC. The most recent full leaderboard snapshot was generated at 2026-11-20 14:09 UTC.
+Competition pages and Kaggle state checked on 2026-11-22 with the official Kaggle CLI; the latest top-leaderboard check was at 16:06 UTC, the latest submission was accepted at 16:04 UTC and checked at 16:05 UTC, and quota was checked at 15:02 UTC. The most recent full leaderboard snapshot was generated at 2026-11-20 14:09 UTC.
 
 ## Official references
 
@@ -58,6 +58,7 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 - At 2026-11-22 15:01 UTC, Kaggle CLI showed 16 public teams tied at 0.24, with the next score at 0.22. Submissions 58624160 and 58527796 remained COMPLETE at public scores 0.10 and 0.15; neither displayed a private score.
 - At 15:02 UTC, GPU quota was 29.02h used / 0.98h remaining and TPU quota was 20.00h; both refresh at 2026-11-28 00:00 UTC.
 - Seed-42 V5 28/40-call private kernels were saved as version 1 with --no-run: [28-call](https://www.kaggle.com/code/accelra/v5-28-call-seed-42-gold-44-comparison) and [40-call](https://www.kaggle.com/code/accelra/v5-40-call-seed-42-gold-44-comparison). Kaggle status by canonical URL is COMPLETE, which means notebook conversion only; no evaluation tasks ran.
+- At 2026-11-22 16:04:51 UTC, Kaggle accepted Budget-Fit V5 28-call archive `dist/current-v5-31b.zip` as submission `58729936`. Its exact archive SHA-256 is `f6e835e40ec30fd2a7c4956feedc2c50f4134df8f861eefb8d6659ff4035146d`; status was `PENDING` at 16:05 UTC with no public or private score. Submission limits then showed 0 remaining today. The latest top-only leaderboard check at 16:06 UTC still showed 16 teams at 0.24 and the next score at 0.22.
 - Small-model public leaderboard: top score **0.12** in the official tracker output, last updated 2026-11-16 23:55 UTC; refreshed from the Kaggle notebook on 2026-11-18.
 - These are public-split snapshots, not final standings. The final placement is based on the private leaderboard.
 
