@@ -1,6 +1,6 @@
 # Competition facts and sources
 
-Competition pages and Kaggle state checked on 2026-11-22 with the official Kaggle CLI. At 22:58 UTC, the competition listing reported a 2026-12-02 23:59 deadline, 6,480 teams, and account `userRank` 4,000. The top-only leaderboard, submissions, quota, and TPU smoke were refreshed at 22:58 UTC: 16 teams tied at 0.24, while submission `58729936` remained pending without a score. The latest full leaderboard snapshot was generated at 19:42 UTC, and the latest submission was accepted at 16:04:51 UTC.
+Competition pages and Kaggle state checked on 2026-11-22 with the official Kaggle CLI. At 23:07 UTC, the competition listing reported a 2026-12-02 23:59 deadline, 6,480 teams, and account `userRank` 4,001. The top-only leaderboard, submissions, and quota were refreshed at 23:07 UTC: 16 teams tied at 0.24, while submission `58729936` remained pending without a score. The QAT TPU smoke was refreshed at 23:00 UTC and remained queued with empty logs. The latest full leaderboard snapshot was generated at 19:42 UTC, and the latest submission was accepted at 16:04:51 UTC.
 
 ## Official references
 
