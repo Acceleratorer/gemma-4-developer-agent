@@ -1,6 +1,6 @@
 # Competition facts and sources
 
-Competition pages and Kaggle state checked on 2026-11-22 with the official Kaggle CLI; the latest submission and top-leaderboard checks were at 09:22 UTC, and quota was checked at 09:26 UTC. The most recent full leaderboard snapshot was generated at 2026-11-20 14:09 UTC.
+Competition pages and Kaggle state checked on 2026-11-22 with the official Kaggle CLI; the latest submission and top-leaderboard checks were at 15:01 UTC, and quota was checked at 15:02 UTC. The most recent full leaderboard snapshot was generated at 2026-11-20 14:09 UTC.
 
 ## Official references
 
@@ -55,7 +55,9 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 - At 2026-11-22 09:22 UTC, Kaggle showed submission `58624160` `COMPLETE` at public score **0.10** and `58527796` `COMPLETE` at **0.15**; neither has a displayed private score. The top-only public leaderboard showed 16 teams tied at **0.24**, with the next score at **0.22**.
 - The Idris v24 44-task kernel `accelra/train-gold-44-idris-v24-31b` version 2 is complete. Downloaded run `ee248eea647c` resolved 19/44 (0.432), tied with reference-v2 and one pass below V5. Against V5 it gained `rich_3506` and lost `fastapi_9753` and `rich_3278`; against reference-v2 it had three paired gains and three losses. Evaluator task time was 208.45 minutes, and 11/44 tasks used all 28 calls. This is a local training-task result, not a leaderboard score.
 - At 09:26 UTC, GPU quota was 21.69h used / 8.31h remaining and TPU quota was 20.00h; both refresh at 2026-11-28 00:00 UTC. V5 40-call kernel `accelra/train-gold-44-v5-40-calls-31b` version 3 had been pushed and was `QUEUED`; earlier `COMPLETE` status referred to notebook conversion, with no evaluation summary or task output.
-- At 2026-11-22 13:22 UTC, Kaggle CLI confirmed V5 40-call kernel version 3 COMPLETE and its evaluator output was retrieved. Run 66eaae072d4a resolved 20/44 (0.455), tying the V5 28-call score with three pass gains and three losses; 9/44 tasks used all 40 calls and 4 timed out. This is unseeded local training evidence, not a leaderboard score.
+- At 2026-11-22 15:01 UTC, Kaggle CLI showed 16 public teams tied at 0.24, with the next score at 0.22. Submissions 58624160 and 58527796 remained COMPLETE at public scores 0.10 and 0.15; neither displayed a private score.
+- At 15:02 UTC, GPU quota was 29.02h used / 0.98h remaining and TPU quota was 20.00h; both refresh at 2026-11-28 00:00 UTC.
+- Seed-42 V5 28/40-call private kernels were saved as version 1 with --no-run: [28-call](https://www.kaggle.com/code/accelra/v5-28-call-seed-42-gold-44-comparison) and [40-call](https://www.kaggle.com/code/accelra/v5-40-call-seed-42-gold-44-comparison). Kaggle status by canonical URL is COMPLETE, which means notebook conversion only; no evaluation tasks ran.
 - Small-model public leaderboard: top score **0.12** in the official tracker output, last updated 2026-11-16 23:55 UTC; refreshed from the Kaggle notebook on 2026-11-18.
 - These are public-split snapshots, not final standings. The final placement is based on the private leaderboard.
 
