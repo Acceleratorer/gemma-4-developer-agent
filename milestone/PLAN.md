@@ -4,14 +4,14 @@
 
 Reach rank 1 on the final Kaggle private leaderboard. Continue optimizing until the final deadline and claim success only after the private leaderboard confirms it.
 
-## Current state — 2026-11-22 23:30 UTC
+## Current state — 2026-11-22 23:47 UTC
 
-- **Competition runway:** Kaggle CLI reports a 2026-12-02 23:59 deadline, 6,482 teams, and account `userRank` 4,002. GPU quota resets at 2026-11-28 00:00 UTC, just under five days before the deadline. Target the final public submission by 2026-11-29 23:59 (Kaggle deadline time basis) to leave at least 72 hours for the queue and scoring; this leaves about 48 hours after reset for experiments. Skip lower-priority ablations if they threaten that buffer.
-- **Public leaderboard:** 16 teams tied at 0.24; the next score is 0.22. The top-only check was refreshed at 23:30 UTC; the latest full snapshot, generated at 19:42 UTC, contains 6,463 rows.
+- **Competition runway:** Kaggle CLI reports a 2026-12-02 23:59 deadline, 6,483 teams, and account `userRank` 4,002. GPU quota resets at 2026-11-28 00:00 UTC, just under five days before the deadline. Target the final public submission by 2026-11-29 23:59 (Kaggle deadline time basis) to leave at least 72 hours for the queue and scoring; this leaves about 48 hours after reset for experiments. Skip lower-priority ablations if they threaten that buffer.
+- **Public leaderboard:** 16 teams tied at 0.24; the next score is 0.22. A full leaderboard snapshot downloaded at 23:46 UTC contains 6,484 rows and is preserved under ignored `data/local/leaderboard-2026-11-22T23-46-55Z/`.
 - **Our submissions:** `58527796` is `COMPLETE` at 0.15; `58624160` is `COMPLETE` at 0.10; V5 `58729936` remains `PENDING` without a public or private score. No private score is displayed for any submission. The limits endpoint returned `numToday=1`, `numTotal=3`; the create-submission response rejected another upload while one was pending.
 - **Submission gate:** A same-source V5 repeat attempt at 23:29 UTC returned HTTP 400 `FAILED_PRECONDITION`: today's allowance was used and one submission was still pending. No submission ref was created. The response requires the submitted file to be named `submission.zip`; wait for `58729936` to finish and a new UTC day before another public submission.
 - **Quota:** 0.04 GPU hours and 20.00 TPU hours remain; both refresh at 2026-11-28 00:00 UTC.
-- **TPU smoke:** At 23:30 UTC, `accelra/gemma-4-qat-on-kaggle-tpu-v5e-8-smoke-v1` remained `QUEUED`; the 23:16 UTC logs check was empty and no TPU quota was used. The evaluator adapter stays gated on a successful model-load and tool-call smoke.
+- **TPU smoke:** At 23:47 UTC, `accelra/gemma-4-qat-on-kaggle-tpu-v5e-8-smoke-v1` remained `QUEUED`; its logs were empty and no TPU quota was used. The evaluator adapter stays gated on a successful model-load and tool-call smoke.
 - **Comparable local evidence:** On the same 44 training tasks, V5 scored 20/44 versus 19/44 for reference-v2 and Idris v24. The unseeded V5 40-call run also scored 20/44 but traded three passes each way, so it does not show a gain over 28 calls.
 - **Test-aware screen:** V1 scored 0/2 on `fastapi_15588` and `rich_3061`; V2's seed-42 FastAPI probe also scored 0/1 and failed the same six error-message assertions. Both traces show ad-hoc scripts instead of repository tests. The V2 instruction did not change the result on FastAPI, so a full 44-task V2 run is not justified. These are local training-task results, not leaderboard scores.
 - **Next prompt screen:** A one-line validation-wording candidate is staged on the same FastAPI task with seed 42; its private notebook is saved with `--no-run` and has no evaluation result. Run it only after quota refresh, and promote to 44 tasks only if it resolves the task.
