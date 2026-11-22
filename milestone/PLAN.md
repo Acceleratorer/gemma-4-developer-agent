@@ -4,9 +4,10 @@
 
 Reach rank 1 on the final Kaggle private leaderboard. Continue optimizing until the final deadline and claim success only after the private leaderboard confirms it.
 
-## Current state — 2026-11-22 22:50 UTC
+## Current state — 2026-11-22 22:58 UTC
 
-- **Public leaderboard:** 16 teams tied at 0.24; the next score is 0.22. The top-only check was refreshed at 22:50 UTC; the latest full snapshot, generated at 19:42 UTC, contains 6,463 rows.
+- **Competition runway:** Kaggle CLI reports a 2026-12-02 23:59 deadline, 6,480 teams, and account `userRank` 4,000. GPU quota resets at 2026-11-28 00:00 UTC, leaving four days. Target the final public submission by 2026-11-30 23:59 on Kaggle's deadline time basis to leave at least 48 hours for scoring; skip lower-priority ablations if they threaten that buffer.
+- **Public leaderboard:** 16 teams tied at 0.24; the next score is 0.22. The top-only check was refreshed at 22:58 UTC; the latest full snapshot, generated at 19:42 UTC, contains 6,463 rows.
 - **Our submissions:** `58527796` is `COMPLETE` at 0.15; `58624160` is `COMPLETE` at 0.10; V5 `58729936` remains `PENDING` without a public or private score. No private score is displayed for any submission. Kaggle reports one of three daily submissions used.
 - **Quota:** 0.04 GPU hours and 20.00 TPU hours remain; both refresh at 2026-11-28 00:00 UTC.
 - **TPU smoke:** `accelra/gemma-4-qat-on-kaggle-tpu-v5e-8-smoke-v1` remains `QUEUED`; logs and output are empty, and it has used no TPU quota. The evaluator adapter stays gated on a successful model-load and tool-call smoke.
@@ -14,7 +15,7 @@ Reach rank 1 on the final Kaggle private leaderboard. Continue optimizing until 
 - **Test-aware screen:** V1 scored 0/2 on `fastapi_15588` and `rich_3061`; V2's seed-42 FastAPI probe also scored 0/1 and failed the same six error-message assertions. Both traces show ad-hoc scripts instead of repository tests. The V2 instruction did not change the result on FastAPI, so a full 44-task V2 run is not justified. These are local training-task results, not leaderboard scores.
 - **Next prompt screen:** A one-line validation-wording candidate is staged on the same FastAPI task with seed 42; its private notebook is saved with `--no-run` and has no evaluation result. Run it only after quota refresh, and promote to 44 tasks only if it resolves the task.
 
-Kaggle's 2026-11-19 update estimated 20–24 hours end-to-end (about 8–9 hours queued, 9–10 hours running, and 2–2.5 hours scoring). Later participant reports separately included a 26-hour completion and waits beyond 24 hours; reserve more than a day for a final submission. The private leaderboard determines final placement; ties go to the earlier submission.
+Kaggle's 2026-11-19 update estimated 20–24 hours end-to-end (about 8–9 hours queued, 9–10 hours running, and 2–2.5 hours scoring). Later participant reports separately included a 26-hour completion and waits beyond 24 hours; reserve at least 48 hours for the final submission. The private leaderboard determines final placement; ties go to the earlier submission.
 
 The tracked submission source `module/agents/current/` still mirrors the measured 28-call Budget-Fit V5 candidate. The unseeded 40-call run tied its 20/44 score, swapped three passes in each direction, and used 26.43 more evaluator task-minutes. Prioritize the seed-42 28-call control and unseen holdout; keep V2 and the staged 40-call comparison below them unless later evidence justifies spending quota.
 
