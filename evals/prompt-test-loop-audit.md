@@ -27,6 +27,12 @@ The V2 trace confirms that the prompt contained the new test instructions, but t
 
 Do not promote V2 to a full 44-task comparison based on this evidence. Preserve its two-task notebook as an unrun artifact and prioritize the seed-42 V5 28-call control and disjoint 18-task holdout after the 2026-11-28 quota refresh. Keep the 40-call comparison lower priority because its earlier unseeded run tied V5 28-call at 20/44 while taking 26.43 more evaluator task-minutes.
 
+## V5 repeat trace review — 2026-11-23
+
+The exact V5 repeat on `dev-valid-expanded` scored 5/20; `rich_3061` remained unresolved. Its trace (`evals/results/dev-valid-expanded-budget-fit-v5-repeat-31b/output/dev_results/3a7eb3f3c6a5/traces/trace_rich_3061.json`) shows the agent spent several calls retrying searches that returned no match, then read the existing `Text.expand_tabs` and `Style` implementations. It submitted a patch using `Style(tab_style)` and `Style(span_style)`, although `Style.__init__` accepts keyword-only arguments. Its standalone `verify_tabs.py` then failed with `Style.__init__() takes 1 positional argument but 2 were given`; the agent spent the remaining calls inspecting the constructor and exhausted the 28-call budget without running the repository regression test. The patch also added that scratch verification script.
+
+This is a confirmed failure mode for `rich_3061`, not evidence that a larger generic test instruction will help: V2 already asked for focused repository tests and exact failure inspection, but the FastAPI probe still ignored that instruction. Keep the current one-task validation-wording probe as the next quota-gated screen. Do not expand a prompt candidate based on this single trace; if the probe fails, prioritize the seeded V5 control and no-graph pair already staged for the same 54 tasks.
+
 ## Next prompt-only check: validation wording
 
 The V2 run shows the model chose `must not contain newlines` even though the evaluator expected the invariant wording `must be a single line`. `module/agents/budget-fit-v5-validation-contract-v1/` tests one narrow generalization of that failure: validation messages should state the required invariant in positive terms, and exact wording is part of API behavior. It is otherwise byte-identical to `module/agents/current/`.
