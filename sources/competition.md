@@ -85,6 +85,13 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 - Small-model public leaderboard: top score **0.12** in the official tracker output, last updated 2026-11-16 23:55 UTC; refreshed from the Kaggle notebook on 2026-11-18.
 - These are public-split snapshots, not final standings. The final placement is based on the private leaderboard.
 
+## Latest live state — 2026-11-23 07:48 UTC
+
+- A fresh top-only leaderboard check still shows 16 entries tied at **0.24**, with the next score at **0.22**. The latest full snapshot and account rank remain the 07:33 UTC download above.
+- Submission `58729936` remains `PENDING`; `58624160` is complete at **0.10** and `58527796` at **0.15**. No private scores are displayed.
+- GPU quota remains **0.04h** and TPU quota **20.00h**, refreshing at 2026-11-28 00:00 UTC. The QAT TPU smoke `accelra/gemma-4-qat-on-kaggle-tpu-v5e-8-smoke-v1` remains `QUEUED`.
+- The six staged 53-task and 18-task comparison kernels report `COMPLETE`, but their downloaded logs contain only notebook-to-HTML conversion. No model inference or task evaluation ran; these remain `--no-run` artifacts.
+
 ## Community experiment evidence checked 2026-11-19–2026-11-20
 
 - The recent [TFD-Agent discussion](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/745748) proposes a pre-patch reproducer and test-feedback loop, which overlaps the prepared V5 test-aware prompt. Its claims are not decision-grade: the linked [dataset](https://www.kaggle.com/datasets/rajrajak99/gemma-4-tfd-agentic-trajectories) has 50 CSV rows but only 10 underlying issue descriptions repeated five times, and its [demo code](https://github.com/rajrajak99/gemma4-tfd-agent/blob/main/tfd_agent_demo.py) hardcodes the search, failure, patch, and pass output. The local copies are ignored under `data/local/research/gemma4-tfd/`; do not treat the reported percentages as independent SWE-bench evidence.
