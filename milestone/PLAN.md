@@ -142,7 +142,7 @@ Historical public config draws show that eight runs of one identical bundle scor
 - [x] Record the 14-task no-patch baseline (0/14) and freeze a nine-task `dev-valid` set that excludes five verifier failures: missing `inline_snapshot`, recursive Requests `httpbin` fixtures, the Rich `/dev/tty` error, and the HTTPX no-patch import mismatch. The HTTPX snapshot exports `Stream` from `src/httpx/__init__.py` even though the verifier's imported `httpx` module lacks it.
 - [x] Pin new Kaggle evaluation kernels to the competition-compatible Python 3.12 image; the unpinned reference attempt failed under Python 3.13, and the pinned reference comparison completed at 0/4.
 - [ ] Test a read-only analyzer only if the graph-enabled run beats the current candidate.
-- [ ] Try LoRA only after the no-adapter prompt baseline is repeatable and scorer compatibility is verified.
+- [ ] Revisit LoRA only after the no-adapter candidate is repeatable and scorer compatibility is verified. The latest participant source audit reports no held-out practice gain for its adapter variants; that is external evidence, not a competition score ([details](../sources/public-agent-source-audit-2026-11-20.md)).
 - [x] Run the first full Kaggle public submission after the fixed-set score improved to 3/9: ref `58527796`, submitted 2026-11-18 22:41 UTC. Kaggle reported `COMPLETE` with public score 0.15 by 2026-11-20 12:04 UTC; no private score or exact evaluator runtime was exposed. Downloaded submission SHA-256 matches the recorded 2a9e5d8a… hash, and all four files byte-match `module/agents/reference-budget-v2/`. The score and archive hash are recorded in `/log/experiment-log.csv`.
 
 ### M3 — Compete for the small-model prize
