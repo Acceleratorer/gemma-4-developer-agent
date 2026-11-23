@@ -6,6 +6,7 @@ import asyncio
 import concurrent.futures
 import glob
 import hashlib
+import importlib.util
 import json
 import logging
 import os
@@ -40,7 +41,7 @@ def _configure_environment() -> None:
         logging.getLogger(name).setLevel(logging.WARNING)
 
 
-def _install_wheelhouse(wheelhouse: Path) -> None:
+def _install_wheelhouse(wheelhouse: Path) -> str:
     if not wheelhouse.is_dir():
         raise FileNotFoundError(f"Wheelhouse input not found: {wheelhouse}")
     for pattern in (
@@ -72,6 +73,54 @@ def _install_wheelhouse(wheelhouse: Path) -> None:
         [sys.executable, "-m", "pip", "install", "-q", "--no-deps", "--force-reinstall", *wheels],
         check=True,
     )
+    return _patch_reasoning_content_compat()
+
+
+def _patch_reasoning_content_compat() -> str:
+    spec = importlib.util.find_spec("vllm")
+    if spec is None or spec.origin is None:
+        raise RuntimeError("vLLM was not installed from the competition wheelhouse")
+    protocol_path = (
+        Path(spec.origin).parent
+        / "entrypoints"
+        / "openai"
+        / "chat_completion"
+        / "protocol.py"
+    )
+    source = protocol_path.read_text(encoding="utf-8")
+    class_start = source.find("class ChatCompletionRequest(")
+    if class_start < 0:
+        raise RuntimeError("Unsupported vLLM chat protocol; cannot apply reasoning shim")
+
+    upstream_marker = 'msg.pop("reasoning_content", None)'
+    anchor = source.find("    def build_chat_params(", class_start)
+    if anchor < 0:
+        raise RuntimeError("Unsupported ChatCompletionRequest layout; cannot apply reasoning shim")
+    class_prefix = source[class_start:anchor]
+    if "_normalize_messages_before" in class_prefix and upstream_marker in class_prefix:
+        return "upstream-reasoning-content-normalizer"
+    if "reasoning_content" in class_prefix:
+        raise RuntimeError("Unrecognized reasoning_content handling in vLLM; inspect before patching")
+
+    normalizer = (
+        "    @model_validator(mode=\"before\")\n"
+        "    @classmethod\n"
+        "    def _normalize_messages_before(cls, data: Any) -> Any:\n"
+        "        if not isinstance(data, dict):\n"
+        "            return data\n"
+        "        messages = data.get(\"messages\")\n"
+        "        if not isinstance(messages, list):\n"
+        "            return data\n"
+        "        for msg in messages:\n"
+        "            if not isinstance(msg, dict):\n"
+        "                continue\n"
+        "            reasoning_content = msg.pop(\"reasoning_content\", None)\n"
+        "            if reasoning_content is not None and msg.get(\"reasoning\") is None:\n"
+        "                msg[\"reasoning\"] = reasoning_content\n"
+        "        return data\n\n"
+    )
+    protocol_path.write_text(source[:anchor] + normalizer + source[anchor:], encoding="utf-8")
+    return "local-compatibility-shim-vllm-42664"
 
 
 def _materialize_agent(agent_files: dict[str, str], destination: Path) -> None:
@@ -117,7 +166,7 @@ def run_dev_eval(
     wheelhouse = Path("/kaggle/input/datasets/metric/gemma-4-developer-agent-wheelhouse")
     working_dir = Path("/kaggle/working")
     working_dir.mkdir(parents=True, exist_ok=True)
-    _install_wheelhouse(wheelhouse)
+    runtime_compatibility = _install_wheelhouse(wheelhouse)
 
     import torch
     import yaml
@@ -211,7 +260,8 @@ def run_dev_eval(
         ).hexdigest()
         run_id = hashlib.sha256(
             (agent_hash + "\n" + model_name + "\n" + "\n".join(task_ids) + "\n"
-             + str(max_tool_calls) + "\n" + str(max_time_minutes) + "\n" + str(seed)).encode()
+             + str(max_tool_calls) + "\n" + str(max_time_minutes) + "\n" + str(seed)
+             + "\n" + runtime_compatibility).encode()
         ).hexdigest()[:12]
         results_dir = working_dir / "dev_results" / run_id
         results_dir.mkdir(parents=True, exist_ok=True)
@@ -288,6 +338,7 @@ def run_dev_eval(
         summary = {
             "run_id": run_id,
             "model": model_name,
+            "runtime_compatibility": runtime_compatibility,
             "agent_sha256": agent_hash,
             "task_ids": task_ids,
             "max_tool_calls": max_tool_calls,
