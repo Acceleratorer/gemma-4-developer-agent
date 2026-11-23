@@ -13,14 +13,18 @@ def _task_ids(name: str) -> list[str]:
 
 
 class EvaluationTaskSetTests(unittest.TestCase):
-    def test_scorable_selection_set_preserves_the_unseen_holdout(self) -> None:
+    def test_wheelhouse_qualified_selection_preserves_the_unseen_holdout(self) -> None:
         training = _task_ids("dev-valid-training-gold-verified-task-ids.json")
-        selection = _task_ids("dev-valid-training-gold-scorable-54-task-ids.json")
+        candidate = _task_ids("dev-valid-training-gold-scorable-54-task-ids.json")
+        selection = _task_ids("dev-valid-training-wheelhouse-qualified-53-task-ids.json")
         holdout = _task_ids("dev-valid-unseen-gold-verified-task-ids.json")
 
         self.assertEqual(len(training), 44)
-        self.assertEqual(len(selection), 54)
-        self.assertEqual(len(set(selection)), 54)
+        self.assertEqual(len(candidate), 54)
+        self.assertEqual(len(selection), 53)
+        self.assertEqual(len(set(selection)), 53)
+        self.assertEqual(selection, [task for task in candidate if task != "rich_4070"])
+        self.assertIn("rich_3782", selection)
         self.assertTrue(set(training).issubset(selection))
         self.assertTrue(set(selection).isdisjoint(holdout))
 
