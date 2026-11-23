@@ -21,6 +21,7 @@ Reach rank 1 on the final Kaggle private leaderboard. Continue optimizing until 
 - Tune prompt flow and call/time budgets first; keep model and sampling fixed. Pair comparisons on task IDs, tools, and budgets, and promote only with aggregate and holdout evidence. Local task results are not leaderboard scores.
 - Keep the 28-call/eight-minute setup until the seeded comparison justifies a change. Recheck quota after every run and reserve 5.2-6.6 GPU hours for the paired 18-task holdout.
 - Preserve the final archive, submission ID, public result, and selected final submission in the log. The current pending submission blocks new uploads.
+- Use the two final-selection slots for the strongest distinct candidates. Verify submission IDs, public scores, model variants, and selected final submissions.
 
 ## Reset-week experiment order
 
@@ -29,8 +30,8 @@ Reach rank 1 on the final Kaggle private leaderboard. Continue optimizing until 
 3. Run source-faithful Patchsmith exp021 on the same 53 IDs ([kernel](https://www.kaggle.com/code/accelra/patchsmith-exp021-seed42-wheelhouse-qualified-53)) if quota and the final-submission buffer allow it.
 4. Compare V5 with the selection leader on the paired 18-task unseen holdout: V5 ([kernel](https://www.kaggle.com/code/accelra/v5-28-call-seed42-unseen-gold-verified-18)) and Patchsmith ([kernel](https://www.kaggle.com/code/accelra/unseen-gold-verified-patchsmith-exp021-31b)). Avoid rerunning V5 if it is already the leader and the matching result exists.
 5. Run the full validation-contract comparison ([kernel](https://www.kaggle.com/code/accelra/v5-validation-contract-seed42-53)) only if its one-task probe passes and quota remains after reserving the holdout budget.
-6. Choose the best distinct candidate, build the exact 31B archive, and submit it only when Kaggle accepts uploads and the 72-hour buffer remains.
-7. Verify the selected submission and private leaderboard after the competition closes; record the final result.
+6. Choose the strongest distinct candidates for the two final-selection slots, build exact 31B archives, and submit only when Kaggle accepts uploads and the 72-hour buffer remains.
+7. Verify submission IDs, public scores, model variants, and selected final submissions. Check the private leaderboard after the competition closes and record the final result.
 
 The API-shape pilot is an optional low-priority probe after these comparisons. It is based on the `rich_3061` trace and is documented with other deferred work in [`DEFERRED.md`](DEFERRED.md). Completed milestone details are preserved in [`COMPLETED.md`](COMPLETED.md).
 
