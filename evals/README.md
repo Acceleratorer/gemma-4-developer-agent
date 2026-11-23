@@ -23,6 +23,8 @@ The completed TPU allocation smoke used `accelra/gemma-4-tpu-runtime-smoke-v1`; 
 
 ## Local harness
 
+Private Kaggle fixed-set notebooks install the public competition wheelhouse. `evals/kaggle_runtime.py` checks whether the vLLM wheel includes the upstream `reasoning_content` normalizer; when absent, it applies the equivalent local compatibility patch and records the runtime label in `summary.json`. This affects development evaluations only, not the submitted agent ZIP. Rebuild saved notebooks after changing the runtime, and keep graph-enabled runs gated on the parser audit in `sources/competition.md`.
+
 The official `HARNESS_README.md` documents `swegemma eval`. A representative command is:
 
 ```bash
