@@ -17,6 +17,10 @@ These items are not on the current critical path. Revisit them only after the se
 - [ ] Test a read-only analyzer only if the graph-enabled run beats the current candidate.
 - [ ] Revisit LoRA only after the no-adapter candidate is repeatable and scorer compatibility is verified. The latest participant source audit reports no held-out practice gain for its adapter variants; that is external evidence, not a competition score ([details](../sources/public-agent-source-audit-2026-11-20.md)).
 
+## Patch completion hypothesis
+
+- [ ] After the seeded V5/Patchsmith 53-task comparison and paired unseen holdout, consider a one-sentence patch-completion ablation on `fastapi_15589` and `rich_3506` only if quota remains after protecting the final-submission buffer. In the unseeded V5/reference-v2 44-task pair, these were V5's two losses; its patches added only `reproduce_issue.py` and `repro.py`, and the task verifiers still failed. Both IDs are in the wheelhouse-qualified 53-task training set and outside the unseen holdout. Test whether requiring the submitted diff to implement the requested behavior (unless the task explicitly asks for a test or reproducer) prevents repro-only patches. Treat this as a two-task training screen, not promotion evidence.
+
 ## Issue localization hypothesis
 
 - [ ] After the seeded V5/Patchsmith 53-task comparison and paired 18-task holdout, consider an original, prompt-only issue-to-test localization screen on `rich_4076` (failure case) and `rich_3894` (control), using the V5 seed-42 results as baseline. The external P3 report found no extra pass on this pair, but its `rich_4076` trace shows a concrete wrong-entry-point edit; its proposed P4 remains untested. Promote to a full 53-task comparison only if the two-task screen improves on V5 without losing the control pass, and only if quota and the final-submission buffer remain. See [`public-candidate-audit-2026-11-24.md`](../sources/public-candidate-audit-2026-11-24.md).
