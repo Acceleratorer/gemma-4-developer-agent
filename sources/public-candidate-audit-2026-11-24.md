@@ -2,7 +2,7 @@
 
 ## Summary
 
-Kaggle CLI's latest-run listing surfaced five recently updated notebooks worth checking. Their current revisions do not supply a stronger competition-tested candidate, so keep the existing seeded V5/Patchsmith comparison plan. Pulled copies are under ignored `data/local/research/recent-public-agents/`; notebook code was inspected as text and not executed.
+Kaggle CLI's latest-run listing surfaced six recently updated notebooks worth checking. Their current revisions do not supply a stronger competition-tested candidate, so keep the existing seeded V5/Patchsmith comparison plan. The first five pulled copies are under ignored `data/local/research/recent-public-agents/`; the later Mr Liang notebook is under `data/local/research/public-recheck-20261124/jnliang-envfix/`. Notebook code was inspected as text and not executed.
 
 ## Flexonafft short-prompt bundle
 
@@ -32,6 +32,14 @@ Notebook: [Can Gemma 4 Become a Software Engineer?](https://www.kaggle.com/code/
 
 The author reports P3 at 1/2 PASS on `rich_4076` and `rich_3894`, the same pass count as P2, with 33 versus 40 calls across those two individual runs. The sample is too small and order differs, so it does not establish a gain; the candidate has no matched public score. Its `rich_4076` trace is more useful than the score: the prompt searched newline-related words, then patched Markdown `rstrip()` logic, while the verifier checked the separate `Text.from_ansi()` contract. P3's proposed P4—tie a terse issue to its concrete API and regression test before editing—is untested. Both `rich_4076` and the `rich_3894` control are in our 53-task training set. Defer an original, prompt-only P4 screen on this pair until after the V5/Patchsmith 53-task comparison and unseen holdout; do not add a full 53-task P4 run unless the screen improves over the seeded V5 outcomes and quota plus the final-submission buffer allow it.
 
+## Mr Liang's environment-fix bundle
+
+Notebook: [Gemma4 Envfix 020x3](https://www.kaggle.com/code/jnliang/gemma4-envfix-020x3), last run 2026-11-24 19:53 UTC. Its current kernel status is `ERROR`. The metadata uses CPU only, has no model input, and attaches `muhammedidris28/locbench-129`. The log reports a dependency census, then fails in a later cell with `FileNotFoundError: scored_manifest.json`; that run did not evaluate an agent.
+
+The notebook reports 0.20 on submissions `58485496`, `58531526`, and `58642247`, and embeds eight files labeled as the `58642247` bundle. That bundle adds an `envfix` skill whose script installs stand-ins for `inline_snapshot` and `dirty_equals` into the Python environment. The notebook attributes the stand-in semantics to LocBench-129 (Apache-2.0), but the eight embedded submission files contain no `LICENSE` or `NOTICE`; neither the Kaggle leaderboard nor this failed notebook run independently maps the source to a score-bearing archive hash. Treat the 0.20 results and exact bundle link as the author's report.
+
+This is an evaluation hypothesis, not a promotion. Our current 53-task set is gold-patch-qualified without environment shims, and Kaggle staff said the held-out competition tasks pass with their reference patches ([discussion](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/747248)). That makes transfer from the reported public-training dependency census to the private test uncertain; the stand-ins could also give incomplete test feedback. Keep it out of the first GPU wave. Revisit only if the V5/Patchsmith comparisons leave quota for a small, gold-verified screen.
+
 ## Decision
 
-Do not add these public bundles or unverified prompt hypotheses to the first post-reset GPU wave. The Flexonafft notebook does not measure its bundle, the Arsen prompt hybrid lacks a significant paired gain, the Ziad Samer run is too small and overlapping to support promotion, and the Dheeraj and Dvorkin write-ups do not establish a stronger candidate. Preserve the planned one-task validation-contract screen, then compare the seeded V5 and source-faithful Patchsmith candidates on the same 53 tasks and unseen 18-task holdout. Keep all outside notebook source and data out of the public repository.
+Do not add these public bundles or unverified prompt hypotheses to the first post-reset GPU wave. The Flexonafft notebook does not measure its bundle, the Arsen prompt hybrid lacks a significant paired gain, the Ziad Samer run is too small and overlapping to support promotion, and the Dheeraj, Dvorkin, and Mr Liang reports do not establish a stronger private-test candidate. Preserve the planned one-task validation-contract screen, then compare the seeded V5 and source-faithful Patchsmith candidates on the same 53 tasks and unseen 18-task holdout. Keep all outside notebook source and data out of the public repository.

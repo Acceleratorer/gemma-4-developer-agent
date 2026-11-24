@@ -1,8 +1,8 @@
 # Competition facts and sources
 
-## Latest full leaderboard snapshot — checked 2026-11-24 19:32 UTC
+## Latest full leaderboard snapshot — checked 2026-11-24 20:52 UTC
 
-The final deadline is 2026-12-02 23:59 UTC. The full public snapshot generated at 19:32:11 UTC contains 6,645 rows and ranks `Accelra` 2,072 at 0.18; 17 teams are tied at 0.24, followed by 141 at 0.22 and 652 at 0.20. Another 1,300 teams are at 0.18. No private score is shown. The ZIP is preserved under ignored `data/local/leaderboard-2026-11-24-1931utc/` (SHA-256 `D4283FE1F17EA144D99913AE0677EE6E4E828F780E57C0862BA0433ED4D18DD5`). The latest live-state section below records submissions, quotas, and kernel status.
+The final deadline is 2026-12-02 23:59 UTC. The full public snapshot generated at 20:52:40 UTC contains 6,653 rows and ranks `Accelra` 2,072 at 0.18; 17 teams are tied at 0.24, followed by 141 at 0.22 and 653 at 0.20. Another 1,303 teams are at 0.18. No private score is shown. The ZIP is preserved under ignored `data/local/leaderboard-2026-11-24-2045utc/` (SHA-256 `1664B97C1A164C666C0E94A962BC74B23F90CCAE4326765D31352AF407471E0C`). The latest live-state section below records submissions, quotas, and kernel status.
 
 ## Historical snapshot — checked 2026-11-23 14:34 UTC
 
@@ -91,14 +91,14 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 - Small-model public leaderboard: top score **0.12** in the official tracker output, last updated 2026-11-16 23:55 UTC; refreshed from the Kaggle notebook on 2026-11-18.
 - These are public-split snapshots, not final standings. The final placement is based on the private leaderboard.
 
-## Latest live state — 2026-11-24 19:32 UTC
+## Latest live state — 2026-11-24 20:56 UTC
 
-- The full public leaderboard snapshot generated at 19:32:11 UTC contains 6,645 rows. `Accelra` is rank **2,072** at **0.18**; the 19:31 top-only query shows 17 teams tied at **0.24**. The full-snapshot distribution is 141 at **0.22**, 652 at **0.20**, and 1,300 at **0.18**. No private score is shown. The archive path and SHA-256 are recorded above; the top-only query does not refresh the full rank or row count.
-- At 19:31 UTC, the latest submissions query showed `58729936` complete at **0.18**, `58624160` complete at **0.10**, and `58527796` complete at **0.15**; none was pending. Submission limits were `numTotal=3` and `numAllowedNow=1`; recheck before an upload.
-- At 19:31 UTC, Kaggle CLI reported GPU quota **29.96/30.00h used** and TPU quota **0.42/20.00h used**; both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time. Explicit status checks showed TPU smoke versions 1 and 2 are `ERROR`, while corrected version 3 remains `QUEUED` with empty logs; Kaggle exposes no ETA. Version 2's logs show the vLLM server failed with `/dev/vfio/1: Device or resource busy`; the notebook had called `jax.devices()` in the driver before starting the server. Version 3 removes that parent-side device enumeration.
-- All six core comparison/probe kernels report `COMPLETE` as saved notebook artifacts. Their staged-kernel audit found unexecuted code cells and no inference outputs; see [the audit](staged-kernel-audit-2026-11-24.md). The issue-localization P4 kernel version 2 is also saved with `--no-run`. Do not treat notebook conversion as model evaluation.
+- The full public leaderboard snapshot generated at 20:52:40 UTC contains 6,653 rows. `Accelra` is rank **2,072** at **0.18**; 17 teams are tied at **0.24**, followed by 141 at **0.22**, 653 at **0.20**, and 1,303 at **0.18**. No private score is shown. The archive path and SHA-256 are recorded above.
+- The 20:56 UTC submissions query shows `58729936` complete at **0.18**, `58624160` complete at **0.10**, and `58527796` complete at **0.15**; none is pending. Submission limits were last returned at 19:31 UTC as `numTotal=3` and `numAllowedNow=1`; recheck before an upload.
+- The 20:53 UTC quota check shows GPU **29.96/30.00h used** and TPU **0.42/20.00h used**; both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time. The corrected TPU QAT smoke v3 remains `QUEUED` and has no ETA. Versions 1 and 2 ended `ERROR`; version 2's logs show `/dev/vfio/1: Device or resource busy` after the driver called `jax.devices()`, which version 3 removes.
+- Six single-agent comparison/probe kernels and the P4 Rich-pair screen are saved artifacts, not evaluation results. Two paired suites were also saved with `--no-run`; their pulled notebooks have empty execution counts and outputs. No inference ran. See [the staged-kernel audit](staged-kernel-audit-2026-11-24.md).
 
-## Latest quota and TPU check — 2026-11-24 20:01 UTC
+## Latest quota and TPU check — 2026-11-24 20:53 UTC
 
 Kaggle CLI reports GPU quota at **29.96/30.00h used** (**0.04h remaining**) and TPU quota at **0.42/20.00h used** (**19.58h remaining**). Both refresh at **2026-11-28 00:00 UTC / 07:00 Vietnam time**. Corrected TPU smoke version 3 is still `QUEUED`; its log query is empty, and the status response gives no ETA. Do not start a duplicate TPU run.
 
