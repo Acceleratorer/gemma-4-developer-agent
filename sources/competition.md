@@ -1,8 +1,8 @@
 # Competition facts and sources
 
-## Latest full leaderboard snapshot — checked 2026-11-24 17:38 UTC
+## Latest full leaderboard snapshot — checked 2026-11-24 19:32 UTC
 
-The final deadline is 2026-12-02 23:59 UTC. The full public snapshot generated at 17:38:17 UTC contains 6,642 rows and ranks `Accelra` 2,074 at 0.18; 17 teams are tied at 0.24, followed by 141 at 0.22 and 652 at 0.20. Another 1,298 teams are at 0.18. No private score is shown. The ZIP is preserved under ignored `data/local/leaderboard-2026-11-24-1738utc/` (SHA-256 `842E7C4B7FEA5E8386205EE445F00D8AB43DE7CD2D38E6436AC0C14DA6C28D96`). The latest live-state section below records submissions, quotas, and kernel status.
+The final deadline is 2026-12-02 23:59 UTC. The full public snapshot generated at 19:32:11 UTC contains 6,645 rows and ranks `Accelra` 2,072 at 0.18; 17 teams are tied at 0.24, followed by 141 at 0.22 and 652 at 0.20. Another 1,300 teams are at 0.18. No private score is shown. The ZIP is preserved under ignored `data/local/leaderboard-2026-11-24-1931utc/` (SHA-256 `D4283FE1F17EA144D99913AE0677EE6E4E828F780E57C0862BA0433ED4D18DD5`). The latest live-state section below records submissions, quotas, and kernel status.
 
 ## Historical snapshot — checked 2026-11-23 14:34 UTC
 
@@ -91,11 +91,11 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 - Small-model public leaderboard: top score **0.12** in the official tracker output, last updated 2026-11-16 23:55 UTC; refreshed from the Kaggle notebook on 2026-11-18.
 - These are public-split snapshots, not final standings. The final placement is based on the private leaderboard.
 
-## Latest live state — 2026-11-24 19:10 UTC
+## Latest live state — 2026-11-24 19:32 UTC
 
-- The full public leaderboard snapshot generated at 17:38:17 UTC contains 6,642 rows. `Accelra` is rank **2,074** at **0.18**; the 18:29 top-only query still shows 17 teams tied at **0.24**. The full-snapshot distribution is 141 at **0.22**, 652 at **0.20**, and 1,298 at **0.18**. No private score is shown. The archive path and SHA-256 are recorded above; the top-only query does not refresh the full rank or row count.
-- At 18:34 UTC, the latest submissions query showed `58729936` complete at **0.18**, `58624160` complete at **0.10**, and `58527796` complete at **0.15**; none was pending. The submission-limit query reported 0 submissions today, 3 lifetime submissions, and 1 remaining today; recheck before an upload.
-- At 19:10 UTC, Kaggle CLI reported GPU quota **29.96/30.00h used** and TPU quota **0.42/20.00h used**; both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time. Explicit status checks showed TPU smoke versions 1 and 2 are `ERROR`, while corrected version 3 remains `QUEUED`; Kaggle exposes no ETA. Version 2's logs show the vLLM server failed with `/dev/vfio/1: Device or resource busy`; the notebook had called `jax.devices()` in the driver before starting the server. Version 3 removes that parent-side device enumeration.
+- The full public leaderboard snapshot generated at 19:32:11 UTC contains 6,645 rows. `Accelra` is rank **2,072** at **0.18**; the 19:31 top-only query shows 17 teams tied at **0.24**. The full-snapshot distribution is 141 at **0.22**, 652 at **0.20**, and 1,300 at **0.18**. No private score is shown. The archive path and SHA-256 are recorded above; the top-only query does not refresh the full rank or row count.
+- At 19:31 UTC, the latest submissions query showed `58729936` complete at **0.18**, `58624160` complete at **0.10**, and `58527796` complete at **0.15**; none was pending. Submission limits were `numTotal=3` and `numAllowedNow=1`; recheck before an upload.
+- At 19:31 UTC, Kaggle CLI reported GPU quota **29.96/30.00h used** and TPU quota **0.42/20.00h used**; both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time. Explicit status checks showed TPU smoke versions 1 and 2 are `ERROR`, while corrected version 3 remains `QUEUED` with empty logs; Kaggle exposes no ETA. Version 2's logs show the vLLM server failed with `/dev/vfio/1: Device or resource busy`; the notebook had called `jax.devices()` in the driver before starting the server. Version 3 removes that parent-side device enumeration.
 - All six core comparison/probe kernels report `COMPLETE` as saved notebook artifacts. Their staged-kernel audit found unexecuted code cells and no inference outputs; see [the audit](staged-kernel-audit-2026-11-24.md). The issue-localization P4 kernel version 2 is also saved with `--no-run`. Do not treat notebook conversion as model evaluation.
 
 ## Community experiment evidence checked 2026-11-19–2026-11-20
