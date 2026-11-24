@@ -1,8 +1,8 @@
 # Competition facts and sources
 
-## Latest Kaggle state — checked 2026-11-24 14:22 UTC
+## Latest full leaderboard snapshot — checked 2026-11-24 15:18 UTC
 
-The final deadline is 2026-12-02 23:59 UTC. The full public snapshot downloaded at 14:22:15 UTC contains 6,629 rows and ranks `Accelra` 2,074 at 0.18; 17 teams are tied at 0.24, with the next score at 0.22 (141 teams). The ZIP is preserved under ignored `data/local/leaderboard-2026-11-24-1421utc/` (SHA-256 `B93D7DB0EB0DB1EA0BBBA43600499CA27C16850672BE49AF6DECAFC7D7D5D3FD`). The 14:21 UTC submission query showed all three submissions complete (`58729936` at 0.18, `58624160` at 0.10, `58527796` at 0.15), with no pending submission or private score. GPU quota was 29.96/30.00h used (0.04h remaining) and TPU quota was 0.42/20.00h used (19.58h remaining) at 14:21 UTC; both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time. TPU smoke version 2 errored; version 3 remained `QUEUED` at 14:20 UTC after removing the notebook driver's `jax.devices()` preflight. Kaggle gives no queue ETA. The six staged evaluation kernels are `COMPLETE` conversion artifacts with no executed notebook cells or outputs and no agent inference; see the [staged-kernel audit](staged-kernel-audit-2026-11-24.md). New public candidate reviews are in the [2026-11-24 source audit](public-candidate-audit-2026-11-24.md).
+The final deadline is 2026-12-02 23:59 UTC. The full public snapshot downloaded at 15:18:10 UTC contains 6,632 rows and ranks `Accelra` 2,074 at 0.18; 17 teams are tied at 0.24, followed by 141 at 0.22. No private score is shown. The ZIP is preserved under ignored `data/local/leaderboard-2026-11-24-1517utc/` (SHA-256 `EE397AE2BBDE46A2FB67F93AADFF88BBB5251CB4C6F685EFBF0DF0F872916F38`). The latest live-state section below records submissions, quotas, and kernel status.
 
 ## Historical snapshot — checked 2026-11-23 14:34 UTC
 
