@@ -7,6 +7,8 @@
 3. **Kaggle public score**: scores the official public test slice. Record the submission ID, score, and date. A single score is noisy; use repeated evidence before attributing a gain.
 4. **Final standing**: the private leaderboard determines final placement.
 
+Use `py -3.12 evals/compare_eval_summaries.py <baseline-summary.json> <candidate-summary.json>` to compare paired runs. It pairs by task ID, checks model and task-set equality, and reports gains, losses, budgets, hashes, and task time.
+
 ## Inputs
 
 Kaggle's competition data contains `tasks.jsonl`, 129 training tasks across four repositories, repository snapshots, graph and embedding files, test wheels, and the official sample submission. The full snapshot bundle is about 20.5 GB; the workspace keeps competition inputs under ignored `data/local/` and does not fetch every snapshot by default.
