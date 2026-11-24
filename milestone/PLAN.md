@@ -4,13 +4,13 @@
 
 Reach rank 1 on the final Kaggle private leaderboard. Continue optimizing until the final deadline and claim success only after the private leaderboard confirms it.
 
-## Latest Kaggle state - checked 2026-11-24 14:17 UTC
+## Latest Kaggle state - checked 2026-11-24 14:22 UTC
 
-- **Competition:** the final deadline is 2026-12-02 23:59 UTC. The full public snapshot downloaded at 13:41:30 UTC has 6,627 rows and ranks `accelra` 2,074 at 0.18.
-- **Leaderboard:** 17 teams are tied at 0.24; the next score is 0.22. No private score is shown. Ties go to the earlier submission.
-- **Submissions:** `58729936` is complete at public score 0.18; `58624160` is complete at 0.10 and `58527796` at 0.15. The 13:58 UTC query showed no pending submission. Submission limits checked at 13:45 UTC showed 0 submissions today, 3 lifetime, and 1 remaining today.
-- **Quota:** Checked at 14:17 UTC: GPU is 29.96/30.00h used (0.04h left); TPU is 0.42/20.00h used (19.58h left). Both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time.
-- **TPU smoke:** version 2 errored. Its logs show the vLLM server failed with `/dev/vfio/1: Device or resource busy`; the notebook had called `jax.devices()` in the driver before starting the server. Version 3 remains `QUEUED` as of 14:17 UTC; Kaggle exposes no ETA. Do not start evaluator work until a model-load, text, and tool-call smoke passes.
+- **Competition:** the final deadline is 2026-12-02 23:59 UTC. The full public snapshot downloaded at 14:22:15 UTC has 6,629 rows and ranks `accelra` 2,074 at 0.18. It is archived under ignored `data/local/leaderboard-2026-11-24-1421utc/` (SHA-256 `B93D7DB0EB0DB1EA0BBBA43600499CA27C16850672BE49AF6DECAFC7D7D5D3FD`).
+- **Leaderboard:** 17 teams are tied at 0.24; 141 teams have 0.22. No private score is shown. Ties go to the earlier submission.
+- **Submissions:** `58729936` is complete at public score 0.18; `58624160` is complete at 0.10 and `58527796` at 0.15. The 14:21 UTC CLI query showed all three complete and no pending submission. Submission limits checked at 13:45 UTC showed 0 submissions today, 3 lifetime, and 1 remaining today.
+- **Quota:** Checked at 14:21 UTC: GPU is 29.96/30.00h used (0.04h left); TPU is 0.42/20.00h used (19.58h left). Both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time.
+- **TPU smoke:** version 2 errored. Its logs show the vLLM server failed with `/dev/vfio/1: Device or resource busy`; the notebook had called `jax.devices()` in the driver before starting the server. Version 3 remains `QUEUED` as of 14:20 UTC; Kaggle exposes no ETA. Do not start evaluator work until a model-load, text, and tool-call smoke passes.
 - **Best tested agent:** Budget-Fit V5 scored 20/44 on local training tasks and 0.18 publicly. The local result is not a leaderboard score.
 - **Staged after reset:** all six selected kernels still report `COMPLETE`; their pulled notebooks have no executed cells or outputs, so no agent inference ran. A static audit confirmed the exact candidate files, model, seed, budgets, and task sets; the 53-task training set and 18-task holdout have no overlap. See [the staged-kernel audit](../sources/staged-kernel-audit-2026-11-24.md).
 
@@ -21,6 +21,7 @@ Reach rank 1 on the final Kaggle private leaderboard. Continue optimizing until 
 - Tune prompt flow and call/time budgets first; keep model and sampling fixed. Pair comparisons on task IDs, tools, and budgets, and promote only with aggregate and holdout evidence. Local task results are not leaderboard scores.
 - Respect the scorer's global 12-hour patch-generation limit, which includes sandbox setup and covers all test tasks but excludes patch validation. An eight-minute per-task cap alone can allow a 16-hour worst case across about 120 tasks; estimate full-run time from measured task runtimes and leave headroom.
 - Keep the 28-call/eight-minute setup until the seeded comparison justifies a change. Recheck quota after every run and reserve 5.2-6.6 GPU hours for the paired 18-task holdout.
+- Do not assume the full reset quota is available for inference: a participant reported five queued hours plus five runtime hours charged as ten GPU hours. After the one-task probe, use the measured quota deduction—including its queue delay—to decide whether both 53-task arms fit while preserving the holdout reserve. Defer the optional full validation-contract comparison first if that reserve is at risk.
 - Preserve the final archive, submission ID, public result, and selected final submission in the log. Do not submit while any public run is pending; verify Kaggle's current submission allowance before the next upload.
 - Choose the two final submissions from candidates with paired 53-task and unseen 18-task evidence. Compare their task-level gains and losses; do not select by a single public score.
 
@@ -39,6 +40,7 @@ The API-shape pilot is an optional low-priority probe after these comparisons. I
 ## Evidence and references
 
 - Current competition rules, queue observations, official links, and dated Kaggle snapshots: [`sources/competition.md`](../sources/competition.md).
+- Public candidate source checks and promotion decisions: [`sources/public-candidate-audit-2026-11-24.md`](../sources/public-candidate-audit-2026-11-24.md).
 - Pulled source, configuration, task-set, and execution-state checks for the six staged kernels: [`sources/staged-kernel-audit-2026-11-24.md`](../sources/staged-kernel-audit-2026-11-24.md).
 - Per-run model, task set, budgets, hashes, and score provenance: [`log/experiment-log.csv`](../log/experiment-log.csv).
 - Active evaluation sets and scoring conventions: [`evals/README.md`](../evals/README.md).
