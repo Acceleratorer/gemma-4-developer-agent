@@ -1,0 +1,18 @@
+# Fresh public candidate check — 2026-11-24 18:36–18:46 UTC
+
+## Scope
+
+Cross-checked the two 2026-11-24 candidate audits, then used Kaggle CLI search for `gemma-4-developer-agent`, `Gemma 4 developer agent 0.24`, and `gemma4 coding agent` (notebooks, discussions, datasets; sorted by update date, first 20 results per query). Pulled only public notebook source and metadata into ignored `data/local/research/fresh-public-check-2026-11-24/`; no notebook was run, no submission was made, and quota was unchanged.
+
+## Findings
+
+No newly surfaced candidate is both score-backed and suitable for the first reset wave. Two isolated hypotheses are worth preserving for later consideration:
+
+- **Lucifer V8 — defer as an unscored prompt hypothesis; do not reuse its prompt without a license.** The current [notebook](https://www.kaggle.com/code/lucifer19/same-bytes-two-scores-gemma-4-agent-lab) last ran at 18:03 UTC, after the earlier audit. Its own header says V8 is `pending`; the pulled notebook has 39 cells, zero execution counts, and zero outputs, and Kaggle status `COMPLETE` is only notebook conversion. The embedded candidate ZIP source has SHA-256 `3e84a4b47de1d61f278c3d6c118f3610fd01528dac3bf992b3c26788079eecd5`; static comparison with our `budget-fit-v5-40-calls` bundle found only `prompts/system.md` changed. The four-member ZIP and notebook metadata contain no `LICENSE.txt`, `NOTICE.txt`, or declared license. The notebook credits Igor Zharov's short-prompt notebook and states that V8 has no score. Its listed 0.17 is the author's earlier V5 40-call run, not V8. There is no V8 submission ID or measured result to attribute.
+- **Den Pugovkin exp025 — defer as a licensed 40-call ablation, behind the paired core runs and holdout.** The [Repair Lab notebook](https://www.kaggle.com/code/denpugovkin/gemma-4-repair-lab-compare-before-you-submit) last ran on 2026-11-16. Its current source explicitly calls exp025 an unscored candidate and says the 0.22 belongs to its exp021 parent. The pulled notebook has seven cells with no execution counts or outputs; its `COMPLETE` status is not an evaluation. Static AST extraction of its embedded six files shows `LICENSE.txt` and `NOTICE.txt`; those files match our tracked `patchsmith-exp021-exact-v1`, as do `agent.yaml`, sampling, and prompt. Only `eval_config.yaml` differs, changing `max_tool_calls` from 28 to 40. The author supplies no exp025 score, submission ID, or scored ZIP hash. This is a clean budget-only experiment, but it should wait until after the V5/Patchsmith 53-task comparison and paired 18-task holdout, and only run if quota and the final-upload buffer remain.
+
+Other high-visibility search hits did not qualify: [Colton Downing's 0.24 analysis](https://www.kaggle.com/code/coltondowning/the-0-24-config-is-below-median) is an unexecuted EDA notebook, not an agent bundle; Victor Zhong's contract-first pack identifies itself as a byte-identical port of the already-audited P3 bundle and has no execution output; TestGraph-AI v6 likewise has no execution output or declared license in its notebook metadata. The participant [GPU quota extension request](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/761529) has zero comments and is not an organizer grant.
+
+## Decision
+
+Keep the current reset order unchanged. Add no public-source candidate to the first GPU wave. If the seeded 53-task and unseen holdout results leave quota, exp025 is the only newly checked, clearly one-variable licensed follow-up; keep Lucifer V8 as an unscored idea unless its prompt license is established or a genuinely original prompt is written.
