@@ -4,13 +4,13 @@
 
 Reach rank 1 on the final Kaggle private leaderboard. Continue optimizing until the final deadline and claim success only after the private leaderboard confirms it.
 
-## Latest Kaggle state - checked 2026-11-24 14:22 UTC
+## Latest Kaggle state - checked 2026-11-24 15:18 UTC
 
-- **Competition:** the final deadline is 2026-12-02 23:59 UTC. The full public snapshot downloaded at 14:22:15 UTC has 6,629 rows and ranks `accelra` 2,074 at 0.18. It is archived under ignored `data/local/leaderboard-2026-11-24-1421utc/` (SHA-256 `B93D7DB0EB0DB1EA0BBBA43600499CA27C16850672BE49AF6DECAFC7D7D5D3FD`).
+- **Competition:** the final deadline is 2026-12-02 23:59 UTC. The full public snapshot downloaded at 15:18:10 UTC has 6,632 rows and ranks `accelra` 2,074 at 0.18. It is archived under ignored `data/local/leaderboard-2026-11-24-1517utc/` (ZIP SHA-256 `EE397AE2BBDE46A2FB67F93AADFF88BBB5251CB4C6F685EFBF0DF0F872916F38`).
 - **Leaderboard:** 17 teams are tied at 0.24; 141 teams have 0.22. No private score is shown. Ties go to the earlier submission.
-- **Submissions:** `58729936` is complete at public score 0.18; `58624160` is complete at 0.10 and `58527796` at 0.15. The 14:21 UTC CLI query showed all three complete and no pending submission. Submission limits checked at 13:45 UTC showed 0 submissions today, 3 lifetime, and 1 remaining today.
-- **Quota:** Checked at 14:21 UTC: GPU is 29.96/30.00h used (0.04h left); TPU is 0.42/20.00h used (19.58h left). Both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time.
-- **TPU smoke:** version 2 errored. Its logs show the vLLM server failed with `/dev/vfio/1: Device or resource busy`; the notebook had called `jax.devices()` in the driver before starting the server. Version 3 remains `QUEUED` as of 14:20 UTC; Kaggle exposes no ETA. Do not start evaluator work until a model-load, text, and tool-call smoke passes.
+- **Submissions:** the 15:17 UTC CLI query shows `58729936` complete at 0.18, `58624160` complete at 0.10, and `58527796` complete at 0.15; no submission is pending and no private score is shown. The limits endpoint returned `numAllowedNow=1` and `numTotal=3`.
+- **Quota:** Checked at 15:17 UTC: GPU is 29.96/30.00h used (0.04h left); TPU is 0.42/20.00h used (19.58h left). Both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time.
+- **TPU smoke:** version 2 errored. Its logs show the vLLM server failed with `/dev/vfio/1: Device or resource busy`; the notebook had called `jax.devices()` in the driver before starting the server. Version 3 remains `QUEUED` as of 15:17 UTC; Kaggle exposes no ETA. Do not start evaluator work until a model-load, text, and tool-call smoke passes.
 - **Best tested agent:** Budget-Fit V5 scored 20/44 on local training tasks and 0.18 publicly. The local result is not a leaderboard score.
 - **Staged after reset:** all six selected kernels still report `COMPLETE`; their pulled notebooks have no executed cells or outputs, so no agent inference ran. A static audit confirmed the exact candidate files, model, seed, budgets, and task sets; the 53-task training set and 18-task holdout have no overlap. See [the staged-kernel audit](../sources/staged-kernel-audit-2026-11-24.md).
 
