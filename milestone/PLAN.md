@@ -4,15 +4,15 @@
 
 Reach rank 1 on the final Kaggle private leaderboard. Continue optimizing until the final deadline and claim success only after the private leaderboard confirms it.
 
-## Latest Kaggle state - checked 2026-11-24 13:58 UTC
+## Latest Kaggle state - checked 2026-11-24 14:17 UTC
 
 - **Competition:** the final deadline is 2026-12-02 23:59 UTC. The full public snapshot downloaded at 13:41:30 UTC has 6,627 rows and ranks `accelra` 2,074 at 0.18.
 - **Leaderboard:** 17 teams are tied at 0.24; the next score is 0.22. No private score is shown. Ties go to the earlier submission.
 - **Submissions:** `58729936` is complete at public score 0.18; `58624160` is complete at 0.10 and `58527796` at 0.15. The 13:58 UTC query showed no pending submission. Submission limits checked at 13:45 UTC showed 0 submissions today, 3 lifetime, and 1 remaining today.
-- **Quota:** Checked at 13:58 UTC: GPU is 29.96/30.00h used (0.04h left); TPU is 0.42/20.00h used (19.58h left). Both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time.
-- **TPU smoke:** version 2 errored. Its logs show the vLLM server failed with `/dev/vfio/1: Device or resource busy`; the notebook had called `jax.devices()` in the driver before starting the server. Version 3 remains `QUEUED` as of 13:58 UTC; its Kaggle log query returned no log text and Kaggle reports no ETA. Do not start evaluator work until a model-load, text, and tool-call smoke passes.
+- **Quota:** Checked at 14:17 UTC: GPU is 29.96/30.00h used (0.04h left); TPU is 0.42/20.00h used (19.58h left). Both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time.
+- **TPU smoke:** version 2 errored. Its logs show the vLLM server failed with `/dev/vfio/1: Device or resource busy`; the notebook had called `jax.devices()` in the driver before starting the server. Version 3 remains `QUEUED` as of 14:17 UTC; Kaggle exposes no ETA. Do not start evaluator work until a model-load, text, and tool-call smoke passes.
 - **Best tested agent:** Budget-Fit V5 scored 20/44 on local training tasks and 0.18 publicly. The local result is not a leaderboard score.
-- **Staged after reset:** the six selected one-task, 53-task, and 18-task kernels reported `COMPLETE` at 13:45 UTC, but their logs contain only notebook-to-HTML conversion; no agent inference ran. Seed-42 V5 and source-faithful Patchsmith share the fixed 53-task set; the unseen holdout has 18 tasks.
+- **Staged after reset:** all six selected kernels still report `COMPLETE`; their pulled notebooks have no executed cells or outputs, so no agent inference ran. A static audit confirmed the exact candidate files, model, seed, budgets, and task sets; the 53-task training set and 18-task holdout have no overlap. See [the staged-kernel audit](../sources/staged-kernel-audit-2026-11-24.md).
 
 ## Deadlines and guardrails
 
@@ -39,6 +39,7 @@ The API-shape pilot is an optional low-priority probe after these comparisons. I
 ## Evidence and references
 
 - Current competition rules, queue observations, official links, and dated Kaggle snapshots: [`sources/competition.md`](../sources/competition.md).
+- Pulled source, configuration, task-set, and execution-state checks for the six staged kernels: [`sources/staged-kernel-audit-2026-11-24.md`](../sources/staged-kernel-audit-2026-11-24.md).
 - Per-run model, task set, budgets, hashes, and score provenance: [`log/experiment-log.csv`](../log/experiment-log.csv).
 - Active evaluation sets and scoring conventions: [`evals/README.md`](../evals/README.md).
 - Prompt workflow findings: [`evals/prompt-test-loop-audit.md`](../evals/prompt-test-loop-audit.md).
