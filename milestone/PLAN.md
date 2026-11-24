@@ -4,15 +4,15 @@
 
 Reach rank 1 on the final Kaggle private leaderboard. Continue optimizing until the final deadline and claim success only after the private leaderboard confirms it.
 
-## Latest Kaggle state - checked 2026-11-24 13:35 UTC
+## Latest Kaggle state - checked 2026-11-24 13:45 UTC
 
-- **Competition:** the final deadline is 2026-12-02 23:59 UTC. The latest full public snapshot has 6,628 rows and ranks `accelra` 2,075 at 0.18; it was downloaded at 2026-11-24 13:15:51 UTC.
+- **Competition:** the final deadline is 2026-12-02 23:59 UTC. The full public snapshot downloaded at 13:41:30 UTC has 6,627 rows and ranks `accelra` 2,074 at 0.18.
 - **Leaderboard:** 17 teams are tied at 0.24; the next score is 0.22. No private score is shown. Ties go to the earlier submission.
-- **Submissions:** `58729936` is complete at public score 0.18; `58624160` is complete at 0.10 and `58527796` at 0.15. The CLI showed no pending submission at 13:02 UTC.
-- **Quota:** Last checked 13:15 UTC: GPU is 29.96/30.00h used (0.04h left); TPU is 0.42/20.00h used (19.58h left). Both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time.
-- **TPU smoke:** version 2 errored. Its logs show the vLLM server failed with `/dev/vfio/1: Device or resource busy`; the notebook had called `jax.devices()` in the driver before starting the server. Version 3 remains `QUEUED` as of 13:35 UTC; its Kaggle log query returned no log text and Kaggle reports no ETA. Do not start evaluator work until a model-load, text, and tool-call smoke passes.
+- **Submissions:** `58729936` is complete at public score 0.18; `58624160` is complete at 0.10 and `58527796` at 0.15. At 13:45 UTC there were no pending submissions; the account had 0 submissions today, 3 lifetime, and 1 remaining today.
+- **Quota:** Checked at 13:45 UTC: GPU is 29.96/30.00h used (0.04h left); TPU is 0.42/20.00h used (19.58h left). Both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time.
+- **TPU smoke:** version 2 errored. Its logs show the vLLM server failed with `/dev/vfio/1: Device or resource busy`; the notebook had called `jax.devices()` in the driver before starting the server. Version 3 remains `QUEUED` as of 13:45 UTC; its Kaggle log query returned no log text and Kaggle reports no ETA. Do not start evaluator work until a model-load, text, and tool-call smoke passes.
 - **Best tested agent:** Budget-Fit V5 scored 20/44 on local training tasks and 0.18 publicly. The local result is not a leaderboard score.
-- **Staged after reset:** seed-42 V5 and source-faithful Patchsmith kernels share the fixed 53-task set. The paired unseen holdout has 18 tasks. Existing candidate notebooks are saved without inference.
+- **Staged after reset:** the six selected one-task, 53-task, and 18-task kernels report `COMPLETE`, but their logs contain only notebook-to-HTML conversion; no agent inference ran. Seed-42 V5 and source-faithful Patchsmith share the fixed 53-task set; the unseen holdout has 18 tasks.
 
 ## Deadlines and guardrails
 
