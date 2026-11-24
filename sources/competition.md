@@ -98,7 +98,7 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 - At 19:31 UTC, Kaggle CLI reported GPU quota **29.96/30.00h used** and TPU quota **0.42/20.00h used**; both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time. Explicit status checks showed TPU smoke versions 1 and 2 are `ERROR`, while corrected version 3 remains `QUEUED` with empty logs; Kaggle exposes no ETA. Version 2's logs show the vLLM server failed with `/dev/vfio/1: Device or resource busy`; the notebook had called `jax.devices()` in the driver before starting the server. Version 3 removes that parent-side device enumeration.
 - All six core comparison/probe kernels report `COMPLETE` as saved notebook artifacts. Their staged-kernel audit found unexecuted code cells and no inference outputs; see [the audit](staged-kernel-audit-2026-11-24.md). The issue-localization P4 kernel version 2 is also saved with `--no-run`. Do not treat notebook conversion as model evaluation.
 
-## Latest quota and TPU check — 2026-11-24 19:49 UTC
+## Latest quota and TPU check — 2026-11-24 20:01 UTC
 
 Kaggle CLI reports GPU quota at **29.96/30.00h used** (**0.04h remaining**) and TPU quota at **0.42/20.00h used** (**19.58h remaining**). Both refresh at **2026-11-28 00:00 UTC / 07:00 Vietnam time**. Corrected TPU smoke version 3 is still `QUEUED`; its log query is empty, and the status response gives no ETA. Do not start a duplicate TPU run.
 
