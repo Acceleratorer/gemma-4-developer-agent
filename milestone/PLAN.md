@@ -4,15 +4,15 @@
 
 Reach rank 1 on the final Kaggle private leaderboard. Continue optimizing until the final deadline and claim success only after the private leaderboard confirms it.
 
-## Latest Kaggle state - quota/queue checked 2026-11-24 17:00 UTC; leaderboard/submissions checked 17:05 UTC
+## Latest Kaggle state - quota/queue and submissions checked 2026-11-24 17:39 UTC; leaderboard generated 17:38:17 UTC
 
-- **Competition:** the final deadline is 2026-12-02 23:59 UTC. The full public snapshot downloaded at 17:05:00 UTC has 6,638 rows and ranks `accelra` 2,073 at 0.18. It is archived under ignored `data/local/leaderboard-2026-11-24-1704utc/` (ZIP SHA-256 `FFA0B49FD4BE1249DCB673DF3E9C689825FD6B8AF7C65EDB5083773C1AF9B11B`).
-- **Leaderboard:** 17 teams are tied at 0.24; 141 have 0.22 and 650 have 0.20. No private score is shown. Ties go to the earlier submission.
-- **Submissions:** the latest CLI query shows `58729936` complete at 0.18, `58624160` complete at 0.10, and `58527796` complete at 0.15; no submission is pending.
-- **Quota:** Kaggle CLI checked at 17:00 UTC: GPU is 29.96/30.00h used (0.04h left); TPU is 0.42/20.00h used (19.58h left). Both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time.
-- **TPU smoke:** version 2 errored. Its logs show the vLLM server failed with `/dev/vfio/1: Device or resource busy`; the notebook had called `jax.devices()` in the driver before starting the server. Version 3 remains `QUEUED` at 17:00 UTC; Kaggle exposes no ETA. This gates TPU evaluator jobs only: do not run them until model loading, text generation, and tool-call parsing pass. The staged reset-wave comparisons use Nvidia L4, so the TPU queue does not block those GPU runs.
+- **Competition:** the final deadline is 2026-12-02 23:59 UTC. The full public snapshot generated at 17:38:17 UTC has 6,642 rows and ranks `accelra` 2,074 at 0.18. It is archived under ignored `data/local/leaderboard-2026-11-24-1738utc/` (ZIP SHA-256 `842E7C4B7FEA5E8386205EE445F00D8AB43DE7CD2D38E6436AC0C14DA6C28D96`).
+- **Leaderboard:** 17 teams are tied at 0.24; 141 have 0.22, 652 have 0.20, and 1,298 have 0.18. No private score is shown. Ties go to the earlier submission.
+- **Submissions:** the 17:39 UTC CLI query shows `58729936` complete at 0.18, `58624160` complete at 0.10, and `58527796` complete at 0.15; no submission is pending.
+- **Quota:** Kaggle CLI checked at 17:39 UTC: GPU is 29.96/30.00h used (0.04h left); TPU is 0.42/20.00h used (19.58h left). Both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time. Preserve the remaining GPU quota for now.
+- **TPU smoke:** version 2 errored. Its logs show the vLLM server failed with `/dev/vfio/1: Device or resource busy`; the notebook had called `jax.devices()` in the driver before starting the server. The latest revision remains `QUEUED` at 17:39 UTC; Kaggle exposes no ETA. This gates TPU evaluator jobs only: do not run them until model loading, text generation, and tool-call parsing pass. The staged reset-wave comparisons use Nvidia L4, so the TPU queue does not block those GPU runs.
 - **Best tested agent:** Budget-Fit V5 scored 20/44 on local training tasks and 0.18 publicly. The local result is not a leaderboard score.
-- **Staged after reset:** all six selected kernels still report `COMPLETE`; their pulled notebooks have no executed cells or outputs, so no agent inference ran. A static audit confirmed the exact candidate files, model, seed, budgets, and task sets; the 53-task training set and 18-task holdout have no overlap. See [the staged-kernel audit](../sources/staged-kernel-audit-2026-11-24.md).
+- **Staged after reset:** all six selected kernels still report `COMPLETE` as notebook artifacts; their pulled notebooks have no executed cells or outputs, so no agent inference ran. A static audit confirmed the exact candidate files, model, seed, budgets, and task sets; the 53-task training set and 18-task holdout have no overlap. See [the staged-kernel audit](../sources/staged-kernel-audit-2026-11-24.md).
 
 ## Deadlines and guardrails
 
