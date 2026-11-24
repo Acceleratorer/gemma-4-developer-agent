@@ -2,7 +2,7 @@
 
 ## Summary
 
-Kaggle CLI's latest-run listing surfaced four recently updated notebooks worth checking. Their current revisions do not supply a stronger competition-tested candidate, so keep the existing seeded V5/Patchsmith comparison plan. Pulled copies are under ignored `data/local/research/recent-public-agents/`; notebook code was inspected as text and not executed.
+Kaggle CLI's latest-run listing surfaced five recently updated notebooks worth checking. Their current revisions do not supply a stronger competition-tested candidate, so keep the existing seeded V5/Patchsmith comparison plan. Pulled copies are under ignored `data/local/research/recent-public-agents/`; notebook code was inspected as text and not executed.
 
 ## Flexonafft short-prompt bundle
 
@@ -26,6 +26,12 @@ Notebook: [Gemma 4 E4B: what moved the score and what didn't](https://www.kaggle
 
 The author reports 31B public scores of 0.20 and 0.17 from unchanged v8 files, and 11/115 versus 10/115 resolved tasks for 4,096 versus 1,024 thinking tokens on E4B. These are the author's results, not our matched comparison; they reinforce run-to-run noise and do not justify changing our model or thinking budget. In 50 selected solved 31B runs, the author counted 64 failed `edit_file` calls among 123 attempts and reported recovery afterward. This suggests a possible edit-retry prompt ablation, but the selected solved-run sample and lack of our own tool-call traces make it a hypothesis only. The two completed LoRA adapters reduced held-out resolution and often exhausted the call budget, so this report adds no reason to revisit LoRA before the planned base-model comparisons.
 
+## Evgen Dvorkin's Patchsmith P3 report
+
+Notebook: [Can Gemma 4 Become a Software Engineer?](https://www.kaggle.com/code/evgendvorkin/can-gemma-4-become-a-software-engineer), latest run 2026-11-24 17:50 UTC, `COMPLETE`. The latest notebook has one unexecuted code cell; Kaggle's downloaded output is a package-only `submission.zip`, not an agent evaluation. Its SHA-256 is `6c4f1c8a581c3e1a8e97a3f37015aa7e3e08c03cadf12b697cf4bfc4ab9a35d9`; the ZIP includes the Apache-2.0 license and notice, preserves five Patchsmith exp021 files, and changes only `prompts/system.md` (prompt SHA-256 `5bd031fb882bd84c68fe43d3163a4fc4e2c4b80ba063b82e609afd721b32a5d7`).
+
+The author reports P3 at 1/2 PASS on `rich_4076` and `rich_3894`, the same pass count as P2, with 33 versus 40 calls across those two individual runs. The sample is too small and order differs, so it does not establish a gain; the candidate has no matched public score. Its `rich_4076` trace is more useful than the score: the prompt searched newline-related words, then patched Markdown `rstrip()` logic, while the verifier checked the separate `Text.from_ansi()` contract. P3's proposed P4—tie a terse issue to its concrete API and regression test before editing—is untested. Both `rich_4076` and the `rich_3894` control are in our 53-task training set. Defer an original, prompt-only P4 screen on this pair until after the V5/Patchsmith 53-task comparison and unseen holdout; do not add a full 53-task P4 run unless the screen improves over the seeded V5 outcomes and quota plus the final-submission buffer allow it.
+
 ## Decision
 
-Do not add these public bundles or unverified prompt hypotheses to the post-reset GPU queue. The Flexonafft notebook does not measure its bundle, the Arsen prompt hybrid lacks a significant paired gain, the Ziad Samer run is too small and overlapping to support promotion, and Dheeraj's write-up contains no reproducible candidate. Preserve the planned one-task validation-contract screen, then compare the seeded V5 and source-faithful Patchsmith candidates on the same 53 tasks and unseen 18-task holdout. Keep all outside notebook source and data out of the public repository.
+Do not add these public bundles or unverified prompt hypotheses to the first post-reset GPU wave. The Flexonafft notebook does not measure its bundle, the Arsen prompt hybrid lacks a significant paired gain, the Ziad Samer run is too small and overlapping to support promotion, and the Dheeraj and Dvorkin write-ups do not establish a stronger candidate. Preserve the planned one-task validation-contract screen, then compare the seeded V5 and source-faithful Patchsmith candidates on the same 53 tasks and unseen 18-task holdout. Keep all outside notebook source and data out of the public repository.

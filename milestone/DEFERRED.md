@@ -16,6 +16,10 @@ These items are not on the current critical path. Revisit them only after the se
 - [ ] Test a read-only analyzer only if the graph-enabled run beats the current candidate.
 - [ ] Revisit LoRA only after the no-adapter candidate is repeatable and scorer compatibility is verified. The latest participant source audit reports no held-out practice gain for its adapter variants; that is external evidence, not a competition score ([details](../sources/public-agent-source-audit-2026-11-20.md)).
 
+## Issue localization hypothesis
+
+- [ ] After the seeded V5/Patchsmith 53-task comparison and paired 18-task holdout, consider an original, prompt-only issue-to-test localization screen on `rich_4076` (failure case) and `rich_3894` (control), using the V5 seed-42 results as baseline. The external P3 report found no extra pass on this pair, but its `rich_4076` trace shows a concrete wrong-entry-point edit; its proposed P4 remains untested. Promote to a full 53-task comparison only if the two-task screen improves on V5 without losing the control pass, and only if quota and the final-submission buffer remain. See [`public-candidate-audit-2026-11-24.md`](../sources/public-candidate-audit-2026-11-24.md).
+
 ## Transfer and runtime hypotheses
 
 - [ ] Revisit a repository-disjoint cross-repository transfer panel from the public 165-task soundness dataset only after the core quota wave; it requires rebuilding snapshots/environments and a separate evaluator input path. Freeze task IDs before looking at published outcomes and keep reference patches/tests inaccessible to the agent ([compatibility audit](../sources/validation-dataset-compatibility-2026-11-23.md)).
