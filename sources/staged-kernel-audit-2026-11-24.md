@@ -24,3 +24,9 @@ The validation-contract probe embeds the exact tracked candidate prompt, SHA-256
 ## How to use this audit
 
 After the 2026-11-28 quota refresh, run the one-task validation-contract probe first. Only run its 53-task comparison if the probe passes and the planned unseen holdout reserve remains covered. Then run the V5/Patchsmith fixed-set comparisons as listed in [`milestone/PLAN.md`](../milestone/PLAN.md). Recheck kernel status and quota immediately before each run; `COMPLETE` by itself does not mean inference ran.
+
+## Launch staging
+
+All six kernels were pulled again with Kaggle CLI `--metadata`. The probe folder is `data/local/research/v5-validation-contract-fastapi-seed-42-probe/`; the other five are under `data/local/research/staged-audit/` in the matching table order: `validation-contract-53/`, `v5-53/`, `patchsmith-53/`, `v5-holdout-18/`, and `patchsmith-holdout-18/`. Each `kernel-metadata.json` has the exact kernel ID and notebook filename, private visibility, Nvidia L4 enabled, internet disabled, the competition and wheelhouse inputs, and the Gemma 4 31B model source.
+
+After the quota refresh, `kaggle kernels push -p <folder>` creates a new version and runs it. Do not pass `--no-run` for an experiment; that only saves another conversion artifact without inference.
