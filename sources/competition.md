@@ -91,11 +91,11 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 - Small-model public leaderboard: top score **0.12** in the official tracker output, last updated 2026-11-16 23:55 UTC; refreshed from the Kaggle notebook on 2026-11-18.
 - These are public-split snapshots, not final standings. The final placement is based on the private leaderboard.
 
-## Latest live state — 2026-11-24 18:59 UTC
+## Latest live state — 2026-11-24 19:10 UTC
 
 - The full public leaderboard snapshot generated at 17:38:17 UTC contains 6,642 rows. `Accelra` is rank **2,074** at **0.18**; the 18:29 top-only query still shows 17 teams tied at **0.24**. The full-snapshot distribution is 141 at **0.22**, 652 at **0.20**, and 1,298 at **0.18**. No private score is shown. The archive path and SHA-256 are recorded above; the top-only query does not refresh the full rank or row count.
 - At 18:34 UTC, the latest submissions query showed `58729936` complete at **0.18**, `58624160` complete at **0.10**, and `58527796` complete at **0.15**; none was pending. The submission-limit query reported 0 submissions today, 3 lifetime submissions, and 1 remaining today; recheck before an upload.
-- At 18:59 UTC, Kaggle CLI reported GPU quota **29.96/30.00h used** and TPU quota **0.42/20.00h used**; both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time. Explicit status checks showed TPU smoke versions 1 and 2 are both `ERROR`, so neither remains queued or running. Version 2's logs show the vLLM server failed with `/dev/vfio/1: Device or resource busy`; the notebook had called `jax.devices()` in the driver before starting the server.
+- At 19:10 UTC, Kaggle CLI reported GPU quota **29.96/30.00h used** and TPU quota **0.42/20.00h used**; both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time. Explicit status checks showed TPU smoke versions 1 and 2 are `ERROR`, while corrected version 3 remains `QUEUED`; Kaggle exposes no ETA. Version 2's logs show the vLLM server failed with `/dev/vfio/1: Device or resource busy`; the notebook had called `jax.devices()` in the driver before starting the server. Version 3 removes that parent-side device enumeration.
 - All six core comparison/probe kernels report `COMPLETE` as saved notebook artifacts. Their staged-kernel audit found unexecuted code cells and no inference outputs; see [the audit](staged-kernel-audit-2026-11-24.md). The issue-localization P4 kernel version 2 is also saved with `--no-run`. Do not treat notebook conversion as model evaluation.
 
 ## Community experiment evidence checked 2026-11-19–2026-11-20
