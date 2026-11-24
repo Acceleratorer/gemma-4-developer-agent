@@ -40,6 +40,17 @@ The notebook reports 0.20 on submissions `58485496`, `58531526`, and `58642247`,
 
 This is an evaluation hypothesis, not a promotion. Our current 53-task set is gold-patch-qualified without environment shims, and Kaggle staff said the held-out competition tasks pass with their reference patches ([discussion](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/747248)). That makes transfer from the reported public-training dependency census to the private test uncertain; the stand-ins could also give incomplete test feedback. Keep it out of the first GPU wave. Revisit only if the V5/Patchsmith comparisons leave quota for a small, gold-verified screen.
 
+## Latest-run candidate screen — checked 2026-11-24 21:21 UTC
+
+A fresh Kaggle CLI listing surfaced several recently run notebooks; none warrants priority over the staged V5/Patchsmith comparison and unseen holdout:
+
+- [The 0.24 config is below median](https://www.kaggle.com/code/coltondowning/the-0-24-config-is-below-median) reanalyzes Idris's local run dataset and reports v24 at 23/66, with six configurations higher. It does not verify a source-to-submission mapping for the 0.24 public score, so this is selection-noise evidence rather than a new candidate.
+- [Same Bytes, Two Scores](https://www.kaggle.com/code/lucifer19/same-bytes-two-scores-gemma-4-agent-lab) reports `model_inference_ran=false` and zero new paired agent runs; its 40-call combo-prompt remains untested.
+- [EC RAG Train A](https://www.kaggle.com/code/atunx375/ec-rag-train-a) is a Qwen3-VL video QA/caption workflow, not a coding-agent experiment.
+- [Gemma4 Agent Eval](https://www.kaggle.com/code/xbzouzx/gemma4-agent-eval) reports 7/30 for an E4B dual-agent setup. It resolves 3/21 tasks overlapping our qualified 53-task set and 3/18 overlapping V5's prior 44-task run, with no E4B-only pass. This is unpaired and changes model, call cap, and time cap, so it is not causal evidence or a main-track promotion.
+
+Keep the seed-42 V5/Patchsmith core comparison and paired holdout at the top of the reset-week sequence. The E4B result is outside the 31B main-track candidate decision.
+
 ## Evgen Dvorkin's six-agent `rich_4076` follow-up
 
 Notebook: [Gemma 4 | rich_4076: 20/24 — Six Failed Agents](https://www.kaggle.com/code/evgendvorkin/gemma-4-rich-4076-20-24-six-failed-agents), latest run 2026-11-24 21:08:11 UTC, `COMPLETE`. The saved run verifies the P7 package (8/8 files) and records a `rich_4076` result of 20/24 tests with `resolved=false`; it does not run new agent inference. The notebook's six GPU runs all report 20/24 and `resolved=false`. P7 proposes an AST scout and skill checker, but its trace makes zero scout calls. P8 is a future tool-control proposal; the notebook reports synthetic CPU checks, not a Gemma evaluation. This follow-up provides no pass gain or reason to promote either candidate ahead of the seeded V5/Patchsmith core and holdout.
