@@ -30,3 +30,16 @@ After the 2026-11-28 quota refresh, run the one-task validation-contract probe f
 All six kernels were pulled again with Kaggle CLI `--metadata`. The probe folder is `data/local/research/v5-validation-contract-fastapi-seed-42-probe/`; the other five are under `data/local/research/staged-audit/` in the matching table order: `validation-contract-53/`, `v5-53/`, `patchsmith-53/`, `v5-holdout-18/`, and `patchsmith-holdout-18/`. Each `kernel-metadata.json` has the exact kernel ID and notebook filename, private visibility, Nvidia L4 enabled, internet disabled, the competition and wheelhouse inputs, and the Gemma 4 31B model source.
 
 After the quota refresh, `kaggle kernels push -p <folder>` creates a new version and runs it. Do not pass `--no-run` for an experiment; that only saves another conversion artifact without inference.
+
+## Paired comparison suites — saved 2026-11-24 20:30 UTC
+
+Two paired suites were saved with Kaggle CLI `--no-run` and pulled back for inspection:
+
+| Kernel version | Sequential runs | Status |
+| --- | --- | --- |
+| [`v5-probe-patchsmith-exp021-core-53-seed42/1`](https://www.kaggle.com/code/accelra/v5-probe-patchsmith-exp021-core-53-seed42) | Validation-contract probe (1 task), V5 (53 tasks), Patchsmith exp021 (same 53 tasks) | Saved only; no inference |
+| [`v5-patchsmith-exp021-holdout18-seed42/1`](https://www.kaggle.com/code/accelra/v5-patchsmith-exp021-holdout18-seed42) | V5 and Patchsmith exp021 on the same 18 unseen tasks | Saved only; no inference |
+
+Both pulled notebooks contain the expected candidates and task IDs, request seed 42, the 28-call/eight-minute budgets, and empty execution counts and outputs. No GPU quota was used. The existing V5 and Patchsmith single-arm 53-task kernels remain available as fallbacks.
+
+The combined core suite's configured task-time ceiling is 14 hours 16 minutes: 107 tasks at eight minutes each, before package setup and model startup. Kaggle documents a 12-hour maximum for GPU notebook runs, so this version may be terminated before all three runs finish. Use it only if the standalone probe's measured timings leave clear headroom under 12 hours; otherwise use the staged single-arm core kernels. The paired 18-task holdout has a 4-hour-48-minute configured task-time ceiling before setup. These limits are separate from the competition scorer's own patch-generation limit.

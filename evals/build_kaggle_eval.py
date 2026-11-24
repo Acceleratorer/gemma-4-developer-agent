@@ -81,41 +81,113 @@ def _eval_config_value(agent_files: dict[str, str], name: str, default: int | fl
     return match.group(1) if match else str(default)
 
 
+def _agent_spec(agent: str, model: str, seed: int) -> dict:
+    agent_dir = AGENTS_DIR / agent
+    if not agent_dir.is_dir() or agent.startswith("reference-"):
+        raise ValueError(f"Unknown tracked agent: {agent}")
+    files = _agent_files(agent_dir, model)
+    _set_request_seed(files, seed)
+    return {
+        "agent": agent,
+        "files": files,
+        "max_tool_calls": _eval_config_value(files, "max_tool_calls", 40),
+        "max_time_minutes": _eval_config_value(files, "max_time_minutes", 8.0),
+    }
+
+
 def build_notebook(
-    agent: str,
+    agent: str | list[str],
     model: str,
-    task_set: str,
+    task_set: str | list[str],
     output_dir: Path,
     kernel_id: str = KERNEL_ID,
     kernel_title: str = KERNEL_TITLE,
     seed: int = 42,
 ) -> tuple[Path, Path]:
-    agent_dir = AGENTS_DIR / agent
-    if not agent_dir.is_dir() or agent.startswith("reference-"):
-        raise ValueError(f"Unknown tracked agent: {agent}")
     if model not in MODEL_SOURCES:
         raise ValueError(f"Unsupported competition model: {model}")
-    if task_set not in TASK_SETS:
-        raise ValueError(f"Unknown task set: {task_set}")
 
-    agent_files = _agent_files(agent_dir, model)
-    _set_request_seed(agent_files, seed)
-    max_tool_calls = _eval_config_value(agent_files, "max_tool_calls", 40)
-    max_time_minutes = _eval_config_value(agent_files, "max_time_minutes", 8.0)
-    task_ids = json.loads(TASK_SETS[task_set].read_text(encoding="utf-8"))
+    agents = [agent] if isinstance(agent, str) else list(agent)
+    if not agents:
+        raise ValueError("At least one tracked agent is required")
+    task_sets = [task_set] * len(agents) if isinstance(task_set, str) else list(task_set)
+    if len(task_sets) != len(agents):
+        raise ValueError("Provide exactly one task set for each agent")
+    unknown_task_sets = [name for name in task_sets if name not in TASK_SETS]
+    if unknown_task_sets:
+        raise ValueError(f"Unknown task set: {unknown_task_sets[0]}")
+    if len(set(agents)) != len(agents):
+        raise ValueError("Agents must be unique")
+    specs = [_agent_spec(name, model, seed) for name in agents]
+    if len(specs) > 1:
+        if len({spec["max_tool_calls"] for spec in specs}) != 1:
+            raise ValueError("Run suite agents must have the same max_tool_calls")
+        if len({spec["max_time_minutes"] for spec in specs}) != 1:
+            raise ValueError("Run suite agents must have the same max_time_minutes")
+        if len({spec["files"]["configs/sampling.yaml"] for spec in specs}) != 1:
+            raise ValueError("Run suite agents must have identical sampling configuration")
+
+    for spec, task_set_name in zip(specs, task_sets):
+        spec["task_set"] = task_set_name
+        spec["task_ids"] = json.loads(TASK_SETS[task_set_name].read_text(encoding="utf-8"))
     runtime = (ROOT / "evals" / "kaggle_runtime.py").read_text(encoding="utf-8")
-    code = (
-        "AGENT_FILES = " + json.dumps(agent_files, ensure_ascii=False) + "\n"
-        + "TASK_IDS = " + json.dumps(task_ids) + "\n"
-        + f"MODEL_NAME = {model!r}\n"
-        + f"MAX_TOOL_CALLS = {max_tool_calls}\n"
-        + f"MAX_TIME_MINUTES = {max_time_minutes}\n"
-        + f"REQUEST_SEED = {seed}\n"
-        + "\n"
-        + "RUNTIME_SOURCE = " + repr(runtime) + "\n"
-        + "exec(compile(RUNTIME_SOURCE, 'kaggle_runtime.py', 'exec'))\n"
-        + "run_dev_eval(AGENT_FILES, TASK_IDS, MODEL_NAME, max_tool_calls=MAX_TOOL_CALLS, max_time_minutes=MAX_TIME_MINUTES, seed=REQUEST_SEED)\n"
-    )
+    if len(specs) == 1:
+        spec = specs[0]
+        task_ids = spec["task_ids"]
+        code = (
+            "AGENT_FILES = " + json.dumps(spec["files"], ensure_ascii=False) + "\n"
+            + "TASK_IDS = " + json.dumps(task_ids) + "\n"
+            + f"MODEL_NAME = {model!r}\n"
+            + f"MAX_TOOL_CALLS = {spec['max_tool_calls']}\n"
+            + f"MAX_TIME_MINUTES = {spec['max_time_minutes']}\n"
+            + f"REQUEST_SEED = {seed}\n"
+            + "\n"
+            + "RUNTIME_SOURCE = " + repr(runtime) + "\n"
+            + "exec(compile(RUNTIME_SOURCE, 'kaggle_runtime.py', 'exec'))\n"
+            + "run_dev_eval(AGENT_FILES, TASK_IDS, MODEL_NAME, max_tool_calls=MAX_TOOL_CALLS, max_time_minutes=MAX_TIME_MINUTES, seed=REQUEST_SEED)\n"
+        )
+    else:
+        run_specs = [
+            {
+                "agent": spec["agent"],
+                "task_set": spec["task_set"],
+                "task_ids": spec["task_ids"],
+                "agent_files": spec["files"],
+                "max_tool_calls": spec["max_tool_calls"],
+                "max_time_minutes": spec["max_time_minutes"],
+            }
+            for spec in specs
+        ]
+        code = (
+            "RUN_SPECS = " + json.dumps(run_specs, ensure_ascii=False) + "\n"
+            + f"MODEL_NAME = {model!r}\n"
+            + f"REQUEST_SEED = {seed}\n"
+            + "\n"
+            + "RUNTIME_SOURCE = " + repr(runtime) + "\n"
+            + "exec(compile(RUNTIME_SOURCE, 'kaggle_runtime.py', 'exec'))\n"
+            + "for run_spec in RUN_SPECS:\n"
+            + "    print(f\"AGENT_EVAL_START={run_spec['agent']} TASK_SET={run_spec['task_set']}\")\n"
+            + "    run_dev_eval(\n"
+            + "        run_spec['agent_files'], run_spec['task_ids'], MODEL_NAME,\n"
+            + "        max_tool_calls=run_spec['max_tool_calls'],\n"
+            + "        max_time_minutes=run_spec['max_time_minutes'], seed=REQUEST_SEED,\n"
+            + "    )\n"
+            + "    print(f\"AGENT_EVAL_DONE={run_spec['agent']} TASK_SET={run_spec['task_set']}\")\n"
+        )
+    run_labels = [
+        f"`{spec['agent']}` on `{spec['task_set']}` ({len(spec['task_ids'])} tasks)"
+        for spec in specs
+    ]
+    if len(specs) == 1:
+        intro = (
+            f"Agent: `{agents[0]}`  \nModel: `{model}`  \nTask set: `{task_sets[0]}` ({len(specs[0]['task_ids'])} tasks).  \nRequest seed: `{seed}`.\n"
+            "\nRuns the official competition evaluator on training tasks. The score is a development metric, not a leaderboard estimate."
+        )
+    else:
+        intro = (
+            f"Run plan: {', '.join(run_labels)}  \nModel: `{model}`  \nRequest seed: `{seed}`.\n"
+            "\nRuns each candidate sequentially in one Kaggle session with the same model, sampling configuration, and budgets. Each run starts a fresh model server to reset the request seed. Scores are development metrics, not leaderboard estimates."
+        )
     notebook = {
         "cells": [
             {
@@ -124,8 +196,7 @@ def build_notebook(
                 "metadata": {},
                 "source": [
                     "# Private Gemma 4 fixed-set evaluation\n",
-                    f"\nAgent: `{agent}`  \nModel: `{model}`  \nTask set: `{task_set}` ({len(task_ids)} tasks).  \nRequest seed: `{seed}`.\n",
-                    "\nRuns the official competition evaluator on training tasks. The score is a development metric, not a leaderboard estimate.",
+                    "\n" + intro,
                 ],
             },
             {
@@ -176,8 +247,10 @@ def main() -> None:
     names = sorted(path.name for path in AGENTS_DIR.iterdir() if path.is_dir() and not path.name.startswith("reference-"))
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--agent", choices=names, default="current")
+    parser.add_argument("--agents", choices=names, nargs="+", help="Run matched candidates sequentially in one Kaggle session")
     parser.add_argument("--model", choices=sorted(MODEL_SOURCES), default="gemma-4-31b-it-qat-w4a16-ct")
     parser.add_argument("--task-set", choices=sorted(TASK_SETS), default="smoke")
+    parser.add_argument("--task-sets", choices=sorted(TASK_SETS), nargs="+", help="One task set per value in --agents")
     parser.add_argument(
         "--seed",
         type=int,
@@ -188,10 +261,15 @@ def main() -> None:
     parser.add_argument("--kernel-id", default=KERNEL_ID)
     parser.add_argument("--kernel-title", default=KERNEL_TITLE)
     args = parser.parse_args()
+    if args.task_sets and not args.agents:
+        parser.error("--task-sets requires --agents")
+    if args.task_sets and len(args.task_sets) != len(args.agents):
+        parser.error("--task-sets must have exactly one entry per --agents value")
+    task_sets = args.task_sets if args.task_sets else args.task_set
     notebook, metadata = build_notebook(
-        args.agent,
+        args.agents if args.agents else args.agent,
         args.model,
-        args.task_set,
+        task_sets,
         args.output_dir,
         args.kernel_id,
         args.kernel_title,
@@ -199,7 +277,8 @@ def main() -> None:
     )
     print(f"Generated private Kaggle kernel: {notebook}")
     print(f"Metadata: {metadata}")
-    print(f"Tasks: {args.task_set}")
+    print(f"Agents: {', '.join(args.agents) if args.agents else args.agent}")
+    print(f"Task sets: {', '.join(task_sets) if isinstance(task_sets, list) else task_sets}")
 
 
 if __name__ == "__main__":
