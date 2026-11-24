@@ -4,13 +4,13 @@
 
 Reach rank 1 on the final Kaggle private leaderboard. Continue optimizing until the final deadline and claim success only after the private leaderboard confirms it.
 
-## Latest Kaggle state - quota/queue checked 2026-11-24 16:18 UTC; leaderboard/submissions checked 15:48 UTC
+## Latest Kaggle state - quota/queue checked 2026-11-24 16:55 UTC; leaderboard/submissions checked 15:48 UTC
 
 - **Competition:** the final deadline is 2026-12-02 23:59 UTC. The full public snapshot downloaded at 15:47:37 UTC has 6,634 rows and ranks `accelra` 2,074 at 0.18. It is archived under ignored `data/local/leaderboard-2026-11-24-1545utc/` (ZIP SHA-256 `E3C0C1405F9946DF1803E36AF8E0F319E3ECC5B9D8C5607F48017A7AF1AEF3B8`).
 - **Leaderboard:** 17 teams are tied at 0.24; 141 have 0.22 and 650 have 0.20. No private score is shown. Ties go to the earlier submission.
 - **Submissions:** the 15:48 UTC CLI query shows `58729936` complete at 0.18, `58624160` complete at 0.10, and `58527796` complete at 0.15; no submission is pending. The limits endpoint returned `numAllowedNow=1` and `numTotal=3`.
-- **Quota:** Kaggle CLI checked at 16:18 UTC: GPU is 29.96/30.00h used (0.04h left); TPU is 0.42/20.00h used (19.58h left). Both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time.
-- **TPU smoke:** version 2 errored. Its logs show the vLLM server failed with `/dev/vfio/1: Device or resource busy`; the notebook had called `jax.devices()` in the driver before starting the server. Version 3 remains `QUEUED` at 16:18 UTC; Kaggle exposes no ETA. Do not start evaluator work until a model-load, text, and tool-call smoke passes.
+- **Quota:** Kaggle CLI checked at 16:55 UTC: GPU is 29.96/30.00h used (0.04h left); TPU is 0.42/20.00h used (19.58h left). Both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time.
+- **TPU smoke:** version 2 errored. Its logs show the vLLM server failed with `/dev/vfio/1: Device or resource busy`; the notebook had called `jax.devices()` in the driver before starting the server. Version 3 remains `QUEUED` at 16:55 UTC; Kaggle exposes no ETA. Do not start evaluator work until a model-load, text, and tool-call smoke passes.
 - **Best tested agent:** Budget-Fit V5 scored 20/44 on local training tasks and 0.18 publicly. The local result is not a leaderboard score.
 - **Staged after reset:** all six selected kernels still report `COMPLETE`; their pulled notebooks have no executed cells or outputs, so no agent inference ran. A static audit confirmed the exact candidate files, model, seed, budgets, and task sets; the 53-task training set and 18-task holdout have no overlap. See [the staged-kernel audit](../sources/staged-kernel-audit-2026-11-24.md).
 
