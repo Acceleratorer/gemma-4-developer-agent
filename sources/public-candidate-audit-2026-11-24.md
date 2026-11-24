@@ -2,7 +2,7 @@
 
 ## Summary
 
-Kaggle CLI's latest-run listing surfaced three newly updated notebooks worth checking. Their current revisions do not supply a stronger competition-tested candidate, so keep the existing seeded V5/Patchsmith comparison plan. Pulled copies are under ignored `data/local/research/recent-public-agents/`; notebook code was inspected as text and not executed.
+Kaggle CLI's latest-run listing surfaced four recently updated notebooks worth checking. Their current revisions do not supply a stronger competition-tested candidate, so keep the existing seeded V5/Patchsmith comparison plan. Pulled copies are under ignored `data/local/research/recent-public-agents/`; notebook code was inspected as text and not executed.
 
 ## Flexonafft short-prompt bundle
 
@@ -20,6 +20,12 @@ The notebook reports an unchanged Idris v31 submission at 0.18 public. Its candi
 
 Notebook: [Fork of generation - all shards - GPU](https://www.kaggle.com/code/ziadsamer/fork-of-generation-all-shards-gpu), last run at 2026-11-24 15:49 UTC and `COMPLETE` when checked at 16:36 UTC. Its output log reports eight runs across four tasks: `sk_a2` resolved 1/4, and `sk_a2p2g2` resolved 2/4. Both arms passed `rich_3278`; only `sk_a2p2g2` passed `rich_3521`; both failed to resolve `fastapi_14419` and `fastapi_15589`. On the same four IDs, our local V5 44-task result resolved `fastapi_14419`, `rich_3278`, and `rich_3521` (3/4). This is descriptive rather than a matched-seed comparison, but neither skill arm adds a pass over the recorded V5 outcomes. The arms share a `skills/agent` tool and helper script; `sk_a2p2g2` also changes the system prompt and helper implementation, so the one-pass difference cannot be attributed to a single change. The run used concurrency 2, unlike the competition scorer's concurrency 1. All four task IDs are in our 53-task training set, and none is in the frozen 18-task holdout. This is a small, overlapping local experiment, not a competition score; do not add it to the first quota wave.
 
+## Dheeraj Piduru's E4B and 31B progress report
+
+Notebook: [Gemma 4 E4B: what moved the score and what didn't](https://www.kaggle.com/code/dheerajpiduru/gemma-4-e4b-what-moved-the-score-and-what-didn-t), last run 2026-11-24 16:45 UTC, 6 votes. The notebook is a markdown-only write-up and publishes no agent bundle to reproduce.
+
+The author reports 31B public scores of 0.20 and 0.17 from unchanged v8 files, and 11/115 versus 10/115 resolved tasks for 4,096 versus 1,024 thinking tokens on E4B. These are the author's results, not our matched comparison; they reinforce run-to-run noise and do not justify changing our model or thinking budget. In 50 selected solved 31B runs, the author counted 64 failed `edit_file` calls among 123 attempts and reported recovery afterward. This suggests a possible edit-retry prompt ablation, but the selected solved-run sample and lack of our own tool-call traces make it a hypothesis only. The two completed LoRA adapters reduced held-out resolution and often exhausted the call budget, so this report adds no reason to revisit LoRA before the planned base-model comparisons.
+
 ## Decision
 
-Do not add these public bundles to the post-reset GPU queue. The Flexonafft notebook does not measure its bundle, the Arsen prompt hybrid lacks a significant paired gain, and the Ziad Samer run is too small and overlapping to support promotion. Preserve the planned one-task validation-contract screen, then compare the seeded V5 and source-faithful Patchsmith candidates on the same 53 tasks and unseen 18-task holdout. Keep all outside notebook source and data out of the public repository.
+Do not add these public bundles or unverified prompt hypotheses to the post-reset GPU queue. The Flexonafft notebook does not measure its bundle, the Arsen prompt hybrid lacks a significant paired gain, the Ziad Samer run is too small and overlapping to support promotion, and Dheeraj's write-up contains no reproducible candidate. Preserve the planned one-task validation-contract screen, then compare the seeded V5 and source-faithful Patchsmith candidates on the same 53 tasks and unseen 18-task holdout. Keep all outside notebook source and data out of the public repository.
