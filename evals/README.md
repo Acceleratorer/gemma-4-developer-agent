@@ -39,7 +39,7 @@ swegemma eval \
   --task-ids <task-id-1> <task-id-2>
 ```
 
-Use the same task IDs for each comparison. `task_results.jsonl`, `summary.json`, traces, patches, and verification logs belong under the ignored `evals/results/` directory. Preserve only aggregate findings in `/log/experiment-log.csv`.
+Use the same task IDs for each comparison. `task_results.jsonl`, `summary.json`, traces, patches, and verification logs belong under the ignored `evals/results/` directory. The Kaggle runtime truncates `task_results.jsonl` at run start and appends each completed task; if Kaggle exposes output files for an errored run, the completed rows can be recovered. This does not guarantee that artifacts survive a hard timeout. Preserve only aggregate findings in `/log/experiment-log.csv`.
 
 Kaggle evaluation notebooks default to request seed `42`: the builder writes it to `configs/sampling.yaml`, the runtime passes it to vLLM with `--seed`, and the run ID and summary record it. Use the same seed for paired comparisons. Earlier artifacts had no explicit request seed and are not seed-matched controls; the seed improves control but does not promise bit-for-bit GPU determinism.
 
