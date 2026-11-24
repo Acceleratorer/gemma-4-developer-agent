@@ -40,6 +40,10 @@ The notebook reports 0.20 on submissions `58485496`, `58531526`, and `58642247`,
 
 This is an evaluation hypothesis, not a promotion. Our current 53-task set is gold-patch-qualified without environment shims, and Kaggle staff said the held-out competition tasks pass with their reference patches ([discussion](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/747248)). That makes transfer from the reported public-training dependency census to the private test uncertain; the stand-ins could also give incomplete test feedback. Keep it out of the first GPU wave. Revisit only if the V5/Patchsmith comparisons leave quota for a small, gold-verified screen.
 
+## Evgen Dvorkin's six-agent `rich_4076` follow-up
+
+Notebook: [Gemma 4 | rich_4076: 20/24 — Six Failed Agents](https://www.kaggle.com/code/evgendvorkin/gemma-4-rich-4076-20-24-six-failed-agents), latest run 2026-11-24 21:08:11 UTC, `COMPLETE`. The saved run verifies the P7 package (8/8 files) and records a `rich_4076` result of 20/24 tests with `resolved=false`; it does not run new agent inference. The notebook's six GPU runs all report 20/24 and `resolved=false`. P7 proposes an AST scout and skill checker, but its trace makes zero scout calls. P8 is a future tool-control proposal; the notebook reports synthetic CPU checks, not a Gemma evaluation. This follow-up provides no pass gain or reason to promote either candidate ahead of the seeded V5/Patchsmith core and holdout.
+
 ## Decision
 
 Do not add these public bundles or unverified prompt hypotheses to the first post-reset GPU wave. The Flexonafft notebook does not measure its bundle, the Arsen prompt hybrid lacks a significant paired gain, the Ziad Samer run is too small and overlapping to support promotion, and the Dheeraj, Dvorkin, and Mr Liang reports do not establish a stronger private-test candidate. Preserve the planned one-task validation-contract screen, then compare the seeded V5 and source-faithful Patchsmith candidates on the same 53 tasks and unseen 18-task holdout. Keep all outside notebook source and data out of the public repository.
