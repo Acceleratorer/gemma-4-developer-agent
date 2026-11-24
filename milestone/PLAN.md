@@ -4,24 +4,25 @@
 
 Reach rank 1 on the final Kaggle private leaderboard. Continue optimizing until the final deadline and claim success only after the private leaderboard confirms it.
 
-## Latest Kaggle state - checked 2026-11-24 13:45 UTC
+## Latest Kaggle state - checked 2026-11-24 13:58 UTC
 
 - **Competition:** the final deadline is 2026-12-02 23:59 UTC. The full public snapshot downloaded at 13:41:30 UTC has 6,627 rows and ranks `accelra` 2,074 at 0.18.
 - **Leaderboard:** 17 teams are tied at 0.24; the next score is 0.22. No private score is shown. Ties go to the earlier submission.
-- **Submissions:** `58729936` is complete at public score 0.18; `58624160` is complete at 0.10 and `58527796` at 0.15. At 13:45 UTC there were no pending submissions; the account had 0 submissions today, 3 lifetime, and 1 remaining today.
-- **Quota:** Checked at 13:45 UTC: GPU is 29.96/30.00h used (0.04h left); TPU is 0.42/20.00h used (19.58h left). Both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time.
-- **TPU smoke:** version 2 errored. Its logs show the vLLM server failed with `/dev/vfio/1: Device or resource busy`; the notebook had called `jax.devices()` in the driver before starting the server. Version 3 remains `QUEUED` as of 13:45 UTC; its Kaggle log query returned no log text and Kaggle reports no ETA. Do not start evaluator work until a model-load, text, and tool-call smoke passes.
+- **Submissions:** `58729936` is complete at public score 0.18; `58624160` is complete at 0.10 and `58527796` at 0.15. The 13:58 UTC query showed no pending submission. Submission limits checked at 13:45 UTC showed 0 submissions today, 3 lifetime, and 1 remaining today.
+- **Quota:** Checked at 13:58 UTC: GPU is 29.96/30.00h used (0.04h left); TPU is 0.42/20.00h used (19.58h left). Both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time.
+- **TPU smoke:** version 2 errored. Its logs show the vLLM server failed with `/dev/vfio/1: Device or resource busy`; the notebook had called `jax.devices()` in the driver before starting the server. Version 3 remains `QUEUED` as of 13:58 UTC; its Kaggle log query returned no log text and Kaggle reports no ETA. Do not start evaluator work until a model-load, text, and tool-call smoke passes.
 - **Best tested agent:** Budget-Fit V5 scored 20/44 on local training tasks and 0.18 publicly. The local result is not a leaderboard score.
-- **Staged after reset:** the six selected one-task, 53-task, and 18-task kernels report `COMPLETE`, but their logs contain only notebook-to-HTML conversion; no agent inference ran. Seed-42 V5 and source-faithful Patchsmith share the fixed 53-task set; the unseen holdout has 18 tasks.
+- **Staged after reset:** the six selected one-task, 53-task, and 18-task kernels reported `COMPLETE` at 13:45 UTC, but their logs contain only notebook-to-HTML conversion; no agent inference ran. Seed-42 V5 and source-faithful Patchsmith share the fixed 53-task set; the unseen holdout has 18 tasks.
 
 ## Deadlines and guardrails
 
 - Entry/team-merge deadline: 2026-11-25 23:59 UTC. Final submission deadline: 2026-12-02 23:59 UTC.
 - Target the final public upload by 2026-11-29 23:59 UTC to preserve at least 72 hours for queueing and scoring.
 - Tune prompt flow and call/time budgets first; keep model and sampling fixed. Pair comparisons on task IDs, tools, and budgets, and promote only with aggregate and holdout evidence. Local task results are not leaderboard scores.
+- Respect the scorer's global 12-hour patch-generation limit, which includes sandbox setup and covers all test tasks but excludes patch validation. An eight-minute per-task cap alone can allow a 16-hour worst case across about 120 tasks; estimate full-run time from measured task runtimes and leave headroom.
 - Keep the 28-call/eight-minute setup until the seeded comparison justifies a change. Recheck quota after every run and reserve 5.2-6.6 GPU hours for the paired 18-task holdout.
 - Preserve the final archive, submission ID, public result, and selected final submission in the log. Do not submit while any public run is pending; verify Kaggle's current submission allowance before the next upload.
-- Use the two final-selection slots for the strongest distinct candidates. Verify submission IDs, public scores, model variants, and selected final submissions.
+- Choose the two final submissions from candidates with paired 53-task and unseen 18-task evidence. Compare their task-level gains and losses; do not select by a single public score.
 
 ## Reset-week experiment order
 
