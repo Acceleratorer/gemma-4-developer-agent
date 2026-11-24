@@ -19,6 +19,7 @@ These items are not on the current critical path. Revisit them only after the se
 ## Issue localization hypothesis
 
 - [ ] After the seeded V5/Patchsmith 53-task comparison and paired 18-task holdout, consider an original, prompt-only issue-to-test localization screen on `rich_4076` (failure case) and `rich_3894` (control), using the V5 seed-42 results as baseline. The external P3 report found no extra pass on this pair, but its `rich_4076` trace shows a concrete wrong-entry-point edit; its proposed P4 remains untested. Promote to a full 53-task comparison only if the two-task screen improves on V5 without losing the control pass, and only if quota and the final-submission buffer remain. See [`public-candidate-audit-2026-11-24.md`](../sources/public-candidate-audit-2026-11-24.md).
+  The V5-derived prompt and seed-42 task set are staged, and private kernel [version 2](https://www.kaggle.com/code/accelra/issue-localization-p4-rich-pair-seed-42) was saved with `--no-run`; no inference has run and the gate above still applies.
 
 ## Transfer and runtime hypotheses
 

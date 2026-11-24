@@ -28,6 +28,13 @@ class EvaluationTaskSetTests(unittest.TestCase):
         self.assertTrue(set(training).issubset(selection))
         self.assertTrue(set(selection).isdisjoint(holdout))
 
+    def test_issue_localization_screen_is_the_v5_ordered_training_pair(self) -> None:
+        selection = _task_ids("dev-valid-training-wheelhouse-qualified-53-task-ids.json")
+        screen = _task_ids("issue-localization-rich-pair-task-ids.json")
+
+        self.assertEqual(screen, ["rich_3894", "rich_4076"])
+        self.assertEqual(screen, [task for task in selection if task in set(screen)])
+
 
 if __name__ == "__main__":
     unittest.main()
