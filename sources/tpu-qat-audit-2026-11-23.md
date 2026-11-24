@@ -4,7 +4,7 @@ Checked 2026-11-22 20:50 UTC. This is a runtime feasibility check, not competiti
 
 ## Result
 
-**GO for the already queued model-load/tool-call smoke; NO-GO for treating TPU results as comparable NvidiaL4 evaluations.** Official vLLM JAX code supports the relevant QAT linear-layer format and has served Gemma 4 31B QAT W4A16 on one v6e chip. The exact Kaggle setup remains only partially validated: it uses TPU v5e-8 and tensor parallelism 8, while the upstream implementation author explicitly says v5e and tensor parallelism above 1 were untested. Let the existing smoke answer that question before spending TPU quota on an evaluator probe.
+**NO-GO for evaluator work until the model-load/text/tool-call smoke passes; TPU results are not comparable to NvidiaL4 evaluations.** Official vLLM JAX code supports the relevant QAT linear-layer format and has served Gemma 4 31B QAT W4A16 on one v6e chip. The exact Kaggle setup remains only partially validated: it uses TPU v5e-8 and tensor parallelism 8, while the upstream implementation author explicitly says v5e and tensor parallelism above 1 were untested. Let the existing smoke answer that question before spending TPU quota on an evaluator probe.
 
 ## Evidence
 
@@ -14,12 +14,19 @@ Checked 2026-11-22 20:50 UTC. This is a runtime feasibility check, not competiti
 - Upstream [issue #3225](https://github.com/vllm-project/tpu-inference/issues/3225) reports an older E2B/E4B-specific QAT loading failure for KV-shared layers and a separate W4A16 scheme-resolution failure. The competition's 31B model has no KV-shared layers; PR #3653 subsequently added the JAX W4A16 linear method. Do not transfer that old E2B/E4B failure directly to this 31B setup.
 - A Kaggle CLI check at 2026-11-22 20:50 UTC reported the private smoke `accelra/gemma-4-qat-on-kaggle-tpu-v5e-8-smoke-v1` as `QUEUED`, with empty logs. Its pulled, ignored source is at `data/local/research/gemma4-tpu-qat-smoke-current/`; metadata selects `TpuV5E8`, attaches QAT model v2, enables internet for the pinned install, and its notebook installs `vllm-tpu==0.33.0`, serves with TP=8, then checks one text response and one function call. It does not run the repository evaluator.
 
+## Kaggle smoke outcome and correction — 2026-11-24
+
+- Kernel version 2 ended `ERROR`. Its log shows `SERVER_EXIT=1`, `SERVER_READY=False`, and `jax.errors.JaxRuntimeError: FAILED_PRECONDITION: TPU initialization failed: open(/dev/vfio/1): 16: Device or resource busy; Couldn't open iommu group /dev/vfio/1`. The smoke did not pass model serving, text generation, or tool-call parsing.
+- The notebook called `jax.devices()` in its driver process before launching the vLLM server subprocess. This is a plausible cause of the TPU resource conflict, not a proven root cause. The earlier torchaudio import failed on an undefined Torch symbol, but the notebook removed that package and continued to the vLLM launch.
+- The ignored staging notebook at `data/local/research/gemma4-tpu-qat-smoke-current/` now removes the `jax` import, parent-side device enumeration, and derived device summary field. Kernel version 3 was pushed and run on 2026-11-24; it remained `QUEUED` at 13:35 UTC, and its log query returned no text. TPU quota was 0.42/20.00h at 13:15 UTC, so the corrected run had not started by the latest status check.
+- Keep this runtime smoke separate from competition evaluation. No evaluator task or competition score was produced.
+
 ## Evaluator integration gap
 
 The existing `evals/kaggle_runtime.py` is NvidiaL4-specific: it installs the competition CUDA wheelhouse, requires `torch.cuda.device_count() >= 4`, selects vLLM GPU-memory settings and TP=4. Reuse its task and scoring setup only; a TPU probe needs a separate JAX server launch path and must keep the local TPU result distinct from NvidiaL4 comparisons.
 
 ## Recommendation
 
-Keep the existing smoke queued and inspect its startup log after it reaches a terminal state. If model load, a text response, and a parsed tool call all pass, run only the planned two-task evaluator integration probe; label any results as TPU-backend local evidence. If loading or tool parsing fails, use the failure logs to decide whether the environment/path setting is repairable, then stop TPU comparisons if not. Do not spend the 20-hour TPU allowance on the 44-task suite before that probe passes.
+Wait for corrected kernel version 3 to leave the queue, then inspect its logs. If model load, text generation, and a parsed tool call all pass, run only the planned two-task evaluator integration probe and label its result as TPU-backend local evidence. If it fails again, use the new logs to decide whether the setup is repairable; do not spend the TPU allowance on a full task suite. A successful TPU smoke still does not establish comparability with NvidiaL4.
 
 The competition's tested evaluation environment remains NvidiaL4/vLLM from its Python 3.12 wheelhouse; a successful TPU smoke does not establish score comparability or a competition submission result.
