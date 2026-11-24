@@ -155,6 +155,11 @@ def _run_sync(coro_or_fn, *args, **kwargs):
     return asyncio.run(fn())
 
 
+def append_task_result(path: Path, row: dict) -> None:
+    with path.open("a", encoding="utf-8") as stream:
+        stream.write(json.dumps(row, ensure_ascii=False) + "\n")
+
+
 def run_dev_eval(
     agent_files: dict[str, str],
     task_ids: list[str],
@@ -270,6 +275,8 @@ def run_dev_eval(
         ).hexdigest()[:12]
         results_dir = working_dir / "dev_results" / run_id
         results_dir.mkdir(parents=True, exist_ok=True)
+        task_results_path = results_dir / "task_results.jsonl"
+        task_results_path.write_text("", encoding="utf-8")
         eval_config = EvalConfig(
             tasks_path=task_path,
             snapshots_dir=data_dir / "snapshots",
@@ -301,7 +308,7 @@ def run_dev_eval(
         rows = []
         for index, task_id in enumerate(task_ids, start=1):
             task = by_id[task_id]
-            print(f"[{index}/{len(task_ids)}] {task.instance_id} ({task.repo})")
+            print(f"[{index}/{len(task_ids)}] {task.instance_id} ({task.repo})", flush=True)
             result = _run_sync(
                 evaluator.evaluate_task,
                 task=task,
@@ -336,8 +343,9 @@ def run_dev_eval(
                             else repr(value)[:12000]
                         )
                 row["diagnostics"] = diagnostics
+            append_task_result(task_results_path, row)
             rows.append(row)
-            print(json.dumps(row, ensure_ascii=False))
+            print(json.dumps(row, ensure_ascii=False), flush=True)
 
         resolved = sum(row["resolved"] for row in rows)
         summary = {
@@ -355,9 +363,6 @@ def run_dev_eval(
             "results": rows,
         }
         (results_dir / "summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
-        (results_dir / "task_results.jsonl").write_text(
-            "".join(json.dumps(row, ensure_ascii=False) + "\n" for row in rows), encoding="utf-8"
-        )
         output_path = working_dir / f"dev-eval-{run_id}.json"
         output_path.write_text(json.dumps(summary, indent=2), encoding="utf-8")
         print(f"DEV_SCORE={resolved}/{len(rows)} ({summary['score']:.4f})")
