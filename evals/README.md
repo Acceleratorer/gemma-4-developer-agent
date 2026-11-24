@@ -43,6 +43,20 @@ Use the same task IDs for each comparison. `task_results.jsonl`, `summary.json`,
 
 Kaggle evaluation notebooks default to request seed `42`: the builder writes it to `configs/sampling.yaml`, the runtime passes it to vLLM with `--seed`, and the run ID and summary record it. Use the same seed for paired comparisons. Earlier artifacts had no explicit request seed and are not seed-matched controls; the seed improves control but does not promise bit-for-bit GPU determinism.
 
+The notebook builder can run multiple candidates sequentially in one Kaggle session. Use `--agents` with one `--task-sets` value per candidate; paired candidates must share their call/time budgets and sampling config. The runtime installs the wheelhouse once and starts a fresh model server for each candidate:
+
+```powershell
+py -3.12 evals/build_kaggle_eval.py `
+  --agents current patchsmith-exp021-exact-v1 `
+  --task-sets dev-valid-training-wheelhouse-qualified-53 dev-valid-training-wheelhouse-qualified-53 `
+  --seed 42 `
+  --output-dir evals/results/paired-core/notebook `
+  --kernel-id accelra/paired-core-example `
+  --kernel-title "Paired core example"
+```
+
+Estimate the total runtime before using a combined notebook: Kaggle GPU sessions stop after 12 hours, while this example's eight-minute per-task cap permits up to 14 hours 8 minutes before setup and model startup. Use separate single-candidate kernels if measured runtimes do not leave headroom. See [the Kaggle session limit](https://www.kaggle.com/docs/notebooks#technical-specifications).
+
 The checked-in getting-started notebook's saved smoke run used Gemma 4 12B, the sample agent, a one-minute/10-call budget, and the first two FastAPI tasks. Both ended without a patch. Treat that as evidence that the sample budget/prompt can stall, not as a baseline for the 31B candidate.
 
 The 14-task `dev` set has a no-patch verifier baseline of 0/14. Five failures under the original CPU subprocess runner were initially excluded: `fastapi_14455` lacks `inline_snapshot`, `requests_7505` and `requests_6592` hit a recursive `httpbin` fixture, `httpx_3672` could not collect because imported `httpx` lacked `Stream`, and `rich_4070` cannot open `/dev/tty`. Later import-path diagnostics showed the Requests and HTTPX failures are tied to their `src/` layouts and the default subprocess path; the Requests/HTTPX outcomes below do not apply to the source-path-corrected runner. Keep the existing nine-task `dev-valid` set unchanged for historical comparisons. It is a local task set, not a leaderboard estimate.

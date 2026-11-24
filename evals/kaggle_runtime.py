@@ -16,6 +16,8 @@ import sys
 import zipfile
 from pathlib import Path, PurePosixPath
 
+_WHEELHOUSE_COMPATIBILITY: str | None = None
+
 
 def _configure_environment() -> None:
     settings = {
@@ -161,12 +163,15 @@ def run_dev_eval(
     max_time_minutes: float = 8.0,
     seed: int = 42,
 ) -> dict:
+    global _WHEELHOUSE_COMPATIBILITY
     _configure_environment()
     data_dir = Path("/kaggle/input/competitions/gemma-4-developer-agent")
     wheelhouse = Path("/kaggle/input/datasets/metric/gemma-4-developer-agent-wheelhouse")
     working_dir = Path("/kaggle/working")
     working_dir.mkdir(parents=True, exist_ok=True)
-    runtime_compatibility = _install_wheelhouse(wheelhouse)
+    if _WHEELHOUSE_COMPATIBILITY is None:
+        _WHEELHOUSE_COMPATIBILITY = _install_wheelhouse(wheelhouse)
+    runtime_compatibility = _WHEELHOUSE_COMPATIBILITY
 
     import torch
     import yaml
