@@ -23,6 +23,7 @@ Checked 2026-11-22 20:50 UTC. This is a runtime feasibility check, not competiti
 - At 2026-11-24 15:17 UTC, the Kaggle CLI still reported version 3 as `QUEUED`; quota remained GPU 0.04/30.00h and TPU 19.58/20.00h. Both quotas refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time. Kaggle exposes no queue ETA.
 - At 2026-11-24 16:18 UTC, `kaggle kernels status` still reported version 3 as `QUEUED`; `kaggle quota` remained GPU 0.04/30.00h and TPU 19.58/20.00h. Both quotas refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time. Kaggle exposes no queue ETA.
 - At 2026-11-24 19:10 UTC, explicit status checks showed versions 1 and 2 as `ERROR` and corrected version 3 still `QUEUED`. GPU quota remained 0.04/30.00h and TPU quota 19.58/20.00h, both refreshing at 2026-11-28 00:00 UTC / 07:00 Vietnam time. Kaggle exposes no queue ETA, and no new kernel version or run was started.
+- At 2026-11-24 22:28 UTC (2026-11-25 05:28 Vietnam), version 3 was still `QUEUED` and its log query returned no text. GPU quota remained 0.04/30.00h and TPU quota 19.58/20.00h; both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time. The paired core and holdout notebooks reported `COMPLETE` from conversion only; no inference ran. Kaggle exposes no queue ETA.
 - Keep this runtime smoke separate from competition evaluation. No evaluator task or competition score was produced.
 
 ## Evaluator integration gap
