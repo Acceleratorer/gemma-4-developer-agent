@@ -17,6 +17,8 @@ EXPECTED_MEMBERS = {
     "agent.yaml",
     "configs/sampling.yaml",
     "eval_config.yaml",
+    "LICENSE.txt",
+    "NOTICE.txt",
     "prompts/system.md",
 }
 

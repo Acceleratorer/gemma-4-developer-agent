@@ -1,0 +1,7 @@
+Attribution: Wilmer E. Henao (Kaggle account verracodeguacas).
+Source: https://www.kaggle.com/code/verracodeguacas/gemma-4-agent-budget-fit-single-agent?scriptVersionId=355310852
+License: Apache License 2.0; see LICENSE.txt.
+
+The four runtime files in `module/agents/current/` match the bundle embedded
+in the versioned source notebook. Repository evaluation tools and documentation
+are separate works and are not part of this agent package.
