@@ -1,8 +1,8 @@
 # Competition facts and sources
 
-## Latest full leaderboard snapshot — checked 2026-11-24 15:18 UTC
+## Latest full leaderboard snapshot — checked 2026-11-24 15:47 UTC
 
-The final deadline is 2026-12-02 23:59 UTC. The full public snapshot downloaded at 15:18:10 UTC contains 6,632 rows and ranks `Accelra` 2,074 at 0.18; 17 teams are tied at 0.24, followed by 141 at 0.22. No private score is shown. The ZIP is preserved under ignored `data/local/leaderboard-2026-11-24-1517utc/` (SHA-256 `EE397AE2BBDE46A2FB67F93AADFF88BBB5251CB4C6F685EFBF0DF0F872916F38`). The latest live-state section below records submissions, quotas, and kernel status.
+The final deadline is 2026-12-02 23:59 UTC. The full public snapshot downloaded at 15:47:37 UTC contains 6,634 rows and ranks `Accelra` 2,074 at 0.18; 17 teams are tied at 0.24, followed by 141 at 0.22 and 650 at 0.20. No private score is shown. The ZIP is preserved under ignored `data/local/leaderboard-2026-11-24-1545utc/` (SHA-256 `E3C0C1405F9946DF1803E36AF8E0F319E3ECC5B9D8C5607F48017A7AF1AEF3B8`). The latest live-state section below records submissions, quotas, and kernel status.
 
 ## Historical snapshot — checked 2026-11-23 14:34 UTC
 
@@ -91,11 +91,11 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 - Small-model public leaderboard: top score **0.12** in the official tracker output, last updated 2026-11-16 23:55 UTC; refreshed from the Kaggle notebook on 2026-11-18.
 - These are public-split snapshots, not final standings. The final placement is based on the private leaderboard.
 
-## Latest live state — 2026-11-24 15:18 UTC
+## Latest live state — 2026-11-24 15:48 UTC
 
-- The full public leaderboard snapshot downloaded at 15:18:10 UTC contains 6,632 rows. `accelra` is rank **2,074** at **0.18**; 17 teams tie at **0.24**, followed by 141 at **0.22**. No private score is shown. The ZIP is archived under ignored `data/local/leaderboard-2026-11-24-1517utc/` (SHA-256 `EE397AE2BBDE46A2FB67F93AADFF88BBB5251CB4C6F685EFBF0DF0F872916F38`).
-- The 15:17 UTC submissions query shows `58729936` complete at **0.18**, `58624160` complete at **0.10**, and `58527796` complete at **0.15**; none is pending. The limits endpoint returned `numAllowedNow=1` and `numTotal=3`.
-- At 15:17 UTC, GPU quota was **29.96/30.00h used** and TPU quota **0.42/20.00h used**; both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time. TPU smoke version 3 remained `QUEUED`; Kaggle exposes no ETA.
+- The full public leaderboard snapshot downloaded at 15:47:37 UTC contains 6,634 rows. `Accelra` is rank **2,074** at **0.18**; 17 teams tie at **0.24**, followed by 141 at **0.22** and 650 at **0.20**. No private score is shown. The archive path and SHA-256 are recorded above.
+- The 15:48 UTC submissions query shows `58729936` complete at **0.18**, `58624160` complete at **0.10**, and `58527796` complete at **0.15**; none is pending. The limits endpoint returned `numAllowedNow=1` and `numTotal=3`.
+- At 15:48 UTC, GPU quota was **29.96/30.00h used** and TPU quota **0.42/20.00h used**; both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time. TPU smoke version 3 remained `QUEUED`; Kaggle exposes no ETA.
 - The six staged 53-task and 18-task comparison kernels are conversion artifacts only. The staged-kernel audit found no executed cells or inference outputs; see [the audit](staged-kernel-audit-2026-11-24.md).
 
 ## Community experiment evidence checked 2026-11-19–2026-11-20
