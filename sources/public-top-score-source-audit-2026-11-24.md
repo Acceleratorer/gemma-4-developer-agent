@@ -24,6 +24,12 @@ Kaggle CLI searches scoped to the other handles on the 0.24 rows did not surface
 
 The 08:38:40 UTC public leaderboard snapshot has 18 teams at 0.24, up from 17 in the 2026-11-24 17:05 UTC snapshot. The new row is team `Ant` (`anthonytrevino`, team ID `17158342`), with a last submission date of 2026-11-23 and 11 submissions. Kaggle CLI searches for that user returned no public competition kernels, datasets, or models. No bundle or submission ID is linked to the score, so this row adds no reproducible candidate.
 
+## Idris v24 artifact access check — 2026-11-25 10:34 UTC
+
+- `kaggle competitions team-submissions 16972967` confirms public-score submission `57402375` at 0.24, submitted 2026-10-19. The 10:34 UTC top-only leaderboard result includes the team at 0.24.
+- Tried the documented `kaggle competitions submission-download 57402375` into ignored `data/local/`; Kaggle returned HTTP 403 Forbidden. The scored archive therefore cannot be hash-matched through this account. The Apache-2.0 dataset still links v24 to a reported 0.24 draw, while our exact-source replay `58624160` scored 0.10; that gap is not evidence the two archives match or that v24 is reliably 0.24.
+- **Decision:** keep the source-to-score mapping unverified and do not add another v24 run to the first quota wave. The exact archive match remains unresolved.
+
 ## Decision
 
 Keep the reset-week order in [`milestone/PLAN.md`](../milestone/PLAN.md): run the one-task validation-contract probe, then the seeded V5/Patchsmith 53-task comparison and paired unseen holdout as quota allows. No newly audited 0.24 bundle changes that queue. The 0.24 reports are public-split evidence only; they do not establish the final private-leaderboard rank.
