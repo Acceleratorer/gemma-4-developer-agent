@@ -20,6 +20,10 @@ At 2026-11-24 20:00 UTC, `kaggle competitions team-submissions <team_id> --forma
 
 Kaggle CLI searches scoped to the other handles on the 0.24 rows did not surface a public agent bundle. This search is not proof that no source exists: the competition leaderboard itself lacks a bundle identifier, so any newly found candidate still needs a direct source, license, and score-to-archive link before it can be treated as an exact 0.24 reproduction.
 
+## New 0.24 row — checked 2026-11-25 08:38 UTC
+
+The 08:38:40 UTC public leaderboard snapshot has 18 teams at 0.24, up from 17 in the 2026-11-24 17:05 UTC snapshot. The new row is team `Ant` (`anthonytrevino`, team ID `17158342`), with a last submission date of 2026-11-23 and 11 submissions. Kaggle CLI searches for that user returned no public competition kernels, datasets, or models. No bundle or submission ID is linked to the score, so this row adds no reproducible candidate.
+
 ## Decision
 
 Keep the reset-week order in [`milestone/PLAN.md`](../milestone/PLAN.md): run the one-task validation-contract probe, then the seeded V5/Patchsmith 53-task comparison and paired unseen holdout as quota allows. No newly audited 0.24 bundle changes that queue. The 0.24 reports are public-split evidence only; they do not establish the final private-leaderboard rank.
