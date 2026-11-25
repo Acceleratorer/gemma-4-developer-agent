@@ -66,3 +66,7 @@ The notebook source also contains a hard-coded Hugging Face credential fallback.
 ## Decision
 
 Do not add these public bundles or unverified prompt hypotheses to the first post-reset GPU wave. The Flexonafft notebook does not measure its bundle, the Arsen prompt hybrid lacks a significant paired gain, the Ziad Samer run is too small and overlapping to support promotion, and the Dheeraj, Dvorkin, and Mr Liang reports do not establish a stronger private-test candidate. Preserve the planned one-task validation-contract screen, then compare the seeded V5 and source-faithful Patchsmith candidates on the same 53 tasks and unseen 18-task holdout. Keep all outside notebook source and data out of the public repository.
+
+## Patchsmith exp021 exact-source submission — 2026-11-25
+
+The exact six-file Apache-2.0 Patchsmith exp021 bundle was rebuilt and validated on 2026-11-25. Package tests passed (5/5), and Kaggle accepted submission `58883031` at 11:06:25 UTC. Archive SHA-256: `02a7aa06bdac89097bb341c99b15d30e39802d3bc5ae3ee971aa8aa176f35659`; the four runtime-file configuration hash is `9d75617ce5868786f16a25503ae36f6f96b6278f4323e29bf4429034001dc7bb`. Kaggle still reported it as `PENDING` at 11:06 UTC. The author's external 0.22 report remains unverified for this exact archive until this submission receives a score.
