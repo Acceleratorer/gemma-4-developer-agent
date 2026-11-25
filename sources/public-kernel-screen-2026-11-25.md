@@ -14,6 +14,10 @@ The Kaggle metadata lists an L4 GPU, 31B and E4B model inputs, and competition a
 
 The downloaded `submission.zip` is 2,029 bytes with SHA-256 `86892b2d6d4e1cc841f48062c0169c2a710e56543225e54ba766db9b6cd9f1de`. It contains `agent.yaml`, `eval_config.yaml`, `configs/sampling.yaml`, and `prompts/system.md`; it has no license file. The kernel metadata does not state a license. Keep the archive local and use the configuration only as a comparison reference.
 
+## Sankalp Thakur's leaderboard update
+
+Comparing the 08:03 and 08:38 UTC leaderboard snapshots shows team `sankalpsthakur` moving from 0.18 (41 submissions) to 0.20 (42 submissions), with its latest submission dated 2026-11-24 00:13 UTC. `kaggle kernels list --user sankalpsthakur --competition gemma-4-developer-agent` returned `Not found`, so no public competition kernel or exact source-to-score mapping was available to inspect. Treat the row as a public score change only; it does not provide a reproducible candidate.
+
 ## Decision
 
 Neither notebook supplies verified task level evidence or a source to score mapping that changes the reset week experiment order. Keep the paired V5/Patchsmith core suite and unseen holdout as the first quota wave. Do not add either public bundle to the candidate set until a comparable evaluation shows a gain.
