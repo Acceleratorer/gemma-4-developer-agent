@@ -4,7 +4,7 @@
 
 Reach rank 1 on the final Kaggle private leaderboard. Continue optimizing until the final deadline and claim success only after the private leaderboard confirms it.
 
-## Latest Kaggle state — full leaderboard snapshot 2026-11-25 09:24:27 UTC; top rechecked 11:30 UTC; quota, TPU smoke, and submission rechecked 11:25 UTC; staged hashes and launch preflight rechecked 11:29 UTC
+## Latest Kaggle state — full leaderboard snapshot 2026-11-25 09:24:27 UTC; top rechecked 11:30 UTC; public-kernel screen rechecked 11:37 UTC; quota, TPU smoke, and submission rechecked 11:25 UTC; staged hashes and launch preflight rechecked 11:29 UTC
 
 - **Competition:** the final deadline is 2026-12-02 23:59 UTC. The public snapshot generated at 09:24:27 UTC has 6,691 rows and ranks `accelra` 2,073 at 0.18. It is archived under ignored `data/local/leaderboard-2026-11-25-0924utc/` (ZIP SHA-256 `c444f14ad67318ba5ac28de32f72d7db590d4a071895c86c52d4570369c8db25`).
 - **Leaderboard:** the 09:24 UTC full snapshot has 18 teams at 0.24, followed by 146 at 0.22, 662 at 0.20, and 1,306 at 0.18. The top-only CLI page rechecked at 11:30 UTC still shows 18 entries at 0.24 followed by 0.22. No private score is shown. Exact ties go to the submission entered first; do not infer tie priority from public row order or `LastSubmissionDate` alone. See the [tie-break check](../sources/public-top-score-source-audit-2026-11-24.md#tie-break-check).
