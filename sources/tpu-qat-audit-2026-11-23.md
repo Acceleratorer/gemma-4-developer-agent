@@ -24,6 +24,8 @@ Checked 2026-11-22 20:50 UTC. This is a runtime feasibility check, not competiti
 - At 2026-11-24 16:18 UTC, `kaggle kernels status` still reported version 3 as `QUEUED`; `kaggle quota` remained GPU 0.04/30.00h and TPU 19.58/20.00h. Both quotas refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time. Kaggle exposes no queue ETA.
 - At 2026-11-24 19:10 UTC, explicit status checks showed versions 1 and 2 as `ERROR` and corrected version 3 still `QUEUED`. GPU quota remained 0.04/30.00h and TPU quota 19.58/20.00h, both refreshing at 2026-11-28 00:00 UTC / 07:00 Vietnam time. Kaggle exposes no queue ETA, and no new kernel version or run was started.
 - At 2026-11-24 22:28 UTC (2026-11-25 05:28 Vietnam), version 3 was still `QUEUED` and its log query returned no text. GPU quota remained 0.04/30.00h and TPU quota 19.58/20.00h; both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time. The paired core and holdout notebooks reported `COMPLETE` from conversion only; no inference ran. Kaggle exposes no queue ETA.
+- At 2026-11-25 07:23 UTC, version 3 had left the queue as `ERROR`. Its log confirms `CompileTimeHbmOom`: XLA used 16.61 GiB of 15.75 GiB HBM, exceeding capacity by 883.69 MiB. The final failure occurred during vLLM engine initialization; the earlier torchaudio import error was handled by uninstalling torchaudio and was not the terminal failure.
+- Version 4 isolates context length as the next variable: it keeps the v3 setup and changes only `--max-model-len` from 4096 to 2048. Its ignored source is preserved under `data/local/research/gemma4-tpu-qat-smoke-v4-context2048/`. It was pushed to the same private smoke kernel on 2026-11-25 and remained `RUNNING` at 07:46 UTC; its logs were still empty. At that check GPU quota was 29.96/30.00h used and TPU quota was 1.21/20.00h used (18.79h remaining); both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time.
 - Keep this runtime smoke separate from competition evaluation. No evaluator task or competition score was produced.
 
 ## Evaluator integration gap
@@ -32,6 +34,6 @@ The existing `evals/kaggle_runtime.py` is NvidiaL4-specific: it installs the com
 
 ## Recommendation
 
-Wait for corrected kernel version 3 to leave the queue, then inspect its logs. If model load, text generation, and a parsed tool call all pass, run only the planned two-task evaluator integration probe and label its result as TPU-backend local evidence. If it fails again, use the new logs to decide whether the setup is repairable; do not spend the TPU allowance on a full task suite. A successful TPU smoke still does not establish comparability with NvidiaL4.
+Wait for version 4 to finish, then inspect its logs. If model load, text generation, and a parsed tool call all pass, run only the planned two-task evaluator integration probe and label its result as TPU-backend local evidence. If it fails again, use the new logs to decide whether the setup is repairable; do not spend the TPU allowance on a full task suite. A successful TPU smoke still does not establish comparability with NvidiaL4.
 
 The competition's tested evaluation environment remains NvidiaL4/vLLM from its Python 3.12 wheelhouse; a successful TPU smoke does not establish score comparability or a competition submission result.
