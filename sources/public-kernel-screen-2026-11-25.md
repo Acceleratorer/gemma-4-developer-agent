@@ -23,3 +23,9 @@ Comparing the 08:03 and 08:38 UTC leaderboard snapshots shows team `sankalpsthak
 Neither notebook supplies verified task level evidence or a source to score mapping that changes the reset week experiment order. Keep the paired V5/Patchsmith core suite and unseen holdout as the first quota wave. Do not add either public bundle to the candidate set until a comparable evaluation shows a gain.
 
 At the 08:24 UTC check, Kaggle reported 0.04 GPU hours and 18.70 TPU hours remaining, with both quotas refreshing at 2026-11-28 00:00 UTC / 07:00 Vietnam time. The local TPU smoke v5 remained `QUEUED`; Kaggle returned no queue ETA.
+
+## Follow-up check — 2026-11-25 09:22 UTC
+
+- Nusrati's `gemma4-swekit-gpu-dev` remains `RUNNING`. The latest pulled source is version 69; its stated change from version 63 is only the per-task cap increasing from five to eight minutes. The pulled notebook has 51 code cells with no execution counts or outputs, and the filtered Kaggle output request returned no log, summary, or result files. This is pending evidence, and the eight-minute cap already matches the current candidate.
+- The latest-run kernel listing also surfaced `xvmhieu/linear-merging-diagnosis-l4x4`, which remains `RUNNING`. Its metadata and source notebook identify a Qwen2.5-3B cross-lingual LoRA-merging study using FLORES/SIB-200/Belebele data, not a Gemma SWE-agent candidate. Exclude it from agent comparisons.
+- The full public leaderboard snapshot generated at 09:18:32 UTC still has 18 teams at 0.24; `Accelra` is rank 2,073 at 0.18. No newer scored public candidate was identified in this screen.
