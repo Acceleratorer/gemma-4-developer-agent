@@ -50,3 +50,9 @@ At the 08:24 UTC check, Kaggle reported 0.04 GPU hours and 18.70 TPU hours remai
 - Dennis's [`exact-budget-aware-package`](https://www.kaggle.com/code/dennis6886/gemma-4-agent-0-18-exact-budget-aware-package) is `COMPLETE`. Its downloaded log contains notebook conversion only, and its 3.08 KB ZIP contains four config files; no evaluator result or score-to-archive mapping is present.
 - Kaggle denied `kernels.get` for the `ccuuuy/lb-0-22-4-config-files-no-training` slug. The source could not be inspected in this check, so its title is not treated as score evidence.
 - **Decision:** no newly verified public kernel result changes the reset-week candidate order.
+
+## Follow-up check — 2026-11-25 11:37 UTC
+
+- Kaggle surfaced [Ziad Samer's generation notebook](https://www.kaggle.com/code/ziadsamer/fork-of-generation-all-shards-gpu) with last-run time 11:11 UTC. The public metadata attaches the 31B QAT model and the OOD-45 bug-fix dataset on L4x4; the notebook source says it compares two skill arms on the dev16 task set. Kaggle reports `RUNNING`; the logs endpoint returned no text, and the first output-file page contains artifacts timestamped before this run. No completed result is available, and the kernel metadata has no license field.
+- The other newly surfaced runs inspected were not agent candidates: Tuyen Nguyen's `mainmainmain` is an EvidenceKD-MedVQA pipeline with no model or dataset sources attached, and Miyuki's `splitlora-64` outputs ImageNet-R artifacts and is `ERROR`.
+- **Decision:** keep the staged V5/Patchsmith comparison unchanged. Recheck Ziad's run after it finishes and consider its task-level evidence only if its completed outputs can be inspected; do not promote a prompt from an unfinished public run.
