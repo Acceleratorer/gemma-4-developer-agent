@@ -31,6 +31,7 @@ TASK_SETS = {
     "dev-valid-training-gold-verified": ROOT / "evals" / "dev-valid-training-gold-verified-task-ids.json",
     "dev-valid-training-gold-scorable-54": ROOT / "evals" / "dev-valid-training-gold-scorable-54-task-ids.json",
     "dev-valid-training-wheelhouse-qualified-53": ROOT / "evals" / "dev-valid-training-wheelhouse-qualified-53-task-ids.json",
+    "patch-completion-screen": ROOT / "evals" / "patch-completion-screen-task-ids.json",
     "issue-localization-rich-pair": ROOT / "evals" / "issue-localization-rich-pair-task-ids.json",
     "v5-test-aware-fastapi-probe": ROOT / "evals" / "v5-test-aware-fastapi-probe-task-ids.json",
     "v5-test-aware-pilot": ROOT / "evals" / "v5-test-aware-pilot-task-ids.json",
