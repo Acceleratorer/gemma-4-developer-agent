@@ -4,7 +4,7 @@
 
 Reach rank 1 on the final Kaggle private leaderboard. Continue optimizing until the final deadline and claim success only after the private leaderboard confirms it.
 
-## Latest Kaggle state — full leaderboard snapshot 2026-11-26 10:38 UTC; submission, quota, and TPU QAT smoke rechecked 2026-11-26 15:33 UTC; staged paired kernels rechecked 15:22 UTC; runner validation rechecked 2026-11-26 10:33 UTC
+## Latest Kaggle state — full leaderboard snapshot 2026-11-26 10:38 UTC; submission, quota, and TPU QAT smoke rechecked 2026-11-26 15:33 UTC; public kernel listing rechecked 15:43 UTC; staged paired kernels rechecked 15:22 UTC; runner validation rechecked 2026-11-26 10:33 UTC
 
 - **Competition and leaderboard:** the final deadline is 2026-12-02 23:59 UTC. The full public snapshot generated at 10:38:08 UTC has 6,812 rows and ranks `accelra` 2,075 at 0.18. It is archived under ignored `data/local/leaderboard-2026-11-26-1038utc/` (ZIP SHA-256 `3A9327FEAAEAC9CF8582CA793C4C41DB73A4123BC933410D7CC7B5E70D0D2EB0`). The snapshot has 19 teams at 0.24, 148 at 0.22, 688 at 0.20, and 1,310 at 0.18; no private score is shown. Exact ties go to the submission entered first; do not infer tie priority from public row order or `LastSubmissionDate` alone. See the [tie-break check](../sources/public-top-score-source-audit-2026-11-24.md#tie-break-check).
 - **Submissions:** Kaggle accepted Patchsmith exp021 exact-source archive `58883031` at 11:06 UTC on 2026-11-25; it remained `PENDING` with no public or private score at 15:33 UTC on 2026-11-26, after about 28h27m. The three earlier submissions remain complete: `58729936` at 0.18, `58624160` at 0.10, and `58527796` at 0.15. Do not submit again until `58883031` reaches a terminal status.
@@ -28,6 +28,8 @@ Reach rank 1 on the final Kaggle private leaderboard. Continue optimizing until 
 - Choose up to two final submissions from candidates with paired 53-task and unseen 18-task evidence. Compare their task-level gains and losses; do not select by a single public score.
 
 ## Reset-week experiment order
+
+**Public-task exposure note:** the newly screened E13 public run covers 32 IDs in our 53-task training set and 10 of the 18 holdout IDs. Our candidate comparison was already staged, so keep it fixed; describe the holdout as unseen relative to our own prior agent runs, not unseen in the public community. Do not use the E13 task-level matrix for tuning or candidate promotion. See the [kernel audit](../sources/public-kernel-screen-2026-11-26.md#follow-up-public-kernel-screen--checked-2026-11-26-1543-utc).
 
 1. After quota refresh, recheck quota, submission status, and staged kernel statuses. Launch the combined Nvidia L4 core suite ([kernel](https://www.kaggle.com/code/accelra/v5-probe-patchsmith-exp021-core-53-seed42)) directly; it starts with the seed-42 validation-contract probe on `fastapi_15588`, then runs V5 and Patchsmith exp021 on the same 53 training tasks. Do not run the probe separately first. The TPU smoke failed and is not a gate for this GPU suite.
 2. Confirm the outputs contain the probe and both 53-task summaries. If the suite stops early, inspect saved outputs before choosing a single-arm fallback; only run the missing arm if quota, holdout reserve, and final-upload buffer still fit.
