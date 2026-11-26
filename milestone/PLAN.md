@@ -43,7 +43,7 @@ The API-shape pilot is an optional low-priority probe after these comparisons. I
 
 - Current competition rules, queue observations, official links, and dated Kaggle snapshots: [`sources/competition.md`](../sources/competition.md).
 - Public candidate source checks and promotion decisions: [`sources/public-candidate-audit-2026-11-24.md`](../sources/public-candidate-audit-2026-11-24.md).
-- Latest public kernel screen and evidence check: [`sources/public-kernel-screen-2026-11-25.md`](../sources/public-kernel-screen-2026-11-25.md).
+- Latest public kernel screen and evidence check: [`sources/public-kernel-screen-2026-11-26.md`](../sources/public-kernel-screen-2026-11-26.md).
 - Public top-score source-to-submission audit: [`sources/public-top-score-source-audit-2026-11-24.md`](../sources/public-top-score-source-audit-2026-11-24.md); no exact, licensed 0.24 bundle is verified for the first quota wave.
 - Public evaluation-noise source audit: [`sources/public-evaluation-methods-audit-2026-11-25.md`](../sources/public-evaluation-methods-audit-2026-11-25.md); the released Glassbox project has no agent prompt or winning configuration.
 - Pulled source, configuration, task-set, and execution-state checks for the six staged kernels: [`sources/staged-kernel-audit-2026-11-24.md`](../sources/staged-kernel-audit-2026-11-24.md).
