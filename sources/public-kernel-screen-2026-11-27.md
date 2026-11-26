@@ -10,8 +10,14 @@ The latest run's log verifies 28 agent files, creates a ZIP with SHA-256 `63DA26
 
 **Decision:** this is a source/package verification rerun on one task, not evidence of a new agent gain. It does not change the frozen seed-42 53-task V5/Patchsmith core or the paired 18-task holdout.
 
-## Active public evaluation — Engziadsamer `arms-again`
+## Engziadsamer — `arms-again`
 
-At 2026-11-26 18:20 UTC, Kaggle still reported [arms-again](https://www.kaggle.com/code/engziadsamer/arms-again) as `RUNNING`. The pulled notebook metadata attaches the competition wheelhouse, `rodrigospalma/ood45-bugfix-split`, and Gemma 4 31B QAT v2; internet is disabled. Its source selects a custom `skill_arms` evaluation mode, two concurrent task attempts, a 28-call cap, and a 15-minute per-task cap. This is not directly comparable to our eight-minute fixed-set runs.
+At 2026-11-26 18:20 UTC, Kaggle still reported [arms-again](https://www.kaggle.com/code/engziadsamer/arms-again) as `RUNNING`. The pulled notebook metadata attaches the competition wheelhouse, `rodrigospalma/ood45-bugfix-split`, and Gemma 4 31B QAT v2; internet is disabled. This run uses a custom `skill_arms` evaluation mode and task set, so it is not directly comparable to our fixed 53-task run.
 
-The Kaggle logs endpoint returned no text at 18:17 UTC and the output fetch exposed no files at 18:20 UTC. `RUNNING` therefore confirms an active kernel only; it does not confirm completed inference, resolved tasks, or a competition score. The source and metadata are retained under ignored `data/local/research/public-kernel-screen-followup-2026-11-27/`. This external run does not change the staged V5/Patchsmith comparison or its holdout.
+The Kaggle logs endpoint returned no text at 18:17 UTC and the output fetch exposed no files at 18:20 UTC. At that check, `RUNNING` confirmed an active kernel only; it did not confirm completed inference, resolved tasks, or a competition score.
+
+### Outcome — checked 2026-11-26 19:48 UTC
+
+Kaggle later reported the kernel `COMPLETE`. Its downloaded log and outputs are under ignored `data/local/research/arms-again-complete-output-2026-11-26-1945utc/`. The run loaded Gemma 4 31B QAT on four Nvidia L4 GPUs and evaluated one `sk_a2` arm on nine custom `rtrain` tasks from `/kaggle/input/datasets/ziadsamer/rebench-new-cp312/rebench`, repeating the same task IDs for three passes at concurrency 2. Its actual run log selects `skill_arms`, a 28-call cap, 240-second command timeout, eight-minute task cap, and 80 turns. The base `submission/eval_config.yaml` says 15 minutes; the active arm's `submissions/sk_a2/eval_config.yaml` and run log both say eight minutes.
+
+The task-resolution counts were 5/9, 3/9, and 4/9 across the three passes: 12 resolved attempts out of 27 attempts, with one timeout. These are repeated results on nine tasks, not a 27-task score. The run has a single candidate arm and no paired baseline; it produces no Kaggle competition submission score. Treat it as exploratory evidence about that custom setup, not a promotion signal. It does not change the frozen V5/Patchsmith 53-task core or 18-task holdout.
