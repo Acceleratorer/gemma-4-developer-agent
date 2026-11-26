@@ -70,3 +70,7 @@ Do not add these public bundles or unverified prompt hypotheses to the first pos
 ## Patchsmith exp021 exact-source submission — 2026-11-25
 
 The exact six-file Apache-2.0 Patchsmith exp021 bundle was rebuilt and validated on 2026-11-25. Package tests passed (5/5), and Kaggle accepted submission `58883031` at 11:06:25 UTC. Archive SHA-256: `02a7aa06bdac89097bb341c99b15d30e39802d3bc5ae3ee971aa8aa176f35659`; the four runtime-file configuration hash is `9d75617ce5868786f16a25503ae36f6f96b6278f4323e29bf4429034001dc7bb`. Kaggle still reported it as `PENDING` at 11:06 UTC. The author's external 0.22 report remains unverified for this exact archive until this submission receives a score.
+
+## Outcome update — 2026-11-26 19:17 UTC
+
+Kaggle reported submission `58883031` as `COMPLETE` with public score 0.17 and no private score. The exact archive is the six-file Apache-2.0 Patchsmith exp021 bundle documented above (SHA-256 `02a7aa06bdac89097bb341c99b15d30e39802d3bc5ae3ee971aa8aa176f35659`). This exact archive scored below the existing Budget-Fit V5 submission at 0.18. The external author's 0.22 remains unverified for this source; no local 53-task or unseen 18-task result exists for Patchsmith. Keep it as the planned paired comparison arm, not a promoted candidate.
