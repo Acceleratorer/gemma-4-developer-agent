@@ -21,3 +21,11 @@ The most task-specific result is a reproduction-command `timeout 20` prompt line
 ## Decision
 
 No newly inspected kernel changes the reset-week experiment sequence. The Sankalp study's task-level, repeated evidence is useful context but supplies neither an exact winning bundle nor a source-to-score link for our candidate. Preserve the staged comparison and treat every external score or task result above as author-reported.
+
+## Follow-up check — 2026-11-26 09:59 UTC
+
+- The latest-run competition listing surfaced `narenthirabalaji/gemma4-submission` (last run 04:35 UTC, `COMPLETE`). Its metadata disables GPU and TPU and lists no model or data sources. The log installs a PyTorch wheelhouse, checks the one-agent / eight-minute / 28-call / 240-second configuration, and explicitly says official model compilation and leaderboard scoring were not run. Its four-file ZIP has SHA-256 `20e1540ca605857db0cf6f9b3738edc0f3784b3a74811e9e356a94cb9fa5e659`; the kernel metadata provides no license field. Treat it as a packaging reference, not score evidence or reusable source. Pulled files are under ignored `data/local/research/public-kernel-screen-2026-11-26-0959utc/narenthirabalaji/`.
+- Evgen Dvorkin's `gemma-4-rich-4076-20-24-14-experiments` completed at 08:10 UTC. Its metadata disables GPU and TPU; the output log only verifies the four P15 files and packages them. The archive SHA-256 `aa9d6f89f5299d16c9a2261e80cb75d2e369464cb5029ec4aef4d5790d4e91dc` matches the included Apache-2.0 attribution notice for unmodified Budget-Fit V5. No evaluator inference ran, so this is not new score evidence. Pulled files are under ignored `data/local/research/public-kernel-screen-2026-11-26-0959utc/evgen/`.
+- Ziad Samer's generation and skill-arm kernels last ran at 09:14 and 09:16 UTC and still reported `RUNNING` at the 09:56 UTC check. Their listed output artifacts were created on 2026-11-25, before those runs; no fresh task-level result was available.
+
+**Decision:** these checks add no comparable agent result or source-to-score link. Keep the paired V5/Patchsmith 53-task core and unseen 18-task holdout as the next controlled comparison.
