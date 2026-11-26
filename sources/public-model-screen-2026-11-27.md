@@ -19,4 +19,5 @@ The Omallo E4B adapter is a separate small-model candidate, not a replacement fo
 
 - Downloaded model version 1 to ignored `data/local/`; the local adapter is 69,839,856 bytes with SHA-256 `E7D5F6AFED8F5A6C2E3B031646D95ACCD94749289366696039F4641BAB396015`. Git excludes the weight file; the submission ZIP includes it.
 - Candidate files are in `module/agents/e4b-31b-distilled-lora-v1/`. The exact ZIP `dist/e4b-31b-distilled-lora-v1/submission.zip` has SHA-256 `ae05e99dfd8acd05d18706236d3263867df1123dfc5c66d74896c55cd3981cf8`, nine files, and 69,858,174 unpacked bytes. The ZIP passed CRC and source-content validation.
+- Before upload, `py -3.12 -m unittest tests.test_submission_package` passed all five tests; the exact archive was then built with `module/build_submission.py` and passed its source-content and CRC checks.
 - Kaggle accepted submission `58965387` at 20:45:23 UTC; the CLI reported `PENDING`, with no public or private score. The runtime-config hash and exact source file list are recorded in [`log/experiment-log.csv`](../log/experiment-log.csv).
