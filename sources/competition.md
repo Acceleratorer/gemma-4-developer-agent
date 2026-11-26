@@ -1,8 +1,8 @@
 # Competition facts and sources
 
-## Latest full leaderboard snapshot — checked 2026-11-26 10:38 UTC
+## Latest full leaderboard snapshot — checked 2026-11-26 16:02 UTC
 
-The final deadline is 2026-12-02 23:59 UTC. The full public snapshot generated at 10:38:08 UTC contains 6,812 rows and ranks `Accelra` 2,075 at 0.18; 19 teams are tied at 0.24, followed by 148 at 0.22, 688 at 0.20, and 1,310 at 0.18. No private score is shown. The ZIP is preserved under ignored `data/local/leaderboard-2026-11-26-1038utc/` (SHA-256 `3A9327FEAAEAC9CF8582CA793C4C41DB73A4123BC933410D7CC7B5E70D0D2EB0`). The previous snapshot remains under `data/local/leaderboard-2026-11-26-0909utc/` (SHA-256 `EB6F18C4B4105B97EA73D34113D724286F307FF5777DBEA32936EB4C7F20193B`). The latest live-state section below records submissions, quotas, and kernel status.
+The final deadline is 2026-12-02 23:59 UTC. The full public snapshot generated at 16:02:20 UTC contains 6,842 rows and lists `Accelra` at rank 2,078 with 0.18; 19 teams are tied at 0.24, followed by 149 at 0.22, 693 at 0.20, and 1,321 at 0.18. No private score is shown. The ZIP is preserved under ignored `data/local/leaderboard-2026-11-26-1601utc/` (SHA-256 `60448DCAC61DBBDB8E31C543C166D5189D5108A01F520219089242ECDB8707A3`). The prior 10:38 snapshot remains under `data/local/leaderboard-2026-11-26-1038utc/` (SHA-256 `3A9327FEAAEAC9CF8582CA793C4C41DB73A4123BC933410D7CC7B5E70D0D2EB0`); the earlier 09:09 snapshot is also preserved. Exact ties go to the submission entered first; do not infer tie priority from public row order or `LastSubmissionDate` alone. The latest live-state section below records submissions, quotas, and kernel status.
 
 ## Latest operational state — rechecked 2026-11-26 16:00 UTC
 
