@@ -21,3 +21,9 @@ The Omallo E4B adapter is a separate small-model candidate, not a replacement fo
 - Candidate files are in `module/agents/e4b-31b-distilled-lora-v1/`. The exact ZIP `dist/e4b-31b-distilled-lora-v1/submission.zip` has SHA-256 `ae05e99dfd8acd05d18706236d3263867df1123dfc5c66d74896c55cd3981cf8`, nine files, and 69,858,174 unpacked bytes. The ZIP passed CRC and source-content validation.
 - Before upload, `py -3.12 -m unittest tests.test_submission_package` passed all five tests; the exact archive was then built with `module/build_submission.py` and passed its source-content and CRC checks.
 - Kaggle accepted submission `58965387` at 20:45:23 UTC; the CLI reported `PENDING`, with no public or private score. The runtime-config hash and exact source file list are recorded in [`log/experiment-log.csv`](../log/experiment-log.csv).
+
+## Serving risk check — 2026-11-26 21:18 UTC
+
+The [Kaggle LoRA serving discussion](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/749191) reports intermittent failures on the 31B QAT model with vLLM 0.19.1 on four L4 GPUs. Participants describe rank-16 adapters failing at server startup during sampler warm-up, or a smaller rank-16 adapter timing out; the thread attributes the memory pressure to CUDA-graph capture when LoRA is enabled and `VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS` is unset. Kaggle staff replied that the Getting Started notebook sets this variable to `1` and that they have seen successful adapters up to rank 64.
+
+These are reports from a different model and serving setup, not evidence that our 69.8 MB E4B adapter will fail. Submission `58965387` is still `PENDING`; its eventual scorer result is the relevant evidence for this candidate. Keep the 31B report as a conditional serving risk only, and do not infer the E4B scorer's environment or outcome from the discussion.
