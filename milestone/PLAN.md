@@ -25,8 +25,8 @@ Reach rank 1 on the final Kaggle private leaderboard. Continue optimizing until 
 - The runtime now closes an appended JSONL checkpoint after each completed task. This supports recovery if Kaggle exposes outputs for a failed run; hard-timeout persistence is not guaranteed, so inspect the kernel's output-file list before choosing a fallback.
 - The competition's Nvidia L4×4 notebooks consume GPU quota at twice the older T4×2/P100 rate. The estimated core use is about 21.4 GPU quota hours at p95; reserve 5.2–6.6 hours for the paired 18-task holdout. Kaggle's report of five queued plus five running hours charged as ten is consistent with a five-hour L4×4 run at 2×; it does not establish that queue time consumes quota. Recheck actual quota after each run and account for queue delay against the 72-hour final-upload buffer. Skip the optional full validation-contract comparison if the core or holdout leaves quota or time tight.
 - Keep the 28-call/eight-minute setup until the seeded comparison justifies a change. Check that the combined suite outputs include all three expected results; Kaggle `COMPLETE` alone may mean notebook conversion only.
-- Preserve the final archive, submission ID, public result, and selected final submission in the log. Do not submit while any public run is pending; verify Kaggle's current submission allowance before the next upload.
-- Choose the two final submissions from candidates with paired 53-task and unseen 18-task evidence. Compare their task-level gains and losses; do not select by a single public score.
+- Preserve the final archive, submission ID, public result, and selected final submission in the log. Do not submit while any public run is pending; respect Kaggle's one-public-submission-per-day cap and check the current allowance before each upload. The two final-selection slots do not require two new uploads if suitable scored submissions already exist.
+- Choose up to two final submissions from candidates with paired 53-task and unseen 18-task evidence. Compare their task-level gains and losses; do not select by a single public score.
 
 ## Reset-week experiment order
 
@@ -34,7 +34,7 @@ Reach rank 1 on the final Kaggle private leaderboard. Continue optimizing until 
 2. Confirm the outputs contain the probe and both 53-task summaries. If the suite stops early, inspect saved outputs before choosing a single-arm fallback; only run the missing arm if quota, holdout reserve, and final-upload buffer still fit.
 3. Run the paired V5/Patchsmith 18-task unseen holdout ([combined suite](https://www.kaggle.com/code/accelra/v5-patchsmith-exp021-holdout18-seed42)) when the 5.2–6.6 GPU quota-hour reserve and 72-hour final-submission buffer remain. Compare task-level gains and losses; avoid rerunning V5 if a matching result already exists.
 4. Run the full validation-contract comparison ([kernel](https://www.kaggle.com/code/accelra/v5-validation-contract-seed42-53)) only if the probe passes and actual quota remains after the holdout; otherwise skip it.
-5. Choose the strongest distinct candidates for the two final-selection slots, build exact 31B archives, and submit only when Kaggle accepts uploads and the 72-hour buffer remains.
+5. Select up to two candidates with paired 53-task and unseen 18-task evidence for the final slots. Reuse suitable scored submissions; build and upload exact 31B archives only for unfilled slots, respecting the one-per-day cap and 72-hour buffer.
 6. Verify submission IDs, public scores, model variants, and selected final submissions. Check the private leaderboard after the competition closes and record the final result.
 
 The API-shape pilot is an optional low-priority probe after these comparisons. It is based on the `rich_3061` trace and is documented with other deferred work in [`DEFERRED.md`](DEFERRED.md). Completed milestone details are preserved in [`COMPLETED.md`](COMPLETED.md).
