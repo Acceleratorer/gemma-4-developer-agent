@@ -47,6 +47,8 @@ One targeted setup smoke is justified; evaluator work remains blocked until it p
 
 The existing `evals/kaggle_runtime.py` is NvidiaL4-specific: it installs the competition CUDA wheelhouse, requires `torch.cuda.device_count() >= 4`, selects vLLM GPU-memory settings and TP=4. Reuse its task and scoring setup only; a TPU probe needs a separate JAX server launch path and must keep the local TPU result distinct from NvidiaL4 comparisons.
 
+- Rechecked at 2026-11-26 15:33 UTC: version 6 remains `QUEUED`. GPU quota remains 29.96/30.00h used and TPU quota 1.75/20.00h used; both reset at 2026-11-28 00:00 UTC. No evaluator work is unblocked by this status.
+
 ## Recommendation
 
 **NO-GO for TPU evaluator work.** Version 6 is the single additional setup-only smoke justified by the HBM evidence; it tests the distinct `--gpu-memory-utilization 0.70` cache-budget change. Do not repeat the earlier context-length or batch-token settings as the only change. If version 6 fails, prioritize the paired NvidiaL4 comparisons after the 2026-11-28 quota refresh rather than spending TPU quota on an evaluator suite. Even a successful TPU smoke would not establish comparability with NvidiaL4.
