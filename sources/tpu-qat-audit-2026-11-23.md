@@ -1,10 +1,10 @@
 # TPU feasibility audit: Gemma 4 31B QAT W4A16
 
-Checked 2026-11-22 20:50 UTC. This is a runtime feasibility check, not competition scoring evidence.
+Checked 2026-11-26 19:30 UTC. This is a runtime feasibility check, not competition scoring evidence.
 
 ## Result
 
-**NO-GO for evaluator work until the model-load/text/tool-call smoke passes; TPU results are not comparable to NvidiaL4 evaluations.** Official vLLM JAX code supports the relevant QAT linear-layer format and has served Gemma 4 31B QAT W4A16 on one v6e chip. The exact Kaggle setup remains only partially validated: it uses TPU v5e-8 and tensor parallelism 8, while the upstream implementation author explicitly says v5e and tensor parallelism above 1 were untested. Let the existing smoke answer that question before spending TPU quota on an evaluator probe.
+**The exact Kaggle TPU v5e-8/TP8 runtime smoke passed; the competition evaluator remains unverified, and TPU results are not comparable to Nvidia L4 evaluations.** Official vLLM JAX code supports the relevant QAT linear-layer format and has served Gemma 4 31B QAT W4A16 on one v6e chip. The Kaggle smoke confirms the competition checkpoint can load, generate one text response, and parse one function call on TPU v5e-8 with tensor parallelism 8. It does not run the repository evaluator or produce a competition score. The upstream implementation author had explicitly said v5e and tensor parallelism above 1 were untested, so this is useful setup evidence for the exact Kaggle configuration.
 
 ## Evidence
 
@@ -35,7 +35,7 @@ Checked 2026-11-22 20:50 UTC. This is a runtime feasibility check, not competiti
 
 ## Version 6 memory-lever assessment — checked 2026-11-26 08:08 UTC
 
-One targeted setup smoke is justified; evaluator work remains blocked until it passes.
+At the time of this 08:08 UTC assessment, one targeted setup smoke was the only justified TPU run; evaluator work remained gated on its passing.
 
 - **Observed pressure:** version 5 reported total TPU HBM of 125.98 GiB, a 115.91 GiB limit cap, 22.03 GiB already used after weight loading, and 93.88 GiB available before KV-cache initialization. It then initialized the KV cache at 14.49/15.75 GiB per chip. The failing compile requested 16.87 GiB per chip, including a 2.64 GiB program, exceeding physical HBM by about 1.12 GiB in the compiler's allocation summary (the terminal error reports 898.41 MiB over). This points to cache allocation leaving too little space for compile-time buffers.
 - **Supported lever:** the pinned vLLM JAX `v0.33.0` worker computes its device-memory cap as `total_hbm_limit * gpu_memory_utilization` and reports the remainder after existing allocations as available for the cache. Its pinned vLLM LKG sets the default to `0.92` and documents that this fraction also applies on non-GPU devices ([TPU worker source](https://github.com/vllm-project/tpu-inference/blob/v0.33.0/tpu_inference/worker/tpu_worker.py#L468-L520), [pinned cache config](https://github.com/vllm-project/vllm/blob/7b77ed581d/vllm/config/cache.py#L196-L205)). Version 6 sets `--gpu-memory-utilization 0.70`, lowering the calculated cap from about 115.91 to 88.19 GiB total. Inference from that cap: the KV-cache budget should fall by about 27.72 GiB total (about 3.47 GiB per chip), leaving materially more room for compile buffers; the smoke needs only one 2,048-token request. The estimate is not runtime evidence.
@@ -44,14 +44,18 @@ One targeted setup smoke is justified; evaluator work remains blocked until it p
 - Rechecked at 2026-11-26 09:14 UTC: Kaggle still reports version 6 as `QUEUED` and provides no ETA. TPU quota remains 1.75/20.00h used (18.25h remaining).
 - Rechecked at 2026-11-26 18:50 UTC: version 6 remains `RUNNING`, but its log query returned no text and its output download returned no files. At 18:45 UTC, TPU quota was 1.91/20.00h used (18.09h remaining) and GPU quota was 29.96/30.00h used. This status does not establish server readiness, text generation, or tool-call parsing. Keep the evaluator gate closed and poll this same version; do not restart it.
 
+- Rechecked at 2026-11-26 19:26 UTC: version 6 remains `RUNNING`; TPU quota is 2.58/20.00h used (17.42h remaining), GPU quota 29.96/30.00h used. Inspection of the exact staged notebook source shows vLLM stdout/stderr redirected to `/kaggle/working/vllm-tpu-smoke.log`; the notebook prints the file tail only if readiness times out; on success, it prints the readiness and smoke summary. Therefore, empty Kaggle cell logs during startup are expected and do not establish a hang. The parent cell has not yet printed `SERVER_READY` or a smoke result, and no output file is available. Keep polling the same run; do not restart it.
+
 ## Evaluator integration gap
 
 The existing `evals/kaggle_runtime.py` is NvidiaL4-specific: it installs the competition CUDA wheelhouse, requires `torch.cuda.device_count() >= 4`, selects vLLM GPU-memory settings and TP=4. Reuse its task and scoring setup only; a TPU probe needs a separate JAX server launch path and must keep the local TPU result distinct from NvidiaL4 comparisons.
 
 - Rechecked at 2026-11-26 16:00 UTC: version 6 remains `QUEUED`. GPU quota remains 29.96/30.00h used and TPU quota 1.75/20.00h used; both reset at 2026-11-28 00:00 UTC. No evaluator work is unblocked by this status.
 
+- Version 6 completed successfully at 2026-11-26 19:30 UTC. The downloaded Kaggle kernel log reports `SERVER_READY=True`, `TEXT_RESULT='gemma-tpu-smoke-pass'`, and `TPU_QAT_MODEL_LOAD_AND_TOOL_CALL=PASS`. The vLLM log reports `vllm-tpu==0.33.0`; the downloaded JSON records one valid `record_status` function call with `{"status":"tpu-smoke-pass"}` and `agent_evaluation: false`. The artifacts are under ignored `data/local/tpu-smoke-v6-output/`. TPU quota was 2.61/20.00h used (17.39h remaining) after the run. This passes the runtime smoke gate only; it is not evaluator or leaderboard evidence.
+
 ## Recommendation
 
-**NO-GO for TPU evaluator work.** Version 6 is the single additional setup-only smoke justified by the HBM evidence; it tests the distinct `--gpu-memory-utilization 0.70` cache-budget change. Do not repeat the earlier context-length or batch-token settings as the only change. If version 6 fails, prioritize the paired NvidiaL4 comparisons after the 2026-11-28 quota refresh rather than spending TPU quota on an evaluator suite. Even a successful TPU smoke would not establish comparability with NvidiaL4.
+**Runtime smoke gate passed; defer a TPU evaluator probe while the higher-priority Nvidia L4 comparison is pending.** Version 6 tested the distinct `--gpu-memory-utilization 0.70` cache-budget change and confirms model serving, one text response, and one parsed tool call. A TPU evaluator probe would still need a separate JAX server launch path, consume TPU queue/quota, and produce results that are not comparable to the competition's Nvidia L4 runs. Revisit it only after the paired GPU core/holdout results if the remaining time and quota justify it.
 
 The competition's tested evaluation environment remains NvidiaL4/vLLM from its Python 3.12 wheelhouse; a successful TPU smoke does not establish score comparability or a competition submission result.
