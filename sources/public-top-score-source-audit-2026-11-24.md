@@ -33,3 +33,33 @@ The 08:38:40 UTC public leaderboard snapshot has 18 teams at 0.24, up from 17 in
 ## Decision
 
 Keep the reset-week order in [`milestone/PLAN.md`](../milestone/PLAN.md): run the one-task validation-contract probe, then the seeded V5/Patchsmith 53-task comparison and paired unseen holdout as quota allows. No newly audited 0.24 bundle changes that queue. The 0.24 reports are public-split evidence only; they do not establish the final private-leaderboard rank.
+
+## Follow-up — 2026-11-26 16:21 UTC
+
+The top-only Kaggle CLI 2.2.5 leaderboard check still lists 19 teams at 0.24, with 0.22 next. `team-submissions <team_id> --format json` returned the following score-bearing public entries (timestamps are UTC):
+
+| Team | Team ID | Submission ID | Submitted |
+| --- | ---: | ---: | --- |
+| Yike Xu | 17019455 | 56897294 | 2026-10-07 02:06:25.257 |
+| MUHAMMED IDRIS BIN YACOOB | 16972967 | 57402375 | 2026-10-19 16:22:17.737 |
+| SAVE | 16981897 | 57440471 | 2026-10-20 13:48:33.423 |
+| chizhu | 16950771 | 57650542 | 2026-10-26 02:28:29.303 |
+| pluris | 17210898 | 57681855 | 2026-10-27 00:01:38.337 |
+| Alberth Moreira | 17011288 | 57751016 | 2026-10-28 23:19:41.817 |
+| tammam alasha | 16974126 | 57806448 | 2026-10-30 13:10:42.347 |
+| Pınar Aksoy | 17146222 | 57820504 | 2026-10-31 00:06:12.290 |
+| Takumu Hata | 16976610 | 57935196 | 2026-11-03 05:56:26.467 |
+| Serhii Mosiiash | 16992603 | 58049562 | 2026-11-06 07:09:44.427 |
+| LuisSpecian | 16963238 | 58073746 | 2026-11-07 00:29:13.070 |
+| Radek | 16949760 | 58178698 | 2026-11-10 00:03:33.027 |
+| Sophia0817 | 17058541 | 58272082 | 2026-11-12 12:02:28.027 |
+| bgunshui | 17241352 | 58343705 | 2026-11-14 13:00:22.980 |
+| Halley | 16950983 | 58557783 | 2026-11-19 11:30:55.210 |
+| vinh đặng | 17315476 | 58562738 | 2026-11-19 13:50:54.647 |
+| Large variance | 17352686 | 58759924 | 2026-11-23 05:02:16.407 |
+| Ant | 17158342 | 58787318 | 2026-11-23 16:36:28.470 |
+| John Park | 17186540 | 58859756 | 2026-11-25 01:30:54.933 |
+
+The new row since the prior audit is John Park, team `17186540`, with score-bearing submission `58859756`. The full public leaderboard snapshot's `TeamMemberUserNames` field lists `sigint` for that team, matching the public [John Park profile](https://www.kaggle.com/sigint/competitions). User-scoped Kaggle CLI searches found no public competition notebook or model for `sigint`; the account has one unrelated Biohub staging dataset and two private-notebook placeholders that are not inspectable. The earlier new Ant row (`anthonytrevino`, `17158342`) still has no public notebook, dataset, or model surfaced by user-scoped CLI searches.
+
+Artifact downloads for `58859756`, `56897294`, and `57402375` returned HTTP 403 Forbidden on 2026-11-26, so none can be hash-matched to a public source bundle. The public leaderboard plus `team-submissions` establishes the current rows and score-bearing submission IDs/dates, but still does not identify the exact ZIP behind any score. No newly surfaced team changes the candidate decision above.
