@@ -1,12 +1,12 @@
 # Competition facts and sources
 
-## Latest full leaderboard snapshot — checked 2026-11-25 09:24 UTC
+## Latest full leaderboard snapshot — checked 2026-11-26 08:11 UTC
 
-The final deadline is 2026-12-02 23:59 UTC. The full public snapshot generated at 09:24:27 UTC contains 6,691 rows and ranks `Accelra` 2,073 at 0.18; 18 teams are tied at 0.24, followed by 146 at 0.22, 662 at 0.20, and 1,306 at 0.18. No private score is shown. The ZIP is preserved under ignored `data/local/leaderboard-2026-11-25-0924utc/` (SHA-256 `c444f14ad67318ba5ac28de32f72d7db590d4a071895c86c52d4570369c8db25`; embedded CSV SHA-256 `3f38b3a9b65845e2830506f61c562b1a640653170706d10a2a1cb401e7fee989`). The previous snapshot remains under `data/local/leaderboard-2026-11-25-0838utc/`. The latest live-state section below records submissions, quotas, and kernel status.
+The final deadline is 2026-12-02 23:59 UTC. The full public snapshot generated at 08:11:49 UTC contains 6,799 rows and ranks `Accelra` 2,072 at 0.18; 18 teams are tied at 0.24, followed by 147 at 0.22, 684 at 0.20, and 1,313 at 0.18. No private score is shown. The ZIP is preserved under ignored `data/local/leaderboard-2026-11-26-0811utc/` (SHA-256 `967f5da55c534b3e30529b0107c4b73a2daf32b618e00590b50ce5457cd53f28`; embedded CSV SHA-256 `3f78092f83d8275ed7b7bd4016ec55d7580edcb18720238736cb3eb9c02e6595`). The prior snapshot remains under `data/local/leaderboard-2026-11-25-0924utc/`. The latest live-state section below records submissions, quotas, and kernel status.
 
-## Latest operational state — checked 2026-11-26 07:37 UTC
+## Latest operational state — checked 2026-11-26 08:08 UTC
 
-Submission `58883031` remained `PENDING` with no score. GPU quota was 29.96/30.00h used (0.04h remaining); TPU quota was 1.75/20.00h used (18.25h remaining). Both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time. The Gemma 4 TPU QAT smoke version 5 left the queue and ended `ERROR`: vLLM failed during engine initialization with XLA `CompileTimeHbmOom` at 16.62 GiB of 15.75 GiB HBM (898.41 MiB over), so the server never became ready and no text-generation or tool-call smoke passed. The paired core 53-task notebook still reports `COMPLETE` from notebook conversion only; no inference ran. The public leaderboard has not been refreshed since the 2026-11-25 snapshot above.
+Submission `58883031` remained `PENDING` with no score. GPU quota was 29.96/30.00h used (0.04h remaining); TPU quota was 1.75/20.00h used (18.25h remaining). Both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time. TPU smoke version 5 left the queue and ended `ERROR` with XLA `CompileTimeHbmOom` at 16.62 GiB of 15.75 GiB HBM; the server never became ready. Version 6, which lowers `--gpu-memory-utilization` to 0.70, was `QUEUED` with no logs and no additional quota use. The paired core 53-task notebook still reports `COMPLETE` from notebook conversion only; no inference ran.
 
 ## Historical snapshot — checked 2026-11-23 14:34 UTC
 
