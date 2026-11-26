@@ -1,12 +1,12 @@
 # Competition facts and sources
 
-## Latest full leaderboard snapshot — checked 2026-11-26 08:11 UTC
+## Latest full leaderboard snapshot — checked 2026-11-26 09:09 UTC
 
-The final deadline is 2026-12-02 23:59 UTC. The full public snapshot generated at 08:11:49 UTC contains 6,799 rows and ranks `Accelra` 2,072 at 0.18; 18 teams are tied at 0.24, followed by 147 at 0.22, 684 at 0.20, and 1,313 at 0.18. No private score is shown. The ZIP is preserved under ignored `data/local/leaderboard-2026-11-26-0811utc/` (SHA-256 `967f5da55c534b3e30529b0107c4b73a2daf32b618e00590b50ce5457cd53f28`; embedded CSV SHA-256 `3f78092f83d8275ed7b7bd4016ec55d7580edcb18720238736cb3eb9c02e6595`). The prior snapshot remains under `data/local/leaderboard-2026-11-25-0924utc/`. The latest live-state section below records submissions, quotas, and kernel status.
+The final deadline is 2026-12-02 23:59 UTC. The full public snapshot generated at 09:09:39 UTC contains 6,804 rows and ranks `Accelra` 2,074 at 0.18; 18 teams are tied at 0.24, followed by 147 at 0.22, 686 at 0.20, and 1,312 at 0.18. No private score is shown. The ZIP is preserved under ignored `data/local/leaderboard-2026-11-26-0909utc/` (SHA-256 `EB6F18C4B4105B97EA73D34113D724286F307FF5777DBEA32936EB4C7F20193B`; embedded CSV SHA-256 `61C01619CCF5E6B3EDE7066A89F5B1EE7BA1638412FA1F98DCF569604373A04B`). The prior snapshot remains under `data/local/leaderboard-2026-11-25-0924utc/`. The latest live-state section below records submissions, quotas, and kernel status.
 
-## Latest operational state — checked 2026-11-26 08:08 UTC
+## Latest operational state — checked 2026-11-26 09:14 UTC
 
-Submission `58883031` remained `PENDING` with no score. GPU quota was 29.96/30.00h used (0.04h remaining); TPU quota was 1.75/20.00h used (18.25h remaining). Both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time. TPU smoke version 5 left the queue and ended `ERROR` with XLA `CompileTimeHbmOom` at 16.62 GiB of 15.75 GiB HBM; the server never became ready. Version 6, which lowers `--gpu-memory-utilization` to 0.70, was `QUEUED` with no logs and no additional quota use. The paired core 53-task notebook still reports `COMPLETE` from notebook conversion only; no inference ran.
+Submission `58883031` remained `PENDING` with no score. GPU quota was 29.96/30.00h used (0.04h remaining); TPU quota was 1.75/20.00h used (18.25h remaining). Both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time. TPU smoke version 5 left the queue and ended `ERROR` with XLA `CompileTimeHbmOom` at 16.62 GiB of 15.75 GiB HBM; the server never became ready. Version 6, which lowers `--gpu-memory-utilization` to 0.70, was still `QUEUED` at 09:14 UTC; Kaggle's status response provided no ETA. The paired core 53-task notebook still reports `COMPLETE` from notebook conversion only; no inference ran.
 
 ## Historical snapshot — checked 2026-11-23 14:34 UTC
 
@@ -97,17 +97,17 @@ The official overview lists $65,000 for the main competition, $35,000 for the op
 - Small-model public leaderboard: top score **0.12** in the official tracker output, last updated 2026-11-16 23:55 UTC; refreshed from the Kaggle notebook on 2026-11-18.
 - These are public-split snapshots, not final standings. The final placement is based on the private leaderboard.
 
-## Latest live state — full leaderboard generated 2026-11-25 09:24:27 UTC; top rechecked 11:37 UTC; queue discussion checked 11:53 UTC; submission, quota, and TPU QAT kernel checked 13:28 UTC; launch preflight checked 12:16 UTC
+## Historical live state — snapshot generated 2026-11-25 09:24:27 UTC; top rechecked 11:37 UTC; queue discussion checked 11:53 UTC; submission, quota, and TPU QAT kernel checked 13:28 UTC; launch preflight checked 12:16 UTC
 
-- The latest full public snapshot contains 6,691 rows. `Accelra` is rank **2,073** at **0.18**; the 11:37 UTC top-only check still shows 18 teams at **0.24**, followed by **0.22**. No private score is shown. The archive path and hashes are recorded above.
+- The 09:24 UTC full public snapshot contained 6,691 rows. `Accelra` ranked **2,073** at **0.18**; the 11:37 UTC top-only check showed 18 teams at **0.24**, followed by **0.22**. No private score was shown. The archive path and hashes are recorded above.
 - At 13:28 UTC, Kaggle listed submission `58883031` as `PENDING` without a score; it was accepted at 11:06:25 UTC. `58729936`, `58624160`, and `58527796` remain `COMPLETE` at **0.18**, **0.10**, and **0.15**. Do not submit again while `58883031` is pending.
 - At 13:28 UTC, GPU quota was **29.96/30.00h used** (**0.04h remaining**) and TPU quota was **1.30/20.00h used** (**18.70h remaining**); both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time. The Gemma QAT smoke v5 remains `QUEUED`; its log endpoint returned no text and Kaggle provides no ETA. Quota refresh does not guarantee that it will start. Versions 3 and 4 ended `ERROR` with near-identical XLA compile-time HBM use (16.61 and 16.62 GiB of 15.75 GiB). See the [TPU QAT audit](tpu-qat-audit-2026-11-23.md).
 - The public-kernel follow-up found Nusrati's version 69 local RULER report at **42/68** and Ziad Samer's two skill arms at **2/8 attempts across four tasks**. Neither result is a competition score or a decision-grade paired comparison; they do not change the staged candidate order. See the [public-kernel screen](public-kernel-screen-2026-11-25.md).
 - The paired 53-task core suite still reports `COMPLETE`, which represents notebook conversion only; it has no inference output. At 12:16 UTC, the one-time Windows task `CodexKaggleCore53Reset` remained `Ready` for 2026-11-28 07:00 Vietnam time. Its validation-only preflight confirmed the staged hashes and Kaggle CLI connectivity; it made no push. The configured quota parser matches the current CLI remaining-hours table. The launcher requires at least 28 GPU hours and an inactive kernel before pushing. See [the staged-kernel audit](staged-kernel-audit-2026-11-24.md).
 
-## Latest quota and TPU check — 2026-11-25 13:28 UTC
+## Historical quota and TPU check — 2026-11-25 13:28 UTC
 
-Kaggle CLI reports GPU quota at **29.96/30.00h used** (**0.04h remaining**) and TPU quota at **1.30/20.00h used** (**18.70h remaining**). Both refresh at **2026-11-28 00:00 UTC / 07:00 Vietnam time**. Smoke v3 and v4 ended with compile-time HBM OOMs; v5, which also limits batched tokens to 1024, remains `QUEUED` at 13:28 UTC with no log text or ETA. The quota refresh does not guarantee that the queued run will start. Do not start a duplicate TPU run.
+At 13:28 UTC, Kaggle CLI reported GPU quota at **29.96/30.00h used** (**0.04h remaining**) and TPU quota at **1.30/20.00h used** (**18.70h remaining**); both were scheduled to refresh at **2026-11-28 00:00 UTC / 07:00 Vietnam time**. Smoke v3 and v4 had ended with compile-time HBM OOMs; v5, which also limited batched tokens to 1024, was `QUEUED` at that check with no log text or ETA. A quota refresh did not guarantee that the queued run would start. Later TPU status is in the [TPU QAT audit](tpu-qat-audit-2026-11-23.md).
 
 ## Community experiment evidence checked 2026-11-19–2026-11-20
 
