@@ -1,0 +1,6 @@
+The adapter is Omallo's Gemma 4 E4B SWE-agent LoRA, Kaggle Model version 1. Its model card identifies Apache License 2.0; see LICENSE.txt.
+
+The system prompt is reproduced from the Gemma 4 SWE-agent LoRA distillation dataset by Kaggle account omallo: https://www.kaggle.com/datasets/omallo/gemma4-swe-agent-lora-distillation
+The prompt is licensed under CC BY 4.0: https://creativecommons.org/licenses/by/4.0/
+
+The prompt remains under CC BY 4.0. This notice does not relicense it under Apache 2.0. The Gemma 4 base model and adapter remain subject to their published model terms.

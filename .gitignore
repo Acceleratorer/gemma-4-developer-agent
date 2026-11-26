@@ -11,6 +11,7 @@
 # Imported notebooks and extracted third-party reference bundles stay local.
 /notebooks/source/*.ipynb
 /module/agents/reference-*/
+/module/agents/e4b-31b-distilled-lora-v1/adapters/main_lora/adapter_model.safetensors
 
 # Python caches and local environments.
 __pycache__/
