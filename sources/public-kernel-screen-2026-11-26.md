@@ -29,3 +29,20 @@ No newly inspected kernel changes the reset-week experiment sequence. The Sankal
 - Ziad Samer's generation and skill-arm kernels last ran at 09:14 and 09:16 UTC and still reported `RUNNING` at the 09:56 UTC check. Their listed output artifacts were created on 2026-11-25, before those runs; no fresh task-level result was available.
 
 **Decision:** these checks add no comparable agent result or source-to-score link. Keep the paired V5/Patchsmith 53-task core and unseen 18-task holdout as the next controlled comparison.
+
+## Competition pages and follow-up — checked 2026-11-26 15:13 UTC
+
+- The public [discussion thread](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/761941) reports 31B same-bundle public draws of 9/58 and 12/58; on a 40-task holdout, its baseline and three prompt variants each scored 18/40. Its E4B fixer/reviewer pipeline scored 7/40 and 8/40 on repeat runs, with the author attributing many failures to malformed `edit_file` old-string matches. These are author-reported results, not independently reproduced here. They support keeping the base model fixed, pairing candidates on identical tasks, and treating small score changes as inconclusive.
+- The same author recommends repeating a 40-task holdout; our planned GPU budget cannot safely cover that in addition to the 53-task core and 18-task holdout. Keep the staged sequence and treat a one-task holdout swing as weak evidence; do not promote a candidate on one public draw.
+- The competition [Models tab](https://www.kaggle.com/competitions/gemma-4-developer-agent/models) displayed best public scores of 0.20 (31B QAT), 0.05 (E4B QAT), and 0.03 (12B QAT). The official [small-model leaderboard notebook](https://www.kaggle.com/code/ryanholbrook/gemma-4-developer-agent-small-model-leaderboard), version 37, showed a 0.12 top score in its output. These are current page outputs, not controlled model comparisons or verified final/private scores.
+- The [queue update](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/760471) still states Kaggle staff's 20–24-hour estimate from November 19. Recent comments include participant reports over 30 hours and a completed run without a public score. No newer official ETA was visible, so keep those reports labeled as anecdotes and preserve the 72-hour upload buffer.
+
+**Decision:** no new evidence changes the reset-week experiment order. Continue with the staged 53-task paired core and 18-task unseen holdout; keep the 31B model and sampling fixed. Treat the forum numbers as directional context only.
+
+## Follow-up public kernel screen — checked 2026-11-26 15:26 UTC
+
+Kaggle's competition-kernel listing surfaced Evgen Dvorkin's [Gemma 4 | rich_4076: 20/24 — Fourteen Experiments](https://www.kaggle.com/code/evgendvorkin/gemma-4-rich-4076-20-24-14-experiments). The notebook is a one-issue diagnostic series on `Textualize/rich`'s `rich_4076`, not a broad benchmark. Its embedded report records **0/14 resolved episodes**. Eleven completed validations passed 20/24 tests; passing most tests did not satisfy the evaluator's resolved outcome. The included Budget-Fit V5 P15 control and the original Patchsmith episode both report 20/24 and `resolved=false`.
+
+The report isolates two actionable failure modes on this issue. P11 made 44 consecutive invalid tool-format calls; its author says no probe executed and cannot distinguish generation from parsing as the cause. P12 reproduced the newline behavior but ended without a patch. These traces are useful diagnostics for the gap between identifying a defect and delivering a valid repair, but one issue and repeated variants do not estimate hidden-task performance or support promoting a candidate. No new comparable multi-task result or source-to-score link was found.
+
+**Decision:** keep the staged V5/Patchsmith seed-42 53-task core and unseen 18-task holdout unchanged. If those runs leave quota and time, inspect our `rich_4076` trace and consider a narrowly scoped tool-format/newline follow-up; do not replace a paired arm based on this one-issue report.
