@@ -34,7 +34,7 @@ Reach rank 1 on the final Kaggle private leaderboard. Continue optimizing until 
 2. Confirm the outputs contain the probe and both 53-task summaries. If the suite stops early, inspect saved outputs before choosing a single-arm fallback; only run the missing arm if quota, holdout reserve, and final-upload buffer still fit.
 3. Run the paired V5/Patchsmith 18-task unseen holdout ([combined suite](https://www.kaggle.com/code/accelra/v5-patchsmith-exp021-holdout18-seed42)) when the 5.2–6.6 GPU quota-hour reserve and 72-hour final-submission buffer remain. Compare task-level gains and losses; avoid rerunning V5 if a matching result already exists.
 4. Run the full validation-contract comparison ([kernel](https://www.kaggle.com/code/accelra/v5-validation-contract-seed42-53)) only if the probe passes and actual quota remains after the holdout; otherwise skip it.
-5. Choose the strongest distinct candidates for the two final-selection slots, build exact 31B archives, and submit only when Kaggle accepts uploads and the 72-hour buffer remains.
+5. Select up to two candidates with paired 53-task and unseen 18-task evidence for the final slots. Reuse suitable scored submissions; build and upload exact 31B archives only for unfilled slots, respecting the one-per-day cap and 72-hour buffer.
 6. Verify submission IDs, public scores, model variants, and selected final submissions. Check the private leaderboard after the competition closes and record the final result.
 
 The API-shape pilot is an optional low-priority probe after these comparisons. It is based on the `rich_3061` trace and is documented with other deferred work in [`DEFERRED.md`](DEFERRED.md). Completed milestone details are preserved in [`COMPLETED.md`](COMPLETED.md).
