@@ -22,3 +22,13 @@ These reports show that the 20–24-hour estimate may not cover every recent sub
 Kaggle accepted `58883031` at 11:06:25 UTC on 25 November. The submissions endpoint still reported it as `PENDING` at 11:53 UTC, with no score. Its age was about 47 minutes at that check; there is no evidence it is stuck.
 
 Keep the 72-hour final-upload buffer in [`milestone/PLAN.md`](../milestone/PLAN.md) as a minimum. Recheck submission status and remaining upload allowance before any later upload. Do not assume a pending run will finish or receive a score by the final deadline.
+
+## Follow-up — 2026-11-26 17:31 UTC
+
+The Kaggle CLI showed submission `58883031` still `PENDING` with both score fields empty, about 30h25m after acceptance. The 17:31 UTC public leaderboard top-only check still showed 19 teams at 0.24 and the next score at 0.22; it does not expose our private score.
+
+The queue-update thread had 30 comments. Its newest comment, posted 2026-11-26 11:53 UTC, asks Kaggle staff for an update; no organizer reply or revised official ETA was visible. A participant post at 09:28 UTC says submission `58872395` had been pending for about 35 hours, but the post cites a 2026-11-25 06:37 UTC submission time, which would make its age about 26h51m at the post time. Record the reported 35 hours as an inconsistent anecdote, not a measured queue duration. Another participant reported a completed run with no public score; that report remains unverified here.
+
+Separate 26 November threads report a baseline notebook stuck in `Notebook Running` or `Scoring` for over 24 hours. In the notebook-running thread, the author says the notebook itself finished in 19.9 seconds and packaged a ZIP; no evaluator result or submission reference was supplied, and the visible date/time details do not independently establish a 24-hour duration. Its newest comment says a repeat was blocked by the one-pending-submission rule. These reports are not evidence that our submission is stuck. See the [notebook-running report](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/762046) and [scoring-delay report](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/762009).
+
+The question asking whether selected submissions will be rerun for final ranking still had zero replies at this check ([discussion #762074](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/762074)). Do not assume pending submissions will be rerun or that a public score predicts the final private ranking. The official 20–24-hour estimate remains the 19 November staff update; all later queue durations above are participant reports.
