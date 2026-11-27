@@ -42,6 +42,12 @@ These threads add no confirmed queue policy, timeout cause, or candidate improve
 - Comments on [the 1,350-episode study](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/762144) discuss missing visible reasoning tokens in local/OpenRouter traces while reporting behavior changes when `thinking_budget` changes. The comments do not establish how the competition scorer records thought tokens or add a paired accuracy result; keep the budget fixed in the staged comparison.
 - The question about [final-scoring reruns](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/762074) still has no organizer answer. It provides no new final-selection policy.
 
+## Follow-up — checked 2026-11-27 14:29 UTC
+
+[Yusuke Togashi's local-evaluation kit post](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/762302) links the [Apache-2.0 Kaggle dataset](https://www.kaggle.com/datasets/yusuketogashi/gemma4-developer-agent-local-eval-kit). The author reports that a plain Kaggle CPU notebook resolves 74/129 public gold patches, a supplemental offline dependency cell resolves 105/129, and a separate local Docker setup resolves 124/129. The bundled `gold_check_results.csv` statically confirms the 74/129 and 105/129 counts (31 newly passing; 24 still failing); we did not run the notebook or Docker setup. The author also reports 8–12 resolved tasks across public draws of one identical ZIP and 7/30 versus 4/30 on the same local 12B task set. These are author-reported results, not an independent reproduction or candidate scores. See the [eval-kit audit](public-local-eval-kit-audit-2026-11-27.md) for task-set overlap and environment differences.
+
+**Decision:** use this as a warning to validate gold controls in the same runtime as each local comparison and to treat one-task public-score movements cautiously. It does not justify changing the frozen 53-task core or 18-task holdout before their paired run.
+
 ## Limits
 
 This was a read-only Kaggle CLI screen, not an exhaustive archive of every notebook or discussion. Public thread claims remain author-reported unless independently reproduced; Kaggle `COMPLETE` or a high test-count title is not itself a competition score.

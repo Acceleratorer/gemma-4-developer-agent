@@ -34,3 +34,7 @@ This remains a conditional risk for our 69.8 MB rank-16 E4B adapter, not evidenc
 ## Recheck — 2026-11-27 10:25 UTC
 
 The Kaggle Models search still returns the same six cards listed above; no new competition-agent model card changed the candidate screen. Ayush Barai's new 31B LoRA artifact appears as output from a public notebook rather than a Models-tab entry. Its provenance and evidence limits are recorded in the [latest kernel screen](public-kernel-screen-2026-11-27.md).
+
+## Recheck — 2026-11-27 14:29 UTC
+
+Fresh Kaggle CLI searches for `Gemma 4` and `SWE` show no newly evaluated repo-repair candidate. The latest relevant listings remain the already-screened King-damon policy adapter, Scott Weeden's 31B tool-use LoRA, and Omallo's E4B SWE-agent LoRA; their evidence limits above are unchanged. A newer [Gemma 4 E2B QLoRA listing](https://www.kaggle.com/models/langzhelu/cs682-gemma4-e2b-distill) describes BFCL tool-calling work, not repository repair, and adds no comparable task result. No model or candidate change is indicated.
