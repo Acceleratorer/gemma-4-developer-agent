@@ -47,3 +47,17 @@ The notebook describes **EvidenceKD-MedVQA**, a VinDr chest-X-ray pipeline: dete
 The downloaded run log says `OFFLINE = True`; no MedGemma base with a vision tower was attached, so the MedGemma teacher/KD and pretrained/B4 baselines were skipped. The notebook still trained/evaluated its separate VinDr pipeline and reports author-side validation/test metrics, including VQA accuracy/F1 of 0.822/0.558 on 659 validation examples and 0.834/0.582 on 300 test examples. The log says it wrote a 1,172 MB `evidencekd-full.zip` for resuming that pipeline. These are not Gemma coding-agent task scores or Kaggle competition leaderboard results.
 
 The notebook and raw run log are retained only in ignored `data/local/research/tuyen-mainmainmain-2026-11-27-0011utc/`; the large output bundle and unrelated derived data were not retained. **Decision:** this kernel adds no comparable agent-performance evidence. Keep the frozen seed-42 V5/Patchsmith 53-task core and 18-task holdout unchanged.
+
+## Follow-up — checked 2026-11-27 10:42 UTC
+
+### Dheeraj Piduru — `what-moved-the-score-and-what-didn-t-e4b-31b`
+
+The [notebook](https://www.kaggle.com/code/dheerajpiduru/what-moved-the-score-and-didn-t-e4b-31b) ran at 06:05:59 UTC and completed. Its two-cell CPU package builder has no internet or model accelerator; it writes a submission ZIP and does not run the agent evaluator. The output contains four runtime files. Their bytes exactly match the four runtime files in `module/agents/budget-aware-v2-no-graph-v1/`.
+
+The write-up reports two public draws for its 31B v8 package, 0.20 and 0.17 (11/58 tasks on average), and six E4B draws from 0.03 to 0.08. Its E4B local study reports 11/115 resolved at 4,096 thinking tokens versus 10/115 at 1,024; three 31B-to-E4B adapter attempts did not improve held-out solves. These are author-reported results, not independently reproduced. The identical runtime files make v8 a useful external reference for the local no-graph candidate, but the two public draws do not establish a reliable gain over our 0.18 V5 draw. Keep the candidate separate from the frozen pair.
+
+### Ayush Barai — `version-1-added-adaptor`
+
+The [notebook](https://www.kaggle.com/code/ayush04barai/version-1-added-adaptor) completed at 10:25:10 UTC. Its metadata disables GPU and internet and attaches the competition only. It packages an adapter from [the author's training notebook](https://www.kaggle.com/code/ayush04barai/lora-step-2): Gemma 4 31B, rank 16, 90 LoRA modules targeting `down_proj`, `o_proj`, and `q_proj`, with 54,503,808 bytes of weights. The log checks non-zero `lora_B` tensors and the base-model name. The 40.6 MB output ZIP contains the agent config, prompt, sampling/evaluation config, and adapter; it has no `LICENSE` or `NOTICE`. The builder does not run task inference, and no competition score or resolved-task result is reported. Keep the weights out of the repository and require license plus evaluator evidence before considering this adapter.
+
+**Decision:** these code-page updates do not change the primary experiment order. Dheeraj's v8 is preserved as a separate candidate; Ayush's adapter remains an unscored external artifact. The core and holdout kernels still report `COMPLETE`, while the 10:42 UTC output-file checks returned no files for either run.

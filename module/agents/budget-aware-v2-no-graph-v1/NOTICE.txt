@@ -1,0 +1,19 @@
+Budget-Aware Coding Agent V2 derivative (no-graph tools)
+
+Author: Igor Zharov / Kaggle account flexonafft.
+Source: https://www.kaggle.com/code/flexonafft/gemma-4-budget-aware-coding-agent-v2?scriptVersionId=357955943
+License declared by the source page: Apache License 2.0; see LICENSE.txt.
+
+The source also credits Matterhorn3838's Gemma 4 SuperAgent, the official
+Google/Kaggle sample submission, and community investigations of graph tools.
+
+This candidate removes the three graph-tool registrations and the prompt line
+that forbids using those graph tools. The other four runtime files derive from
+the source bundle. No upstream author endorses this derivative.
+
+Cross-check: the four runtime files match byte-for-byte the 31B v8 package in
+Dheeraj Piduru's public notebook:
+https://www.kaggle.com/code/dheerajpiduru/what-moved-the-score-and-what-didn-t-e4b-31b
+That notebook says its files derive from Igor Zharov's Apache-2.0 bundle and
+remove the graph tools and stale graph-tools prompt line. Its reported scores
+are external author results, not scores for this repository's archive.
