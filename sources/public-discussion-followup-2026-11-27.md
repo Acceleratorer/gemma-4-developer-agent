@@ -51,3 +51,13 @@ These threads add no confirmed queue policy, timeout cause, or candidate improve
 ## Limits
 
 This was a read-only Kaggle CLI screen, not an exhaustive archive of every notebook or discussion. Public thread claims remain author-reported unless independently reproduced; Kaggle `COMPLETE` or a high test-count title is not itself a competition score.
+
+## Fresh CLI recheck — 2026-11-27 22:08 UTC
+
+The authenticated discussion search and topic pulls are preserved under ignored `data/local/research/public-discussion-screen-2026-11-27-2208utc/`. No new Kaggle Staff policy or score evidence appeared. The most relevant current threads add three operational signals:
+
+- [vLLM 0.19.1 parser-loop report](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/760830): an independent comment reproduces non-terminating parsing for malformed array-like arguments, including nested objects and the streaming path. This is a scorer-runtime failure mode; our staged V5 prompt already avoids graph calls and the paired run must be judged from actual traces, not from a prompt-only assumption.
+- [Variation and public-score noise](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/760924) and [top-score discussion](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/761176): participants report that plain prompts and tool-call/parser reliability can correlate poorly with local scores, and that non-zero temperature makes one draw noisy. These are anecdotal; they support paired same-seed comparisons and do not justify replacing the staged candidates before their core/holdout evidence.
+- [Submission queue update](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/760471): recent comments still report 30–40-hour waits without a revised organizer SLA. This affects final-upload scheduling, not candidate quality.
+
+The discussion screen leaves the exact seed-42 V5/Patchsmith core and 18-task holdout unchanged.
