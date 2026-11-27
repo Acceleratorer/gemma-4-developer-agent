@@ -35,6 +35,10 @@ The newest model search results included E2B/BFCL artifacts from LangZhe Lu, thr
 
 The newest code listing is [Ismail Eladraoui's Getting Started notebook](https://www.kaggle.com/code/ismaileladraoui/getting-started-gemma-4-developer-agent). Its pulled source SHA-256 is `7A9CCADD5A0F28F6CCA3DA16DF00758B2ABB3FFA17ABDEE945F6659B32A056BF`. The notebook selects the 12B model, evaluates only `tasks[:2]`, and creates a starter `submission.zip`; its downloaded log contains no `resolved` summary, leaderboard score, or full-run artifact. It is a tutorial/starter reference and does not change the frozen 31B V5/Patchsmith experiment order.
 
+## Latest code recheck — 2026-11-27 21:09 UTC
+
+Evgen Dvorkin's [refreshed `rich_3894` notebook](https://www.kaggle.com/code/evgendvorkin/gemma-4-rich-3894-41-42-42-42) is the latest relevant code run. It still evaluates only one Rich task with the V24/P18 package, reports no competition score, and produces no full-run evaluator summary. The exact source, log, and ZIP hash are recorded in the [kernel screen](public-kernel-screen-2026-11-27.md#follow-up--checked-2026-11-27-2109-utc). This is not a promotion candidate.
+
 ## Decision
 
 This screen adds documentation and provenance only. It does not change the candidate, task split, seed, model, prompt, or budgets. The next decision remains the quota-reset core run, followed by the conditional 18-task holdout if the exact output and quota gates pass.
