@@ -27,6 +27,14 @@ The latest relevant competition-code runs found by the CLI are already captured 
 
 The post also describes `submit_patch` as ending the agent loop and the current diff as a fallback when budgets expire first. The local competition `HARNESS_README.md` independently documents both behaviors: the runner exits after the submitted patch's turn, and it extracts a non-empty working-tree diff if no explicit submission was made. Our current `agent.yaml` is a single agent, and its prompt places `submit_patch` after the final edit/check sequence. No harness or prompt change is indicated.
 
+## Follow-up — checked 2026-11-26 23:55 UTC
+
+- [Repeated notebook timeout report](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/762131) still has no comments or staff diagnosis.
+- [Request to allow daily submissions while another is pending](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/761897) has one participant `+1`, but no organizer response or policy change.
+- [Question about learning from failed runs](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/762042) has no replies. Its examples are the author's own trace observations, not independently reproduced findings.
+
+These threads add no confirmed queue policy, timeout cause, or candidate improvement. Keep the frozen V5/Patchsmith comparison and existing submission gates unchanged.
+
 ## Limits
 
 This was a read-only Kaggle CLI screen, not an exhaustive archive of every notebook or discussion. Public thread claims remain author-reported unless independently reproduced; Kaggle `COMPLETE` or a high test-count title is not itself a competition score.
