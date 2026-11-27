@@ -81,3 +81,12 @@ Kaggle listed the [kernel](https://www.kaggle.com/code/allankipruto/getting-star
 The log shows `fastapi_14786` unresolved: the model rejected an 8,192-token output request with at least 24,577 prompt tokens against a 32,768-token context window. `rich_3518` resolved with a 2,053-character patch in 20 tool calls. Our [current sampling config](../module/agents/current/configs/sampling.yaml) uses the same 8,192 output cap and 4,096 thinking budget, so the failure is a relevant risk signal, not a result for our candidate.
 
 **Decision:** keep the staged seed-42 V5/Patchsmith core and holdout unchanged so their paired comparison stays exact. Inspect their task-level summaries for context-window failures before deciding whether to test a lower output cap; this two-task, single-arm run does not justify a candidate change or promotion.
+
+## Follow-up — checked 2026-11-27 12:07 UTC
+
+### Recent code-page runs
+
+- Kaggle lists a new 11:50:37 UTC run of [Evgen Dvorkin's `rich_3894` kernel](https://www.kaggle.com/code/evgendvorkin/gemma-4-rich-3894-41-42-42-42) as `COMPLETE`. Its only listed output is an 871-byte `submission.zip` with the previously observed SHA-256 `63DA26AB6658E95E1D839565A05734E2979342B2E9C9CD891138096A6366181F`; the filtered log shows package/archive verification and no inference result.
+- Kaggle lists [Nthday's `dich-qwen`](https://www.kaggle.com/code/nthday/dich-qwen) at 11:57:01 UTC as `COMPLETE`. The notebook source describes an offline Chinese-to-Vietnamese translation pipeline and uses OCR/voting datasets; it does not run the Gemma developer-agent evaluator. Its listed output artifacts date to 2026-11-23, so no new coding-agent result is available from this run.
+
+At 12:07 UTC the paired V5/Patchsmith core and holdout kernels still reported `COMPLETE`, but both Kaggle output-file listings were empty. These code-page updates add no comparable agent result and do not change the staged experiment order.
