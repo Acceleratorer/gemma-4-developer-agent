@@ -38,3 +38,15 @@ The Kaggle Models search still returns the same six cards listed above; no new c
 ## Recheck — 2026-11-27 14:29 UTC
 
 Fresh Kaggle CLI searches for `Gemma 4` and `SWE` show no newly evaluated repo-repair candidate. The latest relevant listings remain the already-screened King-damon policy adapter, Scott Weeden's 31B tool-use LoRA, and Omallo's E4B SWE-agent LoRA; their evidence limits above are unchanged. A newer [Gemma 4 E2B QLoRA listing](https://www.kaggle.com/models/langzhelu/cs682-gemma4-e2b-distill) describes BFCL tool-calling work, not repository repair, and adds no comparable task result. No model or candidate change is indicated.
+
+## Follow-up — checked 2026-11-27 15:32 UTC
+
+A broader Kaggle Models search surfaced three PyTorch adapters by Penguin titled `adaption_gemma_native_sft_pilot_16992`. Kaggle metadata describes each only as a LoRA fine-tuned from `google/gemma-4-31B-it`; the model-level description provides no repository-repair evaluation or competition score:
+
+| Kaggle model | Updated | Uncompressed size | License metadata |
+|---|---:|---:|---|
+| [Adapter 791875](https://www.kaggle.com/models/penguin069/adaption-gemm-d4ffef64-9bcf-42c3-b4a5-9c02052a8d10) | 2026-11-19 | 76,176,037 bytes | Other (specified in description) |
+| [Adapter 790836](https://www.kaggle.com/models/penguin069/adaption-gemm-5ca52f61-451c-4918-95f2-23bacdce971d) | 2026-11-17 | 1,012,350,521 bytes | Other (specified in description) |
+| [Adapter 790417](https://www.kaggle.com/models/penguin069/adaption-gemm-61204ffd-8898-4ee6-93e9-0add01cfd750) | 2026-11-16 | 76,182,137 bytes | Other (specified in description) |
+
+The model-instance file-list endpoint returned 404 for the first two cards, so their file contents and license detail were not independently inspected; no weights were downloaded. These cards do not currently provide a verified or clearly licensed competition candidate. Keep the staged 31B comparison unchanged.
