@@ -37,3 +37,13 @@ The code also contains a token-shaped literal as an `HF_TOKEN` fallback. We did 
 ## Follow-up — checked 2026-11-26 23:55 UTC
 
 The Kaggle CLI search surfaced [Pajak Chaithongchai's `Gemma 4 Developer Agent Competition`](https://www.kaggle.com/code/pajakchaithongchai/gemma-4-developer-agent-competition), whose current kernel status is `ERROR`. Its pulled notebook is preserved under ignored `data/local/research/pajak-gemma4-developer-agent-2026-11-26-2350utc/`; SHA-256 `3EF67487361414651FAE49C35B87FD11959F8055E496854FE2CFB0550EB084BE`. The execution log fails in the first code cell after 12.14 seconds with `NameError: name 'true' is not defined` on the JSON boolean `"enableCodeExecution": true`. Metadata attaches no GPU, TPU, dataset, competition, or model input. No task evaluation, agent result, or score was produced. The unexecuted manifest in a Markdown cell is not a runnable submission. This is not a candidate or performance result and does not change the staged comparison.
+
+## Tuyến Nguyễn — `mainmainmain`
+
+Checked with the Kaggle CLI at 2026-11-27 00:11 UTC. Kaggle reports the kernel as `COMPLETE`; its latest run is dated 2026-11-25 09:23 UTC. The pulled notebook SHA-256 is `7A7754E4B8F3BB43A7732C6C61E01BD0643E2C4D03F49238087A0BE68BDD3A6B`. Metadata enables an Nvidia L4 GPU, disables internet, lists the Gemma 4 Developer Agent competition as a source, and attaches no Kaggle model source.
+
+The notebook describes **EvidenceKD-MedVQA**, a VinDr chest-X-ray pipeline: detector and decision-branch training, anatomical regions, optional MedGemma teacher/distillation, optional Flan-T5 generator, and VQA/localization reports. The competition-source metadata is not evidence that this notebook runs the coding-agent benchmark. Its source has no SWE-Gemma task runner, coding-agent bundle, or competition submission flow.
+
+The downloaded run log says `OFFLINE = True`; no MedGemma base with a vision tower was attached, so the MedGemma teacher/KD and pretrained/B4 baselines were skipped. The notebook still trained/evaluated its separate VinDr pipeline and reports author-side validation/test metrics, including VQA accuracy/F1 of 0.822/0.558 on 659 validation examples and 0.834/0.582 on 300 test examples. The log says it wrote a 1,172 MB `evidencekd-full.zip` for resuming that pipeline. These are not Gemma coding-agent task scores or Kaggle competition leaderboard results.
+
+The notebook and raw run log are retained only in ignored `data/local/research/tuyen-mainmainmain-2026-11-27-0011utc/`; the large output bundle and unrelated derived data were not retained. **Decision:** this kernel adds no comparable agent-performance evidence. Keep the frozen seed-42 V5/Patchsmith 53-task core and 18-task holdout unchanged.
