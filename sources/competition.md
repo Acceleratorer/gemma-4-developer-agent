@@ -80,6 +80,7 @@ Competition pages and Kaggle state checked on 2026-11-23 14:34 UTC with Kaggle C
 - [Competition data](https://www.kaggle.com/competitions/gemma-4-developer-agent/data): 129 public training tasks, snapshots, graph/node embeddings, wheels, sample submission, and `HARNESS_README.md`.
 - [Models tab](https://www.kaggle.com/competitions/gemma-4-developer-agent/models): competition-associated Gemma model variants.
 - [Code tab](https://www.kaggle.com/competitions/gemma-4-developer-agent/code): public competition notebooks and kernel runs; the latest screens are [`public-kernel-screen-2026-11-27.md`](public-kernel-screen-2026-11-27.md) and [`public-model-screen-2026-11-27.md`](public-model-screen-2026-11-27.md).
+- [Latest public surface screen](public-surface-screen-2026-11-28.md): dated CLI inventory, source hashes, model-tab recheck, and evidence limits for the overview/data/code/models/discussion links.
 - [Official small-model prize and eligibility](https://www.kaggle.com/competitions/gemma-4-developer-agent/overview/prizes): E2B/E4B bonus prize and cross-track eligibility.
 - [Organizer announcement](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/748287): support for 12B, E4B, and E2B variants.
 - [Discussion](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion): organizer updates and participant findings.
