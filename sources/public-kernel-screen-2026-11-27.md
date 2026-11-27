@@ -90,3 +90,9 @@ The log shows `fastapi_14786` unresolved: the model rejected an 8,192-token outp
 - Kaggle lists [Nthday's `dich-qwen`](https://www.kaggle.com/code/nthday/dich-qwen) at 11:57:01 UTC as `COMPLETE`. The notebook source describes an offline Chinese-to-Vietnamese translation pipeline and uses OCR/voting datasets; it does not run the Gemma developer-agent evaluator. Its listed output artifacts date to 2026-11-23, so no new coding-agent result is available from this run.
 
 At 12:07 UTC the paired V5/Patchsmith core and holdout kernels still reported `COMPLETE`, but both Kaggle output-file listings were empty. These code-page updates add no comparable agent result and do not change the staged experiment order.
+
+## Local V5 trace context check — checked 2026-11-27 12:32 UTC
+
+The existing `evals/results/train-gold-44-v5-40-calls/output/dev_results/` contains 44 task traces and 1,192 model-call metric records. The maximum recorded prompt was 19,359 tokens, the maximum recorded total for a call was 20,255 tokens, and the largest completion was 5,100 tokens. No prompt exceeded 24,576 tokens, and no context-window error was recorded. With the current 8,192-token output cap, the largest observed prompt plus the full requested output allowance is 27,551 tokens, 5,217 below the reported 32,768-token context limit.
+
+This is an older local 44-task 40-call V5 run, not the staged 53-task V5/Patchsmith pair or its Kaggle run. Allan Kipruto's separate `fastapi_14786` run exceeded the limit with at least 24,577 input tokens plus an 8,192-token output request. Keep the staged pair unchanged; inspect its actual summaries and traces after the reset run before considering a lower cap. The earlier public-kernel note records the two-task run and its limitations.
