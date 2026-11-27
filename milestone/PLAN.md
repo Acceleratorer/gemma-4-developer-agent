@@ -1,5 +1,12 @@
 # Optimization plan
 
+## Latest reset-run recheck — 2026-11-27 22:59 UTC
+
+- **Quota:** Kaggle reports 0.04h GPU remaining and 17.39h TPU remaining; both refresh at `2026-11-28T00:00:00Z`.
+- **Runner:** `launch-core-after-quota-reset.ps1` is alive locally as PID 37384 and waiting for reset. It has not pushed early.
+- **Kernels and evidence:** the core and holdout slugs still report `COMPLETE` conversion status, with no validated evaluation summaries yet. The core launcher remains the single next action; the holdout launcher stays conditional on exact core summaries, quota reserve, and the final-upload buffer.
+- **Decision:** keep the staged seed-42 V5/Patchsmith files, task split, model, prompt, and budgets unchanged.
+
 ## Goal
 
 Reach rank 1 on the final Kaggle private leaderboard. Continue optimizing until the final deadline and claim success only after the private leaderboard confirms it.

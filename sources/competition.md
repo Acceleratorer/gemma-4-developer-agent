@@ -1,5 +1,9 @@
 # Competition facts and sources
 
+## Latest reset-run recheck — 2026-11-27 22:59 UTC
+
+The authenticated Kaggle CLI still reports 29.96/30.00 GPU hours used (0.04h remaining) and 2.61/20.00 TPU hours used (17.39h remaining), with the next refresh at `2026-11-28T00:00:00Z`. Both staged paired kernels still report `COMPLETE` conversion status, and no validated `dev-eval-*.json` summaries have been collected. The pinned core launcher is alive locally (PID 37384) and waiting for the reset; it will push only after the quota and staged-hash gates pass. The holdout remains conditional on validated core summaries, the seven-hour GPU reserve, and the final-upload buffer. This recheck changes no candidate, task split, seed, model, prompt, or budget.
+
 ## Latest public leaderboard recheck — 2026-11-27 22:37 UTC
 
 The authenticated Kaggle CLI public leaderboard now contains 6,984 rows. `Accelra` is rank 2,098 at `0.18`; the public top remains `0.24`. The downloaded archive is preserved under ignored `data/local/leaderboard-2026-11-27-2237utc/` with SHA-256 `0C94AF6A374AB77F4037F93759F1700C1339E88285F654877C16C4024591B463`. No private score is visible. This snapshot changes only the rank/row count; it does not change the staged candidate decision or reset launch gates.
