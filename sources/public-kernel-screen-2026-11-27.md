@@ -100,3 +100,11 @@ This is an older local 44-task 40-call V5 run, not the staged 53-task V5/Patchsm
 ## Recheck — 2026-11-27 12:41 UTC
 
 The Kaggle Code listing has no run later than `dich-qwen` at 11:57 UTC. Both staged paired kernels still report `COMPLETE`, but filtered downloads returned notebook-conversion logs only and no `dev-eval-*.json` summaries. Both launchers passed `-ValidateOnly`; staged hashes and Kaggle connectivity/status checks passed, with no push attempted. GPU quota remained at 0.04h, so the 53-task comparison remains scheduled for the 2026-11-28 reset.
+
+## Follow-up — checked 2026-11-27 13:04 UTC
+
+### Nthday — `dich-erax`
+
+The Kaggle Code listing shows [Nthday's `dich-erax`](https://www.kaggle.com/code/nthday/dich-erax) last ran at 13:03:03 UTC and reports `COMPLETE`. The notebook and metadata are preserved under ignored `data/local/research/kernel-screen-2026-11-27-1304utc/nthday-dich-erax/`. The source describes an offline EraX Chinese-to-Vietnamese OCR translation pipeline using a Gemma 3 model on four Nvidia L4 GPUs. It contains no repository issue tasks, coding-agent patch workflow, or competition evaluator. `COMPLETE` is not evidence of a coding-agent score; this run does not affect candidate selection.
+
+At 13:04 UTC, fresh filtered downloads for the staged paired core and holdout still contained only notebook-conversion logs and no `dev-eval-*.json` summaries. Their `COMPLETE` statuses therefore remain conversion status, not evaluation results. The exact live leaderboard and launch preflight state are recorded in [`competition.md`](competition.md).
