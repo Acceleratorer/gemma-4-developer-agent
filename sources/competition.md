@@ -1,5 +1,11 @@
 # Competition facts and sources
 
+## Latest live recheck — 2026-11-27 20:45 UTC
+
+The Kaggle CLI public leaderboard snapshot contains 6,977 rows. `Accelra` is rank 2,097 at 0.18; 19 teams are tied at 0.24, followed by 151 at 0.22, 719 at 0.20, and 1,355 at 0.18. The archive is under ignored `data/local/leaderboard-2026-11-27-2044utc/` (ZIP SHA-256 `F943C5136B9A597FED382BCEBCD3BE5A8F6D40E95EEDCB6C918F80558BA1A3ED`). No private score is shown.
+
+Submission `58965387` remains `PENDING` with no public or private score; completed submissions remain `58883031` at 0.17, `58729936` at 0.18, `58624160` at 0.10, and `58527796` at 0.15. GPU quota is still 0.04h and TPU quota 17.39h, with the refresh reported at `2026-11-28T00:00:00Z`. The core launcher is alive and waiting for that reset; it has not pushed. The holdout launcher remains quota-gated. The canonical overview, data, code, models, and discussion links are documented in the [public surface screen](public-surface-screen-2026-11-28.md).
+
 ## Latest launcher recheck — 2026-11-27 17:56 UTC
 
 The live Kaggle CLI still reports submission `58965387` as `PENDING` with no public or private score; completed submissions remain `58883031` at 0.17, `58729936` at 0.18, `58624160` at 0.10, and `58527796` at 0.15. GPU quota is 0.04h remaining and TPU quota is 17.39h; Kaggle reports the refresh at `2026-11-28T00:00:00Z`. The combined core launcher passed its staged-file hash preflight and is running locally while waiting for that reset; it has not pushed. The conditional holdout launcher correctly skipped at 17:51 UTC because the 7-hour GPU reserve is not met; its scheduled retry window remains active. Both Kaggle kernels still report `COMPLETE`, which remains notebook-conversion status until validated `dev-eval-*.json` summaries are downloaded. See the [public surface screen](public-surface-screen-2026-11-28.md) for the matching code/models/discussion documentation.
