@@ -1,5 +1,9 @@
 # Competition facts and sources
 
+## Latest public leaderboard recheck — 2026-11-27 22:37 UTC
+
+The authenticated Kaggle CLI public leaderboard now contains 6,984 rows. `Accelra` is rank 2,098 at `0.18`; the public top remains `0.24`. The downloaded archive is preserved under ignored `data/local/leaderboard-2026-11-27-2237utc/` with SHA-256 `0C94AF6A374AB77F4037F93759F1700C1339E88285F654877C16C4024591B463`. No private score is visible. This snapshot changes only the rank/row count; it does not change the staged candidate decision or reset launch gates.
+
 ## Latest operational recheck — 2026-11-27 21:48 UTC
 
 The Kaggle CLI still reports submission `58965387` as `PENDING`, with no public or private score; completed submissions remain `58883031` at 0.17, `58729936` at 0.18, `58624160` at 0.10, and `58527796` at 0.15. GPU quota is 0.04h remaining and TPU quota is 17.39h, with refresh at `2026-11-28T00:00:00Z`. The core launch process is alive and waiting for the reset; it has not pushed. The conditional holdout launcher is ready and remains gated on validated core summaries plus the seven-hour GPU reserve.
