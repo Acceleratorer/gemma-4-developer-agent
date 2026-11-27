@@ -52,7 +52,7 @@ The notebook and raw run log are retained only in ignored `data/local/research/t
 
 ### Dheeraj Piduru — `what-moved-the-score-and-what-didn-t-e4b-31b`
 
-The [notebook](https://www.kaggle.com/code/dheerajpiduru/what-moved-the-score-and-didn-t-e4b-31b) ran at 06:05:59 UTC and completed. Its two-cell CPU package builder has no internet or model accelerator; it writes a submission ZIP and does not run the agent evaluator. The output contains four runtime files. Their bytes exactly match the four runtime files in `module/agents/budget-aware-v2-no-graph-v1/`.
+The [notebook](https://www.kaggle.com/code/dheerajpiduru/what-moved-the-score-and-what-didn-t-e4b-31b) ran at 06:05:59 UTC and completed. Its two-cell CPU package builder has no internet or model accelerator; it writes a submission ZIP and does not run the agent evaluator. The output contains four runtime files. Their bytes exactly match the four runtime files in `module/agents/budget-aware-v2-no-graph-v1/`.
 
 The write-up reports two public draws for its 31B v8 package, 0.20 and 0.17 (11/58 tasks on average), and six E4B draws from 0.03 to 0.08. Its E4B local study reports 11/115 resolved at 4,096 thinking tokens versus 10/115 at 1,024; three 31B-to-E4B adapter attempts did not improve held-out solves. These are author-reported results, not independently reproduced. The identical runtime files make v8 a useful external reference for the local no-graph candidate, but the two public draws do not establish a reliable gain over our 0.18 V5 draw. Keep the candidate separate from the frozen pair.
 
