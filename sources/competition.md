@@ -4,7 +4,11 @@
 
 The live Kaggle CLI still reports submission `58965387` as `PENDING` with no public or private score; completed submissions remain `58883031` at 0.17, `58729936` at 0.18, `58624160` at 0.10, and `58527796` at 0.15. GPU quota is 0.04h remaining and TPU quota is 17.39h; Kaggle reports the refresh at `2026-11-28T00:00:00Z`. The combined core launcher passed its staged-file hash preflight and is running locally while waiting for that reset; it has not pushed. The conditional holdout launcher correctly skipped at 17:51 UTC because the 7-hour GPU reserve is not met; its scheduled retry window remains active. Both Kaggle kernels still report `COMPLETE`, which remains notebook-conversion status until validated `dev-eval-*.json` summaries are downloaded. See the [public surface screen](public-surface-screen-2026-11-28.md) for the matching code/models/discussion documentation.
 
-## Latest full leaderboard snapshot — generated 2026-11-27 18:13 UTC
+## Latest full leaderboard snapshot — generated 2026-11-27 19:23 UTC
+
+The fresh public leaderboard contains 6,970 rows. `Accelra` is rank 2,097 at 0.18; 19 teams are tied at 0.24, followed by 151 at 0.22, 718 at 0.20, and 1,357 at 0.18. No private score is shown. The downloaded archive is under ignored `data/local/leaderboard-2026-11-27-1902utc/` (ZIP SHA-256 `9B4888082B5D273623779C0AC3A26B0751D095854FE9366A39F9233DB2B5E81A`). The score and public top are unchanged; the rank moved from 2,096 to 2,097 as new rows arrived.
+
+## Previous full leaderboard snapshot — generated 2026-11-27 18:13 UTC
 
 The fresh public leaderboard contains 6,965 rows. `Accelra` is rank 2,096 at 0.18; 19 teams are tied at 0.24, followed by 151 at 0.22, 717 at 0.20, and 1,356 at 0.18. No private score is shown. The downloaded archive is under ignored `data/local/leaderboard-2026-11-27-1812utc/` (ZIP SHA-256 `D2F5D61C92DDC1B6C0E8D0BC19AFF38F0EE156A46A809A5BD5118B59B33342E0`). The rank moved from 2,095 to 2,096 as new rows arrived; the score and top score are unchanged.
 
