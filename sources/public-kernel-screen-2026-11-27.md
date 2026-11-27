@@ -146,3 +146,11 @@ The Kaggle CLI competition-code listing now shows `parkwave1/notebook-recode-reb
 The previously inaccessible Dheeraj Piduru source is now downloadable. The 06:05:59 UTC notebook is a two-cell CPU package builder and write-up; its archive is 7,127 bytes with SHA-256 `445EFB001BDEB88393994D1B4EFB17CBB2DCC83CCEA07BF6D0C2EED52370909C`. The write-up reports author-side 31B v8 draws of 0.20 and 0.17, but the notebook does not run inference. After normalizing line endings, its four runtime files match the tracked `budget-aware-v2-no-graph-v1` text; the public draws remain author-reported and are not a paired reproduction. Keep Dheeraj's bundle separate from the frozen seed-42 V5/Patchsmith comparison.
 
 The current 16:26 UTC Kaggle check still reports no `dev-eval-*.json` outputs for either staged paired kernel. These new code listings add no promotion signal and do not change the reset experiment order.
+
+## Follow-up — checked 2026-11-27 21:09 UTC
+
+### Evgen Dvorkin — `rich_3894` refresh
+
+The Code listing now shows [Evgen Dvorkin's `rich_3894` kernel](https://www.kaggle.com/code/evgendvorkin/gemma-4-rich-3894-41-42-42-42) as last run at 21:08:58 UTC and `COMPLETE`. The pulled notebook source SHA-256 is `4353B67C4C9FC249CBBA43C9E0EF859306A9128BA53B52FC4A041A6059F9DCEC`; its output log and archive are preserved under ignored `data/local/research/public-kernel-screen-2026-11-28/evgen-refresh-20261127-2112utc/`. The ZIP is unchanged at SHA-256 `63DA26AB6658E95E1D839565A05734E2979342B2E9C9CD891138096A6366181F`.
+
+The run's embedded metadata reports one `Textualize/rich` task, `rich_3894`, resolved by the V24/P18 candidate in 234.88 seconds with 10 tool calls; its baseline is the empty patch and the comparison table is a single-task study. The log only verifies the 28-file package and converts the notebook to HTML. It does not provide a competition score or a comparable multi-task evaluation. Keep it as package and single-task evidence; it does not change the staged V5/Patchsmith core or holdout.
