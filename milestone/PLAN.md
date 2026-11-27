@@ -4,12 +4,12 @@
 
 Reach rank 1 on the final Kaggle private leaderboard. Continue optimizing until the final deadline and claim success only after the private leaderboard confirms it.
 
-## Latest Kaggle state — checked 2026-11-27 14:29 UTC
+## Latest Kaggle state — checked 2026-11-27 15:43 UTC
 
-- **Leaderboard:** the full public snapshot generated at 14:26:13 UTC has 6,948 rows; `Accelra` is rank 2,093 at 0.18. It is archived under ignored `data/local/leaderboard-2026-11-27-1426utc/` (ZIP SHA-256 `552936BACD62DB977BD4085FEBDE96C1EF847FF7DFC8B08B2ACB0B1C6BDC2D9B`). The top remains 0.24; no private score is visible.
-- **Submission and quota:** E4B submission `58965387` remains `PENDING`, with no score. GPU quota is 0.04h and TPU quota 17.39h; both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time.
-- **Staged comparison:** core and holdout kernels still report `COMPLETE`, but their output-file listings are empty and there are no `dev-eval-*.json` summaries. The scheduled tasks remain `Ready` for 07:00 and 07:15 Vietnam time. Keep the pinned V5/Patchsmith files unchanged; the combined core run is still first after reset.
-- **New public evidence:** the local-eval kit provides useful gold-control and run-variance context, but its Python/Docker environment differs from ours and it is not a candidate score. Its task-set cross-check and limits are in [`sources/public-local-eval-kit-audit-2026-11-27.md`](../sources/public-local-eval-kit-audit-2026-11-27.md). The current code and model screens add no comparable candidate result.
+- **Leaderboard:** the full public snapshot generated at 15:40:24 UTC has 6,952 rows; `Accelra` remains rank 2,093 at 0.18, and the public top remains 0.24. The archive is under ignored `data/local/leaderboard-2026-11-27-1540utc/` (ZIP SHA-256 `9A54DE5002CD923029FD7F020DEC7E3BA658231D45F23F8B40A73B0B7CEF8D86`). No private score is visible.
+- **Submission and quota:** E4B submission `58965387` remains `PENDING`, with no public or private score. GPU quota is 0.04h and TPU quota 17.39h; both refresh at 2026-11-28 00:00 UTC / 07:00 Vietnam time.
+- **Staged comparison:** core and holdout kernels still report `COMPLETE`, but filtered output pulls at 15:41 UTC contain only logs and no `dev-eval-*.json` summaries. The scheduled tasks remain `Ready` for 07:00 and 07:15 Vietnam time; both launchers passed `-ValidateOnly` at 15:43 UTC with no push attempted. Keep the pinned V5/Patchsmith files unchanged; the combined core run is still first after reset.
+- **New public evidence:** the public Code listing adds no result after Allan's 14:49 two-task run; a Dheeraj kernel listed at 06:05 returned 403 on source retrieval and is unaudited. The Models search surfaced three generic 31B LoRAs with unspecified licensing and no reported repo-repair evaluation. Neither screen gives a promotion signal; details are in [`sources/public-kernel-screen-2026-11-27.md`](../sources/public-kernel-screen-2026-11-27.md) and [`sources/public-model-screen-2026-11-27.md`](../sources/public-model-screen-2026-11-27.md). The local-eval kit remains external gold-control and run-variance context, not a candidate score; see [`sources/public-local-eval-kit-audit-2026-11-27.md`](../sources/public-local-eval-kit-audit-2026-11-27.md).
 
 ## Experiment plan and prior operational snapshot — checked through 2026-11-27 13:04 UTC
 

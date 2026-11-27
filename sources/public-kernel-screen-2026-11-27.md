@@ -130,3 +130,11 @@ Both paired kernels still report `COMPLETE`, but the 14:29 UTC output-file queri
 The Kaggle Code listing shows a new run of [Getting Started - Gemma 4 Developer Agent](https://www.kaggle.com/code/allankipruto/getting-started-gemma-4-developer-agent) at 14:49:47 UTC; Kaggle reports `COMPLETE`. The latest run logs still evaluate `fastapi_14786` and `rich_3518`. FastAPI is unresolved after a request for 8,192 output tokens with at least 24,577 prompt tokens exceeded the 32,768-token context window; the run records zero tool calls and 600.3 seconds for that task. Rich resolves with a 2,053-character patch in 20 tool calls and 130.9 seconds. The kernel file listing contains no `dev-eval-*.json` summary, and this is not a competition submission score.
 
 This repeats the same two-task outcome from the 13:22 UTC run. It confirms a context-window failure in this author's setup but is not a result for our candidate. Keep the staged V5/Patchsmith comparison and output cap unchanged until our own 53-task core traces are available.
+
+## Follow-up — checked 2026-11-27 15:32 UTC
+
+The competition Code listing's latest run remained Allan Kipruto's two-task experiment at 14:49:47 UTC. No newer run added a comparable coding-agent evaluation.
+
+Kaggle listed [Dheeraj Piduru's “What moved the score and what didn't: E4B + 31B”](https://www.kaggle.com/code/dheerajpiduru/what-moved-the-score-and-what-didnt-e4b-31b) with a 06:05:59 UTC run. The authenticated Kaggle CLI returned `403 Forbidden` for both `kernels pull` and `kernels files`, so the notebook source and outputs could not be inspected. The title alone is not evidence of a scored agent comparison; no result from this kernel is used for candidate selection.
+
+At 15:41 UTC the paired core and holdout kernels still reported `COMPLETE`. Filtered output pulls contained only each kernel's notebook-conversion log and no `dev-eval-*.json` summary. The scheduled reset run remains the first decision-grade comparison.
