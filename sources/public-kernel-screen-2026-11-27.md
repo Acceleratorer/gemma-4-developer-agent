@@ -71,3 +71,13 @@ The Kaggle CLI lists the [notebook](https://www.kaggle.com/code/flexonafft/gemma
 The notebook's short prompt uses 28 tool calls, a 10-minute task cap, 1,024 thinking tokens, and a 240-second command timeout. It proposes a focused behavior check before editing and repeats that same check afterward, capped at 30 seconds, while requiring a non-empty patch. The notebook identifies submission `58886757` at 0.18 as its *baseline*; it reports no score or evaluation for this updated variant. The generated ZIP has no `LICENSE` or `NOTICE`, and the pulled metadata declares no license field, so keep the external source out of the repository and do not copy its bundle.
 
 **Decision:** retain this as an unscored prompt hypothesis for later independent implementation and paired evaluation. Its 10-minute cap adds two minutes per task versus our frozen 8-minute comparison and has no measured gain. It does not change the scheduled core or holdout candidates.
+
+## Follow-up — checked 2026-11-27 11:45 UTC
+
+### Allan Kipruto — `Getting Started - Gemma 4 Developer Agent`
+
+Kaggle listed the [kernel](https://www.kaggle.com/code/allankipruto/getting-started-gemma-4-developer-agent) as last run at 08:49:51 UTC and returned `COMPLETE`. Its metadata enables an Nvidia L4, disables internet, and attaches the official competition, wheelhouse, and Gemma 4 31B QAT v2. The notebook uses a separate `tasks2.jsonl` dataset and its run log evaluates only `fastapi_14786` and `rich_3518`; this is a two-task author-side run, not a competition submission score. The notebook source and raw Kaggle logs are kept under ignored `data/local/research/kernel-screen-2026-11-27-1145utc/allan-default/`; the notebook SHA-256 is `3705C3FAC477B83645256D497DD818BABAF60FFABC515E4ECABEEC2AD0B2A594`.
+
+The log shows `fastapi_14786` unresolved: the model rejected an 8,192-token output request with at least 24,577 prompt tokens against a 32,768-token context window. `rich_3518` resolved with a 2,053-character patch in 20 tool calls. Our [current sampling config](../module/agents/current/configs/sampling.yaml) uses the same 8,192 output cap and 4,096 thinking budget, so the failure is a relevant risk signal, not a result for our candidate.
+
+**Decision:** keep the staged seed-42 V5/Patchsmith core and holdout unchanged so their paired comparison stays exact. Inspect their task-level summaries for context-window failures before deciding whether to test a lower output cap; this two-task, single-arm run does not justify a candidate change or promotion.
