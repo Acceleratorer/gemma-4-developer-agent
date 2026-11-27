@@ -35,6 +35,13 @@ The post also describes `submit_patch` as ending the agent loop and the current 
 
 These threads add no confirmed queue policy, timeout cause, or candidate improvement. Keep the frozen V5/Patchsmith comparison and existing submission gates unchanged.
 
+## Follow-up — checked 2026-11-27 10:42 UTC
+
+- The author of [the Budget-Aware V2 submission-stall report](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/762046) updated it at 00:37 UTC: their notebook-only submission completed after about 36 hours without an error. They did not report a score in that update. This is one participant's result, not a new queue-wide estimate or a status update for our submission.
+- [Another participant](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/762009) reported at 10:10 UTC that their submission was still pending after 24 hours. No Kaggle Staff reply or revised queue estimate was visible.
+- Comments on [the 1,350-episode study](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/762144) discuss missing visible reasoning tokens in local/OpenRouter traces while reporting behavior changes when `thinking_budget` changes. The comments do not establish how the competition scorer records thought tokens or add a paired accuracy result; keep the budget fixed in the staged comparison.
+- The question about [final-scoring reruns](https://www.kaggle.com/competitions/gemma-4-developer-agent/discussion/762074) still has no organizer answer. It provides no new final-selection policy.
+
 ## Limits
 
 This was a read-only Kaggle CLI screen, not an exhaustive archive of every notebook or discussion. Public thread claims remain author-reported unless independently reproduced; Kaggle `COMPLETE` or a high test-count title is not itself a competition score.

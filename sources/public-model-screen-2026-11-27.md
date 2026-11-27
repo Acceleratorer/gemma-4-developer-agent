@@ -30,3 +30,7 @@ The [Kaggle LoRA serving discussion](https://www.kaggle.com/competitions/gemma-4
 The author reports three fixes that started the same rank-16 adapter: setting `VLLM_MEMORY_PROFILER_ESTIMATE_CUDAGRAPHS=1`, setting `cudagraph_specialize_lora` to `false`, or lowering `--max-num-seqs` to 64. A separate reply by participant Cam-Mark says the Getting Started notebook sets the environment variable to `1` and reports successful adapters up to rank 64; that reply is not from Kaggle staff and does not establish the scoring service's configuration. Kaggle Staff member Ryan Holbrook separately reports a scorer-side 57 MB rank-16 adapter timing out after more than 12 hours, but the discussion does not confirm the cause or the scorer's environment.
 
 This remains a conditional risk for our 69.8 MB rank-16 E4B adapter, not evidence that it failed. The live CLI check at 21:39 still reports submission `58965387` as `PENDING`, with no public or private score. Wait for that scorer result before drawing a candidate-specific conclusion; do not infer the E4B scorer's environment from the 31B reports.
+
+## Recheck — 2026-11-27 10:25 UTC
+
+The Kaggle Models search still returns the same six cards listed above; no new competition-agent model card changed the candidate screen. Ayush Barai's new 31B LoRA artifact appears as output from a public notebook rather than a Models-tab entry. Its provenance and evidence limits are recorded in the [latest kernel screen](public-kernel-screen-2026-11-27.md).
