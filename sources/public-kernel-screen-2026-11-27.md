@@ -86,7 +86,7 @@ The log shows `fastapi_14786` unresolved: the model rejected an 8,192-token outp
 
 ### Recent code-page runs
 
-- Kaggle lists a new 11:50:37 UTC run of [Evgen Dvorkin's `rich_3894` kernel](https://www.kaggle.com/code/evgendvorkin/gemma-4-rich-3894-41-42-42-42) as `COMPLETE`. Its only listed output is an 871-byte `submission.zip` with the previously observed SHA-256 `63DA26AB6658E95E1D839565A05734E2979342B2E9C9CD891138096A6366181F`; the filtered log shows package/archive verification and no inference result.
+- Kaggle lists a new 11:50:37 UTC run of [Evgen Dvorkin's `rich_3894` kernel](https://www.kaggle.com/code/evgendvorkin/gemma-4-rich-3894-41-42-42-42) as `COMPLETE`. The Kaggle file-list metadata reported 871 for `submission.zip`; the downloaded archive is 197,920 bytes with SHA-256 `63DA26AB6658E95E1D839565A05734E2979342B2E9C9CD891138096A6366181F`. Its filtered log shows package/archive verification and no inference result.
 - Kaggle lists [Nthday's `dich-qwen`](https://www.kaggle.com/code/nthday/dich-qwen) at 11:57:01 UTC as `COMPLETE`. The notebook source describes an offline Chinese-to-Vietnamese translation pipeline and uses OCR/voting datasets; it does not run the Gemma developer-agent evaluator. Its listed output artifacts date to 2026-11-23, so no new coding-agent result is available from this run.
 
 At 12:07 UTC the paired V5/Patchsmith core and holdout kernels still reported `COMPLETE`, but both Kaggle output-file listings were empty. These code-page updates add no comparable agent result and do not change the staged experiment order.
@@ -108,3 +108,17 @@ The Kaggle Code listing has no run later than `dich-qwen` at 11:57 UTC. Both sta
 The Kaggle Code listing shows [Nthday's `dich-erax`](https://www.kaggle.com/code/nthday/dich-erax) last ran at 13:03:03 UTC and reports `COMPLETE`. The notebook and metadata are preserved under ignored `data/local/research/kernel-screen-2026-11-27-1304utc/nthday-dich-erax/`. The source describes an offline EraX Chinese-to-Vietnamese OCR translation pipeline using a Gemma 3 model on four Nvidia L4 GPUs. It contains no repository issue tasks, coding-agent patch workflow, or competition evaluator. `COMPLETE` is not evidence of a coding-agent score; this run does not affect candidate selection.
 
 At 13:04 UTC, fresh filtered downloads for the staged paired core and holdout still contained only notebook-conversion logs and no `dev-eval-*.json` summaries. Their `COMPLETE` statuses therefore remain conversion status, not evaluation results. The exact live leaderboard and launch preflight state are recorded in [`competition.md`](competition.md).
+
+## Follow-up — checked 2026-11-27 14:29 UTC
+
+### Evgen Dvorkin — `rich_3894`
+
+Kaggle lists the latest run at 13:36:27 UTC as `COMPLETE`. Its downloaded `submission.zip` is 197,920 bytes and has the same SHA-256 `63DA26AB6658E95E1D839565A05734E2979342B2E9C9CD891138096A6366181F`. The log verifies 28 agent files and the V24/P18 package, then converts the notebook to HTML; it contains no inference or task-evaluation result. The fresh log and output are under ignored `data/local/research/kernel-screen-2026-11-27-1426utc/`.
+
+### Allan Kipruto — `Getting Started - Gemma 4 Developer Agent`
+
+The latest listed run is `COMPLETE` at 13:22:14 UTC. The downloaded run log evaluates only `fastapi_14786` and `rich_3518`: the FastAPI task is unresolved after an 8,192-token output request was rejected with at least 24,577 prompt tokens against the 32,768-token context limit; the Rich task resolves with a 2,053-character patch in 20 tool calls. This is one author-run two-task screen, not a competition submission score, and it does not justify changing the staged prompt or output cap before inspecting our own paired traces.
+
+### Our staged kernels
+
+Both paired kernels still report `COMPLETE`, but the 14:29 UTC output-file queries returned no files for either kernel. There are no core or holdout summaries to compare yet. The reset launchers remain scheduled; the staged candidates and their hashes are unchanged.
