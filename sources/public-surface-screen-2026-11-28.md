@@ -31,6 +31,10 @@ The web-rendered code index also surfaces [Black Cat SWE Agent | Second Strike](
 
 The newest model search results included E2B/BFCL artifacts from LangZhe Lu, three generic Penguin SFT adapters, King-damon's policy adapter, Omallo's E4B distillation adapter, Robina Mirbahar's graph/loop-breaker adapters, and Scott Weeden's tool-use LoRA. The cards do not provide a new paired repository-repair result or a verified competition score for our 31B track. The detailed adapter evidence remains in [`public-model-screen-2026-11-27.md`](public-model-screen-2026-11-27.md); do not promote a model card from metadata alone.
 
+## Follow-up code listing — checked 2026-11-27 19:14 UTC
+
+The newest code listing is [Ismail Eladraoui's Getting Started notebook](https://www.kaggle.com/code/ismaileladraoui/getting-started-gemma-4-developer-agent). Its pulled source SHA-256 is `7A9CCADD5A0F28F6CCA3DA16DF00758B2ABB3FFA17ABDEE945F6659B32A056BF`. The notebook selects the 12B model, evaluates only `tasks[:2]`, and creates a starter `submission.zip`; its downloaded log contains no `resolved` summary, leaderboard score, or full-run artifact. It is a tutorial/starter reference and does not change the frozen 31B V5/Patchsmith experiment order.
+
 ## Decision
 
 This screen adds documentation and provenance only. It does not change the candidate, task split, seed, model, prompt, or budgets. The next decision remains the quota-reset core run, followed by the conditional 18-task holdout if the exact output and quota gates pass.
