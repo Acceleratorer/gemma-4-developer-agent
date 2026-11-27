@@ -42,3 +42,11 @@ Evgen Dvorkin's [refreshed `rich_3894` notebook](https://www.kaggle.com/code/evg
 ## Decision
 
 This screen adds documentation and provenance only. It does not change the candidate, task split, seed, model, prompt, or budgets. The next decision remains the quota-reset core run, followed by the conditional 18-task holdout if the exact output and quota gates pass.
+
+## Fresh CLI recheck — 2026-11-27 21:48 UTC
+
+The competition code listing now reports Evgen Dvorkin's `rich_3894` kernel at `21:43:27 UTC`; the source and output were pulled into ignored `data/local/research/public-kernel-screen-2026-11-28-2148utc/`. The source SHA-256 is `2C9507436AA150EAA64C86423A73DA6E7F3C3BCDD7932C76EEB73E577EF5861E`. Its embedded metadata still describes a single `rich_3894` V24/P18 task study with `competition_lb: P18_NOT_MEASURED`; no competition score or multi-task summary was produced.
+
+The models listing remains the same six relevant public cards: King-damon's policy adapter, Omallo's E4B distillation adapter, Robina Mirbahar's loop-breaker/code-graph adapter, Scott Weeden's tool-use LoRA, Thomas Plocher's mirror, and Google's FunctionGemma. The model cards expose no paired 31B repository-repair result that qualifies as a promotion signal. The public discussion surface remains client-rendered; the dated discussion findings are retained in [`public-discussion-followup-2026-11-27.md`](public-discussion-followup-2026-11-27.md).
+
+This recheck is provenance only. It leaves the staged seed-42 V5/Patchsmith candidates, task split, seed, model, prompt, and budgets unchanged while the quota-reset core run remains queued locally.

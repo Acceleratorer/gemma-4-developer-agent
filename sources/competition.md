@@ -1,5 +1,11 @@
 # Competition facts and sources
 
+## Latest operational recheck — 2026-11-27 21:48 UTC
+
+The Kaggle CLI still reports submission `58965387` as `PENDING`, with no public or private score; completed submissions remain `58883031` at 0.17, `58729936` at 0.18, `58624160` at 0.10, and `58527796` at 0.15. GPU quota is 0.04h remaining and TPU quota is 17.39h, with refresh at `2026-11-28T00:00:00Z`. The core launch process is alive and waiting for the reset; it has not pushed. The conditional holdout launcher is ready and remains gated on validated core summaries plus the seven-hour GPU reserve.
+
+The latest code listing puts Evgen Dvorkin's `rich_3894` kernel at `21:43:27 UTC`; the fresh source audit is recorded in [`public-kernel-screen-2026-11-27.md`](public-kernel-screen-2026-11-27.md#follow-up--checked-2026-11-27-2148-utc) and [`public-surface-screen-2026-11-28.md`](public-surface-screen-2026-11-28.md#fresh-cli-recheck--2026-11-27-2148-utc). It remains a one-task package study with `P18_NOT_MEASURED`, not a competition result. Keep the staged seed-42 candidates unchanged until the reset run produces validated summaries.
+
 ## Latest live recheck — 2026-11-27 20:45 UTC
 
 The Kaggle CLI public leaderboard snapshot contains 6,977 rows. `Accelra` is rank 2,097 at 0.18; 19 teams are tied at 0.24, followed by 151 at 0.22, 719 at 0.20, and 1,355 at 0.18. The archive is under ignored `data/local/leaderboard-2026-11-27-2044utc/` (ZIP SHA-256 `F943C5136B9A597FED382BCEBCD3BE5A8F6D40E95EEDCB6C918F80558BA1A3ED`). No private score is shown.
